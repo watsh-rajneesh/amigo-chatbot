@@ -1,4 +1,0 @@
-name:
-    Watsh
-city_name:
-    San Jose
