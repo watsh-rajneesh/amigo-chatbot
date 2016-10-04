@@ -104,3 +104,4 @@ pip-selfcheck.json
 
 # Added for project - rwatsh
 profile.yaml
+memory.db

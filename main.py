@@ -15,7 +15,10 @@ name = profile_data['name']
 city_name = profile_data['city_name']
 city_zip = str(profile_data['city_zip'])
 music_path = profile_data['music_path']
-
+access_token = profile_data['twitter']['access_token']
+access_token_secret = profile_data['twitter']['access_token_secret']
+consumer_key = profile_data['twitter']['consumer_key']
+consumer_secret = profile_data['twitter']['consumer_secret']
 #play_music.mp3gen(music_path)
 
 tts('Welcome ' + name + ', systems are now ready to run. How can I help you?')
@@ -42,6 +45,7 @@ def main():
     except sr.RequestError as e:
         print("Could not request results from Google Speech Recognition service;{0}".format(e))
 
-    brain(name, speech_text, music_path, city_name, city_zip)
+    brain(name, speech_text, music_path, city_name, city_zip,
+          consumer_key, consumer_secret, access_token, access_token_secret)
 
 main()

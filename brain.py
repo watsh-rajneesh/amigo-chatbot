@@ -1,7 +1,8 @@
 from GreyMatter import general_conversations, tell_time, \
-    weather, define_subject, news_reader, open_firefox, sleep, play_music
+    weather, define_subject, news_reader, open_firefox, sleep, \
+    play_music, notes, twitter_interaction
 
-def brain(name, speech_text, music_path, city_name, city_zip):
+def brain(name, speech_text, music_path, city_name, city_zip, consumer_key, consumer_secret, access_token, access_token_secret):
     """
     Virtual Assistant's logic module or BRAIN.
 
@@ -58,6 +59,13 @@ def brain(name, speech_text, music_path, city_name, city_zip):
         play_music.play_specific_music(speech_text, music_path)
     elif check_message(['party', 'time']) or check_message(['party', 'mix']):
         play_music.play_shuffle(music_path)
+    elif check_message(['note']):
+        notes.note_something(speech_text)
+    elif check_message(['all', 'notes']) or check_message(['notes']):
+        notes.show_all_notes()
+    elif check_message(['tweet']):
+        twitter_interaction.post_tweet(speech_text, consumer_key,
+                                       consumer_secret, access_token, access_token_secret)
     elif check_message(['sleep']):
         sleep.go_to_sleep()
     else:
