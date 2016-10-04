@@ -2,6 +2,8 @@ import speech_recognition as sr
 import sys
 import yaml
 from GreyMatter.SenseCells.tts import tts
+from GreyMatter import play_music
+
 from brain import brain
 
 profile = open('profile.yaml')
@@ -12,6 +14,9 @@ profile.close()
 name = profile_data['name']
 city_name = profile_data['city_name']
 city_zip = str(profile_data['city_zip'])
+music_path = profile_data['music_path']
+
+#play_music.mp3gen(music_path)
 
 tts('Welcome ' + name + ', systems are now ready to run. How can I help you?')
 
@@ -37,6 +42,6 @@ def main():
     except sr.RequestError as e:
         print("Could not request results from Google Speech Recognition service;{0}".format(e))
 
-    brain(name, speech_text, city_name, city_zip)
+    brain(name, speech_text, music_path, city_name, city_zip)
 
 main()
