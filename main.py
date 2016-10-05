@@ -19,7 +19,7 @@ access_token = profile_data['twitter']['access_token']
 access_token_secret = profile_data['twitter']['access_token_secret']
 consumer_key = profile_data['twitter']['consumer_key']
 consumer_secret = profile_data['twitter']['consumer_secret']
-#play_music.mp3gen(music_path)
+play_music.mp3gen(music_path)
 
 
 tts('Welcome ' + name + ', systems are now ready to run. How can I help you?')
