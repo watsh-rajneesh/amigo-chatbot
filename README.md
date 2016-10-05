@@ -1,4 +1,4 @@
-# ria
+# ria (Raspberry Pi Intelligent Assistant)
 A Virtual assistant for Raspberrry Pi
 
 It is made following the nice book on the subject by Tanay Pant - Building a Virtual Assitant for Raspberry Pi (APress) [https://www.amazon.com/Building-Virtual-Assistant-Raspberry-voice-controlled/dp/1484221664]
