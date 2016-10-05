@@ -106,4 +106,4 @@ pip-selfcheck.json
 profile.yaml
 memory.db
 uploads/*
-*.wav
+recording.wav
