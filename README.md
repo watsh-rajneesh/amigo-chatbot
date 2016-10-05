@@ -33,6 +33,25 @@ cp profile.yaml.default profile.yaml
 cp memory.db.default memory.db
 ```
 
+On Mac OSX:
+```
+virtualenv venv
+source venv/bin/activate
+
+### install portaudio and pyaudio
+sudo chown -R $(whoami) /usr/local
+Brew install portaudio
+sudo chown root:wheel /usr/local
+pip install --global-option='build_ext' --global-option='-I/usr/local/include' --global-option='-L/usr/local/lib' pyaudio
+
+### install pywapi
+wget https://launchpad.net/python-weather-api/trunk/0.3.8/+download/pywapi-0.3.8.tar.gz
+tar -xvzf pywapi-0.3.8.tar.gz
+cd pywapi-0.3.8
+python setup.py build
+python setup.py install
+```
+
 Edit the profile.yaml for your environment.
 
 Then run the app as:
