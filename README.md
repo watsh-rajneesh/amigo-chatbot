@@ -9,7 +9,7 @@ The idea is to use the Raspberry Pi based Virtual Assistant as one of the interf
 
 Ria uses Google STT (Speech to text) API and espeak on Linux (or say on OSX) for TTS (Text to speech).
 
-Currently supported [https://developer.amazon.com/alexa-skills-kit](skills)/features:
+Currently supported [skills](https://developer.amazon.com/alexa-skills-kit)/features:
   1. Play music from configured path on local disk
   2. Read news headlines scrapping news from news.google.com
   3. Take notes and store in local sqllite DB
