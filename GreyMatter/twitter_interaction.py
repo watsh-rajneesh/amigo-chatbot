@@ -10,3 +10,11 @@ def post_tweet(speech_text, consumer_key, consumer_secret, access_token, access_
     api = tweepy.API(auth)
     api.update_status(status=cleaned_message)
     tts('Your tweet has been posted')
+
+
+# future work... TBD
+def post_to_person():
+    pass
+
+def read_me_my_tweets(count):
+    pass

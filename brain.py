@@ -29,7 +29,7 @@ def brain(name, speech_text, music_path, city_name, city_zip, consumer_key, cons
         else:
             return False
 
-    if check_message('who are you'):
+    if check_message(['who', 'are', 'you']) or check_message(["what's", 'your', 'name']):
         general_conversations.who_are_you()
     elif check_message(['how', 'i', 'look']) or check_message(['how', 'am', 'i']):
         general_conversations.how_am_i()
