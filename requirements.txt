@@ -1,0 +1,14 @@
+beautifulsoup4==4.5.1
+imgurpython==1.1.7
+oauthlib==2.0.0
+PyAudio==0.2.9
+pywapi==0.3.8
+PyYAML==3.12
+requests==2.11.1
+requests-oauthlib==0.7.0
+selenium==2.53.6
+six==1.10.0
+SpeechRecognition==3.4.6
+tweepy==3.5.0
+web.py==0.38
+wikipedia==1.4.0
