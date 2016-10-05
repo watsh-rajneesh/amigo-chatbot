@@ -2,9 +2,9 @@ from SenseCells.tts import tts
 import random
 
 def who_are_you():
-    messages = ['I am Melissa, your lovely personal assistant.',
-                'Melissa, didnt I tell you before?',
-                'You ask that so many times! I am Melissa.']
+    messages = ['I am Ria, your lovely personal assistant.',
+                'Ria, didnt I tell you before?',
+                'You ask that so many times! I am Ria.']
     tts(random.choice(messages))
 
 def how_am_i():
