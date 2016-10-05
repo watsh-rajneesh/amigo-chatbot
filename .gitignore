@@ -107,3 +107,4 @@ profile.yaml
 memory.db
 uploads/*
 recording.wav
+/.idea/
