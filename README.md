@@ -27,4 +27,13 @@ To setup the environment do the following:
 virtualenv venv
 source venv/bin/activate
 pip install -r requirements.txt
+cp profile.yaml.default profile.yaml
+cp memory.db.default memory.db
+```
+
+Edit the profile.yaml for your environment.
+
+Then run the app as:
+```
+python ./main.py
 ```
