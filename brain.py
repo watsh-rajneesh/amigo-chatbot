@@ -11,6 +11,10 @@ def brain(name, speech_text, music_path, city_name, city_zip, consumer_key, cons
     :param music_path:
     :param city_name:
     :param city_zip:
+    :param consumer_key:
+    :param consumer_secret:
+    :param access_token:
+    :param access_token_secret:
     :return:
     """
     def check_message(check):
