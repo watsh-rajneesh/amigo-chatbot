@@ -32,15 +32,13 @@ pip install -r requirements.txt
 cp profile.yaml.default profile.yaml
 cp memory.db.default memory.db
 ```
+Some dependencies are not installed using above pip command and require some extra steps.
 
 On Mac OSX:
 ```
-virtualenv venv
-source venv/bin/activate
-
 ### install portaudio and pyaudio
 sudo chown -R $(whoami) /usr/local
-Brew install portaudio
+brew install portaudio
 sudo chown root:wheel /usr/local
 pip install --global-option='build_ext' --global-option='-I/usr/local/include' --global-option='-L/usr/local/lib' pyaudio
 
