@@ -1,0 +1,18 @@
+Feb11th - 25th: 2 week sprint
+ 
+AWS Lamda service for slack - wit.ai integration - Swetha
+Kafka setup - Chetan
+Command processor - Watsh
+Docker image with AWS CLI - running it from command line - Ashutosh
+Creation of EC2 instances
+ 
+ 
+Report: - March 3rd Review.
+Chapter 1-2 - done
+Chapter 3-  Ashutosh
+Chapter 4 - Watsh
+Chapter 5 - Watsh
+Chapter 6 - Shwetha
+Chapter 7 - Chetan
+Chapter 8 - Ashutosh
+Chapter 9 - Shwetha
