@@ -21,9 +21,15 @@
             <artifactId>quartz-jobs</artifactId>
             <version>${quartz.version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.spotify</groupId>
+            <artifactId>docker-client</artifactId>
+            <version>${docker-client.version}</version>
+        </dependency>
     </dependencies>
     <properties>
         <quartz.version>2.2.1</quartz.version>
+        <docker-client.version>7.0.2</docker-client.version>
     </properties>
 
 
