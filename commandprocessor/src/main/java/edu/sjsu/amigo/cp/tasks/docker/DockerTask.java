@@ -27,8 +27,9 @@ public class DockerTask {
     /**
      * Executes a containerized command on AWS.
      */
-    public void execute(String dockerImage, List<String> envList, List<String> commandList, String entryPoint) throws CommandExecutionException {
+    public String execute(String dockerImage, List<String> envList, List<String> commandList, String entryPoint) throws CommandExecutionException {
         final DockerClient dockerClient = new DefaultDockerClient("unix:///var/run/docker.sock");
+        String response = null;
         try {
             pullImage(dockerClient, dockerImage);
 
@@ -53,13 +54,13 @@ public class DockerTask {
                 log = logs.readFully();
             }
             logger.info(log);
-
+            response = log;
             dockerClient.removeContainer(containerId);
 
         } catch (DockerException | InterruptedException e) {
             throw new CommandExecutionException(e.getMessage());
         }
-
+        return response;
     }
 
     private void pullImage(DockerClient docker, String imageRepoName) throws DockerException, InterruptedException {

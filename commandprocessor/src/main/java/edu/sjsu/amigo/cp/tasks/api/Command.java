@@ -8,21 +8,11 @@ import java.util.List;
  * @author rwatsh on 2/14/17.
  */
 public class Command {
-    /**
-     * Execute a command with docker.
-     *
-     * @param dockerImage   the docker image to use to execute the command on.
-     * @param envList       the list of environment vars to be passed to the command to be executed in docker container
-     * @param commandList   commmand as list for eg. ["s3", "ls"] is list of parts of command - s3 ls.
-     * @param entryPoint    provider name for eg. "aws"
-     * @throws CommandExecutionException    raised when any error occurs in executing the command.
-     */
-    //void execute(String dockerImage, List<String> envList, List<String> commandList, String entryPoint) throws CommandExecutionException;
 
-    protected String dockerImage; // mandatory property
-    protected List<String> envList; // optional
-    protected List<String> commandList; // mandatory property
-    protected String entryPoint; // optional
+    private String dockerImage; // mandatory property
+    private List<String> envList; // optional
+    private List<String> commandList; // mandatory property
+    private String entryPoint; // optional
 
     public static class Builder {
         private String dockerImage;

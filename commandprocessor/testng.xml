@@ -1,0 +1,9 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="CPTests" verbose="10" >
+    <test name="Regression1"   >
+        <packages>
+            <package name="edu.sjsu.amigo.cp.tasks.aws" />
+        </packages>
+    </test>
+</suite>
