@@ -1,4 +1,4 @@
-package edu.sjsu.amigo.cp.tasks.impl;
+package edu.sjsu.amigo.cp.tasks.docker;
 
 import com.spotify.docker.client.DefaultDockerClient;
 import com.spotify.docker.client.DockerClient;
@@ -7,7 +7,6 @@ import com.spotify.docker.client.exceptions.DockerException;
 import com.spotify.docker.client.messages.ContainerConfig;
 import com.spotify.docker.client.messages.ContainerCreation;
 import com.spotify.docker.client.messages.RegistryAuth;
-import edu.sjsu.amigo.cp.tasks.api.Command;
 import edu.sjsu.amigo.cp.tasks.api.CommandExecutionException;
 
 import java.util.ArrayList;
@@ -22,7 +21,7 @@ import static com.spotify.docker.client.DockerClient.LogsParam.stdout;
  *
  * @author rwatsh on 2/14/17.
  */
-public class DockerTask implements Command {
+public class DockerTask {
     private static final Logger logger = Logger.getLogger(DockerTask.class.getName());
 
     /**
