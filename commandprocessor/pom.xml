@@ -32,11 +32,18 @@
             <version>${testng.version}</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>com.sixt.service</groupId>
+            <artifactId>ja-micro</artifactId>
+            <version>${ja-micro.version}</version>
+            <type>pom</type>
+        </dependency>
     </dependencies>
     <properties>
         <quartz.version>2.2.1</quartz.version>
         <docker-client.version>7.0.2</docker-client.version>
         <testng.version>6.8</testng.version>
+        <ja-micro.version>3.0.17</ja-micro.version>
     </properties>
     <build>
         <plugins>
