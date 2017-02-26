@@ -39,37 +39,9 @@ public class MessageListener {
                 logger.info("Received message from " + messageSender + " content [" + messageContent + "]");
 
                 if (isNotNullOrEmpty(messageContent)) {
-                    // Parse the message content
-                    String parsedMessage = parseMessage(messageContent);
 
-                    if (parsedMessage != null) {
-                        // TODO Get the intent from wit.ai here...
-                        String intent = parsedMessage;
+                    processUserMessage(messageContent, messageSender, session);
 
-                        // Construct the message in JSON
-                        String currentTime = "" + (new Date()).getTime();
-
-                        Message msg = new Message(currentTime, messageSender.getUserMail(), messageSender.getUserName(),
-                                parsedMessage, intent);
-
-                        String msgJson = null;
-
-                        try {
-                            msgJson = JsonUtils.convertObjectToJson(msg);
-                        } catch (IOException e) {
-
-                            logger.log(Level.SEVERE, "Error in converting message to JSON", e);
-                        }
-
-                        if (msgJson != null) {
-                            // Send message to topic on kafka MQ
-                            try (MessageProducer producer = new MessageProducer()) {
-                                producer.sendUserMessage(msgJson);
-                            } catch (Exception e) {
-                                logger.log(Level.SEVERE, "Error in publishing message to queue", e);
-                            }
-                        }
-                    }
                 }
             }
         };
@@ -78,6 +50,45 @@ public class MessageListener {
 
         //that's it, the listener will get every message post events the bot can get notified on
         //(IE: the messages sent on channels it joined or sent directly to it)
+    }
+
+    private void processUserMessage(String messageContent, SlackUser messageSender, SlackSession session) {
+        // TODO change it to be processed asynchronously
+        // Parse the message content
+        String parsedMessage = parseMessage(messageContent);
+
+        if (parsedMessage != null) {
+            // Respond to user that we are working on it...
+            String reply = "Working on it...";
+            session.sendMessageToUser(messageSender, reply, null);
+
+            // TODO Get the intent from wit.ai here...
+            String intent = parsedMessage;
+
+            // Construct the message in JSON
+            String currentTime = "" + (new Date()).getTime();
+
+            Message msg = new Message(currentTime, messageSender.getUserMail(), messageSender.getUserName(),
+                    parsedMessage, intent);
+
+            String msgJson = null;
+
+            try {
+                msgJson = JsonUtils.convertObjectToJson(msg);
+            } catch (IOException e) {
+
+                logger.log(Level.SEVERE, "Error in converting message to JSON", e);
+            }
+
+            if (msgJson != null) {
+                // Send message to topic on kafka MQ
+                try (MessageProducer producer = new MessageProducer()) {
+                    producer.sendUserMessage(msgJson);
+                } catch (Exception e) {
+                    logger.log(Level.SEVERE, "Error in publishing message to queue", e);
+                }
+            }
+        }
     }
 
     private boolean isNotNullOrEmpty(String messageContent) {
