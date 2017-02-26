@@ -36,11 +36,12 @@ public class MessageListener {
                 SlackChannel channelOnWhichMessageWasPosted = event.getChannel();
                 String messageContent = event.getMessageContent();
                 SlackUser messageSender = event.getSender();
+                SlackChannel channel = event.getChannel();
                 logger.info("Received message from " + messageSender + " content [" + messageContent + "]");
 
                 if (isNotNullOrEmpty(messageContent)) {
 
-                    processUserMessage(messageContent, messageSender, session);
+                    processUserMessage(messageContent, messageSender, session, channel);
 
                 }
             }
@@ -52,7 +53,7 @@ public class MessageListener {
         //(IE: the messages sent on channels it joined or sent directly to it)
     }
 
-    private void processUserMessage(String messageContent, SlackUser messageSender, SlackSession session) {
+    private void processUserMessage(String messageContent, SlackUser messageSender, SlackSession session, SlackChannel channel) {
         // TODO change it to be processed asynchronously
         // Parse the message content
         String parsedMessage = parseMessage(messageContent);
@@ -60,7 +61,12 @@ public class MessageListener {
         if (parsedMessage != null) {
             // Respond to user that we are working on it...
             String reply = "Working on it...";
-            session.sendMessageToUser(messageSender, reply, null);
+            if (channel != null) {
+                session.sendMessage(channel, reply);
+            } else {
+                session.sendMessageToUser(messageSender, reply, null);
+            }
+
 
             // TODO Get the intent from wit.ai here...
             String intent = parsedMessage;
