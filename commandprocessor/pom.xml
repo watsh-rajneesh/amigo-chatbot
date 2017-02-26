@@ -42,6 +42,11 @@
             <artifactId>kafka-clients</artifactId>
             <version>${kafka-clients.version}</version>
         </dependency>
+        <dependency>
+            <groupId>edu.sjsu</groupId>
+            <artifactId>mq-common</artifactId>
+            <version>${project.version}</version>
+        </dependency>
     </dependencies>
     <properties>
         <quartz.version>2.2.1</quartz.version>

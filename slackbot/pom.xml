@@ -11,5 +11,12 @@
 
     <artifactId>slackbot</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>edu.sjsu</groupId>
+            <artifactId>mq-common</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+    </dependencies>
 
 </project>

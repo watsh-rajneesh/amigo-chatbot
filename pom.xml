@@ -11,6 +11,7 @@
     <modules>
         <module>commandprocessor</module>
         <module>slackbot</module>
+        <module>messageproducer</module>
     </modules>
 
 </project>

@@ -11,6 +11,8 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
+import static edu.sjsu.amigo.mp.kafka.MessageQueueConstants.USER_MSG_TOPIC;
+
 /**
  * A Kafka message consumer. As soon as it receives a message it will spawn a job to process it.
  *
@@ -63,7 +65,7 @@ public class ConsumerLoop implements Runnable {
     public static void main(String[] args) {
         int numConsumers = 3;
         String groupId = "amigo-chatbot-group";
-        List<String> topics = Arrays.asList("topic");
+        List<String> topics = Arrays.asList(USER_MSG_TOPIC);
         ExecutorService executor = Executors.newFixedThreadPool(numConsumers);
 
         final List<ConsumerLoop> consumers = new ArrayList<>();
