@@ -1,11 +1,18 @@
 package edu.sjsu.amigo.cp.kafka;
 
+import com.ullink.slack.simpleslackapi.SlackChannel;
+import com.ullink.slack.simpleslackapi.SlackSession;
+import com.ullink.slack.simpleslackapi.SlackUser;
+import com.ullink.slack.simpleslackapi.impl.SlackSessionFactory;
+import edu.sjsu.amigo.mp.kafka.SlackMessage;
+import edu.sjsu.amigo.mp.util.JsonUtils;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.apache.kafka.clients.consumer.ConsumerRecords;
 import org.apache.kafka.clients.consumer.KafkaConsumer;
 import org.apache.kafka.common.errors.WakeupException;
 import org.apache.kafka.common.serialization.StringDeserializer;
 
+import java.io.IOException;
 import java.util.*;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -46,11 +53,55 @@ public class ConsumerLoop implements Runnable {
 
             while (true) {
                 ConsumerRecords<String, String> records = consumer.poll(Long.MAX_VALUE);
+                /**
+                 * A typical slack message look like below:
+                 * 14:08:16.407 [pool-1-thread-1] DEBUG org.apache.kafka.clients.consumer.internals.Fetcher
+                 * - Sending fetch for partitions [user_msg-0] to broker 192.168.86.89:9092 (id: 1001 rack: null)
+                 0:
+                 {
+                     partition=0, offset=5,
+                         value={
+                             "msgReceivedTime" : "1488146896328",
+                             "userEmail" : "watsh.rajneesh@sjsu.edu",
+                             "userName" : "watsh",
+                             "content" : " aws iam list-users",
+                             "intent" : " aws iam list-users",
+                             "channelId" : "C2A710WGG",
+                             "slackBotToken" : "xoxb-78235458209-TzSYTrgAK9SOdYClKgh1YJKQ"
+                         }
+                 }
+                 */
                 for (ConsumerRecord<String, String> record : records) {
                     Map<String, Object> data = new HashMap<>();
                     data.put("partition", record.partition());
                     data.put("offset", record.offset());
-                    data.put("value", record.value());
+                    String value = record.value();
+                    data.put("value", value);
+                    if (value != null && !value.trim().isEmpty()) {
+                        try {
+                            SlackMessage slackMessage = JsonUtils.convertJsonToObject(value, SlackMessage.class);
+                            if (slackMessage != null) {
+                                String slackBotToken = slackMessage.getSlackBotToken();
+
+                                SlackSession session = SlackSessionFactory.createWebSocketSlackSession(slackBotToken);
+                                session.connect();
+                                String channelId = slackMessage.getChannelId();
+                                String ackMessage = "Message received in the backend";
+                                if (channelId != null && !channelId.trim().isEmpty()) {
+                                    SlackChannel channel = session.findChannelById(channelId);
+                                    session.sendMessage(channel, ackMessage);
+                                } else {
+                                    String userEmail = slackMessage.getUserEmail();
+                                    if (userEmail != null && !userEmail.trim().isEmpty()) {
+                                        SlackUser slackUser = session.findUserByEmail(userEmail);
+                                        session.sendMessageToUser(slackUser, ackMessage, null);
+                                    }
+                                }
+                            }
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    }
                     System.out.println(this.id + ": " + data);
                 }
             }

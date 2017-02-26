@@ -43,10 +43,10 @@ Example:
 To test your setup, start a shell, create a topic and start a producer:
 
 ```
-$ $KAFKA_HOME/bin/kafka-topics.sh --create --topic topic \
+$ $KAFKA_HOME/bin/kafka-topics.sh --create --topic user_msg \
 --partitions 4 --zookeeper $ZK --replication-factor 2
-$ $KAFKA_HOME/bin/kafka-topics.sh --describe --topic topic --zookeeper $ZK 
-$ $KAFKA_HOME/bin/kafka-console-producer.sh --topic=topic \
+$ $KAFKA_HOME/bin/kafka-topics.sh --describe --topic user_msg --zookeeper $ZK 
+$ $KAFKA_HOME/bin/kafka-console-producer.sh --topic=user_msg \
 --broker-list=`broker-list.sh`
 ```
 

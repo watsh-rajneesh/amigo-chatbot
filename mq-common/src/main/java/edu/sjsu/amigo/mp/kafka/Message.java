@@ -43,6 +43,7 @@ public class Message {
     @JsonProperty
     private String intent;
 
+    public Message() {}
 
     public Message(String time, String userEmail, String userName, String content, String intent) {
         this.msgReceivedTime = time;
