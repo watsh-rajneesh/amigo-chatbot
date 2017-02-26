@@ -13,6 +13,7 @@
         <module>slackbot</module>
         <module>mq-common</module>
         <module>user-service</module>
+        <module>web-ui</module>
     </modules>
 
 </project>
