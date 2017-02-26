@@ -11,6 +11,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
+import static edu.sjsu.amigo.mp.kafka.MessageQueueConstants.AMIGO_CHATBOT_GROUP;
 import static edu.sjsu.amigo.mp.kafka.MessageQueueConstants.USER_MSG_TOPIC;
 
 /**
@@ -71,7 +72,7 @@ public class ConsumerLoop implements Runnable {
      */
     public static void main(String[] args) {
         int numConsumers = 3;
-        String groupId = "amigo-chatbot-group";
+        String groupId = AMIGO_CHATBOT_GROUP;
         List<String> topics = Arrays.asList(USER_MSG_TOPIC);
         ExecutorService executor = Executors.newFixedThreadPool(numConsumers);
 

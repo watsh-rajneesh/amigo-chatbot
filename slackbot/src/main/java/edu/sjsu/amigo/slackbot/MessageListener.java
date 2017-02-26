@@ -8,6 +8,7 @@ import com.ullink.slack.simpleslackapi.impl.SlackSessionFactory;
 import com.ullink.slack.simpleslackapi.listeners.SlackMessagePostedListener;
 import edu.sjsu.amigo.mp.kafka.Message;
 import edu.sjsu.amigo.mp.kafka.MessageProducer;
+import edu.sjsu.amigo.mp.kafka.SlackMessage;
 import edu.sjsu.amigo.mp.util.JsonUtils;
 
 import java.io.IOException;
@@ -74,20 +75,20 @@ public class MessageListener {
             // Construct the message in JSON
             String currentTime = "" + (new Date()).getTime();
 
-            Message msg = new Message(currentTime, messageSender.getUserMail(), messageSender.getUserName(),
-                    parsedMessage, intent);
+            Message msg = new SlackMessage(currentTime, messageSender.getUserMail(), messageSender.getUserName(),
+                    parsedMessage, intent, channel.getId(), System.getenv("SLACK_BOT_TOKEN"));
 
             String msgJson = null;
 
             try {
                 msgJson = JsonUtils.convertObjectToJson(msg);
             } catch (IOException e) {
-
                 logger.log(Level.SEVERE, "Error in converting message to JSON", e);
             }
 
             if (msgJson != null) {
                 // Send message to topic on kafka MQ
+                logger.info("Sending message as JSON: " + msgJson);
                 try (MessageProducer producer = new MessageProducer()) {
                     producer.sendUserMessage(msgJson);
                 } catch (Exception e) {
