@@ -16,6 +16,8 @@ import static edu.sjsu.amigo.mp.kafka.MessageQueueConstants.USER_MSG_TOPIC;
 /**
  * A Kafka message consumer. As soon as it receives a message it will spawn a job to process it.
  *
+ * Based on https://www.confluent.io/blog/tutorial-getting-started-with-the-new-apache-kafka-0-9-consumer-client/
+ *
  * @author rwatsh on 2/25/17.
  */
 public class ConsumerLoop implements Runnable {
@@ -62,6 +64,11 @@ public class ConsumerLoop implements Runnable {
         consumer.wakeup();
     }
 
+    /**
+     * Test client.
+     *
+     * @param args
+     */
     public static void main(String[] args) {
         int numConsumers = 3;
         String groupId = "amigo-chatbot-group";
