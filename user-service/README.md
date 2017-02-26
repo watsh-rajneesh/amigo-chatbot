@@ -6,3 +6,4 @@ This microservice handles:
 4. session expiration
 
 API gateway will use this service for each incoming request to validate if the user has a valid session.
+MongoDB will be used to persist the user data.

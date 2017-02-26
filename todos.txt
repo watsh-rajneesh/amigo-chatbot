@@ -1,10 +1,11 @@
 Feb11th - 25th: 2 week sprint
- 
+
+Tasks:
 AWS Lamda service for slack - wit.ai integration - Swetha
-Kafka setup - Chetan
+Kafka setup - Chetan - done
 Command processor - Watsh
 Docker image with AWS CLI - running it from command line - Ashutosh - done
-* Creation of EC2 instances
+
  
  
 Report: - March 3rd Review.
@@ -16,3 +17,23 @@ Chapter 6 - Shwetha
 Chapter 7 - Chetan
 Chapter 8 - Ashutosh
 Chapter 9 - Shwetha
+
+
+Retrospection:
+
+What went well?
+
+What didn’t go so well?
+
+What have I learned?
+
+What still puzzles me?
+
+Feb 26th-12th: 2 week sprint
+
+Tasks:
+- integrate slackbot with wit.ai - Swetha
+- work on Web UI with React.js - chetan
+    - user signup
+    - user login
+- work on mobile app with html5 + js based technologies - ionic or cordova etc - ashutosh
