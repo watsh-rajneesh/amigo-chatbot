@@ -38,12 +38,23 @@
             <version>${ja-micro.version}</version>
             <type>pom</type>
         </dependency>
+        <dependency>
+            <groupId>io.dropwizard</groupId>
+            <artifactId>dropwizard-core</artifactId>
+            <version>${dropwizard.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.kafka</groupId>
+            <artifactId>kafka-clients</artifactId>
+            <version>0.10.2.0</version>
+        </dependency>
     </dependencies>
     <properties>
         <quartz.version>2.2.1</quartz.version>
         <docker-client.version>7.0.2</docker-client.version>
         <testng.version>6.8</testng.version>
         <ja-micro.version>3.0.17</ja-micro.version>
+        <dropwizard.version>1.0.6</dropwizard.version>
     </properties>
     <build>
         <plugins>
