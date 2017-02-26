@@ -11,25 +11,13 @@
  * The above copyright notice and this permission notice shall be included in
  * all copies or substantial portions of the Software.
  */
-package edu.sjsu.amigo.cp.tasks.aws;
-
-import edu.sjsu.amigo.cp.tasks.api.*;
-import edu.sjsu.amigo.cp.tasks.docker.DockerTask;
+package edu.sjsu.amigo.cp.api;
 
 /**
- * Executor for AWS commands.
- *
- * @author rwatsh on 2/15/17.
+ * @author rwatsh on 2/14/17.
  */
-public class AWSCommandExecutor implements CommandExecutor {
-
-    @Override
-    public Response executeCommand(Command cmd) throws CommandExecutionException {
-        DockerTask t = new DockerTask();
-        String msg = t.execute(cmd.getDockerImage(),
-                cmd.getEnvList(),
-                cmd.getCommandList(),
-                cmd.getEntryPoint());
-        return new Response(msg);
+public class CommandExecutionException extends Exception {
+    public CommandExecutionException(String msg) {
+        super(msg);
     }
 }

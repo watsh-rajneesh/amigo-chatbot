@@ -1,6 +1,6 @@
-package edu.sjsu.amigo.cp.tasks.aws;
+package edu.sjsu.amigo.cp.aws;
 
-import edu.sjsu.amigo.cp.tasks.api.*;
+import edu.sjsu.amigo.cp.api.*;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 

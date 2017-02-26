@@ -11,7 +11,7 @@
  * The above copyright notice and this permission notice shall be included in
  * all copies or substantial portions of the Software.
  */
-package edu.sjsu.amigo.cp.tasks.api;
+package edu.sjsu.amigo.cp.api;
 
 import java.util.List;
 

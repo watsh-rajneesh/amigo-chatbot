@@ -1,4 +1,4 @@
-package edu.sjsu.amigo.cp.tasks.kafka;
+package edu.sjsu.amigo.cp.kafka;
 
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.apache.kafka.clients.consumer.ConsumerRecords;
@@ -12,6 +12,8 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
 /**
+ * A Kafka message consumer. As soon as it receives a message it will spawn a job to process it.
+ *
  * @author rwatsh on 2/25/17.
  */
 public class ConsumerLoop implements Runnable {

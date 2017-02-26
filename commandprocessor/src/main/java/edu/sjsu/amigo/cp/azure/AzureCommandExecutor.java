@@ -11,13 +11,21 @@
  * The above copyright notice and this permission notice shall be included in
  * all copies or substantial portions of the Software.
  */
-package edu.sjsu.amigo.cp.tasks.api;
+package edu.sjsu.amigo.cp.azure;
+
+import edu.sjsu.amigo.cp.api.Command;
+import edu.sjsu.amigo.cp.api.CommandExecutionException;
+import edu.sjsu.amigo.cp.api.CommandExecutor;
+import edu.sjsu.amigo.cp.api.Response;
 
 /**
- * @author rwatsh on 2/14/17.
+ * Azure command executor.
+ *
+ * @author rwatsh on 2/16/17.
  */
-public class CommandExecutionException extends Exception {
-    public CommandExecutionException(String msg) {
-        super(msg);
+public class AzureCommandExecutor implements CommandExecutor {
+    @Override
+    public Response executeCommand(Command cmd) throws CommandExecutionException {
+        throw new UnsupportedOperationException("Azure is not yet supported!");
     }
 }

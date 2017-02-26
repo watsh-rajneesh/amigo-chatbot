@@ -12,10 +12,10 @@
  * all copies or substantial portions of the Software.
  */
 
-package edu.sjsu.amigo.cp.tasks.api;
+package edu.sjsu.amigo.cp.api;
 
-import edu.sjsu.amigo.cp.tasks.aws.AWSCommandExecutor;
-import edu.sjsu.amigo.cp.tasks.azure.AzureCommandExecutor;
+import edu.sjsu.amigo.cp.azure.AzureCommandExecutor;
+import edu.sjsu.amigo.cp.aws.AWSCommandExecutor;
 
 /**
  * An abstract factory class for cloud providers.

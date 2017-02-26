@@ -11,7 +11,7 @@
  * The above copyright notice and this permission notice shall be included in
  * all copies or substantial portions of the Software.
  */
-package edu.sjsu.amigo.cp.tasks.docker;
+package edu.sjsu.amigo.cp.docker;
 
 import com.spotify.docker.client.DefaultDockerClient;
 import com.spotify.docker.client.DockerClient;
@@ -20,7 +20,7 @@ import com.spotify.docker.client.exceptions.DockerException;
 import com.spotify.docker.client.messages.ContainerConfig;
 import com.spotify.docker.client.messages.ContainerCreation;
 import com.spotify.docker.client.messages.RegistryAuth;
-import edu.sjsu.amigo.cp.tasks.api.CommandExecutionException;
+import edu.sjsu.amigo.cp.api.CommandExecutionException;
 
 import java.util.ArrayList;
 import java.util.List;

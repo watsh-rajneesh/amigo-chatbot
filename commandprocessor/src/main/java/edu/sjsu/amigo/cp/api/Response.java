@@ -11,13 +11,32 @@
  * The above copyright notice and this permission notice shall be included in
  * all copies or substantial portions of the Software.
  */
-package edu.sjsu.amigo.cp.tasks.api;
+package edu.sjsu.amigo.cp.api;
 
 /**
- * This is the interface for a command executor.
+ * This class represents the response returned upon execution of command.
  *
- * @author rwatsh on 2/16/17.
+ * @author rwatsh on 2/15/17.
  */
-public interface CommandExecutor {
-    Response executeCommand(Command cmd) throws CommandExecutionException;
+public class Response {
+    private String msg;
+
+    public Response(String msg) {
+        this.msg = msg;
+    }
+
+    public String getMsg() {
+        return msg;
+    }
+
+    public void setMsg(String msg) {
+        this.msg = msg;
+    }
+
+    @Override
+    public String toString() {
+        return "Response{" +
+                "msg='" + msg + '\'' +
+                '}';
+    }
 }
