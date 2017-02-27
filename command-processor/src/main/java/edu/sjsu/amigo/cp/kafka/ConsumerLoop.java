@@ -4,6 +4,7 @@ import com.ullink.slack.simpleslackapi.SlackChannel;
 import com.ullink.slack.simpleslackapi.SlackSession;
 import com.ullink.slack.simpleslackapi.SlackUser;
 import com.ullink.slack.simpleslackapi.impl.SlackSessionFactory;
+import edu.sjsu.amigo.cp.api.*;
 import edu.sjsu.amigo.mp.kafka.SlackMessage;
 import edu.sjsu.amigo.mp.util.JsonUtils;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
@@ -55,6 +56,7 @@ public class ConsumerLoop implements Runnable {
                 ConsumerRecords<String, String> records = consumer.poll(Long.MAX_VALUE);
                 /**
                  * A typical slack message look like below:
+                 *
                  * 14:08:16.407 [pool-1-thread-1] DEBUG org.apache.kafka.clients.consumer.internals.Fetcher
                  * - Sending fetch for partitions [user_msg-0] to broker 192.168.86.89:9092 (id: 1001 rack: null)
                  0:
@@ -77,31 +79,7 @@ public class ConsumerLoop implements Runnable {
                     data.put("offset", record.offset());
                     String value = record.value();
                     data.put("value", value);
-                    if (value != null && !value.trim().isEmpty()) {
-                        try {
-                            SlackMessage slackMessage = JsonUtils.convertJsonToObject(value, SlackMessage.class);
-                            if (slackMessage != null) {
-                                String slackBotToken = slackMessage.getSlackBotToken();
-
-                                SlackSession session = SlackSessionFactory.createWebSocketSlackSession(slackBotToken);
-                                session.connect();
-                                String channelId = slackMessage.getChannelId();
-                                String ackMessage = "Message received in the backend";
-                                if (channelId != null && !channelId.trim().isEmpty()) {
-                                    SlackChannel channel = session.findChannelById(channelId);
-                                    session.sendMessage(channel, ackMessage);
-                                } else {
-                                    String userEmail = slackMessage.getUserEmail();
-                                    if (userEmail != null && !userEmail.trim().isEmpty()) {
-                                        SlackUser slackUser = session.findUserByEmail(userEmail);
-                                        session.sendMessageToUser(slackUser, ackMessage, null);
-                                    }
-                                }
-                            }
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
-                    }
+                    processMessageAsync(value);
                     System.out.println(this.id + ": " + data);
                 }
             }
@@ -112,12 +90,69 @@ public class ConsumerLoop implements Runnable {
         }
     }
 
+    private void processMessageAsync(String value) {
+        if (value != null && !value.trim().isEmpty()) {
+            try {
+                SlackMessage slackMessage = JsonUtils.convertJsonToObject(value, SlackMessage.class);
+                if (slackMessage != null) {
+                    String slackBotToken = slackMessage.getSlackBotToken();
+
+                    SlackSession session = SlackSessionFactory.createWebSocketSlackSession(slackBotToken);
+                    session.connect();
+                    String channelId = slackMessage.getChannelId();
+                    String intent = slackMessage.getIntent();
+                    String userEmail = slackMessage.getUserEmail();
+
+                    String ackMessage = "Message received in the backend";
+                    sendMessageToUser(userEmail, session, channelId, ackMessage);
+
+                    // Lookup intent in the DB
+                    // Execute Command
+                    List<String> envList = new ArrayList<>();
+                    envList.add("AWS_DEFAULT_REGION="+ System.getenv("AWS_DEFAULT_REGION"));
+                    envList.add("AWS_ACCESS_KEY_ID="+ System.getenv("AWS_ACCESS_KEY_ID"));
+                    envList.add("AWS_SECRET_ACCESS_KEY="+ System.getenv("AWS_SECRET_ACCESS_KEY"));
+                    String[] cmdArray = intent.trim().split(" ");
+                    String providerName = cmdArray[0];
+                    List<String> cmdList = new ArrayList<>();
+                    for (int i = 1; i < cmdArray.length; i++) {
+                        cmdList.add(cmdArray[i]);
+                    }
+                    String dockerImage = "sjsucohort6/docker_awscli:latest";
+                    String entryPoint = "aws";
+                    Command cmd = new Command.Builder(dockerImage, cmdList)
+                            .env(envList)
+                            .entryPoint(entryPoint)
+                            .build();
+                    CommandExecutor executor = CloudProviderFactory.getCloudProviderCmdExecutor(providerName);
+                    Response response = executor.executeCommand(cmd);
+                    sendMessageToUser(userEmail, session, channelId, response.getMsg());
+                }
+            } catch (IOException | CommandExecutionException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    private void sendMessageToUser(String userEmail, SlackSession session, String channelId, String message) {
+        if (channelId != null && !channelId.trim().isEmpty()) {
+            SlackChannel channel = session.findChannelById(channelId);
+            session.sendMessage(channel, message);
+        } else {
+
+            if (userEmail != null && !userEmail.trim().isEmpty()) {
+                SlackUser slackUser = session.findUserByEmail(userEmail);
+                session.sendMessageToUser(slackUser, message, null);
+            }
+        }
+    }
+
     public void shutdown() {
         consumer.wakeup();
     }
 
     /**
-     * Test client.
+     * Run the client program.
      *
      * @param args
      */
