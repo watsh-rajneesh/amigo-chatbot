@@ -39,6 +39,8 @@ public class Message {
     @JsonProperty
     private String userName;
     @JsonProperty
+    private String userId;
+    @JsonProperty
     private String content;
     @JsonProperty
     private String intent;
@@ -93,12 +95,21 @@ public class Message {
         this.intent = intent;
     }
 
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
+
     @Override
     public String toString() {
         return "Message{" +
                 "msgReceivedTime='" + msgReceivedTime + '\'' +
                 ", userEmail='" + userEmail + '\'' +
                 ", userName='" + userName + '\'' +
+                ", userId='" + userId + '\'' +
                 ", content='" + content + '\'' +
                 ", intent='" + intent + '\'' +
                 '}';

@@ -1,19 +1,29 @@
+/*
+ * Copyright (c) 2017 San Jose State University.
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ */
+
 package edu.sjsu.amigo.cp.kafka;
 
-import com.ullink.slack.simpleslackapi.SlackChannel;
-import com.ullink.slack.simpleslackapi.SlackSession;
-import com.ullink.slack.simpleslackapi.SlackUser;
-import com.ullink.slack.simpleslackapi.impl.SlackSessionFactory;
-import edu.sjsu.amigo.cp.api.*;
-import edu.sjsu.amigo.mp.kafka.SlackMessage;
-import edu.sjsu.amigo.mp.util.JsonUtils;
+import edu.sjsu.amigo.cp.jobs.JobManager;
+import edu.sjsu.amigo.cp.jobs.MessageProcessorJob;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.apache.kafka.clients.consumer.ConsumerRecords;
 import org.apache.kafka.clients.consumer.KafkaConsumer;
 import org.apache.kafka.common.errors.WakeupException;
 import org.apache.kafka.common.serialization.StringDeserializer;
+import org.quartz.JobDataMap;
+import org.quartz.SchedulerException;
 
-import java.io.IOException;
 import java.util.*;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -93,59 +103,19 @@ public class ConsumerLoop implements Runnable {
     private void processMessageAsync(String value) {
         if (value != null && !value.trim().isEmpty()) {
             try {
-                SlackMessage slackMessage = JsonUtils.convertJsonToObject(value, SlackMessage.class);
-                if (slackMessage != null) {
-                    String slackBotToken = slackMessage.getSlackBotToken();
+                // Some unique job name
+                String jobName = "MESG-JOB-" + UUID.randomUUID().toString();
+                String groupName = "CHATBOT-GRP";
+                JobDataMap params = new JobDataMap();
+                params.put("message", value);
+                JobManager.getInstance().scheduleJob(MessageProcessorJob.class, jobName, groupName, params);
 
-                    SlackSession session = SlackSessionFactory.createWebSocketSlackSession(slackBotToken);
-                    session.connect();
-                    String channelId = slackMessage.getChannelId();
-                    String intent = slackMessage.getIntent();
-                    String userEmail = slackMessage.getUserEmail();
-
-                    String ackMessage = "Message received in the backend";
-                    sendMessageToUser(userEmail, session, channelId, ackMessage);
-
-                    // Lookup intent in the DB
-                    // Execute Command
-                    List<String> envList = new ArrayList<>();
-                    envList.add("AWS_DEFAULT_REGION="+ System.getenv("AWS_DEFAULT_REGION"));
-                    envList.add("AWS_ACCESS_KEY_ID="+ System.getenv("AWS_ACCESS_KEY_ID"));
-                    envList.add("AWS_SECRET_ACCESS_KEY="+ System.getenv("AWS_SECRET_ACCESS_KEY"));
-                    String[] cmdArray = intent.trim().split(" ");
-                    String providerName = cmdArray[0];
-                    List<String> cmdList = new ArrayList<>();
-                    for (int i = 1; i < cmdArray.length; i++) {
-                        cmdList.add(cmdArray[i]);
-                    }
-                    String dockerImage = "sjsucohort6/docker_awscli:latest";
-                    String entryPoint = "aws";
-                    Command cmd = new Command.Builder(dockerImage, cmdList)
-                            .env(envList)
-                            .entryPoint(entryPoint)
-                            .build();
-                    CommandExecutor executor = CloudProviderFactory.getCloudProviderCmdExecutor(providerName);
-                    Response response = executor.executeCommand(cmd);
-                    sendMessageToUser(userEmail, session, channelId, response.getMsg());
-                }
-            } catch (IOException | CommandExecutionException e) {
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         }
     }
 
-    private void sendMessageToUser(String userEmail, SlackSession session, String channelId, String message) {
-        if (channelId != null && !channelId.trim().isEmpty()) {
-            SlackChannel channel = session.findChannelById(channelId);
-            session.sendMessage(channel, message);
-        } else {
-
-            if (userEmail != null && !userEmail.trim().isEmpty()) {
-                SlackUser slackUser = session.findUserByEmail(userEmail);
-                session.sendMessageToUser(slackUser, message, null);
-            }
-        }
-    }
 
     public void shutdown() {
         consumer.wakeup();
@@ -156,7 +126,10 @@ public class ConsumerLoop implements Runnable {
      *
      * @param args
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws SchedulerException {
+        //Start the job scheduler
+        JobManager.getInstance().startScheduler();
+
         int numConsumers = 3;
         String groupId = AMIGO_CHATBOT_GROUP;
         List<String> topics = Arrays.asList(USER_MSG_TOPIC);

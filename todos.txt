@@ -37,5 +37,7 @@ Tasks:
                 - AWS_SECRET_ACCESS_KEY
     - user login
 
- - User service - Watsh
+- User service + Kafka duplicate msg fix - Watsh
+  * Include a primary key (UUID or something) in the message and deduplicate on the consumer.
+
 - work on mobile app with html5 + js based technologies - react native or ionic or cordova etc - ashutosh
