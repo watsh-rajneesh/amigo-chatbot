@@ -14,10 +14,17 @@
 package edu.sjsu.amigo.cp.api;
 
 /**
+ * Exception thrown when unable to execute a command.
+ *
  * @author rwatsh on 2/14/17.
  */
 public class CommandExecutionException extends Exception {
+
     public CommandExecutionException(String msg) {
         super(msg);
+    }
+
+    public CommandExecutionException(Throwable t) {
+        super(t);
     }
 }

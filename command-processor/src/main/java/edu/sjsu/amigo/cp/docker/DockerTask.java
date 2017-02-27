@@ -43,37 +43,35 @@ public class DockerTask {
     public String execute(String dockerImage, List<String> envList, List<String> commandList, String entryPoint) throws CommandExecutionException {
         try( DockerClient dockerClient = new DefaultDockerClient("unix:///var/run/docker.sock")) {
             String response = null;
-            try {
-                pullImage(dockerClient, dockerImage);
+            pullImage(dockerClient, dockerImage);
 
-                final ContainerConfig containerConfig = ContainerConfig.builder()
-                        .image(dockerImage)
-                        .env(envList)
-                        .entrypoint(entryPoint)
-                        .cmd(commandList)
-                        .build();
+            final ContainerConfig containerConfig = ContainerConfig.builder()
+                    .image(dockerImage)
+                    .env(envList)
+                    .entrypoint(entryPoint)
+                    .cmd(commandList)
+                    .build();
 
-                final ContainerCreation container = dockerClient.createContainer(containerConfig);
-                final String containerId = container.id();
-                dockerClient.startContainer(containerId);
+            final ContainerCreation container = dockerClient.createContainer(containerConfig);
+            final String containerId = container.id();
+            dockerClient.startContainer(containerId);
 
-                // Wait for the container to exit.
-                // If we don't wait, docker.logs() might return an epmty string because the container
-                // cmd hasn't run yet.
-                dockerClient.waitContainer(containerId);
+            // Wait for the container to exit.
+            // If we don't wait, docker.logs() might return an epmty string because the container
+            // cmd hasn't run yet.
+            dockerClient.waitContainer(containerId);
 
-                final String log;
-                try (LogStream logs = dockerClient.logs(containerId, stdout(), stderr())) {
-                    log = logs.readFully();
-                }
-                logger.info(log);
-                response = log;
-                dockerClient.removeContainer(containerId);
-
-            } catch (DockerException | InterruptedException e) {
-                throw new CommandExecutionException(e.getMessage());
+            final String log;
+            try (LogStream logs = dockerClient.logs(containerId, stdout(), stderr())) {
+                log = logs.readFully();
             }
+            logger.info(log);
+            response = log;
+            dockerClient.removeContainer(containerId);
+
             return response;
+        } catch (DockerException | InterruptedException e) {
+            throw new CommandExecutionException(e);
         }
     }
 
