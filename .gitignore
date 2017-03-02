@@ -151,4 +151,6 @@ crashlytics-build.properties
 fabric.properties
 Contact GitHub API Training Shop Blog About
 
+# LOCAL ONLY FILES
 /command-processor/config.yml
+/slackbot/run.sh
