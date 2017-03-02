@@ -3,7 +3,7 @@ Slackbot
 
 A bot for slack to receive slack messages. 
 
-The docker image is [https://hub.docker.com/r/sjsucohort6/slackbot/] (sjsucohort6/slackbot:latest)
+The docker image is [sjsucohort6/slackbot:latest] (https://hub.docker.com/r/sjsucohort6/slackbot/)
 
 
 #Usage
