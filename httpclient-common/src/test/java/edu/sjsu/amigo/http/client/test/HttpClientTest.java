@@ -4,9 +4,6 @@ import edu.sjsu.amigo.http.client.HttpClient;
 import edu.sjsu.amigo.http.client.Response;
 import org.junit.Test;
 
-import java.util.HashMap;
-import java.util.Map;
-
 /**
  * @author rwatsh on 3/1/17.
  */
@@ -43,7 +40,7 @@ public class HttpClientTest {
         }
     }
 
-    @Test
+    /*@Test
     public void testPutRequest() throws Exception {
         try (HttpClient c = new HttpClient()) {
             Map<String, String> data = new HashMap<>();
@@ -53,7 +50,7 @@ public class HttpClientTest {
         } catch (Exception e) {
             throw e;
         }
-    }
+    }*/
 
     @Test
     public void testDeleteRequest() throws Exception {
