@@ -79,7 +79,7 @@ public class ConsumerLoop implements Runnable {
                              "content" : " aws iam list-users",
                              "intent" : " aws iam list-users",
                              "channelId" : "C2A710WGG",
-                             "slackBotToken" : "xoxb-78235458209-TzSYTrgAK9SOdYClKgh1YJKQ"
+                             "slackBotToken" : "<SLACK_BOT_TOKEN>"
                          }
                  }
                  */

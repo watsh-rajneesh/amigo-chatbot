@@ -10,8 +10,7 @@ import com.mashape.unirest.http.exceptions.UnirestException;
 import com.mashape.unirest.request.GetRequest;
 import com.mashape.unirest.request.HttpRequestWithBody;
 
-import java.io.Closeable;
-import java.io.IOException;
+import java.io.*;
 import java.util.Map;
 import java.util.logging.Logger;
 
@@ -31,16 +30,28 @@ public class HttpClient implements AutoCloseable {
     private String user;
     private String password;
 
+    /**
+     * Create a http client with no auth (user anonymous).
+     */
     public HttpClient() {
         init();
     }
 
+    /**
+     * Create a http client with basic auth.
+     *
+     * @param user
+     * @param passwd
+     */
     public HttpClient(String user, String passwd) {
         init();
         this.user = user;
         this.password = passwd;
     }
 
+    /**
+     * Initialize the instance.
+     */
     private void init() {
         // setup to serialize Json from\to Object using jackson object mapper
         Unirest.setObjectMapper(new ObjectMapper() {
@@ -65,11 +76,11 @@ public class HttpClient implements AutoCloseable {
         });
     }
 
-    public <T> T get(String url, Class<T> clazz) throws HttpClientException {
+    public <T> Response<T> get(String url, Class<T> clazz) throws HttpClientException {
         return get(url, null, null, null, clazz);
     }
 
-    public <T> T get(String url,
+    public <T> Response<T> get(String url,
                       Map<String, String> routeParamsMap,
                       Map<String, String> queryStringMap,
                       Map<String, String> headersMap,
@@ -78,11 +89,11 @@ public class HttpClient implements AutoCloseable {
         return executeGetRequest(routeParamsMap, queryStringMap, headersMap, clazz, request);
     }
 
-    public <T> T head(String url, Class<T> clazz) throws HttpClientException {
+    public <T> Response<T> head(String url, Class<T> clazz) throws HttpClientException {
         return head(url, null, null, null, clazz);
     }
 
-    public <T> T head(String url,
+    public <T> Response<T> head(String url,
                      Map<String, String> routeParamsMap,
                      Map<String, String> queryStringMap,
                      Map<String, String> headersMap,
@@ -91,11 +102,11 @@ public class HttpClient implements AutoCloseable {
         return executeGetRequest(routeParamsMap, queryStringMap, headersMap, clazz, request);
     }
 
-    public String post(String url, Object bodyObject) throws HttpClientException {
+    public Response<Object> post(String url, Object bodyObject) throws HttpClientException {
         return post(url, null, null, null, bodyObject);
     }
 
-    public String post(String url,
+    public Response<Object> post(String url,
                      Map<String, String> routeParamsMap,
                      Map<String, String> queryStringMap,
                      Map<String, String> headersMap,
@@ -104,11 +115,11 @@ public class HttpClient implements AutoCloseable {
         return executeHttpRequestWithBody(routeParamsMap, queryStringMap, headersMap, bodyObject, request);
     }
 
-    public String put(String url, Object bodyObject) throws HttpClientException {
+    public Response<Object> put(String url, Object bodyObject) throws HttpClientException {
         return put(url, null, null, null, bodyObject);
     }
 
-    public String put(String url,
+    public Response<Object> put(String url,
                       Map<String, String> routeParamsMap,
                       Map<String, String> queryStringMap,
                       Map<String, String> headersMap,
@@ -117,11 +128,11 @@ public class HttpClient implements AutoCloseable {
         return executeHttpRequestWithBody(routeParamsMap, queryStringMap, headersMap, bodyObject, request);
     }
 
-    public String delete(String url, Object bodyObject) throws HttpClientException {
+    public Response<Object> delete(String url, Object bodyObject) throws HttpClientException {
         return delete(url, null, null, null, bodyObject);
     }
 
-    public String delete(String url,
+    public Response<Object> delete(String url,
                          Map<String, String> routeParamsMap,
                          Map<String, String> queryStringMap,
                          Map<String, String> headersMap,
@@ -132,7 +143,7 @@ public class HttpClient implements AutoCloseable {
     }
 
 
-    private <T> T executeGetRequest(Map<String, String> routeParamsMap, Map<String, String> queryStringMap, Map<String, String> headersMap, Class<T> clazz, GetRequest request) throws HttpClientException {
+    private <T> Response executeGetRequest(Map<String, String> routeParamsMap, Map<String, String> queryStringMap, Map<String, String> headersMap, Class<T> clazz, GetRequest request) throws HttpClientException {
         request.basicAuth(user, password);
         if(routeParamsMap != null) {
             for (Map.Entry<String, String> entry : routeParamsMap.entrySet()) {
@@ -151,14 +162,19 @@ public class HttpClient implements AutoCloseable {
         }
         try {
             HttpResponse<T> response = request.asObject(clazz);
-            return response.getBody();
+            Response<T> r = new Response();
+            r.setStatusCode(response.getStatus());
+            r.setStatusText(response.getStatusText());
+            r.setRawBody(getStringFromInputStream(response.getRawBody()));
+            r.setParsedObject(response.getBody());
+            return r;
         } catch (UnirestException e) {
             throw new HttpClientException(e);
         }
     }
 
 
-    private String executeHttpRequestWithBody(Map<String, String> routeParamsMap, Map<String, String> queryStringMap, Map<String, String> headersMap, Object bodyObject, HttpRequestWithBody request) throws HttpClientException {
+    private Response executeHttpRequestWithBody(Map<String, String> routeParamsMap, Map<String, String> queryStringMap, Map<String, String> headersMap, Object bodyObject, HttpRequestWithBody request) throws HttpClientException {
         request.basicAuth(user, password);
         if(routeParamsMap != null) {
             for (Map.Entry<String, String> entry : routeParamsMap.entrySet()) {
@@ -180,10 +196,50 @@ public class HttpClient implements AutoCloseable {
         }
         try {
             HttpResponse<JsonNode> response = request.asJson();
-            return response.getBody().toString();
+            Response<Object> r = new Response();
+            r.setStatusCode(response.getStatus());
+            r.setStatusText(response.getStatusText());
+            r.setRawBody(getStringFromInputStream(response.getRawBody()));
+            r.setParsedObject(response.getBody().isArray() ?
+                    response.getBody().getArray() :
+                    response.getBody().getObject());
+
+            return r;
         } catch (UnirestException e) {
             throw new HttpClientException(e);
         }
+    }
+
+    // convert InputStream to String
+    private static String getStringFromInputStream(InputStream is) {
+
+        if (is == null) return "";
+
+        BufferedReader br = null;
+        StringBuilder sb = new StringBuilder();
+
+        String line;
+        try {
+
+            br = new BufferedReader(new InputStreamReader(is));
+            while ((line = br.readLine()) != null) {
+                sb.append(line);
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (br != null) {
+                try {
+                    br.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+
+        return sb.toString();
+
     }
 
     /**

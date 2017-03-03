@@ -154,3 +154,6 @@ Contact GitHub API Training Shop Blog About
 # LOCAL ONLY FILES
 /command-processor/config.yml
 /slackbot/run.sh
+/command-processor-service/run.sh
+/docker-images/kafka/run.sh
+

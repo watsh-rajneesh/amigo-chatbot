@@ -4,7 +4,11 @@ import com.ullink.slack.simpleslackapi.SlackChannel;
 import com.ullink.slack.simpleslackapi.SlackSession;
 import com.ullink.slack.simpleslackapi.SlackUser;
 import com.ullink.slack.simpleslackapi.impl.SlackSessionFactory;
-import edu.sjsu.amigo.cp.api.*;
+import edu.sjsu.amigo.cp.api.CloudProviderFactory;
+import edu.sjsu.amigo.cp.api.Command;
+import edu.sjsu.amigo.cp.api.CommandExecutionException;
+import edu.sjsu.amigo.cp.api.CommandExecutor;
+import edu.sjsu.amigo.cp.api.Response;
 import edu.sjsu.amigo.mp.kafka.SlackMessage;
 import edu.sjsu.amigo.mp.util.JsonUtils;
 import org.quartz.Job;
@@ -39,9 +43,11 @@ public class MessageProcessorJob implements Job {
                 String ackMessage = "Message received in the backend";
                 sendMessageToUser(userEmail, session, channelId, ackMessage);
 
-                // Lookup intent in the DB and get the following:
-                // - dockerImage, cmd and entry point.
-                // Make a REST call to user service to get the user's (by userEmail) AWS creds.
+                // TODO
+                // 1. Lookup intent in the DB and get the following:
+                // - dockerImage, cmdList and entry point.
+
+                // 2. Make a REST call to user service to get the user's (by userEmail) AWS creds.
 
                 // Execute Command
                 List<String> envList = new ArrayList<>();
@@ -65,7 +71,7 @@ public class MessageProcessorJob implements Job {
                 sendMessageToUser(userEmail, session, channelId, response.getMsg());
             }
         } catch (IOException | CommandExecutionException e) {
-            e.printStackTrace();
+            throw new JobExecutionException(e);
         }
     }
 

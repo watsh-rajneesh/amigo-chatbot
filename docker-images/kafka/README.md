@@ -44,7 +44,7 @@ To test your setup, start a shell, create a topic and start a producer:
 
 ```
 $ $KAFKA_HOME/bin/kafka-topics.sh --create --topic user_msg \
---partitions 4 --zookeeper $ZK --replication-factor 2
+--partitions 4 --zookeeper $ZK --replication-factor 1
 $ $KAFKA_HOME/bin/kafka-topics.sh --describe --topic user_msg --zookeeper $ZK 
 $ $KAFKA_HOME/bin/kafka-console-producer.sh --topic=user_msg \
 --broker-list=`broker-list.sh`
@@ -55,7 +55,8 @@ Start another shell and start a consumer:
 
 Type in producer shell and it should be published to the client's shell.
 
-4. To test with Java client - refer to:
+4. To test with Java clients: 
 
-commandprocessor/src/main/java/edu/sjsu/amigo/cp/tasks/kafka/ConsumerLoop.java
+mq-common/MessageProducer.java - writes to the user_msg topic (called from slackbot/MessageListener.java)
+command-processor-service/ConsumerLoop.java - polls from user_msg topic 
 

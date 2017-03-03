@@ -4,6 +4,6 @@ MAINTAINER Watsh Rajneesh <watsh.rajneesh@sjsu.edu>
 
 WORKDIR /slackbot
 
-ADD ./target/slackbot-1.0-SNAPSHOT.jar /slackbot
+ADD ./target/slackbot-service-1.0-SNAPSHOT.jar /slackbot
 
-CMD ["java", "-jar", "slackbot-1.0-SNAPSHOT.jar"]
+CMD ["java", "-jar", "slackbot-service-1.0-SNAPSHOT.jar"]
