@@ -7,7 +7,7 @@ services:
   kafka:
     build: .
     ports:
-      - "9092:9092"
+      - "9092"
     environment:
       KAFKA_ADVERTISED_HOST_NAME: 192.168.86.89
       KAFKA_ZOOKEEPER_CONNECT: 192.168.86.89:2181

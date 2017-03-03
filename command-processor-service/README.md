@@ -16,4 +16,4 @@ or pull from dockerhub:
 -e AWS_DEFAULT_REGION='<aws region>' \
 -e AWS_ACCESS_KEY_ID='<aws access key id>' \
 -e AWS_SECRET_ACCESS_KEY='<aws secret access key>' \
-sjsucohort6/command-processor-service``` 
+--name command-processor-service sjsucohort6/command-processor-service``` 
