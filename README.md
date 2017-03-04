@@ -1,3 +1,4 @@
+[![Run Status](https://api.shippable.com/projects/58b94166ac9c0b0600a8b21c/badge?branch=master)](https://app.shippable.com/projects/58b94166ac9c0b0600a8b21c)
 # amigo-chatbot
 A chatbot for cloud operations management. 
 
