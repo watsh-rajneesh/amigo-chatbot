@@ -3,7 +3,7 @@
 <suite name="CPTests" verbose="10" >
     <test name="Regression1"   >
         <packages>
-            <package name="edu.sjsu.amigo.cp.tasks.aws" />
+            <package name="edu.sjsu.amigo.cp.aws" />
         </packages>
     </test>
 </suite>
