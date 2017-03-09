@@ -44,6 +44,7 @@ public class HttpClientTest {
     }
 
     //@Test
+    // TODO - broken for now!
     public void testPutRequest() throws Exception {
         try (HttpClient c = new HttpClient()) {
             Map<String, String> data = new HashMap<>();

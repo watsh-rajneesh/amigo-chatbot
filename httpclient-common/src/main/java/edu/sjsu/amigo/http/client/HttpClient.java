@@ -11,11 +11,12 @@ import com.mashape.unirest.request.GetRequest;
 import com.mashape.unirest.request.HttpRequestWithBody;
 
 import java.io.*;
+import java.net.URLEncoder;
 import java.util.Map;
 import java.util.logging.Logger;
 
 /**
- * Wrapper over http methods with basic auth.
+ * Wrapper over http methods using unirest-java library.
  *
  * Below methods are synchronous.
  *
@@ -144,7 +145,10 @@ public class HttpClient implements AutoCloseable {
 
 
     private <T> Response executeGetRequest(Map<String, String> routeParamsMap, Map<String, String> queryStringMap, Map<String, String> headersMap, Class<T> clazz, GetRequest request) throws HttpClientException {
-        request.basicAuth(user, password);
+        if (user != null && password != null) {
+            request.basicAuth(user, password);
+        }
+
         if(routeParamsMap != null) {
             for (Map.Entry<String, String> entry : routeParamsMap.entrySet()) {
                 request.routeParam(entry.getKey(), entry.getValue());
@@ -175,7 +179,9 @@ public class HttpClient implements AutoCloseable {
 
 
     private Response executeHttpRequestWithBody(Map<String, String> routeParamsMap, Map<String, String> queryStringMap, Map<String, String> headersMap, Object bodyObject, HttpRequestWithBody request) throws HttpClientException {
-        request.basicAuth(user, password);
+        if (user != null && password != null) {
+            request.basicAuth(user, password);
+        }
         if(routeParamsMap != null) {
             for (Map.Entry<String, String> entry : routeParamsMap.entrySet()) {
                 request.routeParam(entry.getKey(), entry.getValue());
@@ -242,6 +248,15 @@ public class HttpClient implements AutoCloseable {
 
     }
 
+    public static String getIntentFromWitAI(String message) throws UnirestException, UnsupportedEncodingException {
+        String url = "https://api.wit.ai/message?v=20160526&q=" + URLEncoder.encode(message, "UTF-8");
+        HttpResponse<String> response = Unirest.get(url)
+                .header("authorization", "Bearer " + System.getenv("WIT_AI_SERVER_ACCESS_TOKEN"))
+                .header("cache-control", "no-cache")
+                .asString();
+        return response.getBody();
+    }
+
     /**
      * Closes this resource, relinquishing any underlying resources.
      * This method is invoked automatically on objects managed by the
@@ -290,5 +305,10 @@ public class HttpClient implements AutoCloseable {
     @Override
     public void close() throws Exception {
         Unirest.shutdown();
+    }
+
+    public static void main(String[] args) throws UnsupportedEncodingException, UnirestException {
+        String intent = getIntentFromWitAI("aws iam list-users");
+        System.out.println(intent);
     }
 }

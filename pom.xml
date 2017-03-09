@@ -15,6 +15,7 @@
         <module>web-ui</module>
         <module>httpclient-common</module>
         <module>command-processor-service</module>
+        <module>nlp-service</module>
     </modules>
 
     <properties>

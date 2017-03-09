@@ -95,8 +95,8 @@ public class DockerTask {
         envList.add("AWS_ACCESS_KEY_ID="+ System.getenv("AWS_ACCESS_KEY_ID"));
         envList.add("AWS_SECRET_ACCESS_KEY="+ System.getenv("AWS_SECRET_ACCESS_KEY"));
         List<String> cmdList = new ArrayList<>();
-        cmdList.add("s3");
-        cmdList.add("ls");
+        cmdList.add("iam");
+        cmdList.add("list-users");
         t.execute("sjsucohort6/docker_awscli:latest", envList, cmdList, "aws");
     }
 }

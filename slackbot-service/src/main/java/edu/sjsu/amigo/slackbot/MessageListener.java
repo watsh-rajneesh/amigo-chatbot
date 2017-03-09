@@ -69,8 +69,37 @@ public class MessageListener {
             }
 
 
-            // TODO Get the intent from wit.ai here...
-            String intent = parsedMessage;
+            // Get the intent from wit.ai
+            /*
+                Intent will be a JSON array as shown below.
+                For example,
+                Input: list ec2 instances aws
+                Intent:
+                [ {
+                  "confidence" : "1",
+                  "type" : "value",
+                  "value" : "list",
+                  "suggested" : false
+                }, {
+                  "confidence" : "1",
+                  "type" : "value",
+                  "value" : "ec2",
+                  "suggested" : false
+                }, {
+                  "confidence" : "0.9356520321971096",
+                  "type" : "value",
+                  "value" : "aws",
+                  "suggested" : false
+                } ]
+             */
+            String intent = null;
+            try {
+                //intent = HttpClient.getIntentFromWitAI(parsedMessage);
+                intent = JsonUtils.convertObjectToJson(WitDotAIClient.getIntent(parsedMessage));
+            } catch (IOException e) {
+                e.printStackTrace();
+                intent = parsedMessage;
+            }
 
             // Construct the message in JSON
             String currentTime = "" + (new Date()).getTime();

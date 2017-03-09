@@ -1,6 +1,7 @@
 package edu.sjsu.amigo.mp.util;
 
 
+import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.databind.type.TypeFactory;
@@ -75,5 +76,32 @@ public class JsonUtils {
 
         final byte[] data = out.toByteArray();
         return new String(data);
+    }
+
+    /**
+     * Given a JSON string generate a formatted JSON string from it.
+     *
+     * @param rawJson   any JSON string
+     * @return  a formatted (pretty) JSON string
+     * @throws IOException
+     */
+    public static String prettyPrint(String rawJson) throws IOException {
+        ObjectMapper mapper = new ObjectMapper();
+        Object json = mapper.readValue(rawJson, Object.class);
+        return mapper.writerWithDefaultPrettyPrinter().writeValueAsString(json);
+    }
+
+    /**
+     * Load the JSON String as JsonNode object. To be used in case the raw json string has some parts that are not
+     * needed to mapped to a Java Object. If the entire JSON string can be mapped to a Java Object then use the
+     * method {@code convertJsonToObject} instead.
+     *
+     * @param jsonStr
+     * @return
+     * @throws IOException
+     */
+    public static JsonNode parseJson(String jsonStr) throws IOException {
+        ObjectMapper mapper = new ObjectMapper();
+        return mapper.readTree(jsonStr);
     }
 }

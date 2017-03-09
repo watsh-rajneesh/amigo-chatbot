@@ -9,54 +9,26 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>slackbot-service</artifactId>
+    <artifactId>nlp-service</artifactId>
 
     <dependencies>
         <dependency>
-            <groupId>edu.sjsu.amigo</groupId>
-            <artifactId>mq-common</artifactId>
-            <version>${project.version}</version>
+            <groupId>edu.stanford.nlp</groupId>
+            <artifactId>stanford-corenlp</artifactId>
+            <version>${stanford-corenlp.version}</version>
         </dependency>
         <dependency>
-            <groupId>edu.sjsu.amigo</groupId>
-            <artifactId>httpclient-common</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.ullink.slack</groupId>
-            <artifactId>simpleslackapi</artifactId>
-            <version>${simple-slack-api.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-databind</artifactId>
-            <version>${jackson-core.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <version>${lombok.version}</version>
-            <scope>provided</scope>
+            <groupId>edu.stanford.nlp</groupId>
+            <artifactId>stanford-corenlp</artifactId>
+            <version>${stanford-corenlp.version}</version>
+            <classifier>models</classifier>
         </dependency>
     </dependencies>
     <properties>
-        <simple-slack-api.version>0.6.0</simple-slack-api.version>
-        <jackson-core.version>2.8.6</jackson-core.version>
-        <lombok.version>1.16.6</lombok.version>
+        <stanford-corenlp.version>3.7.0</stanford-corenlp.version>
     </properties>
-
     <build>
         <plugins>
-            <!--<plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>2.18.1</version>
-                <configuration>
-                    <suiteXmlFiles>
-                        <suiteXmlFile>testng.xml</suiteXmlFile>
-                    </suiteXmlFiles>
-                </configuration>
-            </plugin>-->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>
