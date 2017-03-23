@@ -1,5 +1,5 @@
 # ria (Raspberry Pi Intelligent Assistant)
-##A Virtual assistant for Raspberrry Pi
+##  A Virtual assistant for Raspberrry Pi
 
 It is made following the nice book on the subject by Tanay Pant - [Building a Virtual Assistant for Raspberry Pi (APress)] (https://www.amazon.com/Building-Virtual-Assistant-Raspberry-voice-controlled/dp/1484221664)
 
@@ -57,7 +57,7 @@ Then run the app as:
 python ./main.py
 ```
 
-#Setting up on Raspberry Pi
+# Setting up on Raspberry Pi
 
 ```
 ssh pi@<ipaddress of raspberry pi host>
