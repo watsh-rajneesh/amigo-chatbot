@@ -56,3 +56,23 @@ Then run the app as:
 ```
 python ./main.py
 ```
+
+#Setting up on Raspberry Pi
+
+```
+ssh pi@<ipaddress of raspberry pi host>
+password : (default is raspberry)
+
+$ git clone https://github.com/sjsucohort6/ria.git
+$ sudo pip install –r requirements.txt --allow-external pywapi --allow-unverified pywapi
+
+
+# taken from http://raspberrypihell.blogspot.pt/2013/07/pyaudio-and-how-to-install.html
+
+sudo apt-get install git  
+sudo git clone http://people.csail.mit.edu/hubert/git/pyaudio.git  
+sudo apt-get install libportaudio0 libportaudio2 libportaudiocpp0 portaudio19-dev  
+sudo apt-get install python-dev  
+cd pyaudio  
+sudo python setup.py install
+```
