@@ -2,7 +2,7 @@
 # amigo-chatbot
 A chatbot for cloud operations management. 
 
-Read the workbook - [Amigo Workbook] (https://1drv.ms/w/s!AnGP6YY6ad9FgYNR5g2UbP14Sp2GqA)
+Read the workbook - [Amigo Workbook](https://1drv.ms/w/s!AnGP6YY6ad9FgYNR5g2UbP14Sp2GqA)
 
 # Features
 1. Chatbot service with adapters for: 
@@ -14,4 +14,4 @@ Read the workbook - [Amigo Workbook] (https://1drv.ms/w/s!AnGP6YY6ad9FgYNR5g2UbP
 3. Production deployment in AWS 
 4. Can support operations management for various cloud providers. AWS is supported for now.
 5. Demo use case of cloud ops on AWS public cloud - enable user to use the chatbot service to perform devops in a  
-collaborative environment of enterprise messenger - [DevOps Functional Specification] (https://1drv.ms/b/s!AnGP6YY6ad9FgYN1jLX4QRvzE--Ybw). 
+collaborative environment of enterprise messenger - [DevOps Functional Specification](https://1drv.ms/b/s!AnGP6YY6ad9FgYN1jLX4QRvzE--Ybw). 
