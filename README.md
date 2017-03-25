@@ -22,7 +22,7 @@ Currently supported [skills](https://developer.amazon.com/alexa-skills-kit)/feat
 To add in future:
   1. Make adding extensions for Ria pluggable at runtime.
   2. Integrate with Amigo chatbot service so Ria can be used for voice ops management.
-  3. Use blinky(1) to show the state of the last response
+  3. Use [blink(1)](https://blink1.thingm.com/) to show the state of the last response
 
 
 ## To setup the environment do the following:
