@@ -76,4 +76,11 @@ sudo apt-get install libportaudio0 libportaudio2 libportaudiocpp0 portaudio19-de
 sudo apt-get install python-dev  
 cd pyaudio  
 sudo python setup.py install
+
+Test:
+espeak "Hello" 
+
+If above did not produce sound then run:
+sudo amixer cset numid=3 n
+where n = 0 (auto), 1 (headphone jack), 2 (hdmi)
 ```
