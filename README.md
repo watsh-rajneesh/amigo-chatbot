@@ -25,7 +25,7 @@ To add in future:
   3. Use blinky(1) to show the state of the last response
 
 
-##To setup the environment do the following:
+## To setup the environment do the following:
 ```
 virtualenv venv
 source venv/bin/activate
@@ -35,7 +35,7 @@ cp memory.db.default memory.db
 ```
 Some dependencies are not installed using above pip command and require some extra steps.
 
-On Mac OSX:
+## On Mac OSX:
 ```
 ### install portaudio and pyaudio
 sudo chown -R $(whoami) /usr/local
