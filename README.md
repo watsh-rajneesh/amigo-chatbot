@@ -1,11 +1,11 @@
 # ria (Raspberry Pi Intelligent Assistant)
 ##  A Virtual assistant for Raspberrry Pi
 
-It is made following the nice book on the subject by Tanay Pant - [Building a Virtual Assistant for Raspberry Pi (APress)] (https://www.amazon.com/Building-Virtual-Assistant-Raspberry-voice-controlled/dp/1484221664)
+It is made following the nice book on the subject by Tanay Pant - [Building a Virtual Assistant for Raspberry Pi (APress)](https://www.amazon.com/Building-Virtual-Assistant-Raspberry-voice-controlled/dp/1484221664)
 
-This is similar though much simplified version of products like [Google Home] (https://madeby.google.com/home/) or [Amazon Echo] (https://www.amazon.com/echo).
+This is similar though much simplified version of products like [Google Home](https://madeby.google.com/home/) or [Amazon Echo](https://www.amazon.com/echo).
 
-The idea is to use the Raspberry Pi based Virtual Assistant as one of the interfaces for [Amigo chatbot project] (https://github.com/sjsucohort6/amigo-chatbot-aws).
+The idea is to use the Raspberry Pi based Virtual Assistant as one of the interfaces for [Amigo chatbot project](https://github.com/sjsucohort6/amigo-chatbot-aws).
 
 Ria uses Google STT (Speech to text) API and espeak on Linux (or say on OSX) for TTS (Text to speech).
 
@@ -21,10 +21,11 @@ Currently supported [skills](https://developer.amazon.com/alexa-skills-kit)/feat
 
 To add in future:
   1. Make adding extensions for Ria pluggable at runtime.
-  2. Integrate with Amigo chatbot.
+  2. Integrate with Amigo chatbot service so Ria can be used for voice ops management.
+  3. Use blinky(1) to show the state of the last response
 
 
-To setup the environment do the following:
+##To setup the environment do the following:
 ```
 virtualenv venv
 source venv/bin/activate
