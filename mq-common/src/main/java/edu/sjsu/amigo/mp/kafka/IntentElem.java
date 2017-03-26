@@ -1,4 +1,4 @@
-package edu.sjsu.amigo.slackbot;
+package edu.sjsu.amigo.mp.kafka;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;

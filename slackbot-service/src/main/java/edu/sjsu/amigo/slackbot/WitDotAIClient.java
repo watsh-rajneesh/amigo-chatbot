@@ -3,6 +3,7 @@ package edu.sjsu.amigo.slackbot;
 import com.fasterxml.jackson.databind.JsonNode;
 import edu.sjsu.amigo.http.client.HttpClient;
 import edu.sjsu.amigo.http.client.Response;
+import edu.sjsu.amigo.mp.kafka.IntentElem;
 import edu.sjsu.amigo.mp.util.JsonUtils;
 
 import java.io.IOException;
