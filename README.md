@@ -1,6 +1,8 @@
 [![Run Status](https://api.shippable.com/projects/58b94166ac9c0b0600a8b21c/badge?branch=master)](https://app.shippable.com/projects/58b94166ac9c0b0600a8b21c)
 # amigo-chatbot
-A chatbot for cloud operations management. 
+A chatbot for cloud operations management.
+
+![Amigo Image](amigo.png "A chatbot for cloud operations management.")
 
 Read the workbook - [Amigo Workbook](https://1drv.ms/w/s!AnGP6YY6ad9FgYNR5g2UbP14Sp2GqA)
 
