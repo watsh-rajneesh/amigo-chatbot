@@ -14,8 +14,68 @@
 
 package edu.sjsu.amigo.user;
 
+import edu.sjsu.amigo.db.common.DBClient;
+import edu.sjsu.amigo.user.auth.PrincipalUser;
+import edu.sjsu.amigo.user.auth.SimpleAuthenticator;
+import edu.sjsu.amigo.user.health.DBHealthCheck;
+import edu.sjsu.amigo.user.rest.EndpointUtils;
+import edu.sjsu.amigo.user.rest.UserResource;
+import io.dropwizard.Application;
+import io.dropwizard.auth.AuthDynamicFeature;
+import io.dropwizard.auth.basic.BasicCredentialAuthFilter;
+import io.dropwizard.setup.Bootstrap;
+import io.dropwizard.setup.Environment;
+
 /**
  * @author rwatsh on 3/26/17.
  */
-public class UserServiceApplication {
+public class UserServiceApplication extends Application<UserServiceConfiguration> {
+
+    private DBClient dbClient;
+
+    public static void main(final String[] args) throws Exception {
+        new UserServiceApplication().run(args);
+
+    }
+
+    @Override
+    public String getName() {
+        return "User Service";
+    }
+
+    @Override
+    public void initialize(final Bootstrap<UserServiceConfiguration> bootstrap) {
+        /*
+         * Register the static html contents to be served from /assets directory and accessible from browser from
+         * http://<host>:<port>/openstack
+         */
+        //bootstrap.addBundle(new AssetsBundle("/assets", "/openstack", "index.html"));
+    }
+
+
+
+    @Override
+    public void run(UserServiceConfiguration userServiceConfiguration, Environment environment) throws Exception {
+        dbClient = userServiceConfiguration.getDbConfig().build(environment);
+        /*
+         * Setup basic authentication against DB table.
+         */
+        environment.jersey().register(new AuthDynamicFeature(
+                new BasicCredentialAuthFilter.Builder<PrincipalUser>()
+                        .setAuthenticator(new SimpleAuthenticator(dbClient))
+                        .setRealm("amigo_user")
+                        .buildAuthFilter()));
+
+        environment.healthChecks().register("database", new DBHealthCheck(dbClient));
+        /*
+         * Register resources with jersey.
+         */
+        final UserResource serviceResource = new UserResource(dbClient);
+
+        /*
+         * Setup jersey environment.
+         */
+        environment.jersey().setUrlPattern(EndpointUtils.ENDPOINT_ROOT + "/*");
+        environment.jersey().register(serviceResource);
+    }
 }

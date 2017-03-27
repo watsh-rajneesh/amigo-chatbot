@@ -15,6 +15,7 @@
 package edu.sjsu.amigo.user.db.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import edu.sjsu.amigo.db.common.model.IModel;
 import edu.sjsu.amigo.db.common.model.Validable;
 import edu.sjsu.amigo.db.common.model.ValidationException;
 import org.mongodb.morphia.annotations.Embedded;
@@ -25,7 +26,7 @@ import org.mongodb.morphia.annotations.Embedded;
  * @author rwatsh on 3/26/17.
  */
 @Embedded
-public class AWSCredentials extends Validable {
+public class AWSCredentials extends Validable implements IModel {
     private String region;
     private String awsAccessKeyId;
     private String awsSecretAccessKey;

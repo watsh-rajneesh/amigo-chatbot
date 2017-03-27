@@ -21,6 +21,8 @@ import edu.sjsu.amigo.db.common.DBClient;
 import org.mongodb.morphia.Datastore;
 import org.mongodb.morphia.Morphia;
 
+import java.text.MessageFormat;
+
 /**
  * @author rwatsh on 3/26/17.
  */
@@ -56,28 +58,34 @@ public abstract class MongoDBClientBase implements DBClient {
 
     @Override
     public void dropDB(String dbName) {
-
+        morphiaDatastore.getDB().dropDatabase();
     }
 
     @Override
     public void useDB(String dbName) {
-
+        morphiaDatastore = morphia.createDatastore(mongoClient, dbName);
+        morphiaDatastore.ensureIndexes();
     }
 
     @Override
     public boolean checkHealth() {
-        return false;
+        try {
+            mongoClient.listDatabaseNames();
+            return true;
+        } catch(Exception e) {
+            return false;
+        }
     }
 
     @Override
     public String getConnectString() {
-        return null;
+        return MessageFormat.format("DB Connect Info: server [{0}], port [{1}], dbName [{2}]", server, port, dbName);
     }
 
 
     @Override
     public Morphia getMorphia() {
-        return null;
+        return morphia;
     }
 
     /**
@@ -85,6 +93,15 @@ public abstract class MongoDBClientBase implements DBClient {
      */
     @Override
     public void close() throws Exception {
+        mongoClient.close();
+    }
 
+    @Override
+    public String toString() {
+        return "MongoDBClient{" +
+                "server='" + server + '\'' +
+                ", port=" + port +
+                ", dbName='" + dbName + '\'' +
+                '}';
     }
 }

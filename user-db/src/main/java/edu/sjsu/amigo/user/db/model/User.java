@@ -15,6 +15,7 @@
 package edu.sjsu.amigo.user.db.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import edu.sjsu.amigo.db.common.model.IModel;
 import edu.sjsu.amigo.db.common.model.Validable;
 import edu.sjsu.amigo.db.common.model.ValidationException;
 import org.mongodb.morphia.annotations.Embedded;
@@ -27,7 +28,7 @@ import org.mongodb.morphia.annotations.Id;
  * @author rwatsh on 3/26/17.
  */
 @Entity(value = "users" , noClassnameStored = true, concern = "SAFE")
-public class User extends Validable {
+public class User extends Validable implements IModel {
     /*
      * User email ID
      */
