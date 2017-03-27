@@ -12,22 +12,16 @@
  * all copies or substantial portions of the Software.
  */
 
-package edu.sjsu.amigo.http.client;
-
-import lombok.Data;
-
-import java.util.Map;
+package edu.sjsu.amigo.mp.util;
 
 /**
- * Http response wrapper.
+ * Represents the different bot types that the system knows about.
  *
- * @author rwatsh on 3/1/17.
+ * TODO externalize it so we can make the adding of new types declarative.
+ *
+ * @author rwatsh on 3/26/17.
  */
-@Data
-public class Response<T> {
-    private int statusCode;
-    private String statusText;
-    private Map<String, String> headers;
-    private String rawBody;
-    private T parsedObject;
+public enum BotType {
+    SLACK,
+    RIA
 }

@@ -12,22 +12,25 @@
  * all copies or substantial portions of the Software.
  */
 
-package edu.sjsu.amigo.http.client;
-
-import lombok.Data;
-
-import java.util.Map;
+package edu.sjsu.amigo.mp.kafka;
 
 /**
- * Http response wrapper.
+ * Constants to be used by both message producers and consumers.
  *
- * @author rwatsh on 3/1/17.
+ * @author rwatsh on 2/26/17.
  */
-@Data
-public class Response<T> {
-    private int statusCode;
-    private String statusText;
-    private Map<String, String> headers;
-    private String rawBody;
-    private T parsedObject;
+public interface MessageQueueConstants {
+    // Topics
+    /**
+     * user message topic on which incoming client message is received.
+     */
+    String USER_MSG_TOPIC = "user_msg";
+
+    // Client groups
+    /**
+     * chatbot group is the group of client consumers receiving message from user message topic.
+     * Only one consumer from the group of consumers will receive a message from the topic.
+     * 
+     */
+    String AMIGO_CHATBOT_GROUP = "amigo-chatbot-group";
 }

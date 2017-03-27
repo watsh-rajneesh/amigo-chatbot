@@ -12,22 +12,21 @@
  * all copies or substantial portions of the Software.
  */
 
-package edu.sjsu.amigo.http.client;
+package edu.sjsu.amigo.chatbot.api;
 
-import lombok.Data;
-
-import java.util.Map;
+import java.util.List;
 
 /**
- * Http response wrapper.
+ * Interface for AI Client.
  *
- * @author rwatsh on 3/1/17.
+ * @author rwatsh on 3/25/17.
  */
-@Data
-public class Response<T> {
-    private int statusCode;
-    private String statusText;
-    private Map<String, String> headers;
-    private String rawBody;
-    private T parsedObject;
+public interface AIClient {
+    /**
+     * Gets the intent of the message.
+     *
+     * @param message   user message.
+     * @return  returns a sorted list of intent tokens found in the message.
+     */
+    List<String> getIntent(String message);
 }

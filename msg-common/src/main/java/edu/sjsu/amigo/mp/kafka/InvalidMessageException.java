@@ -12,22 +12,17 @@
  * all copies or substantial portions of the Software.
  */
 
-package edu.sjsu.amigo.http.client;
-
-import lombok.Data;
-
-import java.util.Map;
+package edu.sjsu.amigo.mp.kafka;
 
 /**
- * Http response wrapper.
- *
- * @author rwatsh on 3/1/17.
+ * @author rwatsh on 3/7/17.
  */
-@Data
-public class Response<T> {
-    private int statusCode;
-    private String statusText;
-    private Map<String, String> headers;
-    private String rawBody;
-    private T parsedObject;
+public class InvalidMessageException extends RuntimeException {
+    public InvalidMessageException(Throwable t) {
+        super(t);
+    }
+
+    public InvalidMessageException(String msg) {
+        super(msg);
+    }
 }

@@ -1,23 +1,36 @@
-package edu.sjsu.amigo.slackbot;
+/*
+ * Copyright (c) 2017 San Jose State University.
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ */
+
+package edu.sjsu.amigo.chatbot.nlp;
 
 import com.fasterxml.jackson.databind.JsonNode;
+import edu.sjsu.amigo.chatbot.api.AIClient;
 import edu.sjsu.amigo.http.client.HttpClient;
 import edu.sjsu.amigo.http.client.Response;
 import edu.sjsu.amigo.mp.kafka.IntentElem;
+import edu.sjsu.amigo.mp.kafka.InvalidMessageException;
 import edu.sjsu.amigo.mp.util.JsonUtils;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * This class provides methods to access wit.api REST endpoints.
  *
  * @author rwatsh on 3/7/17.
  */
-public class WitDotAIClient {
+public class WitDotAIClient implements AIClient {
 
     public static final String WIT_AI_SERVER_ACCESS_TOKEN = System.getenv("WIT_AI_SERVER_ACCESS_TOKEN");
     public static final String WIT_AI_URL_PREFIX = "https://api.wit.ai";
@@ -33,6 +46,8 @@ public class WitDotAIClient {
             put("authorization", "Bearer " + WIT_AI_SERVER_ACCESS_TOKEN); //OAuth 2.0 Bearer Token
         }
     };
+
+    public WitDotAIClient() {}
 
     /**
      * Given a message find the intents.
@@ -64,9 +79,10 @@ public class WitDotAIClient {
      }
      *
      * @param message   the message to parse and to find intents from.
-     * @return  an array of intents.
+     * @return  an array of sorted intent tokens.
      */
-    public static List<IntentElem> getIntent(String message) {
+    @Override
+    public List<String> getIntent(String message) {
         try(HttpClient httpClient = new HttpClient()) {
             String url = WIT_AI_URL_PREFIX + WIT_AI_MESSAGE_URI;
             queryStringMap.put("q", message);
@@ -85,7 +101,15 @@ public class WitDotAIClient {
                 }
             }
             //return JsonUtils.prettyPrint(resp.getRawBody());
-            return intents;
+            //System.out.println(JsonUtils.convertObjectToJson(intents));
+            //return intents;
+            List<String> toks = new ArrayList<>();
+            for (IntentElem tok: intents) {
+                //System.out.println(tok.getValue());
+                toks.add(tok.getValue());
+            }
+            Collections.sort(toks);
+            return toks;
         } catch (Exception e) {
             throw new InvalidMessageException(e);
         }
@@ -107,12 +131,10 @@ public class WitDotAIClient {
     }
 
     public static void main(String[] args) throws IOException {
-        String message = "list ec2 instances aws";
-        List<IntentElem> resp = getIntent(message);
-        System.out.println("Input: " + message);
-        System.out.println(JsonUtils.convertObjectToJson(resp));
+        String message = "list ec2 instances of aws please";
+        AIClient aiClient = new WitDotAIClient();
+        List<String> resp = aiClient.getIntent(message);
+        System.out.println("intent: " + resp);
 
-        //String intents = getAllIntents();
-        //System.out.println(intents);
     }
 }

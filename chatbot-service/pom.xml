@@ -23,7 +23,27 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>web-ui</artifactId>
+    <artifactId>chatbot-service</artifactId>
 
-
+    <dependencies>
+        <dependency>
+            <groupId>edu.sjsu.amigo</groupId>
+            <artifactId>msg-common</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>edu.sjsu.amigo</groupId>
+            <artifactId>httpclient-common</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${jackson-core.version}</version>
+        </dependency>
+    </dependencies>
+    <properties>
+        <simple-slack-api.version>0.6.0</simple-slack-api.version>
+        <jackson-core.version>2.8.6</jackson-core.version>
+    </properties>
 </project>

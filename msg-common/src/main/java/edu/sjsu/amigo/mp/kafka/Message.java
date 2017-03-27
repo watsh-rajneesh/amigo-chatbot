@@ -1,6 +1,22 @@
+/*
+ * Copyright (c) 2017 San Jose State University.
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ */
+
 package edu.sjsu.amigo.mp.kafka;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+
+import java.util.List;
 
 /**
  * Message payload that will be sent to the backend to process and execute command.
@@ -43,11 +59,11 @@ public class Message {
     @JsonProperty
     private String content;
     @JsonProperty
-    private String intent;
+    private List<String> intent;
 
     public Message() {}
 
-    public Message(String time, String userEmail, String userName, String content, String intent) {
+    public Message(String time, String userEmail, String userName, String content, List<String> intent) {
         this.msgReceivedTime = time;
         this.userEmail = userEmail;
         this.userName = userName;
@@ -87,11 +103,11 @@ public class Message {
         this.content = content;
     }
 
-    public String getIntent() {
+    public List<String> getIntent() {
         return intent;
     }
 
-    public void setIntent(String intent) {
+    public void setIntent(List<String> intent) {
         this.intent = intent;
     }
 

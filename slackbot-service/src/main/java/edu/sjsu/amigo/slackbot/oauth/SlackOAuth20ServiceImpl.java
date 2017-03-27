@@ -12,18 +12,23 @@
  * all copies or substantial portions of the Software.
  */
 
-package edu.sjsu.amigo.http.client;
+package edu.sjsu.amigo.slackbot.oauth;
 
-/**
- * A friendly http client exception.
- *
- * @author rwatsh on 2/27/17.
- */
-public class HttpClientException extends Exception {
-    public HttpClientException(String msg) {
-        super(msg);
+import com.github.scribejava.core.builder.api.DefaultApi20;
+import com.github.scribejava.core.model.OAuthConfig;
+import com.github.scribejava.core.model.Token;
+import com.github.scribejava.core.oauth.OAuth20ServiceImpl;
+
+
+public class SlackOAuth20ServiceImpl extends OAuth20ServiceImpl {
+
+    public SlackOAuth20ServiceImpl (DefaultApi20 api, OAuthConfig config) {
+        super(api, config);
     }
-    public HttpClientException(Throwable throwable) {
-        super(throwable);
+
+    public String getAuthorizationUrl(Token requestToken, String team) {
+        SlackApi slackApi = (SlackApi)this.getApi();
+        slackApi.setTeam(team);
+        return super.getAuthorizationUrl(requestToken);
     }
 }
