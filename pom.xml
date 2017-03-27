@@ -31,10 +31,12 @@
         <module>command-processor-service</module>
         <module>nlp-service</module>
         <module>chatbot-service</module>
+        <module>user-db</module>
+        <module>db-common</module>
     </modules>
 
     <properties>
-        <maven-compiler-plugin.source>1.8</maven-compiler-plugin.source>
+        <maven-compiler-plugin.version>1.8</maven-compiler-plugin.version>
     </properties>
 
 
@@ -45,8 +47,8 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.3</version>
                 <configuration>
-                    <source>${maven-compiler-plugin.source}</source>
-                    <target>${maven-compiler-plugin.source}</target>
+                    <source>${maven-compiler-plugin.version}</source>
+                    <target>${maven-compiler-plugin.version}</target>
                 </configuration>
             </plugin>
         </plugins>

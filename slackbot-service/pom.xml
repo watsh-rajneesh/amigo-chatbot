@@ -26,13 +26,11 @@
     <artifactId>slackbot-service</artifactId>
 
     <dependencies>
-
         <dependency>
             <groupId>com.ullink.slack</groupId>
             <artifactId>simpleslackapi</artifactId>
             <version>${simple-slack-api.version}</version>
         </dependency>
-
         <dependency>
             <groupId>com.github.scribejava</groupId>
             <artifactId>scribejava-apis</artifactId>
