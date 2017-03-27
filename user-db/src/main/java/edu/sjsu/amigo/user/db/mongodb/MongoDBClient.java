@@ -36,7 +36,7 @@ public class MongoDBClient extends MongoDBClientBase {
      * @param dbName name of db to use
      */
     @Inject
-    public MongoDBClient(@Assisted("server") String server, @Assisted("port") int port, @Assisted("dbName") String dbName) {
+    private MongoDBClient(@Assisted("server") String server, @Assisted("port") int port, @Assisted("dbName") String dbName) {
         super(server, port, dbName);
         morphia.mapPackageFromClass(User.class);
         userDAO = new UserDAO(mongoClient, morphia, dbName);
