@@ -15,6 +15,21 @@ HTTPS = 'false'
 USER = 'watsh.rajneesh@sjsu.edu'
 PASSWORD='pass'
 
+
+def replace_value_with_definition(current_dict, key_to_find, definition):
+    """
+    This method is used to substitute the default values read from .json file
+    by a value that the user specified on CLI.
+
+    :param current_dict:
+    :param key_to_find:
+    :param definition:
+    :return:
+    """
+    for key in current_dict.keys():
+        if key == key_to_find:
+            current_dict[key] = definition
+
 def get_http_scheme():
     """
     Gets the http/https protocol scheme prefix for url
@@ -97,14 +112,14 @@ def post_request(url, payload=None, headers=None, auth=HTTPBasicAuth(USER, PASSW
     pretty_print_json(r)
     return r
 
-def delete_request(url):
+def delete_request(url, headers=None):
     """
     DELETE request.
     :param url:
     :return:
     """
     print('DELETE ' + str(url))
-    r = requests.delete(url, auth=HTTPBasicAuth(USER, PASSWORD), verify=False)
+    r = requests.delete(url, auth=HTTPBasicAuth(USER, PASSWORD), headers=headers, verify=False)
     pretty_print_json(r)
     return r
 
@@ -175,7 +190,7 @@ def delete_user(hostPort, id):
     :return:
     """
     url = "%s://%s/api/v1.0/users/%s" % (get_http_scheme(), hostPort, id)
-    return delete_request(url)
+    return delete_request(url, headers={"content-type":"application/json"})
 
 
 def send_msg(hostPort, message):
@@ -260,13 +275,14 @@ def main():
         create_user(hostPort, payload)
     elif command == "update-user":
         update_user(hostPort, id=args.id, payload=payload)
-    elif command == "delete-student":
+    elif command == "delete-user":
         delete_user(hostPort, id=args.id)
     elif command == "send-msg":
         send_msg(hostPort, message=args.message)
     elif command == "get-status":
         get_status(hostPort, request_id=args.reqid)
-
+    else:
+        print("Unknown command")
 
 if __name__ == '__main__':
     main()
