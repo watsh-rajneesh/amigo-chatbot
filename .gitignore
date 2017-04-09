@@ -4,6 +4,7 @@
 __pycache__/
 *.py[cod]
 *$py.class
+.DS_Store/
 
 # C extensions
 *.so
@@ -156,3 +157,4 @@ Contact GitHub API Training Shop Blog About
 /command-processor-service/run.sh
 /docker-images/kafka/run.sh
 /slackbot-service/run.sh
+/amigo-cli/
