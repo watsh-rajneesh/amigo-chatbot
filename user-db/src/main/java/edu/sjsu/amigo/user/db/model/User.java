@@ -14,6 +14,8 @@
 
 package edu.sjsu.amigo.user.db.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import edu.sjsu.amigo.db.common.model.IModel;
 import edu.sjsu.amigo.db.common.model.Validable;
@@ -28,6 +30,7 @@ import org.mongodb.morphia.annotations.Id;
  * @author rwatsh on 3/26/17.
  */
 @Entity(value = "users" , noClassnameStored = true, concern = "SAFE")
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class User extends Validable implements IModel {
     /*
      * User email ID
@@ -114,6 +117,7 @@ public class User extends Validable implements IModel {
     }
 
     @Override
+    @JsonIgnore
     public boolean isValid() throws ValidationException {
         return isReqd(email) &&
                 isReqd(name) &&

@@ -1,0 +1,186 @@
+\hypertarget{classedu_1_1sjsu_1_1amigo_1_1mp_1_1util_1_1_json_utils}{}\section{edu.\+sjsu.\+amigo.\+mp.\+util.\+Json\+Utils Class Reference}
+\label{classedu_1_1sjsu_1_1amigo_1_1mp_1_1util_1_1_json_utils}\index{edu.\+sjsu.\+amigo.\+mp.\+util.\+Json\+Utils@{edu.\+sjsu.\+amigo.\+mp.\+util.\+Json\+Utils}}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static$<$ T $>$ String \hyperlink{classedu_1_1sjsu_1_1amigo_1_1mp_1_1util_1_1_json_utils_af0ed0c8802d135ecd34c28c721555520}{convert\+Object\+To\+Json} (T object)  throws I\+O\+Exception 
+\item 
+static$<$ T $>$ T \hyperlink{classedu_1_1sjsu_1_1amigo_1_1mp_1_1util_1_1_json_utils_a5c05bfeb59e28dd21858215642d7ddff}{convert\+Json\+To\+Object} (String json\+Str, Class$<$ T $>$ clazz)  throws I\+O\+Exception 
+\item 
+static$<$ T $>$ List$<$ T $>$ \hyperlink{classedu_1_1sjsu_1_1amigo_1_1mp_1_1util_1_1_json_utils_adeb0a62c6af63396bbe07e2335f67d29}{convert\+Json\+Array\+To\+List} (String json\+Array\+Str, Class$<$ T $>$ clazz)  throws I\+O\+Exception 
+\item 
+static String \hyperlink{classedu_1_1sjsu_1_1amigo_1_1mp_1_1util_1_1_json_utils_a65242756248bee95337b2b6b759dafb2}{convert\+List\+To\+Json} (List$<$?$>$ list)  throws I\+O\+Exception 
+\item 
+static String \hyperlink{classedu_1_1sjsu_1_1amigo_1_1mp_1_1util_1_1_json_utils_a75f99520f5cde57bd3e44c372fc41f85}{pretty\+Print} (String raw\+Json)  throws I\+O\+Exception 
+\item 
+static Json\+Node \hyperlink{classedu_1_1sjsu_1_1amigo_1_1mp_1_1util_1_1_json_utils_ad8033daeed68ff47f3c6aa0603dad6e2}{parse\+Json} (String json\+Str)  throws I\+O\+Exception 
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Utility methods to convert between J\+S\+ON and Java objects.
+
+\begin{DoxyAuthor}{Author}
+rwatsh on 2/26/17. 
+\end{DoxyAuthor}
+
+
+Definition at line 33 of file Json\+Utils.\+java.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classedu_1_1sjsu_1_1amigo_1_1mp_1_1util_1_1_json_utils_adeb0a62c6af63396bbe07e2335f67d29}\label{classedu_1_1sjsu_1_1amigo_1_1mp_1_1util_1_1_json_utils_adeb0a62c6af63396bbe07e2335f67d29}} 
+\index{edu\+::sjsu\+::amigo\+::mp\+::util\+::\+Json\+Utils@{edu\+::sjsu\+::amigo\+::mp\+::util\+::\+Json\+Utils}!convert\+Json\+Array\+To\+List@{convert\+Json\+Array\+To\+List}}
+\index{convert\+Json\+Array\+To\+List@{convert\+Json\+Array\+To\+List}!edu\+::sjsu\+::amigo\+::mp\+::util\+::\+Json\+Utils@{edu\+::sjsu\+::amigo\+::mp\+::util\+::\+Json\+Utils}}
+\subsubsection{\texorpdfstring{convert\+Json\+Array\+To\+List()}{convertJsonArrayToList()}}
+{\footnotesize\ttfamily static $<$T$>$ List$<$T$>$ edu.\+sjsu.\+amigo.\+mp.\+util.\+Json\+Utils.\+convert\+Json\+Array\+To\+List (\begin{DoxyParamCaption}\item[{String}]{json\+Array\+Str,  }\item[{Class$<$ T $>$}]{clazz }\end{DoxyParamCaption}) throws I\+O\+Exception\hspace{0.3cm}{\ttfamily [static]}}
+
+Converts a J\+S\+ON array of objects to List of Java Object types. For example, convert a J\+S\+ON array of students to List$<$\+Student$>$.
+
+
+\begin{DoxyParams}{Parameters}
+{\em json\+Array\+Str} & \\
+\hline
+{\em clazz} & \\
+\hline
+{\em $<$\+T$>$} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em I\+O\+Exception} & \\
+\hline
+\end{DoxyExceptions}
+
+
+Definition at line 74 of file Json\+Utils.\+java.
+
+\mbox{\Hypertarget{classedu_1_1sjsu_1_1amigo_1_1mp_1_1util_1_1_json_utils_a5c05bfeb59e28dd21858215642d7ddff}\label{classedu_1_1sjsu_1_1amigo_1_1mp_1_1util_1_1_json_utils_a5c05bfeb59e28dd21858215642d7ddff}} 
+\index{edu\+::sjsu\+::amigo\+::mp\+::util\+::\+Json\+Utils@{edu\+::sjsu\+::amigo\+::mp\+::util\+::\+Json\+Utils}!convert\+Json\+To\+Object@{convert\+Json\+To\+Object}}
+\index{convert\+Json\+To\+Object@{convert\+Json\+To\+Object}!edu\+::sjsu\+::amigo\+::mp\+::util\+::\+Json\+Utils@{edu\+::sjsu\+::amigo\+::mp\+::util\+::\+Json\+Utils}}
+\subsubsection{\texorpdfstring{convert\+Json\+To\+Object()}{convertJsonToObject()}}
+{\footnotesize\ttfamily static $<$T$>$ T edu.\+sjsu.\+amigo.\+mp.\+util.\+Json\+Utils.\+convert\+Json\+To\+Object (\begin{DoxyParamCaption}\item[{String}]{json\+Str,  }\item[{Class$<$ T $>$}]{clazz }\end{DoxyParamCaption}) throws I\+O\+Exception\hspace{0.3cm}{\ttfamily [static]}}
+
+Convert J\+S\+ON string to object.
+
+
+\begin{DoxyParams}{Parameters}
+{\em json\+Str} & \\
+\hline
+{\em clazz} & \\
+\hline
+{\em $<$\+T$>$} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em I\+O\+Exception} & \\
+\hline
+\end{DoxyExceptions}
+
+
+Definition at line 58 of file Json\+Utils.\+java.
+
+\mbox{\Hypertarget{classedu_1_1sjsu_1_1amigo_1_1mp_1_1util_1_1_json_utils_a65242756248bee95337b2b6b759dafb2}\label{classedu_1_1sjsu_1_1amigo_1_1mp_1_1util_1_1_json_utils_a65242756248bee95337b2b6b759dafb2}} 
+\index{edu\+::sjsu\+::amigo\+::mp\+::util\+::\+Json\+Utils@{edu\+::sjsu\+::amigo\+::mp\+::util\+::\+Json\+Utils}!convert\+List\+To\+Json@{convert\+List\+To\+Json}}
+\index{convert\+List\+To\+Json@{convert\+List\+To\+Json}!edu\+::sjsu\+::amigo\+::mp\+::util\+::\+Json\+Utils@{edu\+::sjsu\+::amigo\+::mp\+::util\+::\+Json\+Utils}}
+\subsubsection{\texorpdfstring{convert\+List\+To\+Json()}{convertListToJson()}}
+{\footnotesize\ttfamily static String edu.\+sjsu.\+amigo.\+mp.\+util.\+Json\+Utils.\+convert\+List\+To\+Json (\begin{DoxyParamCaption}\item[{List$<$?$>$}]{list }\end{DoxyParamCaption}) throws I\+O\+Exception\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line 81 of file Json\+Utils.\+java.
+
+\mbox{\Hypertarget{classedu_1_1sjsu_1_1amigo_1_1mp_1_1util_1_1_json_utils_af0ed0c8802d135ecd34c28c721555520}\label{classedu_1_1sjsu_1_1amigo_1_1mp_1_1util_1_1_json_utils_af0ed0c8802d135ecd34c28c721555520}} 
+\index{edu\+::sjsu\+::amigo\+::mp\+::util\+::\+Json\+Utils@{edu\+::sjsu\+::amigo\+::mp\+::util\+::\+Json\+Utils}!convert\+Object\+To\+Json@{convert\+Object\+To\+Json}}
+\index{convert\+Object\+To\+Json@{convert\+Object\+To\+Json}!edu\+::sjsu\+::amigo\+::mp\+::util\+::\+Json\+Utils@{edu\+::sjsu\+::amigo\+::mp\+::util\+::\+Json\+Utils}}
+\subsubsection{\texorpdfstring{convert\+Object\+To\+Json()}{convertObjectToJson()}}
+{\footnotesize\ttfamily static $<$T$>$ String edu.\+sjsu.\+amigo.\+mp.\+util.\+Json\+Utils.\+convert\+Object\+To\+Json (\begin{DoxyParamCaption}\item[{T}]{object }\end{DoxyParamCaption}) throws I\+O\+Exception\hspace{0.3cm}{\ttfamily [static]}}
+
+Converts object to J\+S\+ON string representation. It could even be a list of objects which will be converted to J\+S\+ON array on objects.
+
+
+\begin{DoxyParams}{Parameters}
+{\em object} & \\
+\hline
+{\em $<$\+T$>$} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em I\+O\+Exception} & \\
+\hline
+\end{DoxyExceptions}
+
+
+Definition at line 43 of file Json\+Utils.\+java.
+
+\mbox{\Hypertarget{classedu_1_1sjsu_1_1amigo_1_1mp_1_1util_1_1_json_utils_ad8033daeed68ff47f3c6aa0603dad6e2}\label{classedu_1_1sjsu_1_1amigo_1_1mp_1_1util_1_1_json_utils_ad8033daeed68ff47f3c6aa0603dad6e2}} 
+\index{edu\+::sjsu\+::amigo\+::mp\+::util\+::\+Json\+Utils@{edu\+::sjsu\+::amigo\+::mp\+::util\+::\+Json\+Utils}!parse\+Json@{parse\+Json}}
+\index{parse\+Json@{parse\+Json}!edu\+::sjsu\+::amigo\+::mp\+::util\+::\+Json\+Utils@{edu\+::sjsu\+::amigo\+::mp\+::util\+::\+Json\+Utils}}
+\subsubsection{\texorpdfstring{parse\+Json()}{parseJson()}}
+{\footnotesize\ttfamily static Json\+Node edu.\+sjsu.\+amigo.\+mp.\+util.\+Json\+Utils.\+parse\+Json (\begin{DoxyParamCaption}\item[{String}]{json\+Str }\end{DoxyParamCaption}) throws I\+O\+Exception\hspace{0.3cm}{\ttfamily [static]}}
+
+Load the J\+S\+ON String as Json\+Node object. To be used in case the raw json string has some parts that are not needed to mapped to a Java Object. If the entire J\+S\+ON string can be mapped to a Java Object then use the method
+\begin{DoxyCode}
+\hyperlink{classedu_1_1sjsu_1_1amigo_1_1mp_1_1util_1_1_json_utils_a5c05bfeb59e28dd21858215642d7ddff}{convertJsonToObject} 
+\end{DoxyCode}
+ instead.
+
+
+\begin{DoxyParams}{Parameters}
+{\em json\+Str} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em I\+O\+Exception} & \\
+\hline
+\end{DoxyExceptions}
+
+
+Definition at line 117 of file Json\+Utils.\+java.
+
+\mbox{\Hypertarget{classedu_1_1sjsu_1_1amigo_1_1mp_1_1util_1_1_json_utils_a75f99520f5cde57bd3e44c372fc41f85}\label{classedu_1_1sjsu_1_1amigo_1_1mp_1_1util_1_1_json_utils_a75f99520f5cde57bd3e44c372fc41f85}} 
+\index{edu\+::sjsu\+::amigo\+::mp\+::util\+::\+Json\+Utils@{edu\+::sjsu\+::amigo\+::mp\+::util\+::\+Json\+Utils}!pretty\+Print@{pretty\+Print}}
+\index{pretty\+Print@{pretty\+Print}!edu\+::sjsu\+::amigo\+::mp\+::util\+::\+Json\+Utils@{edu\+::sjsu\+::amigo\+::mp\+::util\+::\+Json\+Utils}}
+\subsubsection{\texorpdfstring{pretty\+Print()}{prettyPrint()}}
+{\footnotesize\ttfamily static String edu.\+sjsu.\+amigo.\+mp.\+util.\+Json\+Utils.\+pretty\+Print (\begin{DoxyParamCaption}\item[{String}]{raw\+Json }\end{DoxyParamCaption}) throws I\+O\+Exception\hspace{0.3cm}{\ttfamily [static]}}
+
+Given a J\+S\+ON string generate a formatted J\+S\+ON string from it.
+
+
+\begin{DoxyParams}{Parameters}
+{\em raw\+Json} & any J\+S\+ON string \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a formatted (pretty) J\+S\+ON string 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em I\+O\+Exception} & \\
+\hline
+\end{DoxyExceptions}
+
+
+Definition at line 102 of file Json\+Utils.\+java.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+msg-\/common/src/main/java/edu/sjsu/amigo/mp/util/\hyperlink{_json_utils_8java}{Json\+Utils.\+java}\end{DoxyCompactItemize}

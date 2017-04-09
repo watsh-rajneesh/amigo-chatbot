@@ -1,0 +1,239 @@
+\hypertarget{classedu_1_1sjsu_1_1amigo_1_1db_1_1common_1_1mongodb_1_1_mongo_d_b_client_base}{}\section{edu.\+sjsu.\+amigo.\+db.\+common.\+mongodb.\+Mongo\+D\+B\+Client\+Base Class Reference}
+\label{classedu_1_1sjsu_1_1amigo_1_1db_1_1common_1_1mongodb_1_1_mongo_d_b_client_base}\index{edu.\+sjsu.\+amigo.\+db.\+common.\+mongodb.\+Mongo\+D\+B\+Client\+Base@{edu.\+sjsu.\+amigo.\+db.\+common.\+mongodb.\+Mongo\+D\+B\+Client\+Base}}
+Inheritance diagram for edu.\+sjsu.\+amigo.\+db.\+common.\+mongodb.\+Mongo\+D\+B\+Client\+Base\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=4.000000cm]{classedu_1_1sjsu_1_1amigo_1_1db_1_1common_1_1mongodb_1_1_mongo_d_b_client_base}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classedu_1_1sjsu_1_1amigo_1_1db_1_1common_1_1mongodb_1_1_mongo_d_b_client_base_a2f238f9220270db8d0b0cb90be2028bd}{Mongo\+D\+B\+Client\+Base} (@Assisted(\char`\"{}server\char`\"{}) String \hyperlink{classedu_1_1sjsu_1_1amigo_1_1db_1_1common_1_1mongodb_1_1_mongo_d_b_client_base_acc3f5ff73b7e3ffe9af475a23c208119}{server}, @Assisted(\char`\"{}port\char`\"{}) int \hyperlink{classedu_1_1sjsu_1_1amigo_1_1db_1_1common_1_1mongodb_1_1_mongo_d_b_client_base_ae4ea19c2e926899224780fd86e6f2e64}{port}, @Assisted(\char`\"{}db\+Name\char`\"{}) String \hyperlink{classedu_1_1sjsu_1_1amigo_1_1db_1_1common_1_1mongodb_1_1_mongo_d_b_client_base_a53368e64a0b78deaf8577c6fa9010cdb}{db\+Name})
+\item 
+void \hyperlink{classedu_1_1sjsu_1_1amigo_1_1db_1_1common_1_1mongodb_1_1_mongo_d_b_client_base_a1958dd7d55b132f55c54547e70ddb52f}{drop\+DB} (String \hyperlink{classedu_1_1sjsu_1_1amigo_1_1db_1_1common_1_1mongodb_1_1_mongo_d_b_client_base_a53368e64a0b78deaf8577c6fa9010cdb}{db\+Name})
+\item 
+void \hyperlink{classedu_1_1sjsu_1_1amigo_1_1db_1_1common_1_1mongodb_1_1_mongo_d_b_client_base_ae5ba446aa4f03a5846f3c9e59ff10cca}{use\+DB} (String \hyperlink{classedu_1_1sjsu_1_1amigo_1_1db_1_1common_1_1mongodb_1_1_mongo_d_b_client_base_a53368e64a0b78deaf8577c6fa9010cdb}{db\+Name})
+\item 
+boolean \hyperlink{classedu_1_1sjsu_1_1amigo_1_1db_1_1common_1_1mongodb_1_1_mongo_d_b_client_base_aad703e503bf7486a5ac2f2838ef49108}{check\+Health} ()
+\item 
+String \hyperlink{classedu_1_1sjsu_1_1amigo_1_1db_1_1common_1_1mongodb_1_1_mongo_d_b_client_base_af5de39557a28690a32d078484a8938f7}{get\+Connect\+String} ()
+\item 
+Morphia \hyperlink{classedu_1_1sjsu_1_1amigo_1_1db_1_1common_1_1mongodb_1_1_mongo_d_b_client_base_ab0c99c600064e004c29f459b7dc86650}{get\+Morphia} ()
+\item 
+void \hyperlink{classedu_1_1sjsu_1_1amigo_1_1db_1_1common_1_1mongodb_1_1_mongo_d_b_client_base_a2d1bef646bf6bcc0e61cad0861c8a1ef}{close} ()  throws Exception 
+\item 
+String \hyperlink{classedu_1_1sjsu_1_1amigo_1_1db_1_1common_1_1mongodb_1_1_mongo_d_b_client_base_a8b92d5bc61c9813cbbabfa4b2ce5521e}{to\+String} ()
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+final String \hyperlink{classedu_1_1sjsu_1_1amigo_1_1db_1_1common_1_1mongodb_1_1_mongo_d_b_client_base_acc3f5ff73b7e3ffe9af475a23c208119}{server}
+\item 
+final int \hyperlink{classedu_1_1sjsu_1_1amigo_1_1db_1_1common_1_1mongodb_1_1_mongo_d_b_client_base_ae4ea19c2e926899224780fd86e6f2e64}{port}
+\item 
+final String \hyperlink{classedu_1_1sjsu_1_1amigo_1_1db_1_1common_1_1mongodb_1_1_mongo_d_b_client_base_a53368e64a0b78deaf8577c6fa9010cdb}{db\+Name}
+\item 
+Morphia \hyperlink{classedu_1_1sjsu_1_1amigo_1_1db_1_1common_1_1mongodb_1_1_mongo_d_b_client_base_a548c8dfccbd54f5bf84f35f793515025}{morphia} = null
+\item 
+Mongo\+Client \hyperlink{classedu_1_1sjsu_1_1amigo_1_1db_1_1common_1_1mongodb_1_1_mongo_d_b_client_base_a8d080cec390fe2d50f8958151e2efadf}{mongo\+Client}
+\item 
+Datastore \hyperlink{classedu_1_1sjsu_1_1amigo_1_1db_1_1common_1_1mongodb_1_1_mongo_d_b_client_base_aa784c335d76963fc507593aca58e1b3a}{morphia\+Datastore}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\begin{DoxyAuthor}{Author}
+rwatsh on 3/26/17. 
+\end{DoxyAuthor}
+
+
+Definition at line 29 of file Mongo\+D\+B\+Client\+Base.\+java.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classedu_1_1sjsu_1_1amigo_1_1db_1_1common_1_1mongodb_1_1_mongo_d_b_client_base_a2f238f9220270db8d0b0cb90be2028bd}\label{classedu_1_1sjsu_1_1amigo_1_1db_1_1common_1_1mongodb_1_1_mongo_d_b_client_base_a2f238f9220270db8d0b0cb90be2028bd}} 
+\index{edu\+::sjsu\+::amigo\+::db\+::common\+::mongodb\+::\+Mongo\+D\+B\+Client\+Base@{edu\+::sjsu\+::amigo\+::db\+::common\+::mongodb\+::\+Mongo\+D\+B\+Client\+Base}!Mongo\+D\+B\+Client\+Base@{Mongo\+D\+B\+Client\+Base}}
+\index{Mongo\+D\+B\+Client\+Base@{Mongo\+D\+B\+Client\+Base}!edu\+::sjsu\+::amigo\+::db\+::common\+::mongodb\+::\+Mongo\+D\+B\+Client\+Base@{edu\+::sjsu\+::amigo\+::db\+::common\+::mongodb\+::\+Mongo\+D\+B\+Client\+Base}}
+\subsubsection{\texorpdfstring{Mongo\+D\+B\+Client\+Base()}{MongoDBClientBase()}}
+{\footnotesize\ttfamily edu.\+sjsu.\+amigo.\+db.\+common.\+mongodb.\+Mongo\+D\+B\+Client\+Base.\+Mongo\+D\+B\+Client\+Base (\begin{DoxyParamCaption}\item[{@Assisted(\char`\"{}server\char`\"{}) String}]{server,  }\item[{@Assisted(\char`\"{}port\char`\"{}) int}]{port,  }\item[{@Assisted(\char`\"{}db\+Name\char`\"{}) String}]{db\+Name }\end{DoxyParamCaption})}
+
+Constructs a Mongo\+DB client instance.
+
+This is private so it can only be instantiated via DI (using Guice).
+
+
+\begin{DoxyParams}{Parameters}
+{\em server} & server hostname or ip \\
+\hline
+{\em port} & port number for mongodb service \\
+\hline
+{\em db\+Name} & name of db to use \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 47 of file Mongo\+D\+B\+Client\+Base.\+java.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classedu_1_1sjsu_1_1amigo_1_1db_1_1common_1_1mongodb_1_1_mongo_d_b_client_base_aad703e503bf7486a5ac2f2838ef49108}\label{classedu_1_1sjsu_1_1amigo_1_1db_1_1common_1_1mongodb_1_1_mongo_d_b_client_base_aad703e503bf7486a5ac2f2838ef49108}} 
+\index{edu\+::sjsu\+::amigo\+::db\+::common\+::mongodb\+::\+Mongo\+D\+B\+Client\+Base@{edu\+::sjsu\+::amigo\+::db\+::common\+::mongodb\+::\+Mongo\+D\+B\+Client\+Base}!check\+Health@{check\+Health}}
+\index{check\+Health@{check\+Health}!edu\+::sjsu\+::amigo\+::db\+::common\+::mongodb\+::\+Mongo\+D\+B\+Client\+Base@{edu\+::sjsu\+::amigo\+::db\+::common\+::mongodb\+::\+Mongo\+D\+B\+Client\+Base}}
+\subsubsection{\texorpdfstring{check\+Health()}{checkHealth()}}
+{\footnotesize\ttfamily boolean edu.\+sjsu.\+amigo.\+db.\+common.\+mongodb.\+Mongo\+D\+B\+Client\+Base.\+check\+Health (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Implements \hyperlink{interfaceedu_1_1sjsu_1_1amigo_1_1db_1_1common_1_1_d_b_client_af6387539a42d236e515d04bdf32e171d}{edu.\+sjsu.\+amigo.\+db.\+common.\+D\+B\+Client}.
+
+
+
+Definition at line 71 of file Mongo\+D\+B\+Client\+Base.\+java.
+
+\mbox{\Hypertarget{classedu_1_1sjsu_1_1amigo_1_1db_1_1common_1_1mongodb_1_1_mongo_d_b_client_base_a2d1bef646bf6bcc0e61cad0861c8a1ef}\label{classedu_1_1sjsu_1_1amigo_1_1db_1_1common_1_1mongodb_1_1_mongo_d_b_client_base_a2d1bef646bf6bcc0e61cad0861c8a1ef}} 
+\index{edu\+::sjsu\+::amigo\+::db\+::common\+::mongodb\+::\+Mongo\+D\+B\+Client\+Base@{edu\+::sjsu\+::amigo\+::db\+::common\+::mongodb\+::\+Mongo\+D\+B\+Client\+Base}!close@{close}}
+\index{close@{close}!edu\+::sjsu\+::amigo\+::db\+::common\+::mongodb\+::\+Mongo\+D\+B\+Client\+Base@{edu\+::sjsu\+::amigo\+::db\+::common\+::mongodb\+::\+Mongo\+D\+B\+Client\+Base}}
+\subsubsection{\texorpdfstring{close()}{close()}}
+{\footnotesize\ttfamily void edu.\+sjsu.\+amigo.\+db.\+common.\+mongodb.\+Mongo\+D\+B\+Client\+Base.\+close (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) throws Exception}
+
+
+
+Definition at line 95 of file Mongo\+D\+B\+Client\+Base.\+java.
+
+\mbox{\Hypertarget{classedu_1_1sjsu_1_1amigo_1_1db_1_1common_1_1mongodb_1_1_mongo_d_b_client_base_a1958dd7d55b132f55c54547e70ddb52f}\label{classedu_1_1sjsu_1_1amigo_1_1db_1_1common_1_1mongodb_1_1_mongo_d_b_client_base_a1958dd7d55b132f55c54547e70ddb52f}} 
+\index{edu\+::sjsu\+::amigo\+::db\+::common\+::mongodb\+::\+Mongo\+D\+B\+Client\+Base@{edu\+::sjsu\+::amigo\+::db\+::common\+::mongodb\+::\+Mongo\+D\+B\+Client\+Base}!drop\+DB@{drop\+DB}}
+\index{drop\+DB@{drop\+DB}!edu\+::sjsu\+::amigo\+::db\+::common\+::mongodb\+::\+Mongo\+D\+B\+Client\+Base@{edu\+::sjsu\+::amigo\+::db\+::common\+::mongodb\+::\+Mongo\+D\+B\+Client\+Base}}
+\subsubsection{\texorpdfstring{drop\+D\+B()}{dropDB()}}
+{\footnotesize\ttfamily void edu.\+sjsu.\+amigo.\+db.\+common.\+mongodb.\+Mongo\+D\+B\+Client\+Base.\+drop\+DB (\begin{DoxyParamCaption}\item[{String}]{db\+Name }\end{DoxyParamCaption})}
+
+
+
+Implements \hyperlink{interfaceedu_1_1sjsu_1_1amigo_1_1db_1_1common_1_1_d_b_client_aaf5afc64d802275eb4b2f566166cd245}{edu.\+sjsu.\+amigo.\+db.\+common.\+D\+B\+Client}.
+
+
+
+Definition at line 60 of file Mongo\+D\+B\+Client\+Base.\+java.
+
+\mbox{\Hypertarget{classedu_1_1sjsu_1_1amigo_1_1db_1_1common_1_1mongodb_1_1_mongo_d_b_client_base_af5de39557a28690a32d078484a8938f7}\label{classedu_1_1sjsu_1_1amigo_1_1db_1_1common_1_1mongodb_1_1_mongo_d_b_client_base_af5de39557a28690a32d078484a8938f7}} 
+\index{edu\+::sjsu\+::amigo\+::db\+::common\+::mongodb\+::\+Mongo\+D\+B\+Client\+Base@{edu\+::sjsu\+::amigo\+::db\+::common\+::mongodb\+::\+Mongo\+D\+B\+Client\+Base}!get\+Connect\+String@{get\+Connect\+String}}
+\index{get\+Connect\+String@{get\+Connect\+String}!edu\+::sjsu\+::amigo\+::db\+::common\+::mongodb\+::\+Mongo\+D\+B\+Client\+Base@{edu\+::sjsu\+::amigo\+::db\+::common\+::mongodb\+::\+Mongo\+D\+B\+Client\+Base}}
+\subsubsection{\texorpdfstring{get\+Connect\+String()}{getConnectString()}}
+{\footnotesize\ttfamily String edu.\+sjsu.\+amigo.\+db.\+common.\+mongodb.\+Mongo\+D\+B\+Client\+Base.\+get\+Connect\+String (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Implements \hyperlink{interfaceedu_1_1sjsu_1_1amigo_1_1db_1_1common_1_1_d_b_client_ad69072c1ef72bd58d7f6ce71050c4c8f}{edu.\+sjsu.\+amigo.\+db.\+common.\+D\+B\+Client}.
+
+
+
+Definition at line 81 of file Mongo\+D\+B\+Client\+Base.\+java.
+
+\mbox{\Hypertarget{classedu_1_1sjsu_1_1amigo_1_1db_1_1common_1_1mongodb_1_1_mongo_d_b_client_base_ab0c99c600064e004c29f459b7dc86650}\label{classedu_1_1sjsu_1_1amigo_1_1db_1_1common_1_1mongodb_1_1_mongo_d_b_client_base_ab0c99c600064e004c29f459b7dc86650}} 
+\index{edu\+::sjsu\+::amigo\+::db\+::common\+::mongodb\+::\+Mongo\+D\+B\+Client\+Base@{edu\+::sjsu\+::amigo\+::db\+::common\+::mongodb\+::\+Mongo\+D\+B\+Client\+Base}!get\+Morphia@{get\+Morphia}}
+\index{get\+Morphia@{get\+Morphia}!edu\+::sjsu\+::amigo\+::db\+::common\+::mongodb\+::\+Mongo\+D\+B\+Client\+Base@{edu\+::sjsu\+::amigo\+::db\+::common\+::mongodb\+::\+Mongo\+D\+B\+Client\+Base}}
+\subsubsection{\texorpdfstring{get\+Morphia()}{getMorphia()}}
+{\footnotesize\ttfamily Morphia edu.\+sjsu.\+amigo.\+db.\+common.\+mongodb.\+Mongo\+D\+B\+Client\+Base.\+get\+Morphia (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Implements \hyperlink{interfaceedu_1_1sjsu_1_1amigo_1_1db_1_1common_1_1_d_b_client_a501198821f5a98b90ae7f13c3743e655}{edu.\+sjsu.\+amigo.\+db.\+common.\+D\+B\+Client}.
+
+
+
+Definition at line 87 of file Mongo\+D\+B\+Client\+Base.\+java.
+
+\mbox{\Hypertarget{classedu_1_1sjsu_1_1amigo_1_1db_1_1common_1_1mongodb_1_1_mongo_d_b_client_base_a8b92d5bc61c9813cbbabfa4b2ce5521e}\label{classedu_1_1sjsu_1_1amigo_1_1db_1_1common_1_1mongodb_1_1_mongo_d_b_client_base_a8b92d5bc61c9813cbbabfa4b2ce5521e}} 
+\index{edu\+::sjsu\+::amigo\+::db\+::common\+::mongodb\+::\+Mongo\+D\+B\+Client\+Base@{edu\+::sjsu\+::amigo\+::db\+::common\+::mongodb\+::\+Mongo\+D\+B\+Client\+Base}!to\+String@{to\+String}}
+\index{to\+String@{to\+String}!edu\+::sjsu\+::amigo\+::db\+::common\+::mongodb\+::\+Mongo\+D\+B\+Client\+Base@{edu\+::sjsu\+::amigo\+::db\+::common\+::mongodb\+::\+Mongo\+D\+B\+Client\+Base}}
+\subsubsection{\texorpdfstring{to\+String()}{toString()}}
+{\footnotesize\ttfamily String edu.\+sjsu.\+amigo.\+db.\+common.\+mongodb.\+Mongo\+D\+B\+Client\+Base.\+to\+String (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 100 of file Mongo\+D\+B\+Client\+Base.\+java.
+
+\mbox{\Hypertarget{classedu_1_1sjsu_1_1amigo_1_1db_1_1common_1_1mongodb_1_1_mongo_d_b_client_base_ae5ba446aa4f03a5846f3c9e59ff10cca}\label{classedu_1_1sjsu_1_1amigo_1_1db_1_1common_1_1mongodb_1_1_mongo_d_b_client_base_ae5ba446aa4f03a5846f3c9e59ff10cca}} 
+\index{edu\+::sjsu\+::amigo\+::db\+::common\+::mongodb\+::\+Mongo\+D\+B\+Client\+Base@{edu\+::sjsu\+::amigo\+::db\+::common\+::mongodb\+::\+Mongo\+D\+B\+Client\+Base}!use\+DB@{use\+DB}}
+\index{use\+DB@{use\+DB}!edu\+::sjsu\+::amigo\+::db\+::common\+::mongodb\+::\+Mongo\+D\+B\+Client\+Base@{edu\+::sjsu\+::amigo\+::db\+::common\+::mongodb\+::\+Mongo\+D\+B\+Client\+Base}}
+\subsubsection{\texorpdfstring{use\+D\+B()}{useDB()}}
+{\footnotesize\ttfamily void edu.\+sjsu.\+amigo.\+db.\+common.\+mongodb.\+Mongo\+D\+B\+Client\+Base.\+use\+DB (\begin{DoxyParamCaption}\item[{String}]{db\+Name }\end{DoxyParamCaption})}
+
+
+
+Implements \hyperlink{interfaceedu_1_1sjsu_1_1amigo_1_1db_1_1common_1_1_d_b_client_a0bc8dff41980a640f09af840f9a361e5}{edu.\+sjsu.\+amigo.\+db.\+common.\+D\+B\+Client}.
+
+
+
+Definition at line 65 of file Mongo\+D\+B\+Client\+Base.\+java.
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classedu_1_1sjsu_1_1amigo_1_1db_1_1common_1_1mongodb_1_1_mongo_d_b_client_base_a53368e64a0b78deaf8577c6fa9010cdb}\label{classedu_1_1sjsu_1_1amigo_1_1db_1_1common_1_1mongodb_1_1_mongo_d_b_client_base_a53368e64a0b78deaf8577c6fa9010cdb}} 
+\index{edu\+::sjsu\+::amigo\+::db\+::common\+::mongodb\+::\+Mongo\+D\+B\+Client\+Base@{edu\+::sjsu\+::amigo\+::db\+::common\+::mongodb\+::\+Mongo\+D\+B\+Client\+Base}!db\+Name@{db\+Name}}
+\index{db\+Name@{db\+Name}!edu\+::sjsu\+::amigo\+::db\+::common\+::mongodb\+::\+Mongo\+D\+B\+Client\+Base@{edu\+::sjsu\+::amigo\+::db\+::common\+::mongodb\+::\+Mongo\+D\+B\+Client\+Base}}
+\subsubsection{\texorpdfstring{db\+Name}{dbName}}
+{\footnotesize\ttfamily final String edu.\+sjsu.\+amigo.\+db.\+common.\+mongodb.\+Mongo\+D\+B\+Client\+Base.\+db\+Name\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line 32 of file Mongo\+D\+B\+Client\+Base.\+java.
+
+\mbox{\Hypertarget{classedu_1_1sjsu_1_1amigo_1_1db_1_1common_1_1mongodb_1_1_mongo_d_b_client_base_a8d080cec390fe2d50f8958151e2efadf}\label{classedu_1_1sjsu_1_1amigo_1_1db_1_1common_1_1mongodb_1_1_mongo_d_b_client_base_a8d080cec390fe2d50f8958151e2efadf}} 
+\index{edu\+::sjsu\+::amigo\+::db\+::common\+::mongodb\+::\+Mongo\+D\+B\+Client\+Base@{edu\+::sjsu\+::amigo\+::db\+::common\+::mongodb\+::\+Mongo\+D\+B\+Client\+Base}!mongo\+Client@{mongo\+Client}}
+\index{mongo\+Client@{mongo\+Client}!edu\+::sjsu\+::amigo\+::db\+::common\+::mongodb\+::\+Mongo\+D\+B\+Client\+Base@{edu\+::sjsu\+::amigo\+::db\+::common\+::mongodb\+::\+Mongo\+D\+B\+Client\+Base}}
+\subsubsection{\texorpdfstring{mongo\+Client}{mongoClient}}
+{\footnotesize\ttfamily Mongo\+Client edu.\+sjsu.\+amigo.\+db.\+common.\+mongodb.\+Mongo\+D\+B\+Client\+Base.\+mongo\+Client\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line 34 of file Mongo\+D\+B\+Client\+Base.\+java.
+
+\mbox{\Hypertarget{classedu_1_1sjsu_1_1amigo_1_1db_1_1common_1_1mongodb_1_1_mongo_d_b_client_base_a548c8dfccbd54f5bf84f35f793515025}\label{classedu_1_1sjsu_1_1amigo_1_1db_1_1common_1_1mongodb_1_1_mongo_d_b_client_base_a548c8dfccbd54f5bf84f35f793515025}} 
+\index{edu\+::sjsu\+::amigo\+::db\+::common\+::mongodb\+::\+Mongo\+D\+B\+Client\+Base@{edu\+::sjsu\+::amigo\+::db\+::common\+::mongodb\+::\+Mongo\+D\+B\+Client\+Base}!morphia@{morphia}}
+\index{morphia@{morphia}!edu\+::sjsu\+::amigo\+::db\+::common\+::mongodb\+::\+Mongo\+D\+B\+Client\+Base@{edu\+::sjsu\+::amigo\+::db\+::common\+::mongodb\+::\+Mongo\+D\+B\+Client\+Base}}
+\subsubsection{\texorpdfstring{morphia}{morphia}}
+{\footnotesize\ttfamily Morphia edu.\+sjsu.\+amigo.\+db.\+common.\+mongodb.\+Mongo\+D\+B\+Client\+Base.\+morphia = null\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line 33 of file Mongo\+D\+B\+Client\+Base.\+java.
+
+\mbox{\Hypertarget{classedu_1_1sjsu_1_1amigo_1_1db_1_1common_1_1mongodb_1_1_mongo_d_b_client_base_aa784c335d76963fc507593aca58e1b3a}\label{classedu_1_1sjsu_1_1amigo_1_1db_1_1common_1_1mongodb_1_1_mongo_d_b_client_base_aa784c335d76963fc507593aca58e1b3a}} 
+\index{edu\+::sjsu\+::amigo\+::db\+::common\+::mongodb\+::\+Mongo\+D\+B\+Client\+Base@{edu\+::sjsu\+::amigo\+::db\+::common\+::mongodb\+::\+Mongo\+D\+B\+Client\+Base}!morphia\+Datastore@{morphia\+Datastore}}
+\index{morphia\+Datastore@{morphia\+Datastore}!edu\+::sjsu\+::amigo\+::db\+::common\+::mongodb\+::\+Mongo\+D\+B\+Client\+Base@{edu\+::sjsu\+::amigo\+::db\+::common\+::mongodb\+::\+Mongo\+D\+B\+Client\+Base}}
+\subsubsection{\texorpdfstring{morphia\+Datastore}{morphiaDatastore}}
+{\footnotesize\ttfamily Datastore edu.\+sjsu.\+amigo.\+db.\+common.\+mongodb.\+Mongo\+D\+B\+Client\+Base.\+morphia\+Datastore\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line 35 of file Mongo\+D\+B\+Client\+Base.\+java.
+
+\mbox{\Hypertarget{classedu_1_1sjsu_1_1amigo_1_1db_1_1common_1_1mongodb_1_1_mongo_d_b_client_base_ae4ea19c2e926899224780fd86e6f2e64}\label{classedu_1_1sjsu_1_1amigo_1_1db_1_1common_1_1mongodb_1_1_mongo_d_b_client_base_ae4ea19c2e926899224780fd86e6f2e64}} 
+\index{edu\+::sjsu\+::amigo\+::db\+::common\+::mongodb\+::\+Mongo\+D\+B\+Client\+Base@{edu\+::sjsu\+::amigo\+::db\+::common\+::mongodb\+::\+Mongo\+D\+B\+Client\+Base}!port@{port}}
+\index{port@{port}!edu\+::sjsu\+::amigo\+::db\+::common\+::mongodb\+::\+Mongo\+D\+B\+Client\+Base@{edu\+::sjsu\+::amigo\+::db\+::common\+::mongodb\+::\+Mongo\+D\+B\+Client\+Base}}
+\subsubsection{\texorpdfstring{port}{port}}
+{\footnotesize\ttfamily final int edu.\+sjsu.\+amigo.\+db.\+common.\+mongodb.\+Mongo\+D\+B\+Client\+Base.\+port\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line 31 of file Mongo\+D\+B\+Client\+Base.\+java.
+
+\mbox{\Hypertarget{classedu_1_1sjsu_1_1amigo_1_1db_1_1common_1_1mongodb_1_1_mongo_d_b_client_base_acc3f5ff73b7e3ffe9af475a23c208119}\label{classedu_1_1sjsu_1_1amigo_1_1db_1_1common_1_1mongodb_1_1_mongo_d_b_client_base_acc3f5ff73b7e3ffe9af475a23c208119}} 
+\index{edu\+::sjsu\+::amigo\+::db\+::common\+::mongodb\+::\+Mongo\+D\+B\+Client\+Base@{edu\+::sjsu\+::amigo\+::db\+::common\+::mongodb\+::\+Mongo\+D\+B\+Client\+Base}!server@{server}}
+\index{server@{server}!edu\+::sjsu\+::amigo\+::db\+::common\+::mongodb\+::\+Mongo\+D\+B\+Client\+Base@{edu\+::sjsu\+::amigo\+::db\+::common\+::mongodb\+::\+Mongo\+D\+B\+Client\+Base}}
+\subsubsection{\texorpdfstring{server}{server}}
+{\footnotesize\ttfamily final String edu.\+sjsu.\+amigo.\+db.\+common.\+mongodb.\+Mongo\+D\+B\+Client\+Base.\+server\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line 30 of file Mongo\+D\+B\+Client\+Base.\+java.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+db-\/common/src/main/java/edu/sjsu/amigo/db/common/mongodb/\hyperlink{_mongo_d_b_client_base_8java}{Mongo\+D\+B\+Client\+Base.\+java}\end{DoxyCompactItemize}

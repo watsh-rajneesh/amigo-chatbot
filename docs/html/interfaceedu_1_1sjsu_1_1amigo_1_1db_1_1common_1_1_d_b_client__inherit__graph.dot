@@ -1,0 +1,12 @@
+digraph "edu.sjsu.amigo.db.common.DBClient"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node0 [label="edu.sjsu.amigo.db.common.\lDBClient",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node1 -> Node0 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node1 [label="AutoCloseable",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node0 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="edu.sjsu.amigo.db.common.mongodb.\lMongoDBClientBase",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classedu_1_1sjsu_1_1amigo_1_1db_1_1common_1_1mongodb_1_1_mongo_d_b_client_base.html"];
+  Node2 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="edu.sjsu.amigo.user.db.mongodb.\lMongoDBClient",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classedu_1_1sjsu_1_1amigo_1_1user_1_1db_1_1mongodb_1_1_mongo_d_b_client.html"];
+}

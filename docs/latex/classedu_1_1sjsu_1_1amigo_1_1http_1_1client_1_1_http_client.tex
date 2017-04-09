@@ -1,0 +1,250 @@
+\hypertarget{classedu_1_1sjsu_1_1amigo_1_1http_1_1client_1_1_http_client}{}\section{edu.\+sjsu.\+amigo.\+http.\+client.\+Http\+Client Class Reference}
+\label{classedu_1_1sjsu_1_1amigo_1_1http_1_1client_1_1_http_client}\index{edu.\+sjsu.\+amigo.\+http.\+client.\+Http\+Client@{edu.\+sjsu.\+amigo.\+http.\+client.\+Http\+Client}}
+Inheritance diagram for edu.\+sjsu.\+amigo.\+http.\+client.\+Http\+Client\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classedu_1_1sjsu_1_1amigo_1_1http_1_1client_1_1_http_client}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classedu_1_1sjsu_1_1amigo_1_1http_1_1client_1_1_http_client_a31a5f027d0d0e24715652481b4de3b5c}{Http\+Client} ()
+\item 
+\hyperlink{classedu_1_1sjsu_1_1amigo_1_1http_1_1client_1_1_http_client_ad32a0b638fbea3fb6c96f9b95a4f03f8}{Http\+Client} (String user, String passwd)
+\item 
+\hyperlink{classedu_1_1sjsu_1_1amigo_1_1http_1_1client_1_1_response}{Response}$<$ Object $>$ \hyperlink{classedu_1_1sjsu_1_1amigo_1_1http_1_1client_1_1_http_client_a0bfbdc02d793db5d3a85c9067533d47d}{post} (String url, Object body\+Object)  throws Http\+Client\+Exception 
+\item 
+\hyperlink{classedu_1_1sjsu_1_1amigo_1_1http_1_1client_1_1_response}{Response}$<$ Object $>$ \hyperlink{classedu_1_1sjsu_1_1amigo_1_1http_1_1client_1_1_http_client_a142b3fd468c2408083dade16b705dcd1}{post} (String url, Map$<$ String, String $>$ route\+Params\+Map, Map$<$ String, String $>$ query\+String\+Map, Map$<$ String, String $>$ headers\+Map, Object body\+Object)  throws Http\+Client\+Exception 
+\item 
+\hyperlink{classedu_1_1sjsu_1_1amigo_1_1http_1_1client_1_1_response}{Response}$<$ Object $>$ \hyperlink{classedu_1_1sjsu_1_1amigo_1_1http_1_1client_1_1_http_client_ac15f254786205f4289d1092be7be60b0}{put} (String url, Object body\+Object)  throws Http\+Client\+Exception 
+\item 
+\hyperlink{classedu_1_1sjsu_1_1amigo_1_1http_1_1client_1_1_response}{Response}$<$ Object $>$ \hyperlink{classedu_1_1sjsu_1_1amigo_1_1http_1_1client_1_1_http_client_a8978182148f2fdc3a391a3b674741973}{put} (String url, Map$<$ String, String $>$ route\+Params\+Map, Map$<$ String, String $>$ query\+String\+Map, Map$<$ String, String $>$ headers\+Map, Object body\+Object)  throws Http\+Client\+Exception 
+\item 
+\hyperlink{classedu_1_1sjsu_1_1amigo_1_1http_1_1client_1_1_response}{Response}$<$ Object $>$ \hyperlink{classedu_1_1sjsu_1_1amigo_1_1http_1_1client_1_1_http_client_abe7f89358f3414a949b1bc5390c34f06}{delete} (String url, Object body\+Object)  throws Http\+Client\+Exception 
+\item 
+\hyperlink{classedu_1_1sjsu_1_1amigo_1_1http_1_1client_1_1_response}{Response}$<$ Object $>$ \hyperlink{classedu_1_1sjsu_1_1amigo_1_1http_1_1client_1_1_http_client_a85083a4f63526cfbc0b4004b0ef4082e}{delete} (String url, Map$<$ String, String $>$ route\+Params\+Map, Map$<$ String, String $>$ query\+String\+Map, Map$<$ String, String $>$ headers\+Map, Object body\+Object)  throws Http\+Client\+Exception 
+\item 
+void \hyperlink{classedu_1_1sjsu_1_1amigo_1_1http_1_1client_1_1_http_client_a5807fb0dab40c227bb34ffc14e708294}{close} ()  throws Exception 
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static String \hyperlink{classedu_1_1sjsu_1_1amigo_1_1http_1_1client_1_1_http_client_ae5e31be5a3496bb9fa4b2c19c9835f4c}{get\+Intent\+From\+Wit\+AI} (String message)  throws Unirest\+Exception, Unsupported\+Encoding\+Exception 
+\item 
+static void \hyperlink{classedu_1_1sjsu_1_1amigo_1_1http_1_1client_1_1_http_client_acbee11c47575acbc6604fb1b0e2fd4c5}{main} (String\mbox{[}$\,$\mbox{]} args)  throws Unsupported\+Encoding\+Exception, Unirest\+Exception 
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Wrapper over http methods using unirest-\/java library.
+
+Below methods are synchronous.
+
+For asynch methods use the unirest-\/java library directly.
+
+\begin{DoxyAuthor}{Author}
+rwatsh on 2/27/17. 
+\end{DoxyAuthor}
+\begin{DoxySeeAlso}{See also}
+\char`\"{}http\+://unirest.\+io/java.\+html\char`\"{} 
+\end{DoxySeeAlso}
+
+
+Definition at line 42 of file Http\+Client.\+java.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classedu_1_1sjsu_1_1amigo_1_1http_1_1client_1_1_http_client_a31a5f027d0d0e24715652481b4de3b5c}\label{classedu_1_1sjsu_1_1amigo_1_1http_1_1client_1_1_http_client_a31a5f027d0d0e24715652481b4de3b5c}} 
+\index{edu\+::sjsu\+::amigo\+::http\+::client\+::\+Http\+Client@{edu\+::sjsu\+::amigo\+::http\+::client\+::\+Http\+Client}!Http\+Client@{Http\+Client}}
+\index{Http\+Client@{Http\+Client}!edu\+::sjsu\+::amigo\+::http\+::client\+::\+Http\+Client@{edu\+::sjsu\+::amigo\+::http\+::client\+::\+Http\+Client}}
+\subsubsection{\texorpdfstring{Http\+Client()}{HttpClient()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily edu.\+sjsu.\+amigo.\+http.\+client.\+Http\+Client.\+Http\+Client (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Create a http client with no auth (user anonymous). 
+
+Definition at line 51 of file Http\+Client.\+java.
+
+\mbox{\Hypertarget{classedu_1_1sjsu_1_1amigo_1_1http_1_1client_1_1_http_client_ad32a0b638fbea3fb6c96f9b95a4f03f8}\label{classedu_1_1sjsu_1_1amigo_1_1http_1_1client_1_1_http_client_ad32a0b638fbea3fb6c96f9b95a4f03f8}} 
+\index{edu\+::sjsu\+::amigo\+::http\+::client\+::\+Http\+Client@{edu\+::sjsu\+::amigo\+::http\+::client\+::\+Http\+Client}!Http\+Client@{Http\+Client}}
+\index{Http\+Client@{Http\+Client}!edu\+::sjsu\+::amigo\+::http\+::client\+::\+Http\+Client@{edu\+::sjsu\+::amigo\+::http\+::client\+::\+Http\+Client}}
+\subsubsection{\texorpdfstring{Http\+Client()}{HttpClient()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily edu.\+sjsu.\+amigo.\+http.\+client.\+Http\+Client.\+Http\+Client (\begin{DoxyParamCaption}\item[{String}]{user,  }\item[{String}]{passwd }\end{DoxyParamCaption})}
+
+Create a http client with basic auth.
+
+
+\begin{DoxyParams}{Parameters}
+{\em user} & \\
+\hline
+{\em passwd} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 61 of file Http\+Client.\+java.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classedu_1_1sjsu_1_1amigo_1_1http_1_1client_1_1_http_client_a5807fb0dab40c227bb34ffc14e708294}\label{classedu_1_1sjsu_1_1amigo_1_1http_1_1client_1_1_http_client_a5807fb0dab40c227bb34ffc14e708294}} 
+\index{edu\+::sjsu\+::amigo\+::http\+::client\+::\+Http\+Client@{edu\+::sjsu\+::amigo\+::http\+::client\+::\+Http\+Client}!close@{close}}
+\index{close@{close}!edu\+::sjsu\+::amigo\+::http\+::client\+::\+Http\+Client@{edu\+::sjsu\+::amigo\+::http\+::client\+::\+Http\+Client}}
+\subsubsection{\texorpdfstring{close()}{close()}}
+{\footnotesize\ttfamily void edu.\+sjsu.\+amigo.\+http.\+client.\+Http\+Client.\+close (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) throws Exception}
+
+Closes this resource, relinquishing any underlying resources. This method is invoked automatically on objects managed by the 
+\begin{DoxyCode}
+\textcolor{keywordflow}{try} 
+\end{DoxyCode}
+ -\/with-\/resources statement. 
+
+While this interface method is declared to throw
+\begin{DoxyCode}
+Exception 
+\end{DoxyCode}
+ , implementers are {\itshape strongly} encouraged to declare concrete implementations of the
+\begin{DoxyCode}
+\hyperlink{classedu_1_1sjsu_1_1amigo_1_1http_1_1client_1_1_http_client_a5807fb0dab40c227bb34ffc14e708294}{close} 
+\end{DoxyCode}
+ method to throw more specific exceptions, or to throw no exception at all if the close operation cannot fail. 
+
+Cases where the close operation may fail require careful attention by implementers. It is strongly advised to relinquish the underlying resources and to internally {\itshape mark} the resource as closed, prior to throwing the exception. The
+\begin{DoxyCode}
+\hyperlink{classedu_1_1sjsu_1_1amigo_1_1http_1_1client_1_1_http_client_a5807fb0dab40c227bb34ffc14e708294}{close} 
+\end{DoxyCode}
+ method is unlikely to be invoked more than once and so this ensures that the resources are released in a timely manner. Furthermore it reduces problems that could arise when the resource wraps, or is wrapped, by another resource. 
+
+{\itshape Implementers of this interface are also strongly advised to not have the
+\begin{DoxyCode}
+\hyperlink{classedu_1_1sjsu_1_1amigo_1_1http_1_1client_1_1_http_client_a5807fb0dab40c227bb34ffc14e708294}{close} 
+\end{DoxyCode}
+ method throw \hyperlink{}{Interrupted\+Exception}.} 
+
+This exception interacts with a thread\textquotesingle{}s interrupted status, and runtime misbehavior is likely to occur if an
+\begin{DoxyCode}
+InterruptedException 
+\end{DoxyCode}
+ is  Throwable\+::add\+Suppressed suppressed\}. 
+
+More generally, if it would cause problems for an exception to be suppressed, the
+\begin{DoxyCode}
+AutoCloseable.close 
+\end{DoxyCode}
+ method should not throw it. 
+
+Note that unlike the \hyperlink{}{close} method of \hyperlink{}{Closeable}, this
+\begin{DoxyCode}
+\hyperlink{classedu_1_1sjsu_1_1amigo_1_1http_1_1client_1_1_http_client_a5807fb0dab40c227bb34ffc14e708294}{close} 
+\end{DoxyCode}
+ method is {\itshape not} required to be idempotent. In other words, calling this
+\begin{DoxyCode}
+\hyperlink{classedu_1_1sjsu_1_1amigo_1_1http_1_1client_1_1_http_client_a5807fb0dab40c227bb34ffc14e708294}{close} 
+\end{DoxyCode}
+ method more than once may have some visible side effect, unlike
+\begin{DoxyCode}
+Closeable.close 
+\end{DoxyCode}
+ which is required to have no effect if called more than once. 
+
+However, implementers of this interface are strongly encouraged to make their
+\begin{DoxyCode}
+\hyperlink{classedu_1_1sjsu_1_1amigo_1_1http_1_1client_1_1_http_client_a5807fb0dab40c227bb34ffc14e708294}{close} 
+\end{DoxyCode}
+ methods idempotent.
+
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Exception} & if this resource cannot be closed \\
+\hline
+\end{DoxyExceptions}
+
+
+Definition at line 320 of file Http\+Client.\+java.
+
+\mbox{\Hypertarget{classedu_1_1sjsu_1_1amigo_1_1http_1_1client_1_1_http_client_abe7f89358f3414a949b1bc5390c34f06}\label{classedu_1_1sjsu_1_1amigo_1_1http_1_1client_1_1_http_client_abe7f89358f3414a949b1bc5390c34f06}} 
+\index{edu\+::sjsu\+::amigo\+::http\+::client\+::\+Http\+Client@{edu\+::sjsu\+::amigo\+::http\+::client\+::\+Http\+Client}!delete@{delete}}
+\index{delete@{delete}!edu\+::sjsu\+::amigo\+::http\+::client\+::\+Http\+Client@{edu\+::sjsu\+::amigo\+::http\+::client\+::\+Http\+Client}}
+\subsubsection{\texorpdfstring{delete()}{delete()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \hyperlink{classedu_1_1sjsu_1_1amigo_1_1http_1_1client_1_1_response}{Response}$<$Object$>$ edu.\+sjsu.\+amigo.\+http.\+client.\+Http\+Client.\+delete (\begin{DoxyParamCaption}\item[{String}]{url,  }\item[{Object}]{body\+Object }\end{DoxyParamCaption}) throws \hyperlink{classedu_1_1sjsu_1_1amigo_1_1http_1_1client_1_1_http_client_exception}{Http\+Client\+Exception}}
+
+
+
+Definition at line 146 of file Http\+Client.\+java.
+
+\mbox{\Hypertarget{classedu_1_1sjsu_1_1amigo_1_1http_1_1client_1_1_http_client_a85083a4f63526cfbc0b4004b0ef4082e}\label{classedu_1_1sjsu_1_1amigo_1_1http_1_1client_1_1_http_client_a85083a4f63526cfbc0b4004b0ef4082e}} 
+\index{edu\+::sjsu\+::amigo\+::http\+::client\+::\+Http\+Client@{edu\+::sjsu\+::amigo\+::http\+::client\+::\+Http\+Client}!delete@{delete}}
+\index{delete@{delete}!edu\+::sjsu\+::amigo\+::http\+::client\+::\+Http\+Client@{edu\+::sjsu\+::amigo\+::http\+::client\+::\+Http\+Client}}
+\subsubsection{\texorpdfstring{delete()}{delete()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \hyperlink{classedu_1_1sjsu_1_1amigo_1_1http_1_1client_1_1_response}{Response}$<$Object$>$ edu.\+sjsu.\+amigo.\+http.\+client.\+Http\+Client.\+delete (\begin{DoxyParamCaption}\item[{String}]{url,  }\item[{Map$<$ String, String $>$}]{route\+Params\+Map,  }\item[{Map$<$ String, String $>$}]{query\+String\+Map,  }\item[{Map$<$ String, String $>$}]{headers\+Map,  }\item[{Object}]{body\+Object }\end{DoxyParamCaption}) throws \hyperlink{classedu_1_1sjsu_1_1amigo_1_1http_1_1client_1_1_http_client_exception}{Http\+Client\+Exception}}
+
+
+
+Definition at line 150 of file Http\+Client.\+java.
+
+\mbox{\Hypertarget{classedu_1_1sjsu_1_1amigo_1_1http_1_1client_1_1_http_client_ae5e31be5a3496bb9fa4b2c19c9835f4c}\label{classedu_1_1sjsu_1_1amigo_1_1http_1_1client_1_1_http_client_ae5e31be5a3496bb9fa4b2c19c9835f4c}} 
+\index{edu\+::sjsu\+::amigo\+::http\+::client\+::\+Http\+Client@{edu\+::sjsu\+::amigo\+::http\+::client\+::\+Http\+Client}!get\+Intent\+From\+Wit\+AI@{get\+Intent\+From\+Wit\+AI}}
+\index{get\+Intent\+From\+Wit\+AI@{get\+Intent\+From\+Wit\+AI}!edu\+::sjsu\+::amigo\+::http\+::client\+::\+Http\+Client@{edu\+::sjsu\+::amigo\+::http\+::client\+::\+Http\+Client}}
+\subsubsection{\texorpdfstring{get\+Intent\+From\+Wit\+A\+I()}{getIntentFromWitAI()}}
+{\footnotesize\ttfamily static String edu.\+sjsu.\+amigo.\+http.\+client.\+Http\+Client.\+get\+Intent\+From\+Wit\+AI (\begin{DoxyParamCaption}\item[{String}]{message }\end{DoxyParamCaption}) throws Unirest\+Exception, Unsupported\+Encoding\+Exception\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line 265 of file Http\+Client.\+java.
+
+\mbox{\Hypertarget{classedu_1_1sjsu_1_1amigo_1_1http_1_1client_1_1_http_client_acbee11c47575acbc6604fb1b0e2fd4c5}\label{classedu_1_1sjsu_1_1amigo_1_1http_1_1client_1_1_http_client_acbee11c47575acbc6604fb1b0e2fd4c5}} 
+\index{edu\+::sjsu\+::amigo\+::http\+::client\+::\+Http\+Client@{edu\+::sjsu\+::amigo\+::http\+::client\+::\+Http\+Client}!main@{main}}
+\index{main@{main}!edu\+::sjsu\+::amigo\+::http\+::client\+::\+Http\+Client@{edu\+::sjsu\+::amigo\+::http\+::client\+::\+Http\+Client}}
+\subsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily static void edu.\+sjsu.\+amigo.\+http.\+client.\+Http\+Client.\+main (\begin{DoxyParamCaption}\item[{String \mbox{[}$\,$\mbox{]}}]{args }\end{DoxyParamCaption}) throws Unsupported\+Encoding\+Exception, Unirest\+Exception\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line 324 of file Http\+Client.\+java.
+
+\mbox{\Hypertarget{classedu_1_1sjsu_1_1amigo_1_1http_1_1client_1_1_http_client_a0bfbdc02d793db5d3a85c9067533d47d}\label{classedu_1_1sjsu_1_1amigo_1_1http_1_1client_1_1_http_client_a0bfbdc02d793db5d3a85c9067533d47d}} 
+\index{edu\+::sjsu\+::amigo\+::http\+::client\+::\+Http\+Client@{edu\+::sjsu\+::amigo\+::http\+::client\+::\+Http\+Client}!post@{post}}
+\index{post@{post}!edu\+::sjsu\+::amigo\+::http\+::client\+::\+Http\+Client@{edu\+::sjsu\+::amigo\+::http\+::client\+::\+Http\+Client}}
+\subsubsection{\texorpdfstring{post()}{post()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \hyperlink{classedu_1_1sjsu_1_1amigo_1_1http_1_1client_1_1_response}{Response}$<$Object$>$ edu.\+sjsu.\+amigo.\+http.\+client.\+Http\+Client.\+post (\begin{DoxyParamCaption}\item[{String}]{url,  }\item[{Object}]{body\+Object }\end{DoxyParamCaption}) throws \hyperlink{classedu_1_1sjsu_1_1amigo_1_1http_1_1client_1_1_http_client_exception}{Http\+Client\+Exception}}
+
+
+
+Definition at line 120 of file Http\+Client.\+java.
+
+\mbox{\Hypertarget{classedu_1_1sjsu_1_1amigo_1_1http_1_1client_1_1_http_client_a142b3fd468c2408083dade16b705dcd1}\label{classedu_1_1sjsu_1_1amigo_1_1http_1_1client_1_1_http_client_a142b3fd468c2408083dade16b705dcd1}} 
+\index{edu\+::sjsu\+::amigo\+::http\+::client\+::\+Http\+Client@{edu\+::sjsu\+::amigo\+::http\+::client\+::\+Http\+Client}!post@{post}}
+\index{post@{post}!edu\+::sjsu\+::amigo\+::http\+::client\+::\+Http\+Client@{edu\+::sjsu\+::amigo\+::http\+::client\+::\+Http\+Client}}
+\subsubsection{\texorpdfstring{post()}{post()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \hyperlink{classedu_1_1sjsu_1_1amigo_1_1http_1_1client_1_1_response}{Response}$<$Object$>$ edu.\+sjsu.\+amigo.\+http.\+client.\+Http\+Client.\+post (\begin{DoxyParamCaption}\item[{String}]{url,  }\item[{Map$<$ String, String $>$}]{route\+Params\+Map,  }\item[{Map$<$ String, String $>$}]{query\+String\+Map,  }\item[{Map$<$ String, String $>$}]{headers\+Map,  }\item[{Object}]{body\+Object }\end{DoxyParamCaption}) throws \hyperlink{classedu_1_1sjsu_1_1amigo_1_1http_1_1client_1_1_http_client_exception}{Http\+Client\+Exception}}
+
+
+
+Definition at line 124 of file Http\+Client.\+java.
+
+\mbox{\Hypertarget{classedu_1_1sjsu_1_1amigo_1_1http_1_1client_1_1_http_client_ac15f254786205f4289d1092be7be60b0}\label{classedu_1_1sjsu_1_1amigo_1_1http_1_1client_1_1_http_client_ac15f254786205f4289d1092be7be60b0}} 
+\index{edu\+::sjsu\+::amigo\+::http\+::client\+::\+Http\+Client@{edu\+::sjsu\+::amigo\+::http\+::client\+::\+Http\+Client}!put@{put}}
+\index{put@{put}!edu\+::sjsu\+::amigo\+::http\+::client\+::\+Http\+Client@{edu\+::sjsu\+::amigo\+::http\+::client\+::\+Http\+Client}}
+\subsubsection{\texorpdfstring{put()}{put()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \hyperlink{classedu_1_1sjsu_1_1amigo_1_1http_1_1client_1_1_response}{Response}$<$Object$>$ edu.\+sjsu.\+amigo.\+http.\+client.\+Http\+Client.\+put (\begin{DoxyParamCaption}\item[{String}]{url,  }\item[{Object}]{body\+Object }\end{DoxyParamCaption}) throws \hyperlink{classedu_1_1sjsu_1_1amigo_1_1http_1_1client_1_1_http_client_exception}{Http\+Client\+Exception}}
+
+
+
+Definition at line 133 of file Http\+Client.\+java.
+
+\mbox{\Hypertarget{classedu_1_1sjsu_1_1amigo_1_1http_1_1client_1_1_http_client_a8978182148f2fdc3a391a3b674741973}\label{classedu_1_1sjsu_1_1amigo_1_1http_1_1client_1_1_http_client_a8978182148f2fdc3a391a3b674741973}} 
+\index{edu\+::sjsu\+::amigo\+::http\+::client\+::\+Http\+Client@{edu\+::sjsu\+::amigo\+::http\+::client\+::\+Http\+Client}!put@{put}}
+\index{put@{put}!edu\+::sjsu\+::amigo\+::http\+::client\+::\+Http\+Client@{edu\+::sjsu\+::amigo\+::http\+::client\+::\+Http\+Client}}
+\subsubsection{\texorpdfstring{put()}{put()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \hyperlink{classedu_1_1sjsu_1_1amigo_1_1http_1_1client_1_1_response}{Response}$<$Object$>$ edu.\+sjsu.\+amigo.\+http.\+client.\+Http\+Client.\+put (\begin{DoxyParamCaption}\item[{String}]{url,  }\item[{Map$<$ String, String $>$}]{route\+Params\+Map,  }\item[{Map$<$ String, String $>$}]{query\+String\+Map,  }\item[{Map$<$ String, String $>$}]{headers\+Map,  }\item[{Object}]{body\+Object }\end{DoxyParamCaption}) throws \hyperlink{classedu_1_1sjsu_1_1amigo_1_1http_1_1client_1_1_http_client_exception}{Http\+Client\+Exception}}
+
+
+
+Definition at line 137 of file Http\+Client.\+java.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+httpclient-\/common/src/main/java/edu/sjsu/amigo/http/client/\hyperlink{_http_client_8java}{Http\+Client.\+java}\end{DoxyCompactItemize}

@@ -1,0 +1,9 @@
+This microservice handles\+:
+\begin{DoxyEnumerate}
+\item new user signup
+\item login
+\item user session
+\item session expiration
+\end{DoxyEnumerate}
+
+A\+PI gateway will use this service for each incoming request to validate if the user has a valid session. Mongo\+DB will be used to persist the user data. 

@@ -24,6 +24,7 @@ import edu.sjsu.amigo.db.common.DBFactory;
 import edu.sjsu.amigo.user.db.DatabaseModule;
 import io.dropwizard.lifecycle.Managed;
 import io.dropwizard.setup.Environment;
+import lombok.extern.java.Log;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.validation.constraints.Max;
@@ -32,6 +33,7 @@ import javax.validation.constraints.Min;
 /**
  * @author rwatsh on 3/26/17.
  */
+@Log
 public class DBConfig {
     @Inject
     DBFactory dbFactory;
@@ -98,5 +100,6 @@ public class DBConfig {
         Module module = new DatabaseModule();
         Guice.createInjector(module).injectMembers(this);
         dbClient = dbFactory.create(server, port, dbName);
+        log.info("Connected to db");
     }
 }

@@ -1,0 +1,151 @@
+\hypertarget{classedu_1_1sjsu_1_1amigo_1_1db_1_1common_1_1mongodb_1_1_base_d_a_o_impl}{}\section{edu.\+sjsu.\+amigo.\+db.\+common.\+mongodb.\+Base\+D\+A\+O\+Impl$<$ T $>$ Class Template Reference}
+\label{classedu_1_1sjsu_1_1amigo_1_1db_1_1common_1_1mongodb_1_1_base_d_a_o_impl}\index{edu.\+sjsu.\+amigo.\+db.\+common.\+mongodb.\+Base\+D\+A\+O\+Impl$<$ T $>$@{edu.\+sjsu.\+amigo.\+db.\+common.\+mongodb.\+Base\+D\+A\+O\+Impl$<$ T $>$}}
+Inheritance diagram for edu.\+sjsu.\+amigo.\+db.\+common.\+mongodb.\+Base\+D\+A\+O\+Impl$<$ T $>$\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.470588cm]{classedu_1_1sjsu_1_1amigo_1_1db_1_1common_1_1mongodb_1_1_base_d_a_o_impl}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+synchronized List$<$ String $>$ \hyperlink{classedu_1_1sjsu_1_1amigo_1_1db_1_1common_1_1mongodb_1_1_base_d_a_o_impl_aa9f9296750acb9a6f356163e35157837}{add} (List$<$ T $>$ entity\+List)  throws D\+B\+Exception 
+\item 
+synchronized void \hyperlink{classedu_1_1sjsu_1_1amigo_1_1db_1_1common_1_1mongodb_1_1_base_d_a_o_impl_af9d483046160700cea18a20a7817cd3a}{add\+Or\+Update} (T entity, String id)  throws D\+B\+Exception 
+\item 
+synchronized long \hyperlink{classedu_1_1sjsu_1_1amigo_1_1db_1_1common_1_1mongodb_1_1_base_d_a_o_impl_ac8ca9075d687d809293f54749f92c7e9}{remove} (List$<$ String $>$ entity\+Ids\+List)  throws D\+B\+Exception 
+\item 
+synchronized List$<$ T $>$ \hyperlink{classedu_1_1sjsu_1_1amigo_1_1db_1_1common_1_1mongodb_1_1_base_d_a_o_impl_a0f44ed7ba8e92fa387be39194177e4cf}{fetch\+By\+Id} (List$<$ String $>$ entity\+Ids\+List)  throws D\+B\+Exception 
+\item 
+synchronized List$<$ T $>$ \hyperlink{classedu_1_1sjsu_1_1amigo_1_1db_1_1common_1_1mongodb_1_1_base_d_a_o_impl_a81fcb51cfb42fd2417df430a5a0eff8f}{fetch} (String query, Class$<$ T $>$ clazz)  throws D\+B\+Exception 
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classedu_1_1sjsu_1_1amigo_1_1db_1_1common_1_1mongodb_1_1_base_d_a_o_impl_ac3c22183bcb1b8c048b9fc741b189ed3}{Base\+D\+A\+O\+Impl} (Mongo\+Client mongo\+Client, Morphia \hyperlink{classedu_1_1sjsu_1_1amigo_1_1db_1_1common_1_1mongodb_1_1_base_d_a_o_impl_ac405c66365add92a549f7c386248fca4}{morphia}, String db\+Name)
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Morphia \hyperlink{classedu_1_1sjsu_1_1amigo_1_1db_1_1common_1_1mongodb_1_1_base_d_a_o_impl_ac405c66365add92a549f7c386248fca4}{morphia}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Generic D\+AO implementation for all mongo\+DB entities.
+
+Implements all methods except \hyperlink{interfaceedu_1_1sjsu_1_1amigo_1_1db_1_1common_1_1_base_d_a_o_a8204c75fed7b773eafba11a6a7d9d689}{update()} that needs to be implemented for each entity in its D\+AO class.
+
+T\+O\+DO make \hyperlink{interfaceedu_1_1sjsu_1_1amigo_1_1db_1_1common_1_1_base_d_a_o_a8204c75fed7b773eafba11a6a7d9d689}{update()} method generic too.
+
+\begin{DoxyAuthor}{Author}
+rwatsh on 3/27/17. 
+\end{DoxyAuthor}
+
+
+Definition at line 42 of file Base\+D\+A\+O\+Impl.\+java.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classedu_1_1sjsu_1_1amigo_1_1db_1_1common_1_1mongodb_1_1_base_d_a_o_impl_ac3c22183bcb1b8c048b9fc741b189ed3}\label{classedu_1_1sjsu_1_1amigo_1_1db_1_1common_1_1mongodb_1_1_base_d_a_o_impl_ac3c22183bcb1b8c048b9fc741b189ed3}} 
+\index{edu\+::sjsu\+::amigo\+::db\+::common\+::mongodb\+::\+Base\+D\+A\+O\+Impl@{edu\+::sjsu\+::amigo\+::db\+::common\+::mongodb\+::\+Base\+D\+A\+O\+Impl}!Base\+D\+A\+O\+Impl@{Base\+D\+A\+O\+Impl}}
+\index{Base\+D\+A\+O\+Impl@{Base\+D\+A\+O\+Impl}!edu\+::sjsu\+::amigo\+::db\+::common\+::mongodb\+::\+Base\+D\+A\+O\+Impl@{edu\+::sjsu\+::amigo\+::db\+::common\+::mongodb\+::\+Base\+D\+A\+O\+Impl}}
+\subsubsection{\texorpdfstring{Base\+D\+A\+O\+Impl()}{BaseDAOImpl()}}
+{\footnotesize\ttfamily \hyperlink{classedu_1_1sjsu_1_1amigo_1_1db_1_1common_1_1mongodb_1_1_base_d_a_o_impl}{edu.\+sjsu.\+amigo.\+db.\+common.\+mongodb.\+Base\+D\+A\+O\+Impl}$<$ T $>$.\hyperlink{classedu_1_1sjsu_1_1amigo_1_1db_1_1common_1_1mongodb_1_1_base_d_a_o_impl}{Base\+D\+A\+O\+Impl} (\begin{DoxyParamCaption}\item[{Mongo\+Client}]{mongo\+Client,  }\item[{Morphia}]{morphia,  }\item[{String}]{db\+Name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line 44 of file Base\+D\+A\+O\+Impl.\+java.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classedu_1_1sjsu_1_1amigo_1_1db_1_1common_1_1mongodb_1_1_base_d_a_o_impl_aa9f9296750acb9a6f356163e35157837}\label{classedu_1_1sjsu_1_1amigo_1_1db_1_1common_1_1mongodb_1_1_base_d_a_o_impl_aa9f9296750acb9a6f356163e35157837}} 
+\index{edu\+::sjsu\+::amigo\+::db\+::common\+::mongodb\+::\+Base\+D\+A\+O\+Impl@{edu\+::sjsu\+::amigo\+::db\+::common\+::mongodb\+::\+Base\+D\+A\+O\+Impl}!add@{add}}
+\index{add@{add}!edu\+::sjsu\+::amigo\+::db\+::common\+::mongodb\+::\+Base\+D\+A\+O\+Impl@{edu\+::sjsu\+::amigo\+::db\+::common\+::mongodb\+::\+Base\+D\+A\+O\+Impl}}
+\subsubsection{\texorpdfstring{add()}{add()}}
+{\footnotesize\ttfamily synchronized List$<$String$>$ \hyperlink{classedu_1_1sjsu_1_1amigo_1_1db_1_1common_1_1mongodb_1_1_base_d_a_o_impl}{edu.\+sjsu.\+amigo.\+db.\+common.\+mongodb.\+Base\+D\+A\+O\+Impl}$<$ T $>$.add (\begin{DoxyParamCaption}\item[{List$<$ T $>$}]{entity\+List }\end{DoxyParamCaption}) throws \hyperlink{classedu_1_1sjsu_1_1amigo_1_1db_1_1common_1_1_d_b_exception}{D\+B\+Exception}}
+
+
+
+Implements \hyperlink{interfaceedu_1_1sjsu_1_1amigo_1_1db_1_1common_1_1_base_d_a_o_abee308a0e83d8e5a42f202dfc195d72c}{edu.\+sjsu.\+amigo.\+db.\+common.\+Base\+D\+A\+O$<$ T $>$}.
+
+
+
+Definition at line 50 of file Base\+D\+A\+O\+Impl.\+java.
+
+\mbox{\Hypertarget{classedu_1_1sjsu_1_1amigo_1_1db_1_1common_1_1mongodb_1_1_base_d_a_o_impl_af9d483046160700cea18a20a7817cd3a}\label{classedu_1_1sjsu_1_1amigo_1_1db_1_1common_1_1mongodb_1_1_base_d_a_o_impl_af9d483046160700cea18a20a7817cd3a}} 
+\index{edu\+::sjsu\+::amigo\+::db\+::common\+::mongodb\+::\+Base\+D\+A\+O\+Impl@{edu\+::sjsu\+::amigo\+::db\+::common\+::mongodb\+::\+Base\+D\+A\+O\+Impl}!add\+Or\+Update@{add\+Or\+Update}}
+\index{add\+Or\+Update@{add\+Or\+Update}!edu\+::sjsu\+::amigo\+::db\+::common\+::mongodb\+::\+Base\+D\+A\+O\+Impl@{edu\+::sjsu\+::amigo\+::db\+::common\+::mongodb\+::\+Base\+D\+A\+O\+Impl}}
+\subsubsection{\texorpdfstring{add\+Or\+Update()}{addOrUpdate()}}
+{\footnotesize\ttfamily synchronized void \hyperlink{classedu_1_1sjsu_1_1amigo_1_1db_1_1common_1_1mongodb_1_1_base_d_a_o_impl}{edu.\+sjsu.\+amigo.\+db.\+common.\+mongodb.\+Base\+D\+A\+O\+Impl}$<$ T $>$.add\+Or\+Update (\begin{DoxyParamCaption}\item[{T}]{entity,  }\item[{String}]{id }\end{DoxyParamCaption}) throws \hyperlink{classedu_1_1sjsu_1_1amigo_1_1db_1_1common_1_1_d_b_exception}{D\+B\+Exception}}
+
+
+
+Implements \hyperlink{interfaceedu_1_1sjsu_1_1amigo_1_1db_1_1common_1_1_base_d_a_o_a73dbf1e946ba180be688bc14d69cff88}{edu.\+sjsu.\+amigo.\+db.\+common.\+Base\+D\+A\+O$<$ T $>$}.
+
+
+
+Definition at line 65 of file Base\+D\+A\+O\+Impl.\+java.
+
+\mbox{\Hypertarget{classedu_1_1sjsu_1_1amigo_1_1db_1_1common_1_1mongodb_1_1_base_d_a_o_impl_a81fcb51cfb42fd2417df430a5a0eff8f}\label{classedu_1_1sjsu_1_1amigo_1_1db_1_1common_1_1mongodb_1_1_base_d_a_o_impl_a81fcb51cfb42fd2417df430a5a0eff8f}} 
+\index{edu\+::sjsu\+::amigo\+::db\+::common\+::mongodb\+::\+Base\+D\+A\+O\+Impl@{edu\+::sjsu\+::amigo\+::db\+::common\+::mongodb\+::\+Base\+D\+A\+O\+Impl}!fetch@{fetch}}
+\index{fetch@{fetch}!edu\+::sjsu\+::amigo\+::db\+::common\+::mongodb\+::\+Base\+D\+A\+O\+Impl@{edu\+::sjsu\+::amigo\+::db\+::common\+::mongodb\+::\+Base\+D\+A\+O\+Impl}}
+\subsubsection{\texorpdfstring{fetch()}{fetch()}}
+{\footnotesize\ttfamily synchronized List$<$T$>$ \hyperlink{classedu_1_1sjsu_1_1amigo_1_1db_1_1common_1_1mongodb_1_1_base_d_a_o_impl}{edu.\+sjsu.\+amigo.\+db.\+common.\+mongodb.\+Base\+D\+A\+O\+Impl}$<$ T $>$.fetch (\begin{DoxyParamCaption}\item[{String}]{query,  }\item[{Class$<$ T $>$}]{clazz }\end{DoxyParamCaption}) throws \hyperlink{classedu_1_1sjsu_1_1amigo_1_1db_1_1common_1_1_d_b_exception}{D\+B\+Exception}}
+
+
+
+Implements \hyperlink{interfaceedu_1_1sjsu_1_1amigo_1_1db_1_1common_1_1_base_d_a_o_acae47af1542a0d62e801ef3a458876e0}{edu.\+sjsu.\+amigo.\+db.\+common.\+Base\+D\+A\+O$<$ T $>$}.
+
+
+
+Definition at line 107 of file Base\+D\+A\+O\+Impl.\+java.
+
+\mbox{\Hypertarget{classedu_1_1sjsu_1_1amigo_1_1db_1_1common_1_1mongodb_1_1_base_d_a_o_impl_a0f44ed7ba8e92fa387be39194177e4cf}\label{classedu_1_1sjsu_1_1amigo_1_1db_1_1common_1_1mongodb_1_1_base_d_a_o_impl_a0f44ed7ba8e92fa387be39194177e4cf}} 
+\index{edu\+::sjsu\+::amigo\+::db\+::common\+::mongodb\+::\+Base\+D\+A\+O\+Impl@{edu\+::sjsu\+::amigo\+::db\+::common\+::mongodb\+::\+Base\+D\+A\+O\+Impl}!fetch\+By\+Id@{fetch\+By\+Id}}
+\index{fetch\+By\+Id@{fetch\+By\+Id}!edu\+::sjsu\+::amigo\+::db\+::common\+::mongodb\+::\+Base\+D\+A\+O\+Impl@{edu\+::sjsu\+::amigo\+::db\+::common\+::mongodb\+::\+Base\+D\+A\+O\+Impl}}
+\subsubsection{\texorpdfstring{fetch\+By\+Id()}{fetchById()}}
+{\footnotesize\ttfamily synchronized List$<$T$>$ \hyperlink{classedu_1_1sjsu_1_1amigo_1_1db_1_1common_1_1mongodb_1_1_base_d_a_o_impl}{edu.\+sjsu.\+amigo.\+db.\+common.\+mongodb.\+Base\+D\+A\+O\+Impl}$<$ T $>$.fetch\+By\+Id (\begin{DoxyParamCaption}\item[{List$<$ String $>$}]{entity\+Ids\+List }\end{DoxyParamCaption}) throws \hyperlink{classedu_1_1sjsu_1_1amigo_1_1db_1_1common_1_1_d_b_exception}{D\+B\+Exception}}
+
+
+
+Implements \hyperlink{interfaceedu_1_1sjsu_1_1amigo_1_1db_1_1common_1_1_base_d_a_o_a37db1a13eee71618f11b7e07d3b13ac4}{edu.\+sjsu.\+amigo.\+db.\+common.\+Base\+D\+A\+O$<$ T $>$}.
+
+
+
+Definition at line 87 of file Base\+D\+A\+O\+Impl.\+java.
+
+\mbox{\Hypertarget{classedu_1_1sjsu_1_1amigo_1_1db_1_1common_1_1mongodb_1_1_base_d_a_o_impl_ac8ca9075d687d809293f54749f92c7e9}\label{classedu_1_1sjsu_1_1amigo_1_1db_1_1common_1_1mongodb_1_1_base_d_a_o_impl_ac8ca9075d687d809293f54749f92c7e9}} 
+\index{edu\+::sjsu\+::amigo\+::db\+::common\+::mongodb\+::\+Base\+D\+A\+O\+Impl@{edu\+::sjsu\+::amigo\+::db\+::common\+::mongodb\+::\+Base\+D\+A\+O\+Impl}!remove@{remove}}
+\index{remove@{remove}!edu\+::sjsu\+::amigo\+::db\+::common\+::mongodb\+::\+Base\+D\+A\+O\+Impl@{edu\+::sjsu\+::amigo\+::db\+::common\+::mongodb\+::\+Base\+D\+A\+O\+Impl}}
+\subsubsection{\texorpdfstring{remove()}{remove()}}
+{\footnotesize\ttfamily synchronized long \hyperlink{classedu_1_1sjsu_1_1amigo_1_1db_1_1common_1_1mongodb_1_1_base_d_a_o_impl}{edu.\+sjsu.\+amigo.\+db.\+common.\+mongodb.\+Base\+D\+A\+O\+Impl}$<$ T $>$.remove (\begin{DoxyParamCaption}\item[{List$<$ String $>$}]{entity\+Ids\+List }\end{DoxyParamCaption}) throws \hyperlink{classedu_1_1sjsu_1_1amigo_1_1db_1_1common_1_1_d_b_exception}{D\+B\+Exception}}
+
+
+
+Implements \hyperlink{interfaceedu_1_1sjsu_1_1amigo_1_1db_1_1common_1_1_base_d_a_o_ad41557807ba9feaeebff9705ce68478d}{edu.\+sjsu.\+amigo.\+db.\+common.\+Base\+D\+A\+O$<$ T $>$}.
+
+
+
+Definition at line 81 of file Base\+D\+A\+O\+Impl.\+java.
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classedu_1_1sjsu_1_1amigo_1_1db_1_1common_1_1mongodb_1_1_base_d_a_o_impl_ac405c66365add92a549f7c386248fca4}\label{classedu_1_1sjsu_1_1amigo_1_1db_1_1common_1_1mongodb_1_1_base_d_a_o_impl_ac405c66365add92a549f7c386248fca4}} 
+\index{edu\+::sjsu\+::amigo\+::db\+::common\+::mongodb\+::\+Base\+D\+A\+O\+Impl@{edu\+::sjsu\+::amigo\+::db\+::common\+::mongodb\+::\+Base\+D\+A\+O\+Impl}!morphia@{morphia}}
+\index{morphia@{morphia}!edu\+::sjsu\+::amigo\+::db\+::common\+::mongodb\+::\+Base\+D\+A\+O\+Impl@{edu\+::sjsu\+::amigo\+::db\+::common\+::mongodb\+::\+Base\+D\+A\+O\+Impl}}
+\subsubsection{\texorpdfstring{morphia}{morphia}}
+{\footnotesize\ttfamily Morphia \hyperlink{classedu_1_1sjsu_1_1amigo_1_1db_1_1common_1_1mongodb_1_1_base_d_a_o_impl}{edu.\+sjsu.\+amigo.\+db.\+common.\+mongodb.\+Base\+D\+A\+O\+Impl}$<$ T $>$.morphia\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line 43 of file Base\+D\+A\+O\+Impl.\+java.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+db-\/common/src/main/java/edu/sjsu/amigo/db/common/mongodb/\hyperlink{_base_d_a_o_impl_8java}{Base\+D\+A\+O\+Impl.\+java}\end{DoxyCompactItemize}

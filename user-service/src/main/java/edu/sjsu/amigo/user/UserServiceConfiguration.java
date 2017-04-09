@@ -24,6 +24,9 @@ import javax.validation.constraints.NotNull;
  * @author rwatsh on 3/26/17.
  */
 public class UserServiceConfiguration extends Configuration {
+    /*@JsonProperty("swagger")
+    public SwaggerBundleConfiguration swaggerBundleConfiguration;*/
+
     @Valid
     @NotNull
     private DBConfig dbConfig = new DBConfig();

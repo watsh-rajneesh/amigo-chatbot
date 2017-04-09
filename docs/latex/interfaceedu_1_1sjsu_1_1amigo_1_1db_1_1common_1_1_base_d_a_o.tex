@@ -1,0 +1,99 @@
+\hypertarget{interfaceedu_1_1sjsu_1_1amigo_1_1db_1_1common_1_1_base_d_a_o}{}\section{edu.\+sjsu.\+amigo.\+db.\+common.\+Base\+D\+AO$<$ T $>$ Interface Template Reference}
+\label{interfaceedu_1_1sjsu_1_1amigo_1_1db_1_1common_1_1_base_d_a_o}\index{edu.\+sjsu.\+amigo.\+db.\+common.\+Base\+D\+A\+O$<$ T $>$@{edu.\+sjsu.\+amigo.\+db.\+common.\+Base\+D\+A\+O$<$ T $>$}}
+Inheritance diagram for edu.\+sjsu.\+amigo.\+db.\+common.\+Base\+D\+AO$<$ T $>$\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{interfaceedu_1_1sjsu_1_1amigo_1_1db_1_1common_1_1_base_d_a_o}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+List$<$ String $>$ \hyperlink{interfaceedu_1_1sjsu_1_1amigo_1_1db_1_1common_1_1_base_d_a_o_abee308a0e83d8e5a42f202dfc195d72c}{add} (List$<$ T $>$ entity\+List)  throws D\+B\+Exception
+\item 
+void \hyperlink{interfaceedu_1_1sjsu_1_1amigo_1_1db_1_1common_1_1_base_d_a_o_a73dbf1e946ba180be688bc14d69cff88}{add\+Or\+Update} (T entity, String id)  throws D\+B\+Exception
+\item 
+long \hyperlink{interfaceedu_1_1sjsu_1_1amigo_1_1db_1_1common_1_1_base_d_a_o_ad41557807ba9feaeebff9705ce68478d}{remove} (List$<$ String $>$ entity\+Ids\+List)  throws D\+B\+Exception
+\item 
+void \hyperlink{interfaceedu_1_1sjsu_1_1amigo_1_1db_1_1common_1_1_base_d_a_o_a8204c75fed7b773eafba11a6a7d9d689}{update} (List$<$ T $>$ entity\+List)  throws D\+B\+Exception
+\item 
+List$<$ T $>$ \hyperlink{interfaceedu_1_1sjsu_1_1amigo_1_1db_1_1common_1_1_base_d_a_o_a37db1a13eee71618f11b7e07d3b13ac4}{fetch\+By\+Id} (List$<$ String $>$ entity\+Ids\+List)  throws D\+B\+Exception
+\item 
+List$<$ T $>$ \hyperlink{interfaceedu_1_1sjsu_1_1amigo_1_1db_1_1common_1_1_base_d_a_o_acae47af1542a0d62e801ef3a458876e0}{fetch} (String query, Class$<$ T $>$ clazz)  throws D\+B\+Exception
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Base contract for all D\+A\+Os.
+
+\begin{DoxyAuthor}{Author}
+rwatsh on 3/26/17. 
+\end{DoxyAuthor}
+
+
+Definition at line 24 of file Base\+D\+A\+O.\+java.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{interfaceedu_1_1sjsu_1_1amigo_1_1db_1_1common_1_1_base_d_a_o_abee308a0e83d8e5a42f202dfc195d72c}\label{interfaceedu_1_1sjsu_1_1amigo_1_1db_1_1common_1_1_base_d_a_o_abee308a0e83d8e5a42f202dfc195d72c}} 
+\index{edu\+::sjsu\+::amigo\+::db\+::common\+::\+Base\+D\+AO@{edu\+::sjsu\+::amigo\+::db\+::common\+::\+Base\+D\+AO}!add@{add}}
+\index{add@{add}!edu\+::sjsu\+::amigo\+::db\+::common\+::\+Base\+D\+AO@{edu\+::sjsu\+::amigo\+::db\+::common\+::\+Base\+D\+AO}}
+\subsubsection{\texorpdfstring{add()}{add()}}
+{\footnotesize\ttfamily List$<$String$>$ \hyperlink{interfaceedu_1_1sjsu_1_1amigo_1_1db_1_1common_1_1_base_d_a_o}{edu.\+sjsu.\+amigo.\+db.\+common.\+Base\+D\+AO}$<$ T $>$.add (\begin{DoxyParamCaption}\item[{List$<$ T $>$}]{entity\+List }\end{DoxyParamCaption}) throws \hyperlink{classedu_1_1sjsu_1_1amigo_1_1db_1_1common_1_1_d_b_exception}{D\+B\+Exception}}
+
+
+
+Implemented in \hyperlink{classedu_1_1sjsu_1_1amigo_1_1db_1_1common_1_1mongodb_1_1_base_d_a_o_impl_aa9f9296750acb9a6f356163e35157837}{edu.\+sjsu.\+amigo.\+db.\+common.\+mongodb.\+Base\+D\+A\+O\+Impl$<$ T $>$}.
+
+\mbox{\Hypertarget{interfaceedu_1_1sjsu_1_1amigo_1_1db_1_1common_1_1_base_d_a_o_a73dbf1e946ba180be688bc14d69cff88}\label{interfaceedu_1_1sjsu_1_1amigo_1_1db_1_1common_1_1_base_d_a_o_a73dbf1e946ba180be688bc14d69cff88}} 
+\index{edu\+::sjsu\+::amigo\+::db\+::common\+::\+Base\+D\+AO@{edu\+::sjsu\+::amigo\+::db\+::common\+::\+Base\+D\+AO}!add\+Or\+Update@{add\+Or\+Update}}
+\index{add\+Or\+Update@{add\+Or\+Update}!edu\+::sjsu\+::amigo\+::db\+::common\+::\+Base\+D\+AO@{edu\+::sjsu\+::amigo\+::db\+::common\+::\+Base\+D\+AO}}
+\subsubsection{\texorpdfstring{add\+Or\+Update()}{addOrUpdate()}}
+{\footnotesize\ttfamily void \hyperlink{interfaceedu_1_1sjsu_1_1amigo_1_1db_1_1common_1_1_base_d_a_o}{edu.\+sjsu.\+amigo.\+db.\+common.\+Base\+D\+AO}$<$ T $>$.add\+Or\+Update (\begin{DoxyParamCaption}\item[{T}]{entity,  }\item[{String}]{id }\end{DoxyParamCaption}) throws \hyperlink{classedu_1_1sjsu_1_1amigo_1_1db_1_1common_1_1_d_b_exception}{D\+B\+Exception}}
+
+
+
+Implemented in \hyperlink{classedu_1_1sjsu_1_1amigo_1_1db_1_1common_1_1mongodb_1_1_base_d_a_o_impl_af9d483046160700cea18a20a7817cd3a}{edu.\+sjsu.\+amigo.\+db.\+common.\+mongodb.\+Base\+D\+A\+O\+Impl$<$ T $>$}.
+
+\mbox{\Hypertarget{interfaceedu_1_1sjsu_1_1amigo_1_1db_1_1common_1_1_base_d_a_o_acae47af1542a0d62e801ef3a458876e0}\label{interfaceedu_1_1sjsu_1_1amigo_1_1db_1_1common_1_1_base_d_a_o_acae47af1542a0d62e801ef3a458876e0}} 
+\index{edu\+::sjsu\+::amigo\+::db\+::common\+::\+Base\+D\+AO@{edu\+::sjsu\+::amigo\+::db\+::common\+::\+Base\+D\+AO}!fetch@{fetch}}
+\index{fetch@{fetch}!edu\+::sjsu\+::amigo\+::db\+::common\+::\+Base\+D\+AO@{edu\+::sjsu\+::amigo\+::db\+::common\+::\+Base\+D\+AO}}
+\subsubsection{\texorpdfstring{fetch()}{fetch()}}
+{\footnotesize\ttfamily List$<$T$>$ \hyperlink{interfaceedu_1_1sjsu_1_1amigo_1_1db_1_1common_1_1_base_d_a_o}{edu.\+sjsu.\+amigo.\+db.\+common.\+Base\+D\+AO}$<$ T $>$.fetch (\begin{DoxyParamCaption}\item[{String}]{query,  }\item[{Class$<$ T $>$}]{clazz }\end{DoxyParamCaption}) throws \hyperlink{classedu_1_1sjsu_1_1amigo_1_1db_1_1common_1_1_d_b_exception}{D\+B\+Exception}}
+
+
+
+Implemented in \hyperlink{classedu_1_1sjsu_1_1amigo_1_1db_1_1common_1_1mongodb_1_1_base_d_a_o_impl_a81fcb51cfb42fd2417df430a5a0eff8f}{edu.\+sjsu.\+amigo.\+db.\+common.\+mongodb.\+Base\+D\+A\+O\+Impl$<$ T $>$}.
+
+\mbox{\Hypertarget{interfaceedu_1_1sjsu_1_1amigo_1_1db_1_1common_1_1_base_d_a_o_a37db1a13eee71618f11b7e07d3b13ac4}\label{interfaceedu_1_1sjsu_1_1amigo_1_1db_1_1common_1_1_base_d_a_o_a37db1a13eee71618f11b7e07d3b13ac4}} 
+\index{edu\+::sjsu\+::amigo\+::db\+::common\+::\+Base\+D\+AO@{edu\+::sjsu\+::amigo\+::db\+::common\+::\+Base\+D\+AO}!fetch\+By\+Id@{fetch\+By\+Id}}
+\index{fetch\+By\+Id@{fetch\+By\+Id}!edu\+::sjsu\+::amigo\+::db\+::common\+::\+Base\+D\+AO@{edu\+::sjsu\+::amigo\+::db\+::common\+::\+Base\+D\+AO}}
+\subsubsection{\texorpdfstring{fetch\+By\+Id()}{fetchById()}}
+{\footnotesize\ttfamily List$<$T$>$ \hyperlink{interfaceedu_1_1sjsu_1_1amigo_1_1db_1_1common_1_1_base_d_a_o}{edu.\+sjsu.\+amigo.\+db.\+common.\+Base\+D\+AO}$<$ T $>$.fetch\+By\+Id (\begin{DoxyParamCaption}\item[{List$<$ String $>$}]{entity\+Ids\+List }\end{DoxyParamCaption}) throws \hyperlink{classedu_1_1sjsu_1_1amigo_1_1db_1_1common_1_1_d_b_exception}{D\+B\+Exception}}
+
+
+
+Implemented in \hyperlink{classedu_1_1sjsu_1_1amigo_1_1db_1_1common_1_1mongodb_1_1_base_d_a_o_impl_a0f44ed7ba8e92fa387be39194177e4cf}{edu.\+sjsu.\+amigo.\+db.\+common.\+mongodb.\+Base\+D\+A\+O\+Impl$<$ T $>$}.
+
+\mbox{\Hypertarget{interfaceedu_1_1sjsu_1_1amigo_1_1db_1_1common_1_1_base_d_a_o_ad41557807ba9feaeebff9705ce68478d}\label{interfaceedu_1_1sjsu_1_1amigo_1_1db_1_1common_1_1_base_d_a_o_ad41557807ba9feaeebff9705ce68478d}} 
+\index{edu\+::sjsu\+::amigo\+::db\+::common\+::\+Base\+D\+AO@{edu\+::sjsu\+::amigo\+::db\+::common\+::\+Base\+D\+AO}!remove@{remove}}
+\index{remove@{remove}!edu\+::sjsu\+::amigo\+::db\+::common\+::\+Base\+D\+AO@{edu\+::sjsu\+::amigo\+::db\+::common\+::\+Base\+D\+AO}}
+\subsubsection{\texorpdfstring{remove()}{remove()}}
+{\footnotesize\ttfamily long \hyperlink{interfaceedu_1_1sjsu_1_1amigo_1_1db_1_1common_1_1_base_d_a_o}{edu.\+sjsu.\+amigo.\+db.\+common.\+Base\+D\+AO}$<$ T $>$.remove (\begin{DoxyParamCaption}\item[{List$<$ String $>$}]{entity\+Ids\+List }\end{DoxyParamCaption}) throws \hyperlink{classedu_1_1sjsu_1_1amigo_1_1db_1_1common_1_1_d_b_exception}{D\+B\+Exception}}
+
+
+
+Implemented in \hyperlink{classedu_1_1sjsu_1_1amigo_1_1db_1_1common_1_1mongodb_1_1_base_d_a_o_impl_ac8ca9075d687d809293f54749f92c7e9}{edu.\+sjsu.\+amigo.\+db.\+common.\+mongodb.\+Base\+D\+A\+O\+Impl$<$ T $>$}.
+
+\mbox{\Hypertarget{interfaceedu_1_1sjsu_1_1amigo_1_1db_1_1common_1_1_base_d_a_o_a8204c75fed7b773eafba11a6a7d9d689}\label{interfaceedu_1_1sjsu_1_1amigo_1_1db_1_1common_1_1_base_d_a_o_a8204c75fed7b773eafba11a6a7d9d689}} 
+\index{edu\+::sjsu\+::amigo\+::db\+::common\+::\+Base\+D\+AO@{edu\+::sjsu\+::amigo\+::db\+::common\+::\+Base\+D\+AO}!update@{update}}
+\index{update@{update}!edu\+::sjsu\+::amigo\+::db\+::common\+::\+Base\+D\+AO@{edu\+::sjsu\+::amigo\+::db\+::common\+::\+Base\+D\+AO}}
+\subsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily void \hyperlink{interfaceedu_1_1sjsu_1_1amigo_1_1db_1_1common_1_1_base_d_a_o}{edu.\+sjsu.\+amigo.\+db.\+common.\+Base\+D\+AO}$<$ T $>$.update (\begin{DoxyParamCaption}\item[{List$<$ T $>$}]{entity\+List }\end{DoxyParamCaption}) throws \hyperlink{classedu_1_1sjsu_1_1amigo_1_1db_1_1common_1_1_d_b_exception}{D\+B\+Exception}}
+
+
+
+The documentation for this interface was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+db-\/common/src/main/java/edu/sjsu/amigo/db/common/\hyperlink{_base_d_a_o_8java}{Base\+D\+A\+O.\+java}\end{DoxyCompactItemize}

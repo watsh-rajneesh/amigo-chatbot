@@ -18,9 +18,13 @@ import com.ullink.slack.simpleslackapi.SlackChannel;
 import com.ullink.slack.simpleslackapi.SlackSession;
 import com.ullink.slack.simpleslackapi.SlackUser;
 import com.ullink.slack.simpleslackapi.impl.SlackSessionFactory;
-import edu.sjsu.amigo.cp.api.*;
+import edu.sjsu.amigo.cp.api.CloudProviderFactory;
+import edu.sjsu.amigo.cp.api.Command;
+import edu.sjsu.amigo.cp.api.CommandExecutionException;
+import edu.sjsu.amigo.cp.api.CommandExecutor;
+import edu.sjsu.amigo.cp.api.Response;
 import edu.sjsu.amigo.mp.kafka.SlackMessage;
-import edu.sjsu.amigo.mp.util.JsonUtils;
+import edu.sjsu.amigo.json.util.JsonUtils;
 import org.quartz.Job;
 import org.quartz.JobExecutionContext;
 import org.quartz.JobExecutionException;
@@ -40,6 +44,7 @@ public class MessageProcessorJob implements Job {
     @Override
     public void execute(JobExecutionContext jobExecutionContext) throws JobExecutionException {
         try {
+            //message = jobdata params.
             SlackMessage slackMessage = JsonUtils.convertJsonToObject(message, SlackMessage.class);
             if (slackMessage != null) {
                 String slackBotToken = slackMessage.getSlackBotToken();

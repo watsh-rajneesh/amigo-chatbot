@@ -1,0 +1,16 @@
+digraph "edu.sjsu.amigo.db.common.mongodb.MongoDBClientBase"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node4 [label="edu.sjsu.amigo.db.common.mongodb.\lMongoDBClientBase",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node5 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node5 [label="edu.sjsu.amigo.db.common.\lDBClient",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$interfaceedu_1_1sjsu_1_1amigo_1_1db_1_1common_1_1_d_b_client.html"];
+  Node6 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node6 [label="AutoCloseable",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node7 -> Node4 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" mongoClient" ];
+  Node7 [label="MongoClient",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node8 -> Node4 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" morphiaDatastore" ];
+  Node8 [label="Datastore",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node9 -> Node4 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" morphia" ];
+  Node9 [label="Morphia",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+}

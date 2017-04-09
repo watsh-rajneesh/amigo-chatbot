@@ -54,6 +54,7 @@ public class UserDAOTest extends DBTest<UserDAO, User> {
 
     private List<String> testCreateUser() throws DBException {
         User user = createUser();
+
         UserDAO userDAO = (UserDAO) client.getDAO(UserDAO.class);
         List<String> insertedIds = userDAO.add(new ArrayList<User>() {{
             add(user);

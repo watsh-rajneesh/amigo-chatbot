@@ -22,6 +22,7 @@ import org.mongodb.morphia.Morphia;
 import org.mongodb.morphia.mapping.Mapper;
 import org.mongodb.morphia.query.Query;
 import org.mongodb.morphia.query.UpdateOperations;
+import org.mongodb.morphia.query.UpdateResults;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -64,7 +65,7 @@ public class UserDAO extends BaseDAOImpl<User> {
                 }
 
                 Query<User> updateQuery = this.createQuery().field(Mapper.ID_KEY).equal(user.getEmail());
-                this.update(updateQuery, ops);
+                UpdateResults results = this.update(updateQuery, ops);
             }
         }
     }

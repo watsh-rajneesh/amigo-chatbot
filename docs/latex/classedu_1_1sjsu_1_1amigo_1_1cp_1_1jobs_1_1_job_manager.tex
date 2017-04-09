@@ -1,0 +1,217 @@
+\hypertarget{classedu_1_1sjsu_1_1amigo_1_1cp_1_1jobs_1_1_job_manager}{}\section{edu.\+sjsu.\+amigo.\+cp.\+jobs.\+Job\+Manager Class Reference}
+\label{classedu_1_1sjsu_1_1amigo_1_1cp_1_1jobs_1_1_job_manager}\index{edu.\+sjsu.\+amigo.\+cp.\+jobs.\+Job\+Manager@{edu.\+sjsu.\+amigo.\+cp.\+jobs.\+Job\+Manager}}
+Inheritance diagram for edu.\+sjsu.\+amigo.\+cp.\+jobs.\+Job\+Manager\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classedu_1_1sjsu_1_1amigo_1_1cp_1_1jobs_1_1_job_manager}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classedu_1_1sjsu_1_1amigo_1_1cp_1_1jobs_1_1_job_manager_a5d286042b6dee04bf407a0ad0dfc90bf}{register\+Job\+Listener} (Job\+Listener listener)  throws Scheduler\+Exception 
+\item 
+void \hyperlink{classedu_1_1sjsu_1_1amigo_1_1cp_1_1jobs_1_1_job_manager_ac018c77a0a5bc6e8f08943348b982e2a}{register\+Job\+Listener} (Job\+Listener listener, String job\+Name, String group\+Name)  throws Scheduler\+Exception 
+\item 
+void \hyperlink{classedu_1_1sjsu_1_1amigo_1_1cp_1_1jobs_1_1_job_manager_ab864aafc50469b61907b86fd72a55b85}{start\+Scheduler} ()  throws Scheduler\+Exception 
+\item 
+Job\+Detail \hyperlink{classedu_1_1sjsu_1_1amigo_1_1cp_1_1jobs_1_1_job_manager_aebfbc60d4dd1b126a02fa4235b3a560c}{schedule\+Job} (Class$<$? extends Job $>$ job\+Clazz, String job\+Name, String tenant\+Name, Job\+Data\+Map job\+Data\+Map)  throws Scheduler\+Exception 
+\item 
+Job\+Detail \hyperlink{classedu_1_1sjsu_1_1amigo_1_1cp_1_1jobs_1_1_job_manager_a3fd1a027c447a1af88e3dcb4fde21085}{schedule\+Job} (Class$<$? extends Job $>$ job\+Clazz, String job\+Name, String tenant\+Name, Job\+Data\+Map job\+Data\+Map, int interval\+In\+Mins)  throws Scheduler\+Exception 
+\item 
+List$<$ Job\+Detail $>$ \hyperlink{classedu_1_1sjsu_1_1amigo_1_1cp_1_1jobs_1_1_job_manager_a08f7571e06cbd3f1ea8e866b5439511f}{get\+Jobs\+List} (String tenant\+Name)  throws Scheduler\+Exception 
+\item 
+void \hyperlink{classedu_1_1sjsu_1_1amigo_1_1cp_1_1jobs_1_1_job_manager_ac4c20f7bb76c26a3c97827283ef1213b}{close} ()  throws Exception 
+\item 
+boolean \hyperlink{classedu_1_1sjsu_1_1amigo_1_1cp_1_1jobs_1_1_job_manager_a9ed144bf27bd9eced89baa08d72d8911}{find\+Job} (String job\+Name, String tenant)  throws Scheduler\+Exception 
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \hyperlink{classedu_1_1sjsu_1_1amigo_1_1cp_1_1jobs_1_1_job_manager}{Job\+Manager} \hyperlink{classedu_1_1sjsu_1_1amigo_1_1cp_1_1jobs_1_1_job_manager_aaeb161ffe7a75922ee34e5a9ebe8260a}{get\+Instance} ()  throws Scheduler\+Exception 
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Wrapper for job scheduler instance implemented as a singleton such that there is just one scheduler for the application.
+
+\begin{DoxyAuthor}{Author}
+rwatsh on 2/27/17. 
+\end{DoxyAuthor}
+
+
+Definition at line 38 of file Job\+Manager.\+java.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classedu_1_1sjsu_1_1amigo_1_1cp_1_1jobs_1_1_job_manager_ac4c20f7bb76c26a3c97827283ef1213b}\label{classedu_1_1sjsu_1_1amigo_1_1cp_1_1jobs_1_1_job_manager_ac4c20f7bb76c26a3c97827283ef1213b}} 
+\index{edu\+::sjsu\+::amigo\+::cp\+::jobs\+::\+Job\+Manager@{edu\+::sjsu\+::amigo\+::cp\+::jobs\+::\+Job\+Manager}!close@{close}}
+\index{close@{close}!edu\+::sjsu\+::amigo\+::cp\+::jobs\+::\+Job\+Manager@{edu\+::sjsu\+::amigo\+::cp\+::jobs\+::\+Job\+Manager}}
+\subsubsection{\texorpdfstring{close()}{close()}}
+{\footnotesize\ttfamily void edu.\+sjsu.\+amigo.\+cp.\+jobs.\+Job\+Manager.\+close (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) throws Exception}
+
+Scheduler will allow currently executing jobs to complete and gracefully shutdown.
+
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Exception} & \\
+\hline
+\end{DoxyExceptions}
+
+
+Definition at line 179 of file Job\+Manager.\+java.
+
+\mbox{\Hypertarget{classedu_1_1sjsu_1_1amigo_1_1cp_1_1jobs_1_1_job_manager_a9ed144bf27bd9eced89baa08d72d8911}\label{classedu_1_1sjsu_1_1amigo_1_1cp_1_1jobs_1_1_job_manager_a9ed144bf27bd9eced89baa08d72d8911}} 
+\index{edu\+::sjsu\+::amigo\+::cp\+::jobs\+::\+Job\+Manager@{edu\+::sjsu\+::amigo\+::cp\+::jobs\+::\+Job\+Manager}!find\+Job@{find\+Job}}
+\index{find\+Job@{find\+Job}!edu\+::sjsu\+::amigo\+::cp\+::jobs\+::\+Job\+Manager@{edu\+::sjsu\+::amigo\+::cp\+::jobs\+::\+Job\+Manager}}
+\subsubsection{\texorpdfstring{find\+Job()}{findJob()}}
+{\footnotesize\ttfamily boolean edu.\+sjsu.\+amigo.\+cp.\+jobs.\+Job\+Manager.\+find\+Job (\begin{DoxyParamCaption}\item[{String}]{job\+Name,  }\item[{String}]{tenant }\end{DoxyParamCaption}) throws Scheduler\+Exception}
+
+
+
+Definition at line 184 of file Job\+Manager.\+java.
+
+\mbox{\Hypertarget{classedu_1_1sjsu_1_1amigo_1_1cp_1_1jobs_1_1_job_manager_aaeb161ffe7a75922ee34e5a9ebe8260a}\label{classedu_1_1sjsu_1_1amigo_1_1cp_1_1jobs_1_1_job_manager_aaeb161ffe7a75922ee34e5a9ebe8260a}} 
+\index{edu\+::sjsu\+::amigo\+::cp\+::jobs\+::\+Job\+Manager@{edu\+::sjsu\+::amigo\+::cp\+::jobs\+::\+Job\+Manager}!get\+Instance@{get\+Instance}}
+\index{get\+Instance@{get\+Instance}!edu\+::sjsu\+::amigo\+::cp\+::jobs\+::\+Job\+Manager@{edu\+::sjsu\+::amigo\+::cp\+::jobs\+::\+Job\+Manager}}
+\subsubsection{\texorpdfstring{get\+Instance()}{getInstance()}}
+{\footnotesize\ttfamily static \hyperlink{classedu_1_1sjsu_1_1amigo_1_1cp_1_1jobs_1_1_job_manager}{Job\+Manager} edu.\+sjsu.\+amigo.\+cp.\+jobs.\+Job\+Manager.\+get\+Instance (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) throws Scheduler\+Exception\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line 53 of file Job\+Manager.\+java.
+
+\mbox{\Hypertarget{classedu_1_1sjsu_1_1amigo_1_1cp_1_1jobs_1_1_job_manager_a08f7571e06cbd3f1ea8e866b5439511f}\label{classedu_1_1sjsu_1_1amigo_1_1cp_1_1jobs_1_1_job_manager_a08f7571e06cbd3f1ea8e866b5439511f}} 
+\index{edu\+::sjsu\+::amigo\+::cp\+::jobs\+::\+Job\+Manager@{edu\+::sjsu\+::amigo\+::cp\+::jobs\+::\+Job\+Manager}!get\+Jobs\+List@{get\+Jobs\+List}}
+\index{get\+Jobs\+List@{get\+Jobs\+List}!edu\+::sjsu\+::amigo\+::cp\+::jobs\+::\+Job\+Manager@{edu\+::sjsu\+::amigo\+::cp\+::jobs\+::\+Job\+Manager}}
+\subsubsection{\texorpdfstring{get\+Jobs\+List()}{getJobsList()}}
+{\footnotesize\ttfamily List$<$Job\+Detail$>$ edu.\+sjsu.\+amigo.\+cp.\+jobs.\+Job\+Manager.\+get\+Jobs\+List (\begin{DoxyParamCaption}\item[{String}]{tenant\+Name }\end{DoxyParamCaption}) throws Scheduler\+Exception}
+
+Get a list of jobs.
+
+
+\begin{DoxyParams}{Parameters}
+{\em tenant\+Name} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Scheduler\+Exception} & \\
+\hline
+\end{DoxyExceptions}
+
+
+Definition at line 159 of file Job\+Manager.\+java.
+
+\mbox{\Hypertarget{classedu_1_1sjsu_1_1amigo_1_1cp_1_1jobs_1_1_job_manager_a5d286042b6dee04bf407a0ad0dfc90bf}\label{classedu_1_1sjsu_1_1amigo_1_1cp_1_1jobs_1_1_job_manager_a5d286042b6dee04bf407a0ad0dfc90bf}} 
+\index{edu\+::sjsu\+::amigo\+::cp\+::jobs\+::\+Job\+Manager@{edu\+::sjsu\+::amigo\+::cp\+::jobs\+::\+Job\+Manager}!register\+Job\+Listener@{register\+Job\+Listener}}
+\index{register\+Job\+Listener@{register\+Job\+Listener}!edu\+::sjsu\+::amigo\+::cp\+::jobs\+::\+Job\+Manager@{edu\+::sjsu\+::amigo\+::cp\+::jobs\+::\+Job\+Manager}}
+\subsubsection{\texorpdfstring{register\+Job\+Listener()}{registerJobListener()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void edu.\+sjsu.\+amigo.\+cp.\+jobs.\+Job\+Manager.\+register\+Job\+Listener (\begin{DoxyParamCaption}\item[{Job\+Listener}]{listener }\end{DoxyParamCaption}) throws Scheduler\+Exception}
+
+Register a job listener.
+
+
+\begin{DoxyParams}{Parameters}
+{\em listener} & \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Scheduler\+Exception} & \\
+\hline
+\end{DoxyExceptions}
+
+
+Definition at line 70 of file Job\+Manager.\+java.
+
+\mbox{\Hypertarget{classedu_1_1sjsu_1_1amigo_1_1cp_1_1jobs_1_1_job_manager_ac018c77a0a5bc6e8f08943348b982e2a}\label{classedu_1_1sjsu_1_1amigo_1_1cp_1_1jobs_1_1_job_manager_ac018c77a0a5bc6e8f08943348b982e2a}} 
+\index{edu\+::sjsu\+::amigo\+::cp\+::jobs\+::\+Job\+Manager@{edu\+::sjsu\+::amigo\+::cp\+::jobs\+::\+Job\+Manager}!register\+Job\+Listener@{register\+Job\+Listener}}
+\index{register\+Job\+Listener@{register\+Job\+Listener}!edu\+::sjsu\+::amigo\+::cp\+::jobs\+::\+Job\+Manager@{edu\+::sjsu\+::amigo\+::cp\+::jobs\+::\+Job\+Manager}}
+\subsubsection{\texorpdfstring{register\+Job\+Listener()}{registerJobListener()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void edu.\+sjsu.\+amigo.\+cp.\+jobs.\+Job\+Manager.\+register\+Job\+Listener (\begin{DoxyParamCaption}\item[{Job\+Listener}]{listener,  }\item[{String}]{job\+Name,  }\item[{String}]{group\+Name }\end{DoxyParamCaption}) throws Scheduler\+Exception}
+
+Listener for a specific job.
+
+
+\begin{DoxyParams}{Parameters}
+{\em listener} & \\
+\hline
+{\em job\+Name} & \\
+\hline
+{\em group\+Name} & \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Scheduler\+Exception} & \\
+\hline
+\end{DoxyExceptions}
+
+
+Definition at line 83 of file Job\+Manager.\+java.
+
+\mbox{\Hypertarget{classedu_1_1sjsu_1_1amigo_1_1cp_1_1jobs_1_1_job_manager_aebfbc60d4dd1b126a02fa4235b3a560c}\label{classedu_1_1sjsu_1_1amigo_1_1cp_1_1jobs_1_1_job_manager_aebfbc60d4dd1b126a02fa4235b3a560c}} 
+\index{edu\+::sjsu\+::amigo\+::cp\+::jobs\+::\+Job\+Manager@{edu\+::sjsu\+::amigo\+::cp\+::jobs\+::\+Job\+Manager}!schedule\+Job@{schedule\+Job}}
+\index{schedule\+Job@{schedule\+Job}!edu\+::sjsu\+::amigo\+::cp\+::jobs\+::\+Job\+Manager@{edu\+::sjsu\+::amigo\+::cp\+::jobs\+::\+Job\+Manager}}
+\subsubsection{\texorpdfstring{schedule\+Job()}{scheduleJob()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Job\+Detail edu.\+sjsu.\+amigo.\+cp.\+jobs.\+Job\+Manager.\+schedule\+Job (\begin{DoxyParamCaption}\item[{Class$<$? extends Job $>$}]{job\+Clazz,  }\item[{String}]{job\+Name,  }\item[{String}]{tenant\+Name,  }\item[{Job\+Data\+Map}]{job\+Data\+Map }\end{DoxyParamCaption}) throws Scheduler\+Exception}
+
+Schedule a job.
+
+
+\begin{DoxyParams}{Parameters}
+{\em job\+Clazz} & \\
+\hline
+{\em job\+Name} & \\
+\hline
+{\em tenant\+Name} & \\
+\hline
+{\em job\+Data\+Map} & \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Scheduler\+Exception} & \\
+\hline
+\end{DoxyExceptions}
+
+
+Definition at line 108 of file Job\+Manager.\+java.
+
+\mbox{\Hypertarget{classedu_1_1sjsu_1_1amigo_1_1cp_1_1jobs_1_1_job_manager_a3fd1a027c447a1af88e3dcb4fde21085}\label{classedu_1_1sjsu_1_1amigo_1_1cp_1_1jobs_1_1_job_manager_a3fd1a027c447a1af88e3dcb4fde21085}} 
+\index{edu\+::sjsu\+::amigo\+::cp\+::jobs\+::\+Job\+Manager@{edu\+::sjsu\+::amigo\+::cp\+::jobs\+::\+Job\+Manager}!schedule\+Job@{schedule\+Job}}
+\index{schedule\+Job@{schedule\+Job}!edu\+::sjsu\+::amigo\+::cp\+::jobs\+::\+Job\+Manager@{edu\+::sjsu\+::amigo\+::cp\+::jobs\+::\+Job\+Manager}}
+\subsubsection{\texorpdfstring{schedule\+Job()}{scheduleJob()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Job\+Detail edu.\+sjsu.\+amigo.\+cp.\+jobs.\+Job\+Manager.\+schedule\+Job (\begin{DoxyParamCaption}\item[{Class$<$? extends Job $>$}]{job\+Clazz,  }\item[{String}]{job\+Name,  }\item[{String}]{tenant\+Name,  }\item[{Job\+Data\+Map}]{job\+Data\+Map,  }\item[{int}]{interval\+In\+Mins }\end{DoxyParamCaption}) throws Scheduler\+Exception}
+
+
+
+Definition at line 129 of file Job\+Manager.\+java.
+
+\mbox{\Hypertarget{classedu_1_1sjsu_1_1amigo_1_1cp_1_1jobs_1_1_job_manager_ab864aafc50469b61907b86fd72a55b85}\label{classedu_1_1sjsu_1_1amigo_1_1cp_1_1jobs_1_1_job_manager_ab864aafc50469b61907b86fd72a55b85}} 
+\index{edu\+::sjsu\+::amigo\+::cp\+::jobs\+::\+Job\+Manager@{edu\+::sjsu\+::amigo\+::cp\+::jobs\+::\+Job\+Manager}!start\+Scheduler@{start\+Scheduler}}
+\index{start\+Scheduler@{start\+Scheduler}!edu\+::sjsu\+::amigo\+::cp\+::jobs\+::\+Job\+Manager@{edu\+::sjsu\+::amigo\+::cp\+::jobs\+::\+Job\+Manager}}
+\subsubsection{\texorpdfstring{start\+Scheduler()}{startScheduler()}}
+{\footnotesize\ttfamily void edu.\+sjsu.\+amigo.\+cp.\+jobs.\+Job\+Manager.\+start\+Scheduler (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) throws Scheduler\+Exception}
+
+Start scheduler.
+
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Scheduler\+Exception} & \\
+\hline
+\end{DoxyExceptions}
+
+
+Definition at line 93 of file Job\+Manager.\+java.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+command-\/processor-\/service/src/main/java/edu/sjsu/amigo/cp/jobs/\hyperlink{_job_manager_8java}{Job\+Manager.\+java}\end{DoxyCompactItemize}

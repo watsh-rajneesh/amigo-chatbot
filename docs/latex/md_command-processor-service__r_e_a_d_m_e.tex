@@ -1,0 +1,25 @@
+This module listens for incoming user messages on Kafka\textquotesingle{}s topic named \char`\"{}user\+\_\+msg\char`\"{} in a forever loop and as soon as it receives a message it schedules a job to process the message.
+
+\# Build Docker Image 
+\begin{DoxyCode}
+\{$\}
+
+or pull from dockerhub:
+
+```$ docker pull sjsucohort6/command-processor-servic
+\end{DoxyCode}
+
+
+\subsubsection*{Run the slackbot}
+
+
+\begin{DoxyCode}
+\{$\}
+-e AUTH\_USERNAME='<docker hub user>' \(\backslash\)
+-e AUTH\_PASSWORD='<docker hub passwd>' \(\backslash\)
+-e AWS\_DEFAULT\_REGION='<aws region>' \(\backslash\)
+-e AWS\_ACCESS\_KEY\_ID='<aws access key id>' \(\backslash\)
+-e AWS\_SECRET\_ACCESS\_KEY='<aws secret access key>' \(\backslash\)
+--name command-processor-service sjsucohort6/command-processor-servic
+\end{DoxyCode}
+ 

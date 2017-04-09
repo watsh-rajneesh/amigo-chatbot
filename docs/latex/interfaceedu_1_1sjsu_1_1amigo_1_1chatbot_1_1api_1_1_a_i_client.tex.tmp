@@ -1,0 +1,53 @@
+\hypertarget{interfaceedu_1_1sjsu_1_1amigo_1_1chatbot_1_1api_1_1_a_i_client}{}\section{edu.\+sjsu.\+amigo.\+chatbot.\+api.\+A\+I\+Client Interface Reference}
+\label{interfaceedu_1_1sjsu_1_1amigo_1_1chatbot_1_1api_1_1_a_i_client}\index{edu.\+sjsu.\+amigo.\+chatbot.\+api.\+A\+I\+Client@{edu.\+sjsu.\+amigo.\+chatbot.\+api.\+A\+I\+Client}}
+
+
+Inheritance diagram for edu.\+sjsu.\+amigo.\+chatbot.\+api.\+A\+I\+Client\+:
+% FIG 0
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+List$<$ String $>$ \hyperlink{interfaceedu_1_1sjsu_1_1amigo_1_1chatbot_1_1api_1_1_a_i_client_add4a2d03e1538f0abb42197fb94fc9dd}{get\+Intent} (String message)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Interface for AI Client.
+
+\begin{DoxyAuthor}{Author}
+rwatsh on 3/25/17. 
+\end{DoxyAuthor}
+
+
+Definition at line 24 of file A\+I\+Client.\+java.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{interfaceedu_1_1sjsu_1_1amigo_1_1chatbot_1_1api_1_1_a_i_client_add4a2d03e1538f0abb42197fb94fc9dd}\label{interfaceedu_1_1sjsu_1_1amigo_1_1chatbot_1_1api_1_1_a_i_client_add4a2d03e1538f0abb42197fb94fc9dd}} 
+\index{edu\+::sjsu\+::amigo\+::chatbot\+::api\+::\+A\+I\+Client@{edu\+::sjsu\+::amigo\+::chatbot\+::api\+::\+A\+I\+Client}!get\+Intent@{get\+Intent}}
+\index{get\+Intent@{get\+Intent}!edu\+::sjsu\+::amigo\+::chatbot\+::api\+::\+A\+I\+Client@{edu\+::sjsu\+::amigo\+::chatbot\+::api\+::\+A\+I\+Client}}
+\subsubsection{\texorpdfstring{get\+Intent()}{getIntent()}}
+{\footnotesize\ttfamily List$<$String$>$ edu.\+sjsu.\+amigo.\+chatbot.\+api.\+A\+I\+Client.\+get\+Intent (\begin{DoxyParamCaption}\item[{String}]{message }\end{DoxyParamCaption})}
+
+Gets the intent of the message.
+
+
+\begin{DoxyParams}{Parameters}
+{\em message} & user message. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+returns a sorted list of intent tokens found in the message. 
+\end{DoxyReturn}
+
+
+Implemented in \hyperlink{classedu_1_1sjsu_1_1amigo_1_1chatbot_1_1nlp_1_1_wit_dot_a_i_client_aa0e6e4f924089e29165ec44f7b7f54ee}{edu.\+sjsu.\+amigo.\+chatbot.\+nlp.\+Wit\+Dot\+A\+I\+Client}.
+
+Here is the caller graph for this function\+:
+% FIG 1
+
+
+The documentation for this interface was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+chatbot-\/service/src/main/java/edu/sjsu/amigo/chatbot/api/\hyperlink{_a_i_client_8java}{A\+I\+Client.\+java}\end{DoxyCompactItemize}

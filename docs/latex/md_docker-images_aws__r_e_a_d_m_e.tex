@@ -1,0 +1,23 @@
+Dockerfile for docker\+\_\+awscli image.
+
+Based on -\/ \href{https://lostechies.com/gabrielschenker/2016/09/21/easing-the-use-of-the-aws-cli/:}{\tt https\+://lostechies.\+com/gabrielschenker/2016/09/21/easing-\/the-\/use-\/of-\/the-\/aws-\/cli/\+:}
+
+\section*{Build Image from Dockerfile}
+
+Run following to build the container image with awscli.
+
+sudo docker build -\/t \char`\"{}sjsucohort6/docker\+\_\+awscli\char`\"{} .
+
+\section*{Execute awscli commands}
+
+sudo docker run -\/it --rm -\/e A\+W\+S\+\_\+\+D\+E\+F\+A\+U\+L\+T\+\_\+\+R\+E\+G\+I\+ON=\textquotesingle{}$<$your region$>$=\char`\"{}\char`\"{}$>$\textquotesingle{} -\/e A\+W\+S\+\_\+\+A\+C\+C\+E\+S\+S\+\_\+\+K\+E\+Y\+\_\+\+ID=\textquotesingle{}$<$your access=\char`\"{}\char`\"{} key$>$=\char`\"{}\char`\"{}$>$\textquotesingle{} -\/e A\+W\+S\+\_\+\+S\+E\+C\+R\+E\+T\+\_\+\+A\+C\+C\+E\+S\+S\+\_\+\+K\+EY=\textquotesingle{}$<$your secret=\char`\"{}\char`\"{} access=\char`\"{}\char`\"{} key$>$=\char`\"{}\char`\"{}$>$\textquotesingle{} --entrypoint aws sjsucohort6/docker\+\_\+awscli\+:latest ecs list-\/clusters
+
+or just define alias as\+:
+
+alias aws=sudo docker run -\/it --rm -\/e A\+W\+S\+\_\+\+D\+E\+F\+A\+U\+L\+T\+\_\+\+R\+E\+G\+I\+ON=\textquotesingle{}$<$your region$>$=\char`\"{}\char`\"{}$>$\textquotesingle{} -\/e A\+W\+S\+\_\+\+A\+C\+C\+E\+S\+S\+\_\+\+K\+E\+Y\+\_\+\+ID=\textquotesingle{}$<$your access=\char`\"{}\char`\"{} key$>$=\char`\"{}\char`\"{}$>$\textquotesingle{} -\/e A\+W\+S\+\_\+\+S\+E\+C\+R\+E\+T\+\_\+\+A\+C\+C\+E\+S\+S\+\_\+\+K\+EY=\textquotesingle{}$<$your secret=\char`\"{}\char`\"{} access=\char`\"{}\char`\"{} key$>$=\char`\"{}\char`\"{}$>$\textquotesingle{} --entrypoint aws sjsucohort6/docker\+\_\+awscli\+:latest
+
+Then run awscli commands without having awscli installed locally. aws s3 ls
+
+\section*{Image on docker hub}
+
+To pull from docker hub\+: docker pull sjsucohort6/docker\+\_\+awscli 

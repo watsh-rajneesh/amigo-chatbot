@@ -16,30 +16,33 @@ package edu.sjsu.amigo.user.rest;
 
 import edu.sjsu.amigo.db.common.DBClient;
 import edu.sjsu.amigo.db.common.DBException;
-import edu.sjsu.amigo.mp.util.JsonUtils;
+import edu.sjsu.amigo.db.common.Utilities;
+import edu.sjsu.amigo.json.util.JsonUtils;
 import edu.sjsu.amigo.user.auth.PrincipalUser;
 import edu.sjsu.amigo.user.db.model.User;
 import io.dropwizard.auth.Auth;
 import io.dropwizard.servlets.assets.ResourceNotFoundException;
+import lombok.extern.java.Log;
 
 import javax.validation.Valid;
-import javax.ws.rs.BadRequestException;
-import javax.ws.rs.HEAD;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.QueryParam;
-import javax.ws.rs.core.Context;
-import javax.ws.rs.core.Response;
-import javax.ws.rs.core.UriInfo;
+import javax.ws.rs.*;
+import javax.ws.rs.client.Entity;
+import javax.ws.rs.core.*;
 import java.io.IOException;
+import java.net.URI;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  * @author rwatsh on 3/27/17.
  */
+@Log
+@Path("/users")
+/*
+@Api(value = "/users", description = "Operations about users")
+*/
 public class UserResource extends BaseResource<User>  {
-    private static final Logger log = Logger.getLogger(UserResource.class.getName());
 
     public UserResource(DBClient dbClient) {
         super(dbClient);
@@ -51,11 +54,18 @@ public class UserResource extends BaseResource<User>  {
      * <p>
      * Every subsequent user request will also need to have the same auth creds as server wont maintain any session.
      *
+     * REST is stateless so we don't do any session tracking for user and this method lets the web UI perform a login
+     * operation. Alternatively web UI can also do a get on the user ID specified during login.
+     *
      * @param user
      * @param info
      * @return
      */
     @HEAD
+    /*@ApiOperation(httpMethod = "HEAD",
+            value = "Authenticates the user",
+            response = Response.class,
+            nickname="login")*/
     public Response login(@Auth User user, @Context UriInfo info) throws DBException {
         return Response.ok().build();
     }
@@ -63,41 +73,126 @@ public class UserResource extends BaseResource<User>  {
     /**
      * Create the resource.
      *
-     * @param principalUser
      * @param modelJson
-     * @param info
      * @return
      */
     @Override
-    public Response create(@Auth PrincipalUser principalUser, @Valid String modelJson, @Context UriInfo info) {
+    @POST
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    /*@ApiOperation(httpMethod = "POST",
+            value = "Resource to create a user",
+            response = Response.class,
+            nickname="create")*/
+    public Response create(@Valid String modelJson) {
         try {
             User user = JsonUtils.convertJsonToObject(modelJson, User.class);
             user.isValid();
-            // TO BE CONTINUED....
+            String encryptedPasswd = Utilities.generateMD5Hash(user.getPassword());
+            user.setPassword(encryptedPasswd);
+            List<String> insertedIds = userDAO.add(new ArrayList<User>() {{
+                add(user);
+            }});
+            if(insertedIds != null && !insertedIds.isEmpty()) {
+                URI uri = UriBuilder.fromResource(UserResource.class).build(insertedIds.get(0));
+                return Response.created(uri)
+                        .entity(Entity.json(insertedIds.get(0)))
+                        .build();
+            }
         } catch (Exception e) {
             log.log(Level.SEVERE, "Error in adding service", e);
+        }
+        return Response.status(Response.Status.BAD_REQUEST).entity(Entity.json(modelJson)).build();
+    }
+
+    @Override
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    /*@ApiOperation(httpMethod = "GET",
+            value = "list all users",
+            response = User.class,
+            responseContainer = "List",
+            nickname="list")*/
+    public List<User> list(@Auth PrincipalUser user, @QueryParam("filter") String filter) throws InternalErrorException {
+        try {
+            if(filter == null) {
+                return userDAO.fetchById(null);
+            } else {
+                return userDAO.fetch(filter, User.class);
+            }
+        } catch (Exception e) {
+            log.log(Level.SEVERE, "Error in getting users", e);
+            throw new BadRequestException(e);
+        }
+    }
+
+    @Override
+    @GET
+    @Path("/{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    /*@ApiOperation(httpMethod = "GET",
+            value = "get a user by id",
+            response = User.class,
+            nickname="retrieve")*/
+    public User retrieve(@Auth PrincipalUser user, @PathParam("id") String id) throws ResourceNotFoundException, InternalErrorException {
+        try {
+            List<User> users = userDAO.fetchById(new ArrayList<String>() {{
+                add(id);
+            }});
+            return users != null && !users.isEmpty() ? users.get(0) : null;
+
+        } catch (Exception e) {
+            log.log(Level.SEVERE, "Error in getting user ID [" + id +  "]", e);
+            throw new BadRequestException(e);
+        }
+    }
+
+    @Override
+    @PUT
+    @Path("/{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    /*@ApiOperation(httpMethod = "PUT",
+            value = "update a user",
+            response = User.class,
+            nickname="update")*/
+    public User update(@Auth PrincipalUser user, @PathParam("id") String id, @Valid String entity) throws ResourceNotFoundException, InternalErrorException, IOException {
+        try {
+            User u = JsonUtils.convertJsonToObject(entity, User.class);
+            u.isValid();
+            userDAO.update(new ArrayList<User>() {{
+                add(u);
+            }});
+            List<User> users = userDAO.fetchById(new ArrayList<String>() {{
+                add(id);
+            }});
+            if (users != null && !users.isEmpty()) {
+                return users.get(0);
+            }
+        } catch (Exception e) {
+            log.log(Level.SEVERE, "Error in getting user ID [" + id +  "]", e);
             throw new BadRequestException(e);
         }
         return null;
     }
 
     @Override
-    public List<User> list(@Auth PrincipalUser user, @QueryParam("filter") String filter) throws InternalErrorException {
-        return null;
-    }
-
-    @Override
-    public User retrieve(@Auth PrincipalUser user, @PathParam("id") String id) throws ResourceNotFoundException, InternalErrorException {
-        return null;
-    }
-
-    @Override
-    public User update(@Auth PrincipalUser user, @PathParam("id") String id, @Valid String entity) throws ResourceNotFoundException, InternalErrorException, IOException {
-        return null;
-    }
-
-    @Override
+    @DELETE
+    @Path("/{id}")
+    /*@ApiOperation(httpMethod = "DELETE",
+            value = "delete a user",
+            response = Response.class,
+            nickname="delete")*/
+    @Produces(MediaType.APPLICATION_JSON)
     public Response delete(@Auth PrincipalUser user, @PathParam("id") String id) throws ResourceNotFoundException, InternalErrorException {
-        return null;
+        try {
+            userDAO.deleteById(id);
+            return Response.ok()
+                    .entity(Entity.json(id))
+                    .build();
+        } catch (Exception e) {
+            log.log(Level.SEVERE, "Error in getting users", e);
+            throw new BadRequestException(e);
+        }
     }
 }

@@ -1,0 +1,10 @@
+digraph "edu.sjsu.amigo.user.db.model.User"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node3 [label="edu.sjsu.amigo.user.db.model.User",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node4 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node4 [label="edu.sjsu.amigo.db.common.model.\lValidable",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classedu_1_1sjsu_1_1amigo_1_1db_1_1common_1_1model_1_1_validable.html"];
+  Node5 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node5 [label="edu.sjsu.amigo.db.common.model.\lIModel",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$interfaceedu_1_1sjsu_1_1amigo_1_1db_1_1common_1_1model_1_1_i_model.html"];
+}

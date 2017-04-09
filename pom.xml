@@ -33,6 +33,7 @@
         <module>chatbot-service</module>
         <module>user-db</module>
         <module>db-common</module>
+        <module>json-common</module>
     </modules>
 
     <properties>

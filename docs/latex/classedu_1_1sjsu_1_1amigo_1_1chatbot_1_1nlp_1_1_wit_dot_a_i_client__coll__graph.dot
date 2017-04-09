@@ -1,0 +1,10 @@
+digraph "edu.sjsu.amigo.chatbot.nlp.WitDotAIClient"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node2 [label="edu.sjsu.amigo.chatbot.nlp.\lWitDotAIClient",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node3 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node3 [label="edu.sjsu.amigo.chatbot.api.\lAIClient",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$interfaceedu_1_1sjsu_1_1amigo_1_1chatbot_1_1api_1_1_a_i_client.html"];
+  Node4 -> Node2 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" queryStringMap\nheadersMap" ];
+  Node4 [label="Map\< String, String \>",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+}

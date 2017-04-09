@@ -1,0 +1,168 @@
+\hypertarget{classedu_1_1sjsu_1_1amigo_1_1user_1_1db_1_1test_1_1_d_b_test}{}\section{edu.\+sjsu.\+amigo.\+user.\+db.\+test.\+D\+B\+Test$<$ T extends Base\+D\+AO, S $>$ Class Template Reference}
+\label{classedu_1_1sjsu_1_1amigo_1_1user_1_1db_1_1test_1_1_d_b_test}\index{edu.\+sjsu.\+amigo.\+user.\+db.\+test.\+D\+B\+Test$<$ T extends Base\+D\+A\+O, S $>$@{edu.\+sjsu.\+amigo.\+user.\+db.\+test.\+D\+B\+Test$<$ T extends Base\+D\+A\+O, S $>$}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classedu_1_1sjsu_1_1amigo_1_1user_1_1db_1_1test_1_1_d_b_test_a2bc89c29bb2b7a7ba50ce057c4da847e}{D\+B\+Test} ()
+\item 
+void \hyperlink{classedu_1_1sjsu_1_1amigo_1_1user_1_1db_1_1test_1_1_d_b_test_ad45f09de863c6824c0bebdb308b94bf7}{set\+Up} (@Optional(\char`\"{}localhost\char`\"{}) String server, @Optional(\char`\"{}27017\char`\"{}) String port, @Optional(\char`\"{}user\+\_\+db\char`\"{}) String \hyperlink{classedu_1_1sjsu_1_1amigo_1_1user_1_1db_1_1test_1_1_d_b_test_a3f2573ce874e023900d80922923c6900}{db\+Name})  throws Exception 
+\item 
+void \hyperlink{classedu_1_1sjsu_1_1amigo_1_1user_1_1db_1_1test_1_1_d_b_test_adfbadef8f2b0158b57e6fed4985ee19c}{tear\+Down} ()  throws Exception 
+\item 
+void \hyperlink{classedu_1_1sjsu_1_1amigo_1_1user_1_1db_1_1test_1_1_d_b_test_a5c7a1235c61d59451a19874e8c06b2ac}{create\+DB} ()
+\item 
+void \hyperlink{classedu_1_1sjsu_1_1amigo_1_1user_1_1db_1_1test_1_1_d_b_test_a0143d91f1c2120b6e72a2c1724b1beae}{drop\+DB} ()
+\item 
+abstract void \hyperlink{classedu_1_1sjsu_1_1amigo_1_1user_1_1db_1_1test_1_1_d_b_test_a3d3d0f732c1d1d9f5cd5f526e9ae1804}{test\+Add} ()  throws Exception
+\item 
+abstract void \hyperlink{classedu_1_1sjsu_1_1amigo_1_1user_1_1db_1_1test_1_1_d_b_test_a02143d06d162d133b30a34a6c410dc0d}{test\+Remove} ()  throws Exception
+\item 
+abstract void \hyperlink{classedu_1_1sjsu_1_1amigo_1_1user_1_1db_1_1test_1_1_d_b_test_a8f405b851739579f07a5d93573840e25}{test\+Update} ()  throws Exception
+\item 
+abstract void \hyperlink{classedu_1_1sjsu_1_1amigo_1_1user_1_1db_1_1test_1_1_d_b_test_a0609cbc687512b402b1dc47ada47ede5}{test\+Fetch} ()  throws Exception
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+String \hyperlink{classedu_1_1sjsu_1_1amigo_1_1user_1_1db_1_1test_1_1_d_b_test_a3f2573ce874e023900d80922923c6900}{db\+Name}
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+T \hyperlink{classedu_1_1sjsu_1_1amigo_1_1user_1_1db_1_1test_1_1_d_b_test_abe7d8e01886d915d725ff0cc9a971bba}{dao}
+\end{DoxyCompactItemize}
+\subsection*{Static Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static \hyperlink{interfaceedu_1_1sjsu_1_1amigo_1_1db_1_1common_1_1_d_b_client}{D\+B\+Client} \hyperlink{classedu_1_1sjsu_1_1amigo_1_1user_1_1db_1_1test_1_1_d_b_test_a4d0a05dcef840b1759f95cb43bb1cb99}{client}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This class is meant to be inherited from by all DB tests. It has methods for test setup and tear down.
+
+\begin{DoxyAuthor}{Author}
+rwatsh on 3/27/17. 
+\end{DoxyAuthor}
+
+
+Definition at line 36 of file D\+B\+Test.\+java.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classedu_1_1sjsu_1_1amigo_1_1user_1_1db_1_1test_1_1_d_b_test_a2bc89c29bb2b7a7ba50ce057c4da847e}\label{classedu_1_1sjsu_1_1amigo_1_1user_1_1db_1_1test_1_1_d_b_test_a2bc89c29bb2b7a7ba50ce057c4da847e}} 
+\index{edu\+::sjsu\+::amigo\+::user\+::db\+::test\+::\+D\+B\+Test@{edu\+::sjsu\+::amigo\+::user\+::db\+::test\+::\+D\+B\+Test}!D\+B\+Test@{D\+B\+Test}}
+\index{D\+B\+Test@{D\+B\+Test}!edu\+::sjsu\+::amigo\+::user\+::db\+::test\+::\+D\+B\+Test@{edu\+::sjsu\+::amigo\+::user\+::db\+::test\+::\+D\+B\+Test}}
+\subsubsection{\texorpdfstring{D\+B\+Test()}{DBTest()}}
+{\footnotesize\ttfamily \hyperlink{classedu_1_1sjsu_1_1amigo_1_1user_1_1db_1_1test_1_1_d_b_test}{edu.\+sjsu.\+amigo.\+user.\+db.\+test.\+D\+B\+Test}$<$ T extends \hyperlink{interfaceedu_1_1sjsu_1_1amigo_1_1db_1_1common_1_1_base_d_a_o}{Base\+D\+AO}, S $>$.\hyperlink{classedu_1_1sjsu_1_1amigo_1_1user_1_1db_1_1test_1_1_d_b_test}{D\+B\+Test} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 47 of file D\+B\+Test.\+java.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classedu_1_1sjsu_1_1amigo_1_1user_1_1db_1_1test_1_1_d_b_test_a5c7a1235c61d59451a19874e8c06b2ac}\label{classedu_1_1sjsu_1_1amigo_1_1user_1_1db_1_1test_1_1_d_b_test_a5c7a1235c61d59451a19874e8c06b2ac}} 
+\index{edu\+::sjsu\+::amigo\+::user\+::db\+::test\+::\+D\+B\+Test@{edu\+::sjsu\+::amigo\+::user\+::db\+::test\+::\+D\+B\+Test}!create\+DB@{create\+DB}}
+\index{create\+DB@{create\+DB}!edu\+::sjsu\+::amigo\+::user\+::db\+::test\+::\+D\+B\+Test@{edu\+::sjsu\+::amigo\+::user\+::db\+::test\+::\+D\+B\+Test}}
+\subsubsection{\texorpdfstring{create\+D\+B()}{createDB()}}
+{\footnotesize\ttfamily void \hyperlink{classedu_1_1sjsu_1_1amigo_1_1user_1_1db_1_1test_1_1_d_b_test}{edu.\+sjsu.\+amigo.\+user.\+db.\+test.\+D\+B\+Test}$<$ T extends \hyperlink{interfaceedu_1_1sjsu_1_1amigo_1_1db_1_1common_1_1_base_d_a_o}{Base\+D\+AO}, S $>$.create\+DB (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 76 of file D\+B\+Test.\+java.
+
+\mbox{\Hypertarget{classedu_1_1sjsu_1_1amigo_1_1user_1_1db_1_1test_1_1_d_b_test_a0143d91f1c2120b6e72a2c1724b1beae}\label{classedu_1_1sjsu_1_1amigo_1_1user_1_1db_1_1test_1_1_d_b_test_a0143d91f1c2120b6e72a2c1724b1beae}} 
+\index{edu\+::sjsu\+::amigo\+::user\+::db\+::test\+::\+D\+B\+Test@{edu\+::sjsu\+::amigo\+::user\+::db\+::test\+::\+D\+B\+Test}!drop\+DB@{drop\+DB}}
+\index{drop\+DB@{drop\+DB}!edu\+::sjsu\+::amigo\+::user\+::db\+::test\+::\+D\+B\+Test@{edu\+::sjsu\+::amigo\+::user\+::db\+::test\+::\+D\+B\+Test}}
+\subsubsection{\texorpdfstring{drop\+D\+B()}{dropDB()}}
+{\footnotesize\ttfamily void \hyperlink{classedu_1_1sjsu_1_1amigo_1_1user_1_1db_1_1test_1_1_d_b_test}{edu.\+sjsu.\+amigo.\+user.\+db.\+test.\+D\+B\+Test}$<$ T extends \hyperlink{interfaceedu_1_1sjsu_1_1amigo_1_1db_1_1common_1_1_base_d_a_o}{Base\+D\+AO}, S $>$.drop\+DB (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 83 of file D\+B\+Test.\+java.
+
+\mbox{\Hypertarget{classedu_1_1sjsu_1_1amigo_1_1user_1_1db_1_1test_1_1_d_b_test_ad45f09de863c6824c0bebdb308b94bf7}\label{classedu_1_1sjsu_1_1amigo_1_1user_1_1db_1_1test_1_1_d_b_test_ad45f09de863c6824c0bebdb308b94bf7}} 
+\index{edu\+::sjsu\+::amigo\+::user\+::db\+::test\+::\+D\+B\+Test@{edu\+::sjsu\+::amigo\+::user\+::db\+::test\+::\+D\+B\+Test}!set\+Up@{set\+Up}}
+\index{set\+Up@{set\+Up}!edu\+::sjsu\+::amigo\+::user\+::db\+::test\+::\+D\+B\+Test@{edu\+::sjsu\+::amigo\+::user\+::db\+::test\+::\+D\+B\+Test}}
+\subsubsection{\texorpdfstring{set\+Up()}{setUp()}}
+{\footnotesize\ttfamily void \hyperlink{classedu_1_1sjsu_1_1amigo_1_1user_1_1db_1_1test_1_1_d_b_test}{edu.\+sjsu.\+amigo.\+user.\+db.\+test.\+D\+B\+Test}$<$ T extends \hyperlink{interfaceedu_1_1sjsu_1_1amigo_1_1db_1_1common_1_1_base_d_a_o}{Base\+D\+AO}, S $>$.set\+Up (\begin{DoxyParamCaption}\item[{@Optional(\char`\"{}localhost\char`\"{}) String}]{server,  }\item[{@Optional(\char`\"{}27017\char`\"{}) String}]{port,  }\item[{@Optional(\char`\"{}user\+\_\+db\char`\"{}) String}]{db\+Name }\end{DoxyParamCaption}) throws Exception}
+
+
+
+Definition at line 55 of file D\+B\+Test.\+java.
+
+\mbox{\Hypertarget{classedu_1_1sjsu_1_1amigo_1_1user_1_1db_1_1test_1_1_d_b_test_adfbadef8f2b0158b57e6fed4985ee19c}\label{classedu_1_1sjsu_1_1amigo_1_1user_1_1db_1_1test_1_1_d_b_test_adfbadef8f2b0158b57e6fed4985ee19c}} 
+\index{edu\+::sjsu\+::amigo\+::user\+::db\+::test\+::\+D\+B\+Test@{edu\+::sjsu\+::amigo\+::user\+::db\+::test\+::\+D\+B\+Test}!tear\+Down@{tear\+Down}}
+\index{tear\+Down@{tear\+Down}!edu\+::sjsu\+::amigo\+::user\+::db\+::test\+::\+D\+B\+Test@{edu\+::sjsu\+::amigo\+::user\+::db\+::test\+::\+D\+B\+Test}}
+\subsubsection{\texorpdfstring{tear\+Down()}{tearDown()}}
+{\footnotesize\ttfamily void \hyperlink{classedu_1_1sjsu_1_1amigo_1_1user_1_1db_1_1test_1_1_d_b_test}{edu.\+sjsu.\+amigo.\+user.\+db.\+test.\+D\+B\+Test}$<$ T extends \hyperlink{interfaceedu_1_1sjsu_1_1amigo_1_1db_1_1common_1_1_base_d_a_o}{Base\+D\+AO}, S $>$.tear\+Down (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) throws Exception}
+
+
+
+Definition at line 71 of file D\+B\+Test.\+java.
+
+\mbox{\Hypertarget{classedu_1_1sjsu_1_1amigo_1_1user_1_1db_1_1test_1_1_d_b_test_a3d3d0f732c1d1d9f5cd5f526e9ae1804}\label{classedu_1_1sjsu_1_1amigo_1_1user_1_1db_1_1test_1_1_d_b_test_a3d3d0f732c1d1d9f5cd5f526e9ae1804}} 
+\index{edu\+::sjsu\+::amigo\+::user\+::db\+::test\+::\+D\+B\+Test@{edu\+::sjsu\+::amigo\+::user\+::db\+::test\+::\+D\+B\+Test}!test\+Add@{test\+Add}}
+\index{test\+Add@{test\+Add}!edu\+::sjsu\+::amigo\+::user\+::db\+::test\+::\+D\+B\+Test@{edu\+::sjsu\+::amigo\+::user\+::db\+::test\+::\+D\+B\+Test}}
+\subsubsection{\texorpdfstring{test\+Add()}{testAdd()}}
+{\footnotesize\ttfamily abstract void \hyperlink{classedu_1_1sjsu_1_1amigo_1_1user_1_1db_1_1test_1_1_d_b_test}{edu.\+sjsu.\+amigo.\+user.\+db.\+test.\+D\+B\+Test}$<$ T extends \hyperlink{interfaceedu_1_1sjsu_1_1amigo_1_1db_1_1common_1_1_base_d_a_o}{Base\+D\+AO}, S $>$.test\+Add (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) throws Exception\hspace{0.3cm}{\ttfamily [abstract]}}
+
+\mbox{\Hypertarget{classedu_1_1sjsu_1_1amigo_1_1user_1_1db_1_1test_1_1_d_b_test_a0609cbc687512b402b1dc47ada47ede5}\label{classedu_1_1sjsu_1_1amigo_1_1user_1_1db_1_1test_1_1_d_b_test_a0609cbc687512b402b1dc47ada47ede5}} 
+\index{edu\+::sjsu\+::amigo\+::user\+::db\+::test\+::\+D\+B\+Test@{edu\+::sjsu\+::amigo\+::user\+::db\+::test\+::\+D\+B\+Test}!test\+Fetch@{test\+Fetch}}
+\index{test\+Fetch@{test\+Fetch}!edu\+::sjsu\+::amigo\+::user\+::db\+::test\+::\+D\+B\+Test@{edu\+::sjsu\+::amigo\+::user\+::db\+::test\+::\+D\+B\+Test}}
+\subsubsection{\texorpdfstring{test\+Fetch()}{testFetch()}}
+{\footnotesize\ttfamily abstract void \hyperlink{classedu_1_1sjsu_1_1amigo_1_1user_1_1db_1_1test_1_1_d_b_test}{edu.\+sjsu.\+amigo.\+user.\+db.\+test.\+D\+B\+Test}$<$ T extends \hyperlink{interfaceedu_1_1sjsu_1_1amigo_1_1db_1_1common_1_1_base_d_a_o}{Base\+D\+AO}, S $>$.test\+Fetch (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) throws Exception\hspace{0.3cm}{\ttfamily [abstract]}}
+
+\mbox{\Hypertarget{classedu_1_1sjsu_1_1amigo_1_1user_1_1db_1_1test_1_1_d_b_test_a02143d06d162d133b30a34a6c410dc0d}\label{classedu_1_1sjsu_1_1amigo_1_1user_1_1db_1_1test_1_1_d_b_test_a02143d06d162d133b30a34a6c410dc0d}} 
+\index{edu\+::sjsu\+::amigo\+::user\+::db\+::test\+::\+D\+B\+Test@{edu\+::sjsu\+::amigo\+::user\+::db\+::test\+::\+D\+B\+Test}!test\+Remove@{test\+Remove}}
+\index{test\+Remove@{test\+Remove}!edu\+::sjsu\+::amigo\+::user\+::db\+::test\+::\+D\+B\+Test@{edu\+::sjsu\+::amigo\+::user\+::db\+::test\+::\+D\+B\+Test}}
+\subsubsection{\texorpdfstring{test\+Remove()}{testRemove()}}
+{\footnotesize\ttfamily abstract void \hyperlink{classedu_1_1sjsu_1_1amigo_1_1user_1_1db_1_1test_1_1_d_b_test}{edu.\+sjsu.\+amigo.\+user.\+db.\+test.\+D\+B\+Test}$<$ T extends \hyperlink{interfaceedu_1_1sjsu_1_1amigo_1_1db_1_1common_1_1_base_d_a_o}{Base\+D\+AO}, S $>$.test\+Remove (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) throws Exception\hspace{0.3cm}{\ttfamily [abstract]}}
+
+\mbox{\Hypertarget{classedu_1_1sjsu_1_1amigo_1_1user_1_1db_1_1test_1_1_d_b_test_a8f405b851739579f07a5d93573840e25}\label{classedu_1_1sjsu_1_1amigo_1_1user_1_1db_1_1test_1_1_d_b_test_a8f405b851739579f07a5d93573840e25}} 
+\index{edu\+::sjsu\+::amigo\+::user\+::db\+::test\+::\+D\+B\+Test@{edu\+::sjsu\+::amigo\+::user\+::db\+::test\+::\+D\+B\+Test}!test\+Update@{test\+Update}}
+\index{test\+Update@{test\+Update}!edu\+::sjsu\+::amigo\+::user\+::db\+::test\+::\+D\+B\+Test@{edu\+::sjsu\+::amigo\+::user\+::db\+::test\+::\+D\+B\+Test}}
+\subsubsection{\texorpdfstring{test\+Update()}{testUpdate()}}
+{\footnotesize\ttfamily abstract void \hyperlink{classedu_1_1sjsu_1_1amigo_1_1user_1_1db_1_1test_1_1_d_b_test}{edu.\+sjsu.\+amigo.\+user.\+db.\+test.\+D\+B\+Test}$<$ T extends \hyperlink{interfaceedu_1_1sjsu_1_1amigo_1_1db_1_1common_1_1_base_d_a_o}{Base\+D\+AO}, S $>$.test\+Update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) throws Exception\hspace{0.3cm}{\ttfamily [abstract]}}
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classedu_1_1sjsu_1_1amigo_1_1user_1_1db_1_1test_1_1_d_b_test_a4d0a05dcef840b1759f95cb43bb1cb99}\label{classedu_1_1sjsu_1_1amigo_1_1user_1_1db_1_1test_1_1_d_b_test_a4d0a05dcef840b1759f95cb43bb1cb99}} 
+\index{edu\+::sjsu\+::amigo\+::user\+::db\+::test\+::\+D\+B\+Test@{edu\+::sjsu\+::amigo\+::user\+::db\+::test\+::\+D\+B\+Test}!client@{client}}
+\index{client@{client}!edu\+::sjsu\+::amigo\+::user\+::db\+::test\+::\+D\+B\+Test@{edu\+::sjsu\+::amigo\+::user\+::db\+::test\+::\+D\+B\+Test}}
+\subsubsection{\texorpdfstring{client}{client}}
+{\footnotesize\ttfamily \hyperlink{interfaceedu_1_1sjsu_1_1amigo_1_1db_1_1common_1_1_d_b_client}{D\+B\+Client} \hyperlink{classedu_1_1sjsu_1_1amigo_1_1user_1_1db_1_1test_1_1_d_b_test}{edu.\+sjsu.\+amigo.\+user.\+db.\+test.\+D\+B\+Test}$<$ T extends \hyperlink{interfaceedu_1_1sjsu_1_1amigo_1_1db_1_1common_1_1_base_d_a_o}{Base\+D\+AO}, S $>$.client\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [protected]}}
+
+
+
+Definition at line 44 of file D\+B\+Test.\+java.
+
+\mbox{\Hypertarget{classedu_1_1sjsu_1_1amigo_1_1user_1_1db_1_1test_1_1_d_b_test_abe7d8e01886d915d725ff0cc9a971bba}\label{classedu_1_1sjsu_1_1amigo_1_1user_1_1db_1_1test_1_1_d_b_test_abe7d8e01886d915d725ff0cc9a971bba}} 
+\index{edu\+::sjsu\+::amigo\+::user\+::db\+::test\+::\+D\+B\+Test@{edu\+::sjsu\+::amigo\+::user\+::db\+::test\+::\+D\+B\+Test}!dao@{dao}}
+\index{dao@{dao}!edu\+::sjsu\+::amigo\+::user\+::db\+::test\+::\+D\+B\+Test@{edu\+::sjsu\+::amigo\+::user\+::db\+::test\+::\+D\+B\+Test}}
+\subsubsection{\texorpdfstring{dao}{dao}}
+{\footnotesize\ttfamily T \hyperlink{classedu_1_1sjsu_1_1amigo_1_1user_1_1db_1_1test_1_1_d_b_test}{edu.\+sjsu.\+amigo.\+user.\+db.\+test.\+D\+B\+Test}$<$ T extends \hyperlink{interfaceedu_1_1sjsu_1_1amigo_1_1db_1_1common_1_1_base_d_a_o}{Base\+D\+AO}, S $>$.dao\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line 39 of file D\+B\+Test.\+java.
+
+\mbox{\Hypertarget{classedu_1_1sjsu_1_1amigo_1_1user_1_1db_1_1test_1_1_d_b_test_a3f2573ce874e023900d80922923c6900}\label{classedu_1_1sjsu_1_1amigo_1_1user_1_1db_1_1test_1_1_d_b_test_a3f2573ce874e023900d80922923c6900}} 
+\index{edu\+::sjsu\+::amigo\+::user\+::db\+::test\+::\+D\+B\+Test@{edu\+::sjsu\+::amigo\+::user\+::db\+::test\+::\+D\+B\+Test}!db\+Name@{db\+Name}}
+\index{db\+Name@{db\+Name}!edu\+::sjsu\+::amigo\+::user\+::db\+::test\+::\+D\+B\+Test@{edu\+::sjsu\+::amigo\+::user\+::db\+::test\+::\+D\+B\+Test}}
+\subsubsection{\texorpdfstring{db\+Name}{dbName}}
+{\footnotesize\ttfamily String \hyperlink{classedu_1_1sjsu_1_1amigo_1_1user_1_1db_1_1test_1_1_d_b_test}{edu.\+sjsu.\+amigo.\+user.\+db.\+test.\+D\+B\+Test}$<$ T extends \hyperlink{interfaceedu_1_1sjsu_1_1amigo_1_1db_1_1common_1_1_base_d_a_o}{Base\+D\+AO}, S $>$.db\+Name}
+
+
+
+Definition at line 42 of file D\+B\+Test.\+java.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+user-\/db/src/test/java/edu/sjsu/amigo/user/db/test/\hyperlink{_d_b_test_8java}{D\+B\+Test.\+java}\end{DoxyCompactItemize}

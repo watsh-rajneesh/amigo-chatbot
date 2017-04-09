@@ -1,0 +1,15 @@
+digraph "edu.sjsu.amigo.user.db.dao.UserDAO"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node4 [label="edu.sjsu.amigo.user.db.dao.\lUserDAO",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node5 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 [label="edu::sjsu::amigo::db\l::common::mongodb::BaseDAOImpl\l\< User \>",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classedu_1_1sjsu_1_1amigo_1_1db_1_1common_1_1mongodb_1_1_base_d_a_o_impl.html"];
+  Node6 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node6 [label="org::mongodb::morphia\l::dao::BasicDAO\< T, String \>",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node7 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node7 [label="edu::sjsu::amigo::db\l::common::BaseDAO\< T \>",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$interfaceedu_1_1sjsu_1_1amigo_1_1db_1_1common_1_1_base_d_a_o.html"];
+  Node8 -> Node5 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" morphia" ,fontname="Helvetica"];
+  Node8 [label="Morphia",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+}

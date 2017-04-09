@@ -1,0 +1,9 @@
+digraph "edu.sjsu.amigo.slackbot.oauth.SlackApi.setTeam"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node9 [label="edu.sjsu.amigo.slackbot.oauth.\lSlackApi.setTeam",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node9 -> Node10 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node10 [label="edu.sjsu.amigo.slackbot.oauth.\lSlackOAuth20ServiceImpl.getAuthorizationUrl",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classedu_1_1sjsu_1_1amigo_1_1slackbot_1_1oauth_1_1_slack_o_auth20_service_impl.html#a1633d5c63b9f7a0feda03c177fe92df4"];
+}

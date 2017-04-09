@@ -1,0 +1,11 @@
+digraph "edu.sjsu.amigo.user.health.DBHealthCheck.check"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node2 [label="edu.sjsu.amigo.user.health.\lDBHealthCheck.check",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node2 -> Node3 [color="midnightblue",fontsize="10",style="solid"];
+  Node3 [label="edu.sjsu.amigo.db.common.\lDBClient.checkHealth",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$interfaceedu_1_1sjsu_1_1amigo_1_1db_1_1common_1_1_d_b_client.html#af6387539a42d236e515d04bdf32e171d"];
+  Node2 -> Node4 [color="midnightblue",fontsize="10",style="solid"];
+  Node4 [label="edu.sjsu.amigo.db.common.\lDBClient.getConnectString",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$interfaceedu_1_1sjsu_1_1amigo_1_1db_1_1common_1_1_d_b_client.html#ad69072c1ef72bd58d7f6ce71050c4c8f"];
+}

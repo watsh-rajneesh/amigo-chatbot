@@ -20,7 +20,7 @@ import edu.sjsu.amigo.mp.kafka.Message;
 import edu.sjsu.amigo.mp.kafka.MessageProducer;
 import edu.sjsu.amigo.mp.kafka.SlackMessage;
 import edu.sjsu.amigo.mp.util.BotType;
-import edu.sjsu.amigo.mp.util.JsonUtils;
+import edu.sjsu.amigo.json.util.JsonUtils;
 
 import java.io.IOException;
 import java.util.Date;

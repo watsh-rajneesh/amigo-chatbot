@@ -78,10 +78,6 @@
           <artifactId>jcommander</artifactId>
           <groupId>com.beust</groupId>
         </exclusion>
-        <exclusion>
-          <artifactId>snakeyaml</artifactId>
-          <groupId>org.yaml</groupId>
-        </exclusion>
       </exclusions>
     </dependency>
   </dependencies>

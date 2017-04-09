@@ -1,0 +1,15 @@
+digraph "Graphical Class Hierarchy"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node22 [label="Exception",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node22 -> Node0 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node0 [label="edu.sjsu.amigo.cp.api.Command\lExecutionException",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classedu_1_1sjsu_1_1amigo_1_1cp_1_1api_1_1_command_execution_exception.html"];
+  Node22 -> Node24 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node24 [label="edu.sjsu.amigo.db.common.\lDBException",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classedu_1_1sjsu_1_1amigo_1_1db_1_1common_1_1_d_b_exception.html"];
+  Node22 -> Node25 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node25 [label="edu.sjsu.amigo.db.common.model.\lValidationException",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classedu_1_1sjsu_1_1amigo_1_1db_1_1common_1_1model_1_1_validation_exception.html"];
+  Node22 -> Node26 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node26 [label="edu.sjsu.amigo.http.client.\lHttpClientException",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classedu_1_1sjsu_1_1amigo_1_1http_1_1client_1_1_http_client_exception.html"];
+}

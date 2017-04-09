@@ -1,0 +1,62 @@
+\href{http://wurstmeister.github.io/kafka-docker/}{\tt http\+://wurstmeister.\+github.\+io/kafka-\/docker/}
+
+\subsection*{Reference}
+
+\href{https://github.com/wurstmeister/kafka-docker}{\tt https\+://github.\+com/wurstmeister/kafka-\/docker}
+
+This is cloned from the above public github repo.
+
+\subsection*{Usage}
+
+0. Setup\+: Edit the docker-\/compose.\+yml to provide K\+A\+F\+K\+A\+\_\+\+A\+D\+V\+E\+R\+T\+I\+S\+E\+D\+\_\+\+H\+O\+S\+T\+\_\+\+N\+A\+ME and K\+A\+F\+K\+A\+\_\+\+Z\+O\+O\+K\+E\+E\+P\+E\+R\+\_\+\+C\+O\+N\+N\+E\+CT host ips. This is the IP of the host on which we are going to run the docker containers for Kafka and Zookeeper.
+
+
+\begin{DoxyCode}
+KAFKA\_ADVERTISED\_HOST\_NAME: 192.168.86.89
+KAFKA\_ZOOKEEPER\_CONNECT: 192.168.86.89:2181
+\end{DoxyCode}
+
+\begin{DoxyEnumerate}
+\item Start a cluster in detached mode\+: 
+\begin{DoxyCode}
+It will start 2 containers:
+kafkadocker\_kafka\_1 - with kafka running at 9092 mapped to 9092 of localhost
+kafkadocker\_zookeeper\_1 - with zookeeper running at 2181 mapped to 2181 of localhost
+
+To start a cluster with 2 brokers:
+```docker-compose scale kafka=
+\end{DoxyCode}
+
+
+You can use docker-\/compose ps to show the running instances. If you want to add more Kafka brokers simply increase the value passed to docker-\/compose scale kafka=n
+
+If you want to customise any Kafka parameters, simply add them as environment variables in docker-\/compose.\+yml. For example\+:
+\begin{DoxyItemize}
+\item to increase the message.\+max.\+bytes parameter add K\+A\+F\+K\+A\+\_\+\+M\+E\+S\+S\+A\+G\+E\+\_\+\+M\+A\+X\+\_\+\+B\+Y\+T\+ES\+: 2000000 to the environment section.
+\item to turn off automatic topic creation set K\+A\+F\+K\+A\+\_\+\+A\+U\+T\+O\+\_\+\+C\+R\+E\+A\+T\+E\+\_\+\+T\+O\+P\+I\+C\+S\+\_\+\+E\+N\+A\+B\+LE\+: \textquotesingle{}false\textquotesingle{}
+\end{DoxyItemize}
+\item To interact with Kafka container use the kafka-\/shell as\+: 
+\begin{DoxyCode}
+\{$\}
+Example:
+```$ ./start-kafka-shell.sh 192.168.86.89 192.168.86.89:218
+\end{DoxyCode}
+
+\item Testing\+: To test your setup, start a shell, create a topic and start a producer\+:
+\end{DoxyEnumerate}
+
+``` \$ \$\+K\+A\+F\+K\+A\+\_\+\+H\+O\+ME/bin/kafka-\/topics.sh --create --topic user\+\_\+msg \textbackslash{} --partitions 4 --zookeeper \$\+ZK --replication-\/factor 1 \$ \$\+K\+A\+F\+K\+A\+\_\+\+H\+O\+ME/bin/kafka-\/topics.sh --describe --topic user\+\_\+msg --zookeeper \$\+ZK \$ \$\+K\+A\+F\+K\+A\+\_\+\+H\+O\+ME/bin/kafka-\/console-\/producer.sh --topic=user\+\_\+msg \textbackslash{} --broker-\/list={\ttfamily broker-\/list.\+sh} 
+\begin{DoxyCode}
+Start another shell and start a consumer:
+```$ $KAFKA\_HOME/bin/kafka-console-consumer.sh --topic=topic --zookeeper=$Z
+\end{DoxyCode}
+
+
+Type in producer shell and it should be published to the client\textquotesingle{}s shell.
+
+
+\begin{DoxyEnumerate}
+\item To test with Java clients\+:
+\end{DoxyEnumerate}
+
+mq-\/common/\+Message\+Producer.\+java -\/ writes to the user\+\_\+msg topic (called from \hyperlink{_message_listener_8java}{slackbot/\+Message\+Listener.\+java}) command-\/processor-\/service/\+Consumer\+Loop.\+java -\/ polls from user\+\_\+msg topic 

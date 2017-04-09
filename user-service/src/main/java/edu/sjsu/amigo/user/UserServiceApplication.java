@@ -22,13 +22,16 @@ import edu.sjsu.amigo.user.rest.EndpointUtils;
 import edu.sjsu.amigo.user.rest.UserResource;
 import io.dropwizard.Application;
 import io.dropwizard.auth.AuthDynamicFeature;
+import io.dropwizard.auth.AuthValueFactoryProvider;
 import io.dropwizard.auth.basic.BasicCredentialAuthFilter;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
+import lombok.extern.java.Log;
 
 /**
  * @author rwatsh on 3/26/17.
  */
+@Log
 public class UserServiceApplication extends Application<UserServiceConfiguration> {
 
     private DBClient dbClient;
@@ -50,6 +53,12 @@ public class UserServiceApplication extends Application<UserServiceConfiguration
          * http://<host>:<port>/openstack
          */
         //bootstrap.addBundle(new AssetsBundle("/assets", "/openstack", "index.html"));
+        /*bootstrap.addBundle(new SwaggerBundle<UserServiceConfiguration>() {
+            @Override
+            protected SwaggerBundleConfiguration getSwaggerBundleConfiguration(UserServiceConfiguration userServiceConfiguration) {
+                return userServiceConfiguration.swaggerBundleConfiguration;
+            }
+        });*/
     }
 
 
@@ -57,6 +66,7 @@ public class UserServiceApplication extends Application<UserServiceConfiguration
     @Override
     public void run(UserServiceConfiguration userServiceConfiguration, Environment environment) throws Exception {
         dbClient = userServiceConfiguration.getDbConfig().build(environment);
+        log.info("Connected to db: " + dbClient.getConnectString());
         /*
          * Setup basic authentication against DB table.
          */
@@ -65,17 +75,19 @@ public class UserServiceApplication extends Application<UserServiceConfiguration
                         .setAuthenticator(new SimpleAuthenticator(dbClient))
                         .setRealm("amigo_user")
                         .buildAuthFilter()));
+        environment.jersey().register(new AuthValueFactoryProvider.Binder<>(PrincipalUser.class));
 
         environment.healthChecks().register("database", new DBHealthCheck(dbClient));
         /*
          * Register resources with jersey.
          */
-        final UserResource serviceResource = new UserResource(dbClient);
+        final UserResource userResource = new UserResource(dbClient);
 
         /*
          * Setup jersey environment.
          */
         environment.jersey().setUrlPattern(EndpointUtils.ENDPOINT_ROOT + "/*");
-        environment.jersey().register(serviceResource);
+        environment.jersey().register(userResource);
+        log.info("Done with all initializations for user service");
     }
 }

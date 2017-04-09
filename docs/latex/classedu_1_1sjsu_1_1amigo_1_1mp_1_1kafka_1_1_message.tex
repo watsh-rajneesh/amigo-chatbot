@@ -1,0 +1,218 @@
+\hypertarget{classedu_1_1sjsu_1_1amigo_1_1mp_1_1kafka_1_1_message}{}\section{edu.\+sjsu.\+amigo.\+mp.\+kafka.\+Message Class Reference}
+\label{classedu_1_1sjsu_1_1amigo_1_1mp_1_1kafka_1_1_message}\index{edu.\+sjsu.\+amigo.\+mp.\+kafka.\+Message@{edu.\+sjsu.\+amigo.\+mp.\+kafka.\+Message}}
+Inheritance diagram for edu.\+sjsu.\+amigo.\+mp.\+kafka.\+Message\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classedu_1_1sjsu_1_1amigo_1_1mp_1_1kafka_1_1_message}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classedu_1_1sjsu_1_1amigo_1_1mp_1_1kafka_1_1_message_ad82e52562c76f636a7fed853011bfb58}{Message} ()
+\item 
+\hyperlink{classedu_1_1sjsu_1_1amigo_1_1mp_1_1kafka_1_1_message_a07afa911fb18e10786acc2a48f056a55}{Message} (String time, String user\+Email, String user\+Name, String content, List$<$ String $>$ intent)
+\item 
+String \hyperlink{classedu_1_1sjsu_1_1amigo_1_1mp_1_1kafka_1_1_message_a36e5e0185f98a39c3a320ecda92e198b}{get\+Msg\+Received\+Time} ()
+\item 
+void \hyperlink{classedu_1_1sjsu_1_1amigo_1_1mp_1_1kafka_1_1_message_a7d7682afca7e163c5d18d88e44997ef7}{set\+Msg\+Received\+Time} (String msg\+Received\+Time)
+\item 
+String \hyperlink{classedu_1_1sjsu_1_1amigo_1_1mp_1_1kafka_1_1_message_ab0152afc118f2419f176ff9da5d10729}{get\+User\+Email} ()
+\item 
+void \hyperlink{classedu_1_1sjsu_1_1amigo_1_1mp_1_1kafka_1_1_message_a794f8d4101411ecee9fe07f704e3f1f4}{set\+User\+Email} (String user\+Email)
+\item 
+String \hyperlink{classedu_1_1sjsu_1_1amigo_1_1mp_1_1kafka_1_1_message_a417ffc1428f5c212ce9ecca3b1ea9265}{get\+User\+Name} ()
+\item 
+void \hyperlink{classedu_1_1sjsu_1_1amigo_1_1mp_1_1kafka_1_1_message_a23ef3ab25dad5c06740a4bff403030a6}{set\+User\+Name} (String user\+Name)
+\item 
+String \hyperlink{classedu_1_1sjsu_1_1amigo_1_1mp_1_1kafka_1_1_message_a059c4a2eb1ec29f720a5de312658e953}{get\+Content} ()
+\item 
+void \hyperlink{classedu_1_1sjsu_1_1amigo_1_1mp_1_1kafka_1_1_message_a3055123d7c4e5a480dfaa5c106c38cf9}{set\+Content} (String content)
+\item 
+List$<$ String $>$ \hyperlink{classedu_1_1sjsu_1_1amigo_1_1mp_1_1kafka_1_1_message_a02741708a738f74bf41e744d62e93599}{get\+Intent} ()
+\item 
+void \hyperlink{classedu_1_1sjsu_1_1amigo_1_1mp_1_1kafka_1_1_message_a6ad0370cf5e5abfa0dd6abc480b5a0a3}{set\+Intent} (List$<$ String $>$ intent)
+\item 
+String \hyperlink{classedu_1_1sjsu_1_1amigo_1_1mp_1_1kafka_1_1_message_a47522ca9758906f0c1c10f9515561000}{get\+User\+Id} ()
+\item 
+void \hyperlink{classedu_1_1sjsu_1_1amigo_1_1mp_1_1kafka_1_1_message_aabd0791c52c85bc2f2830462d8f8b3a0}{set\+User\+Id} (String user\+Id)
+\item 
+String \hyperlink{classedu_1_1sjsu_1_1amigo_1_1mp_1_1kafka_1_1_message_a7788b925c3ded0309bd31e036224ca9b}{to\+String} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\hyperlink{classedu_1_1sjsu_1_1amigo_1_1mp_1_1kafka_1_1_message}{Message} payload that will be sent to the backend to process and execute command. This is client agnostic message so all clients -\/ slack messenger or web UI will send the same message to the backend.
+
+An example message received from slack messenger.
+
+Feb 26, 2017 4\+:17\+:02 AM \hyperlink{classedu_1_1sjsu_1_1amigo_1_1slackbot_1_1_message_listener}{edu.\+sjsu.\+amigo.\+slackbot.\+Message\+Listener}\$1 on\+Event I\+N\+FO\+: Received message from Slack\+User\+Impl\{ id=\textquotesingle{}U\+S\+E\+R\+\_\+\+ID\textquotesingle{}, user\+Name=\textquotesingle{}watsh\textquotesingle{}, real\+Name=\textquotesingle{}Watsh Rajneesh\textquotesingle{}, user\+Mail=\textquotesingle{}\href{mailto:watsh.rajneesh@sjsu.edu}{\tt watsh.\+rajneesh@sjsu.\+edu}\textquotesingle{}, user\+Skype=\textquotesingle{}rwatsh\textquotesingle{}, user\+Phone=\textquotesingle{}\textquotesingle{}, user\+Title=\textquotesingle{}\textquotesingle{}, is\+Deleted=false\textquotesingle{}, is\+Admin=true\textquotesingle{}, is\+Owner=true\textquotesingle{}, is\+Primary\+Owner=true\textquotesingle{}, is\+Restricted=false\textquotesingle{}, is\+Ultra\+Restricted=false, time\+Zone=America/\+Los\+\_\+\+Angeles, time\+Zone\+Label=Pacific Standard Time, time\+Zone\+Offset=-\/28800\} content \mbox{[}$<$$>$ aws iam list-\/users\mbox{]} \}
+
+\begin{DoxyAuthor}{Author}
+rwatsh on 2/26/17. 
+\end{DoxyAuthor}
+
+
+Definition at line 50 of file Message.\+java.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classedu_1_1sjsu_1_1amigo_1_1mp_1_1kafka_1_1_message_ad82e52562c76f636a7fed853011bfb58}\label{classedu_1_1sjsu_1_1amigo_1_1mp_1_1kafka_1_1_message_ad82e52562c76f636a7fed853011bfb58}} 
+\index{edu\+::sjsu\+::amigo\+::mp\+::kafka\+::\+Message@{edu\+::sjsu\+::amigo\+::mp\+::kafka\+::\+Message}!Message@{Message}}
+\index{Message@{Message}!edu\+::sjsu\+::amigo\+::mp\+::kafka\+::\+Message@{edu\+::sjsu\+::amigo\+::mp\+::kafka\+::\+Message}}
+\subsubsection{\texorpdfstring{Message()}{Message()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily edu.\+sjsu.\+amigo.\+mp.\+kafka.\+Message.\+Message (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 64 of file Message.\+java.
+
+\mbox{\Hypertarget{classedu_1_1sjsu_1_1amigo_1_1mp_1_1kafka_1_1_message_a07afa911fb18e10786acc2a48f056a55}\label{classedu_1_1sjsu_1_1amigo_1_1mp_1_1kafka_1_1_message_a07afa911fb18e10786acc2a48f056a55}} 
+\index{edu\+::sjsu\+::amigo\+::mp\+::kafka\+::\+Message@{edu\+::sjsu\+::amigo\+::mp\+::kafka\+::\+Message}!Message@{Message}}
+\index{Message@{Message}!edu\+::sjsu\+::amigo\+::mp\+::kafka\+::\+Message@{edu\+::sjsu\+::amigo\+::mp\+::kafka\+::\+Message}}
+\subsubsection{\texorpdfstring{Message()}{Message()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily edu.\+sjsu.\+amigo.\+mp.\+kafka.\+Message.\+Message (\begin{DoxyParamCaption}\item[{String}]{time,  }\item[{String}]{user\+Email,  }\item[{String}]{user\+Name,  }\item[{String}]{content,  }\item[{List$<$ String $>$}]{intent }\end{DoxyParamCaption})}
+
+
+
+Definition at line 66 of file Message.\+java.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classedu_1_1sjsu_1_1amigo_1_1mp_1_1kafka_1_1_message_a059c4a2eb1ec29f720a5de312658e953}\label{classedu_1_1sjsu_1_1amigo_1_1mp_1_1kafka_1_1_message_a059c4a2eb1ec29f720a5de312658e953}} 
+\index{edu\+::sjsu\+::amigo\+::mp\+::kafka\+::\+Message@{edu\+::sjsu\+::amigo\+::mp\+::kafka\+::\+Message}!get\+Content@{get\+Content}}
+\index{get\+Content@{get\+Content}!edu\+::sjsu\+::amigo\+::mp\+::kafka\+::\+Message@{edu\+::sjsu\+::amigo\+::mp\+::kafka\+::\+Message}}
+\subsubsection{\texorpdfstring{get\+Content()}{getContent()}}
+{\footnotesize\ttfamily String edu.\+sjsu.\+amigo.\+mp.\+kafka.\+Message.\+get\+Content (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 98 of file Message.\+java.
+
+\mbox{\Hypertarget{classedu_1_1sjsu_1_1amigo_1_1mp_1_1kafka_1_1_message_a02741708a738f74bf41e744d62e93599}\label{classedu_1_1sjsu_1_1amigo_1_1mp_1_1kafka_1_1_message_a02741708a738f74bf41e744d62e93599}} 
+\index{edu\+::sjsu\+::amigo\+::mp\+::kafka\+::\+Message@{edu\+::sjsu\+::amigo\+::mp\+::kafka\+::\+Message}!get\+Intent@{get\+Intent}}
+\index{get\+Intent@{get\+Intent}!edu\+::sjsu\+::amigo\+::mp\+::kafka\+::\+Message@{edu\+::sjsu\+::amigo\+::mp\+::kafka\+::\+Message}}
+\subsubsection{\texorpdfstring{get\+Intent()}{getIntent()}}
+{\footnotesize\ttfamily List$<$String$>$ edu.\+sjsu.\+amigo.\+mp.\+kafka.\+Message.\+get\+Intent (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 106 of file Message.\+java.
+
+\mbox{\Hypertarget{classedu_1_1sjsu_1_1amigo_1_1mp_1_1kafka_1_1_message_a36e5e0185f98a39c3a320ecda92e198b}\label{classedu_1_1sjsu_1_1amigo_1_1mp_1_1kafka_1_1_message_a36e5e0185f98a39c3a320ecda92e198b}} 
+\index{edu\+::sjsu\+::amigo\+::mp\+::kafka\+::\+Message@{edu\+::sjsu\+::amigo\+::mp\+::kafka\+::\+Message}!get\+Msg\+Received\+Time@{get\+Msg\+Received\+Time}}
+\index{get\+Msg\+Received\+Time@{get\+Msg\+Received\+Time}!edu\+::sjsu\+::amigo\+::mp\+::kafka\+::\+Message@{edu\+::sjsu\+::amigo\+::mp\+::kafka\+::\+Message}}
+\subsubsection{\texorpdfstring{get\+Msg\+Received\+Time()}{getMsgReceivedTime()}}
+{\footnotesize\ttfamily String edu.\+sjsu.\+amigo.\+mp.\+kafka.\+Message.\+get\+Msg\+Received\+Time (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 74 of file Message.\+java.
+
+\mbox{\Hypertarget{classedu_1_1sjsu_1_1amigo_1_1mp_1_1kafka_1_1_message_ab0152afc118f2419f176ff9da5d10729}\label{classedu_1_1sjsu_1_1amigo_1_1mp_1_1kafka_1_1_message_ab0152afc118f2419f176ff9da5d10729}} 
+\index{edu\+::sjsu\+::amigo\+::mp\+::kafka\+::\+Message@{edu\+::sjsu\+::amigo\+::mp\+::kafka\+::\+Message}!get\+User\+Email@{get\+User\+Email}}
+\index{get\+User\+Email@{get\+User\+Email}!edu\+::sjsu\+::amigo\+::mp\+::kafka\+::\+Message@{edu\+::sjsu\+::amigo\+::mp\+::kafka\+::\+Message}}
+\subsubsection{\texorpdfstring{get\+User\+Email()}{getUserEmail()}}
+{\footnotesize\ttfamily String edu.\+sjsu.\+amigo.\+mp.\+kafka.\+Message.\+get\+User\+Email (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 82 of file Message.\+java.
+
+\mbox{\Hypertarget{classedu_1_1sjsu_1_1amigo_1_1mp_1_1kafka_1_1_message_a47522ca9758906f0c1c10f9515561000}\label{classedu_1_1sjsu_1_1amigo_1_1mp_1_1kafka_1_1_message_a47522ca9758906f0c1c10f9515561000}} 
+\index{edu\+::sjsu\+::amigo\+::mp\+::kafka\+::\+Message@{edu\+::sjsu\+::amigo\+::mp\+::kafka\+::\+Message}!get\+User\+Id@{get\+User\+Id}}
+\index{get\+User\+Id@{get\+User\+Id}!edu\+::sjsu\+::amigo\+::mp\+::kafka\+::\+Message@{edu\+::sjsu\+::amigo\+::mp\+::kafka\+::\+Message}}
+\subsubsection{\texorpdfstring{get\+User\+Id()}{getUserId()}}
+{\footnotesize\ttfamily String edu.\+sjsu.\+amigo.\+mp.\+kafka.\+Message.\+get\+User\+Id (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 114 of file Message.\+java.
+
+\mbox{\Hypertarget{classedu_1_1sjsu_1_1amigo_1_1mp_1_1kafka_1_1_message_a417ffc1428f5c212ce9ecca3b1ea9265}\label{classedu_1_1sjsu_1_1amigo_1_1mp_1_1kafka_1_1_message_a417ffc1428f5c212ce9ecca3b1ea9265}} 
+\index{edu\+::sjsu\+::amigo\+::mp\+::kafka\+::\+Message@{edu\+::sjsu\+::amigo\+::mp\+::kafka\+::\+Message}!get\+User\+Name@{get\+User\+Name}}
+\index{get\+User\+Name@{get\+User\+Name}!edu\+::sjsu\+::amigo\+::mp\+::kafka\+::\+Message@{edu\+::sjsu\+::amigo\+::mp\+::kafka\+::\+Message}}
+\subsubsection{\texorpdfstring{get\+User\+Name()}{getUserName()}}
+{\footnotesize\ttfamily String edu.\+sjsu.\+amigo.\+mp.\+kafka.\+Message.\+get\+User\+Name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 90 of file Message.\+java.
+
+\mbox{\Hypertarget{classedu_1_1sjsu_1_1amigo_1_1mp_1_1kafka_1_1_message_a3055123d7c4e5a480dfaa5c106c38cf9}\label{classedu_1_1sjsu_1_1amigo_1_1mp_1_1kafka_1_1_message_a3055123d7c4e5a480dfaa5c106c38cf9}} 
+\index{edu\+::sjsu\+::amigo\+::mp\+::kafka\+::\+Message@{edu\+::sjsu\+::amigo\+::mp\+::kafka\+::\+Message}!set\+Content@{set\+Content}}
+\index{set\+Content@{set\+Content}!edu\+::sjsu\+::amigo\+::mp\+::kafka\+::\+Message@{edu\+::sjsu\+::amigo\+::mp\+::kafka\+::\+Message}}
+\subsubsection{\texorpdfstring{set\+Content()}{setContent()}}
+{\footnotesize\ttfamily void edu.\+sjsu.\+amigo.\+mp.\+kafka.\+Message.\+set\+Content (\begin{DoxyParamCaption}\item[{String}]{content }\end{DoxyParamCaption})}
+
+
+
+Definition at line 102 of file Message.\+java.
+
+\mbox{\Hypertarget{classedu_1_1sjsu_1_1amigo_1_1mp_1_1kafka_1_1_message_a6ad0370cf5e5abfa0dd6abc480b5a0a3}\label{classedu_1_1sjsu_1_1amigo_1_1mp_1_1kafka_1_1_message_a6ad0370cf5e5abfa0dd6abc480b5a0a3}} 
+\index{edu\+::sjsu\+::amigo\+::mp\+::kafka\+::\+Message@{edu\+::sjsu\+::amigo\+::mp\+::kafka\+::\+Message}!set\+Intent@{set\+Intent}}
+\index{set\+Intent@{set\+Intent}!edu\+::sjsu\+::amigo\+::mp\+::kafka\+::\+Message@{edu\+::sjsu\+::amigo\+::mp\+::kafka\+::\+Message}}
+\subsubsection{\texorpdfstring{set\+Intent()}{setIntent()}}
+{\footnotesize\ttfamily void edu.\+sjsu.\+amigo.\+mp.\+kafka.\+Message.\+set\+Intent (\begin{DoxyParamCaption}\item[{List$<$ String $>$}]{intent }\end{DoxyParamCaption})}
+
+
+
+Definition at line 110 of file Message.\+java.
+
+\mbox{\Hypertarget{classedu_1_1sjsu_1_1amigo_1_1mp_1_1kafka_1_1_message_a7d7682afca7e163c5d18d88e44997ef7}\label{classedu_1_1sjsu_1_1amigo_1_1mp_1_1kafka_1_1_message_a7d7682afca7e163c5d18d88e44997ef7}} 
+\index{edu\+::sjsu\+::amigo\+::mp\+::kafka\+::\+Message@{edu\+::sjsu\+::amigo\+::mp\+::kafka\+::\+Message}!set\+Msg\+Received\+Time@{set\+Msg\+Received\+Time}}
+\index{set\+Msg\+Received\+Time@{set\+Msg\+Received\+Time}!edu\+::sjsu\+::amigo\+::mp\+::kafka\+::\+Message@{edu\+::sjsu\+::amigo\+::mp\+::kafka\+::\+Message}}
+\subsubsection{\texorpdfstring{set\+Msg\+Received\+Time()}{setMsgReceivedTime()}}
+{\footnotesize\ttfamily void edu.\+sjsu.\+amigo.\+mp.\+kafka.\+Message.\+set\+Msg\+Received\+Time (\begin{DoxyParamCaption}\item[{String}]{msg\+Received\+Time }\end{DoxyParamCaption})}
+
+
+
+Definition at line 78 of file Message.\+java.
+
+\mbox{\Hypertarget{classedu_1_1sjsu_1_1amigo_1_1mp_1_1kafka_1_1_message_a794f8d4101411ecee9fe07f704e3f1f4}\label{classedu_1_1sjsu_1_1amigo_1_1mp_1_1kafka_1_1_message_a794f8d4101411ecee9fe07f704e3f1f4}} 
+\index{edu\+::sjsu\+::amigo\+::mp\+::kafka\+::\+Message@{edu\+::sjsu\+::amigo\+::mp\+::kafka\+::\+Message}!set\+User\+Email@{set\+User\+Email}}
+\index{set\+User\+Email@{set\+User\+Email}!edu\+::sjsu\+::amigo\+::mp\+::kafka\+::\+Message@{edu\+::sjsu\+::amigo\+::mp\+::kafka\+::\+Message}}
+\subsubsection{\texorpdfstring{set\+User\+Email()}{setUserEmail()}}
+{\footnotesize\ttfamily void edu.\+sjsu.\+amigo.\+mp.\+kafka.\+Message.\+set\+User\+Email (\begin{DoxyParamCaption}\item[{String}]{user\+Email }\end{DoxyParamCaption})}
+
+
+
+Definition at line 86 of file Message.\+java.
+
+\mbox{\Hypertarget{classedu_1_1sjsu_1_1amigo_1_1mp_1_1kafka_1_1_message_aabd0791c52c85bc2f2830462d8f8b3a0}\label{classedu_1_1sjsu_1_1amigo_1_1mp_1_1kafka_1_1_message_aabd0791c52c85bc2f2830462d8f8b3a0}} 
+\index{edu\+::sjsu\+::amigo\+::mp\+::kafka\+::\+Message@{edu\+::sjsu\+::amigo\+::mp\+::kafka\+::\+Message}!set\+User\+Id@{set\+User\+Id}}
+\index{set\+User\+Id@{set\+User\+Id}!edu\+::sjsu\+::amigo\+::mp\+::kafka\+::\+Message@{edu\+::sjsu\+::amigo\+::mp\+::kafka\+::\+Message}}
+\subsubsection{\texorpdfstring{set\+User\+Id()}{setUserId()}}
+{\footnotesize\ttfamily void edu.\+sjsu.\+amigo.\+mp.\+kafka.\+Message.\+set\+User\+Id (\begin{DoxyParamCaption}\item[{String}]{user\+Id }\end{DoxyParamCaption})}
+
+
+
+Definition at line 118 of file Message.\+java.
+
+\mbox{\Hypertarget{classedu_1_1sjsu_1_1amigo_1_1mp_1_1kafka_1_1_message_a23ef3ab25dad5c06740a4bff403030a6}\label{classedu_1_1sjsu_1_1amigo_1_1mp_1_1kafka_1_1_message_a23ef3ab25dad5c06740a4bff403030a6}} 
+\index{edu\+::sjsu\+::amigo\+::mp\+::kafka\+::\+Message@{edu\+::sjsu\+::amigo\+::mp\+::kafka\+::\+Message}!set\+User\+Name@{set\+User\+Name}}
+\index{set\+User\+Name@{set\+User\+Name}!edu\+::sjsu\+::amigo\+::mp\+::kafka\+::\+Message@{edu\+::sjsu\+::amigo\+::mp\+::kafka\+::\+Message}}
+\subsubsection{\texorpdfstring{set\+User\+Name()}{setUserName()}}
+{\footnotesize\ttfamily void edu.\+sjsu.\+amigo.\+mp.\+kafka.\+Message.\+set\+User\+Name (\begin{DoxyParamCaption}\item[{String}]{user\+Name }\end{DoxyParamCaption})}
+
+
+
+Definition at line 94 of file Message.\+java.
+
+\mbox{\Hypertarget{classedu_1_1sjsu_1_1amigo_1_1mp_1_1kafka_1_1_message_a7788b925c3ded0309bd31e036224ca9b}\label{classedu_1_1sjsu_1_1amigo_1_1mp_1_1kafka_1_1_message_a7788b925c3ded0309bd31e036224ca9b}} 
+\index{edu\+::sjsu\+::amigo\+::mp\+::kafka\+::\+Message@{edu\+::sjsu\+::amigo\+::mp\+::kafka\+::\+Message}!to\+String@{to\+String}}
+\index{to\+String@{to\+String}!edu\+::sjsu\+::amigo\+::mp\+::kafka\+::\+Message@{edu\+::sjsu\+::amigo\+::mp\+::kafka\+::\+Message}}
+\subsubsection{\texorpdfstring{to\+String()}{toString()}}
+{\footnotesize\ttfamily String edu.\+sjsu.\+amigo.\+mp.\+kafka.\+Message.\+to\+String (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 123 of file Message.\+java.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+msg-\/common/src/main/java/edu/sjsu/amigo/mp/kafka/\hyperlink{_message_8java}{Message.\+java}\end{DoxyCompactItemize}

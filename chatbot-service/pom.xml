@@ -33,6 +33,11 @@
         </dependency>
         <dependency>
             <groupId>edu.sjsu.amigo</groupId>
+            <artifactId>json-common</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>edu.sjsu.amigo</groupId>
             <artifactId>httpclient-common</artifactId>
             <version>${project.version}</version>
         </dependency>

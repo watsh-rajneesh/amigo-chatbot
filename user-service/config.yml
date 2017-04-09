@@ -3,6 +3,10 @@ database:
   port: 27017
   dbName: user_db
 
+# the only required property is resourcePackage, for more config options see below
+#swagger:
+#   resourcePackage: edu.sjsu.amigo.user.rest
+
 # use the simple server factory if you only want to run on a single port
 #server:
 #  type: simple
@@ -19,6 +23,11 @@ server:
 
 logging:
   level: INFO
+
+  # Logger-specific levels.
+  loggers:
+     # Sets the level for 'com.example.app' to DEBUG.
+    edu.sjsu.amigo: DEBUG
 
   appenders:
     - type: console

@@ -1,0 +1,114 @@
+\hypertarget{classedu_1_1sjsu_1_1amigo_1_1user_1_1auth_1_1_principal_user}{}\section{edu.\+sjsu.\+amigo.\+user.\+auth.\+Principal\+User Class Reference}
+\label{classedu_1_1sjsu_1_1amigo_1_1user_1_1auth_1_1_principal_user}\index{edu.\+sjsu.\+amigo.\+user.\+auth.\+Principal\+User@{edu.\+sjsu.\+amigo.\+user.\+auth.\+Principal\+User}}
+Inheritance diagram for edu.\+sjsu.\+amigo.\+user.\+auth.\+Principal\+User\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classedu_1_1sjsu_1_1amigo_1_1user_1_1auth_1_1_principal_user}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classedu_1_1sjsu_1_1amigo_1_1user_1_1auth_1_1_principal_user_ae5eba540732f4b69565562553eee919a}{Principal\+User} (String user)
+\item 
+String \hyperlink{classedu_1_1sjsu_1_1amigo_1_1user_1_1auth_1_1_principal_user_af047281f43d613d809919b49084726ee}{get\+Name} ()
+\item 
+boolean \hyperlink{classedu_1_1sjsu_1_1amigo_1_1user_1_1auth_1_1_principal_user_ae5d437f606022a8c2a46dbf808fa5685}{implies} (Subject subject)
+\item 
+String \hyperlink{classedu_1_1sjsu_1_1amigo_1_1user_1_1auth_1_1_principal_user_ae29192bb7ec56a93c4241e9cc4ad7876}{to\+String} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\begin{DoxyAuthor}{Author}
+rwatsh on 3/27/17. 
+\end{DoxyAuthor}
+
+
+Definition at line 29 of file Principal\+User.\+java.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classedu_1_1sjsu_1_1amigo_1_1user_1_1auth_1_1_principal_user_ae5eba540732f4b69565562553eee919a}\label{classedu_1_1sjsu_1_1amigo_1_1user_1_1auth_1_1_principal_user_ae5eba540732f4b69565562553eee919a}} 
+\index{edu\+::sjsu\+::amigo\+::user\+::auth\+::\+Principal\+User@{edu\+::sjsu\+::amigo\+::user\+::auth\+::\+Principal\+User}!Principal\+User@{Principal\+User}}
+\index{Principal\+User@{Principal\+User}!edu\+::sjsu\+::amigo\+::user\+::auth\+::\+Principal\+User@{edu\+::sjsu\+::amigo\+::user\+::auth\+::\+Principal\+User}}
+\subsubsection{\texorpdfstring{Principal\+User()}{PrincipalUser()}}
+{\footnotesize\ttfamily edu.\+sjsu.\+amigo.\+user.\+auth.\+Principal\+User.\+Principal\+User (\begin{DoxyParamCaption}\item[{String}]{user }\end{DoxyParamCaption})}
+
+
+
+Definition at line 37 of file Principal\+User.\+java.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classedu_1_1sjsu_1_1amigo_1_1user_1_1auth_1_1_principal_user_af047281f43d613d809919b49084726ee}\label{classedu_1_1sjsu_1_1amigo_1_1user_1_1auth_1_1_principal_user_af047281f43d613d809919b49084726ee}} 
+\index{edu\+::sjsu\+::amigo\+::user\+::auth\+::\+Principal\+User@{edu\+::sjsu\+::amigo\+::user\+::auth\+::\+Principal\+User}!get\+Name@{get\+Name}}
+\index{get\+Name@{get\+Name}!edu\+::sjsu\+::amigo\+::user\+::auth\+::\+Principal\+User@{edu\+::sjsu\+::amigo\+::user\+::auth\+::\+Principal\+User}}
+\subsubsection{\texorpdfstring{get\+Name()}{getName()}}
+{\footnotesize\ttfamily String edu.\+sjsu.\+amigo.\+user.\+auth.\+Principal\+User.\+get\+Name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Returns the name of this principal.
+
+\begin{DoxyReturn}{Returns}
+the name of this principal. 
+\end{DoxyReturn}
+
+
+Definition at line 50 of file Principal\+User.\+java.
+
+\mbox{\Hypertarget{classedu_1_1sjsu_1_1amigo_1_1user_1_1auth_1_1_principal_user_ae5d437f606022a8c2a46dbf808fa5685}\label{classedu_1_1sjsu_1_1amigo_1_1user_1_1auth_1_1_principal_user_ae5d437f606022a8c2a46dbf808fa5685}} 
+\index{edu\+::sjsu\+::amigo\+::user\+::auth\+::\+Principal\+User@{edu\+::sjsu\+::amigo\+::user\+::auth\+::\+Principal\+User}!implies@{implies}}
+\index{implies@{implies}!edu\+::sjsu\+::amigo\+::user\+::auth\+::\+Principal\+User@{edu\+::sjsu\+::amigo\+::user\+::auth\+::\+Principal\+User}}
+\subsubsection{\texorpdfstring{implies()}{implies()}}
+{\footnotesize\ttfamily boolean edu.\+sjsu.\+amigo.\+user.\+auth.\+Principal\+User.\+implies (\begin{DoxyParamCaption}\item[{Subject}]{subject }\end{DoxyParamCaption})}
+
+Returns true if the specified subject is implied by this principal. 
+
+The default implementation of this method returns true if 
+\begin{DoxyCode}
+subject 
+\end{DoxyCode}
+ is non-\/null and contains at least one principal that is equal to this principal. 
+
+Subclasses may override this with a different implementation, if necessary.
+
+
+\begin{DoxyParams}{Parameters}
+{\em subject} & the
+\begin{DoxyCode}
+Subject 
+\end{DoxyCode}
+ \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if
+\begin{DoxyCode}
+subject 
+\end{DoxyCode}
+ is non-\/null and is implied by this principal, or false otherwise. 
+\end{DoxyReturn}
+\begin{DoxySince}{Since}
+1.\+8 
+\end{DoxySince}
+
+
+Definition at line 70 of file Principal\+User.\+java.
+
+\mbox{\Hypertarget{classedu_1_1sjsu_1_1amigo_1_1user_1_1auth_1_1_principal_user_ae29192bb7ec56a93c4241e9cc4ad7876}\label{classedu_1_1sjsu_1_1amigo_1_1user_1_1auth_1_1_principal_user_ae29192bb7ec56a93c4241e9cc4ad7876}} 
+\index{edu\+::sjsu\+::amigo\+::user\+::auth\+::\+Principal\+User@{edu\+::sjsu\+::amigo\+::user\+::auth\+::\+Principal\+User}!to\+String@{to\+String}}
+\index{to\+String@{to\+String}!edu\+::sjsu\+::amigo\+::user\+::auth\+::\+Principal\+User@{edu\+::sjsu\+::amigo\+::user\+::auth\+::\+Principal\+User}}
+\subsubsection{\texorpdfstring{to\+String()}{toString()}}
+{\footnotesize\ttfamily String edu.\+sjsu.\+amigo.\+user.\+auth.\+Principal\+User.\+to\+String (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 74 of file Principal\+User.\+java.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+user-\/service/src/main/java/edu/sjsu/amigo/user/auth/\hyperlink{_principal_user_8java}{Principal\+User.\+java}\end{DoxyCompactItemize}

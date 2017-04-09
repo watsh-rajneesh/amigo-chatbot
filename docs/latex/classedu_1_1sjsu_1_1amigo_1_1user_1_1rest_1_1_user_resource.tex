@@ -1,0 +1,145 @@
+\hypertarget{classedu_1_1sjsu_1_1amigo_1_1user_1_1rest_1_1_user_resource}{}\section{edu.\+sjsu.\+amigo.\+user.\+rest.\+User\+Resource Class Reference}
+\label{classedu_1_1sjsu_1_1amigo_1_1user_1_1rest_1_1_user_resource}\index{edu.\+sjsu.\+amigo.\+user.\+rest.\+User\+Resource@{edu.\+sjsu.\+amigo.\+user.\+rest.\+User\+Resource}}
+Inheritance diagram for edu.\+sjsu.\+amigo.\+user.\+rest.\+User\+Resource\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classedu_1_1sjsu_1_1amigo_1_1user_1_1rest_1_1_user_resource}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classedu_1_1sjsu_1_1amigo_1_1user_1_1rest_1_1_user_resource_af5ac3f081392836c08d6744c123fd58f}{User\+Resource} (\hyperlink{interfaceedu_1_1sjsu_1_1amigo_1_1db_1_1common_1_1_d_b_client}{D\+B\+Client} \hyperlink{classedu_1_1sjsu_1_1amigo_1_1user_1_1rest_1_1_base_resource_a5f2d4befed6cbdcf6f0d9f4757875db5}{db\+Client})
+\item 
+Response \hyperlink{classedu_1_1sjsu_1_1amigo_1_1user_1_1rest_1_1_user_resource_af9c68d9343542ae9c68cb6d98c8d1659}{login} (@Auth \hyperlink{classedu_1_1sjsu_1_1amigo_1_1user_1_1db_1_1model_1_1_user}{User} user, @Context Uri\+Info info)  throws D\+B\+Exception 
+\item 
+Response \hyperlink{classedu_1_1sjsu_1_1amigo_1_1user_1_1rest_1_1_user_resource_ae1ace2fa3471a65e8e1643206c14c898}{create} (@Auth \hyperlink{classedu_1_1sjsu_1_1amigo_1_1user_1_1auth_1_1_principal_user}{Principal\+User} principal\+User, @Valid String model\+Json, @Context Uri\+Info info)
+\item 
+List$<$ \hyperlink{classedu_1_1sjsu_1_1amigo_1_1user_1_1db_1_1model_1_1_user}{User} $>$ \hyperlink{classedu_1_1sjsu_1_1amigo_1_1user_1_1rest_1_1_user_resource_a37d0c5cd46db2da2d2d73c5eb759cbd2}{list} (@Auth \hyperlink{classedu_1_1sjsu_1_1amigo_1_1user_1_1auth_1_1_principal_user}{Principal\+User} user, @Query\+Param(\char`\"{}filter\char`\"{}) String filter)  throws Internal\+Error\+Exception 
+\item 
+\hyperlink{classedu_1_1sjsu_1_1amigo_1_1user_1_1db_1_1model_1_1_user}{User} \hyperlink{classedu_1_1sjsu_1_1amigo_1_1user_1_1rest_1_1_user_resource_a3cddee66220e2775dc30c2e0c2879f83}{retrieve} (@Auth \hyperlink{classedu_1_1sjsu_1_1amigo_1_1user_1_1auth_1_1_principal_user}{Principal\+User} user, @Path\+Param(\char`\"{}id\char`\"{}) String id)  throws Resource\+Not\+Found\+Exception, Internal\+Error\+Exception 
+\item 
+\hyperlink{classedu_1_1sjsu_1_1amigo_1_1user_1_1db_1_1model_1_1_user}{User} \hyperlink{classedu_1_1sjsu_1_1amigo_1_1user_1_1rest_1_1_user_resource_a7d7c61de39c219479906b4f274882ddb}{update} (@Auth \hyperlink{classedu_1_1sjsu_1_1amigo_1_1user_1_1auth_1_1_principal_user}{Principal\+User} user, @Path\+Param(\char`\"{}id\char`\"{}) String id, @Valid String entity)  throws Resource\+Not\+Found\+Exception, Internal\+Error\+Exception, I\+O\+Exception 
+\item 
+Response \hyperlink{classedu_1_1sjsu_1_1amigo_1_1user_1_1rest_1_1_user_resource_ad45f52ff2d2a33b2cae1b9ef4f7a3649}{delete} (@Auth \hyperlink{classedu_1_1sjsu_1_1amigo_1_1user_1_1auth_1_1_principal_user}{Principal\+User} user, @Path\+Param(\char`\"{}id\char`\"{}) String id)  throws Resource\+Not\+Found\+Exception, Internal\+Error\+Exception 
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+\begin{DoxyAuthor}{Author}
+rwatsh on 3/27/17. 
+\end{DoxyAuthor}
+
+
+Definition at line 39 of file User\+Resource.\+java.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classedu_1_1sjsu_1_1amigo_1_1user_1_1rest_1_1_user_resource_af5ac3f081392836c08d6744c123fd58f}\label{classedu_1_1sjsu_1_1amigo_1_1user_1_1rest_1_1_user_resource_af5ac3f081392836c08d6744c123fd58f}} 
+\index{edu\+::sjsu\+::amigo\+::user\+::rest\+::\+User\+Resource@{edu\+::sjsu\+::amigo\+::user\+::rest\+::\+User\+Resource}!User\+Resource@{User\+Resource}}
+\index{User\+Resource@{User\+Resource}!edu\+::sjsu\+::amigo\+::user\+::rest\+::\+User\+Resource@{edu\+::sjsu\+::amigo\+::user\+::rest\+::\+User\+Resource}}
+\subsubsection{\texorpdfstring{User\+Resource()}{UserResource()}}
+{\footnotesize\ttfamily edu.\+sjsu.\+amigo.\+user.\+rest.\+User\+Resource.\+User\+Resource (\begin{DoxyParamCaption}\item[{\hyperlink{interfaceedu_1_1sjsu_1_1amigo_1_1db_1_1common_1_1_d_b_client}{D\+B\+Client}}]{db\+Client }\end{DoxyParamCaption})}
+
+
+
+Definition at line 42 of file User\+Resource.\+java.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classedu_1_1sjsu_1_1amigo_1_1user_1_1rest_1_1_user_resource_ae1ace2fa3471a65e8e1643206c14c898}\label{classedu_1_1sjsu_1_1amigo_1_1user_1_1rest_1_1_user_resource_ae1ace2fa3471a65e8e1643206c14c898}} 
+\index{edu\+::sjsu\+::amigo\+::user\+::rest\+::\+User\+Resource@{edu\+::sjsu\+::amigo\+::user\+::rest\+::\+User\+Resource}!create@{create}}
+\index{create@{create}!edu\+::sjsu\+::amigo\+::user\+::rest\+::\+User\+Resource@{edu\+::sjsu\+::amigo\+::user\+::rest\+::\+User\+Resource}}
+\subsubsection{\texorpdfstring{create()}{create()}}
+{\footnotesize\ttfamily Response edu.\+sjsu.\+amigo.\+user.\+rest.\+User\+Resource.\+create (\begin{DoxyParamCaption}\item[{@Auth \hyperlink{classedu_1_1sjsu_1_1amigo_1_1user_1_1auth_1_1_principal_user}{Principal\+User}}]{principal\+User,  }\item[{@Valid String}]{model\+Json,  }\item[{@Context Uri\+Info}]{info }\end{DoxyParamCaption})}
+
+Create the resource.
+
+
+\begin{DoxyParams}{Parameters}
+{\em principal\+User} & \\
+\hline
+{\em model\+Json} & \\
+\hline
+{\em info} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+
+
+Definition at line 73 of file User\+Resource.\+java.
+
+\mbox{\Hypertarget{classedu_1_1sjsu_1_1amigo_1_1user_1_1rest_1_1_user_resource_ad45f52ff2d2a33b2cae1b9ef4f7a3649}\label{classedu_1_1sjsu_1_1amigo_1_1user_1_1rest_1_1_user_resource_ad45f52ff2d2a33b2cae1b9ef4f7a3649}} 
+\index{edu\+::sjsu\+::amigo\+::user\+::rest\+::\+User\+Resource@{edu\+::sjsu\+::amigo\+::user\+::rest\+::\+User\+Resource}!delete@{delete}}
+\index{delete@{delete}!edu\+::sjsu\+::amigo\+::user\+::rest\+::\+User\+Resource@{edu\+::sjsu\+::amigo\+::user\+::rest\+::\+User\+Resource}}
+\subsubsection{\texorpdfstring{delete()}{delete()}}
+{\footnotesize\ttfamily Response edu.\+sjsu.\+amigo.\+user.\+rest.\+User\+Resource.\+delete (\begin{DoxyParamCaption}\item[{@Auth \hyperlink{classedu_1_1sjsu_1_1amigo_1_1user_1_1auth_1_1_principal_user}{Principal\+User}}]{user,  }\item[{@Path\+Param(\char`\"{}id\char`\"{}) String}]{id }\end{DoxyParamCaption}) throws Resource\+Not\+Found\+Exception, \hyperlink{classedu_1_1sjsu_1_1amigo_1_1user_1_1rest_1_1_internal_error_exception}{Internal\+Error\+Exception}}
+
+
+
+Definition at line 131 of file User\+Resource.\+java.
+
+\mbox{\Hypertarget{classedu_1_1sjsu_1_1amigo_1_1user_1_1rest_1_1_user_resource_a37d0c5cd46db2da2d2d73c5eb759cbd2}\label{classedu_1_1sjsu_1_1amigo_1_1user_1_1rest_1_1_user_resource_a37d0c5cd46db2da2d2d73c5eb759cbd2}} 
+\index{edu\+::sjsu\+::amigo\+::user\+::rest\+::\+User\+Resource@{edu\+::sjsu\+::amigo\+::user\+::rest\+::\+User\+Resource}!list@{list}}
+\index{list@{list}!edu\+::sjsu\+::amigo\+::user\+::rest\+::\+User\+Resource@{edu\+::sjsu\+::amigo\+::user\+::rest\+::\+User\+Resource}}
+\subsubsection{\texorpdfstring{list()}{list()}}
+{\footnotesize\ttfamily List$<$\hyperlink{classedu_1_1sjsu_1_1amigo_1_1user_1_1db_1_1model_1_1_user}{User}$>$ edu.\+sjsu.\+amigo.\+user.\+rest.\+User\+Resource.\+list (\begin{DoxyParamCaption}\item[{@Auth \hyperlink{classedu_1_1sjsu_1_1amigo_1_1user_1_1auth_1_1_principal_user}{Principal\+User}}]{user,  }\item[{@Query\+Param(\char`\"{}filter\char`\"{}) String}]{filter }\end{DoxyParamCaption}) throws \hyperlink{classedu_1_1sjsu_1_1amigo_1_1user_1_1rest_1_1_internal_error_exception}{Internal\+Error\+Exception}}
+
+
+
+Definition at line 96 of file User\+Resource.\+java.
+
+\mbox{\Hypertarget{classedu_1_1sjsu_1_1amigo_1_1user_1_1rest_1_1_user_resource_af9c68d9343542ae9c68cb6d98c8d1659}\label{classedu_1_1sjsu_1_1amigo_1_1user_1_1rest_1_1_user_resource_af9c68d9343542ae9c68cb6d98c8d1659}} 
+\index{edu\+::sjsu\+::amigo\+::user\+::rest\+::\+User\+Resource@{edu\+::sjsu\+::amigo\+::user\+::rest\+::\+User\+Resource}!login@{login}}
+\index{login@{login}!edu\+::sjsu\+::amigo\+::user\+::rest\+::\+User\+Resource@{edu\+::sjsu\+::amigo\+::user\+::rest\+::\+User\+Resource}}
+\subsubsection{\texorpdfstring{login()}{login()}}
+{\footnotesize\ttfamily Response edu.\+sjsu.\+amigo.\+user.\+rest.\+User\+Resource.\+login (\begin{DoxyParamCaption}\item[{@Auth \hyperlink{classedu_1_1sjsu_1_1amigo_1_1user_1_1db_1_1model_1_1_user}{User}}]{user,  }\item[{@Context Uri\+Info}]{info }\end{DoxyParamCaption}) throws \hyperlink{classedu_1_1sjsu_1_1amigo_1_1db_1_1common_1_1_d_b_exception}{D\+B\+Exception}}
+
+Used to validate the user\textquotesingle{}s creds. If the user is valid then framework will let this method be invoked where we simply return 200. 
+
+Every subsequent user request will also need to have the same auth creds as server wont maintain any session.
+
+
+\begin{DoxyParams}{Parameters}
+{\em user} & \\
+\hline
+{\em info} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+
+
+Definition at line 57 of file User\+Resource.\+java.
+
+\mbox{\Hypertarget{classedu_1_1sjsu_1_1amigo_1_1user_1_1rest_1_1_user_resource_a3cddee66220e2775dc30c2e0c2879f83}\label{classedu_1_1sjsu_1_1amigo_1_1user_1_1rest_1_1_user_resource_a3cddee66220e2775dc30c2e0c2879f83}} 
+\index{edu\+::sjsu\+::amigo\+::user\+::rest\+::\+User\+Resource@{edu\+::sjsu\+::amigo\+::user\+::rest\+::\+User\+Resource}!retrieve@{retrieve}}
+\index{retrieve@{retrieve}!edu\+::sjsu\+::amigo\+::user\+::rest\+::\+User\+Resource@{edu\+::sjsu\+::amigo\+::user\+::rest\+::\+User\+Resource}}
+\subsubsection{\texorpdfstring{retrieve()}{retrieve()}}
+{\footnotesize\ttfamily \hyperlink{classedu_1_1sjsu_1_1amigo_1_1user_1_1db_1_1model_1_1_user}{User} edu.\+sjsu.\+amigo.\+user.\+rest.\+User\+Resource.\+retrieve (\begin{DoxyParamCaption}\item[{@Auth \hyperlink{classedu_1_1sjsu_1_1amigo_1_1user_1_1auth_1_1_principal_user}{Principal\+User}}]{user,  }\item[{@Path\+Param(\char`\"{}id\char`\"{}) String}]{id }\end{DoxyParamCaption}) throws Resource\+Not\+Found\+Exception, \hyperlink{classedu_1_1sjsu_1_1amigo_1_1user_1_1rest_1_1_internal_error_exception}{Internal\+Error\+Exception}}
+
+
+
+Definition at line 108 of file User\+Resource.\+java.
+
+\mbox{\Hypertarget{classedu_1_1sjsu_1_1amigo_1_1user_1_1rest_1_1_user_resource_a7d7c61de39c219479906b4f274882ddb}\label{classedu_1_1sjsu_1_1amigo_1_1user_1_1rest_1_1_user_resource_a7d7c61de39c219479906b4f274882ddb}} 
+\index{edu\+::sjsu\+::amigo\+::user\+::rest\+::\+User\+Resource@{edu\+::sjsu\+::amigo\+::user\+::rest\+::\+User\+Resource}!update@{update}}
+\index{update@{update}!edu\+::sjsu\+::amigo\+::user\+::rest\+::\+User\+Resource@{edu\+::sjsu\+::amigo\+::user\+::rest\+::\+User\+Resource}}
+\subsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily \hyperlink{classedu_1_1sjsu_1_1amigo_1_1user_1_1db_1_1model_1_1_user}{User} edu.\+sjsu.\+amigo.\+user.\+rest.\+User\+Resource.\+update (\begin{DoxyParamCaption}\item[{@Auth \hyperlink{classedu_1_1sjsu_1_1amigo_1_1user_1_1auth_1_1_principal_user}{Principal\+User}}]{user,  }\item[{@Path\+Param(\char`\"{}id\char`\"{}) String}]{id,  }\item[{@Valid String}]{entity }\end{DoxyParamCaption}) throws Resource\+Not\+Found\+Exception, \hyperlink{classedu_1_1sjsu_1_1amigo_1_1user_1_1rest_1_1_internal_error_exception}{Internal\+Error\+Exception}, I\+O\+Exception}
+
+
+
+Definition at line 124 of file User\+Resource.\+java.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+user-\/service/src/main/java/edu/sjsu/amigo/user/rest/\hyperlink{_user_resource_8java}{User\+Resource.\+java}\end{DoxyCompactItemize}

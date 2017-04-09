@@ -20,7 +20,7 @@ import edu.sjsu.amigo.http.client.HttpClient;
 import edu.sjsu.amigo.http.client.Response;
 import edu.sjsu.amigo.mp.kafka.IntentElem;
 import edu.sjsu.amigo.mp.kafka.InvalidMessageException;
-import edu.sjsu.amigo.mp.util.JsonUtils;
+import edu.sjsu.amigo.json.util.JsonUtils;
 
 import java.io.IOException;
 import java.util.*;

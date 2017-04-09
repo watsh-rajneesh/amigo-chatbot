@@ -23,15 +23,15 @@ import io.dropwizard.servlets.assets.ResourceNotFoundException;
 
 import javax.validation.Valid;
 import javax.ws.rs.*;
-import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import javax.ws.rs.core.UriInfo;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * Base class for all REST resources.
+ *
  * @author rwatsh on 3/27/17.
  */
 public abstract class BaseResource<T extends IModel> {
@@ -54,13 +54,12 @@ public abstract class BaseResource<T extends IModel> {
      * Create the resource.
      *
      * @param modelJson
-     * @param info
      * @return
      */
     @POST
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    abstract public Response create(@Auth PrincipalUser user, @Valid String modelJson, @Context UriInfo info);
+    abstract public Response create(@Valid String modelJson);
 
 
     @GET

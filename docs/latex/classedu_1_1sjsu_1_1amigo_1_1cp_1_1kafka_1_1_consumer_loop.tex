@@ -1,0 +1,99 @@
+\hypertarget{classedu_1_1sjsu_1_1amigo_1_1cp_1_1kafka_1_1_consumer_loop}{}\section{edu.\+sjsu.\+amigo.\+cp.\+kafka.\+Consumer\+Loop Class Reference}
+\label{classedu_1_1sjsu_1_1amigo_1_1cp_1_1kafka_1_1_consumer_loop}\index{edu.\+sjsu.\+amigo.\+cp.\+kafka.\+Consumer\+Loop@{edu.\+sjsu.\+amigo.\+cp.\+kafka.\+Consumer\+Loop}}
+Inheritance diagram for edu.\+sjsu.\+amigo.\+cp.\+kafka.\+Consumer\+Loop\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classedu_1_1sjsu_1_1amigo_1_1cp_1_1kafka_1_1_consumer_loop}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classedu_1_1sjsu_1_1amigo_1_1cp_1_1kafka_1_1_consumer_loop_aaa2ca0a5aab4e8df4110d9bd3ccb771a}{Consumer\+Loop} (int id, String group\+Id, List$<$ String $>$ topics)
+\item 
+void \hyperlink{classedu_1_1sjsu_1_1amigo_1_1cp_1_1kafka_1_1_consumer_loop_adca27141d9a3f2ad526f060764321b15}{run} ()
+\item 
+void \hyperlink{classedu_1_1sjsu_1_1amigo_1_1cp_1_1kafka_1_1_consumer_loop_adfc4a8e0be1d0a4c6ea3ddeb9bee0b87}{shutdown} ()
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \hyperlink{classedu_1_1sjsu_1_1amigo_1_1cp_1_1kafka_1_1_consumer_loop_a8f37a453074be900b2b72b24162ebec1}{main} (String\mbox{[}$\,$\mbox{]} args)  throws Scheduler\+Exception 
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+A Kafka message consumer. As soon as it receives a message it will spawn a job to process it.
+
+Based on \href{https://www.confluent.io/blog/tutorial-getting-started-with-the-new-apache-kafka-0-9-consumer-client/}{\tt https\+://www.\+confluent.\+io/blog/tutorial-\/getting-\/started-\/with-\/the-\/new-\/apache-\/kafka-\/0-\/9-\/consumer-\/client/}
+
+\begin{DoxyAuthor}{Author}
+rwatsh on 2/25/17. 
+\end{DoxyAuthor}
+
+
+Definition at line 42 of file Consumer\+Loop.\+java.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classedu_1_1sjsu_1_1amigo_1_1cp_1_1kafka_1_1_consumer_loop_aaa2ca0a5aab4e8df4110d9bd3ccb771a}\label{classedu_1_1sjsu_1_1amigo_1_1cp_1_1kafka_1_1_consumer_loop_aaa2ca0a5aab4e8df4110d9bd3ccb771a}} 
+\index{edu\+::sjsu\+::amigo\+::cp\+::kafka\+::\+Consumer\+Loop@{edu\+::sjsu\+::amigo\+::cp\+::kafka\+::\+Consumer\+Loop}!Consumer\+Loop@{Consumer\+Loop}}
+\index{Consumer\+Loop@{Consumer\+Loop}!edu\+::sjsu\+::amigo\+::cp\+::kafka\+::\+Consumer\+Loop@{edu\+::sjsu\+::amigo\+::cp\+::kafka\+::\+Consumer\+Loop}}
+\subsubsection{\texorpdfstring{Consumer\+Loop()}{ConsumerLoop()}}
+{\footnotesize\ttfamily edu.\+sjsu.\+amigo.\+cp.\+kafka.\+Consumer\+Loop.\+Consumer\+Loop (\begin{DoxyParamCaption}\item[{int}]{id,  }\item[{String}]{group\+Id,  }\item[{List$<$ String $>$}]{topics }\end{DoxyParamCaption})}
+
+
+
+Definition at line 47 of file Consumer\+Loop.\+java.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classedu_1_1sjsu_1_1amigo_1_1cp_1_1kafka_1_1_consumer_loop_a8f37a453074be900b2b72b24162ebec1}\label{classedu_1_1sjsu_1_1amigo_1_1cp_1_1kafka_1_1_consumer_loop_a8f37a453074be900b2b72b24162ebec1}} 
+\index{edu\+::sjsu\+::amigo\+::cp\+::kafka\+::\+Consumer\+Loop@{edu\+::sjsu\+::amigo\+::cp\+::kafka\+::\+Consumer\+Loop}!main@{main}}
+\index{main@{main}!edu\+::sjsu\+::amigo\+::cp\+::kafka\+::\+Consumer\+Loop@{edu\+::sjsu\+::amigo\+::cp\+::kafka\+::\+Consumer\+Loop}}
+\subsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily static void edu.\+sjsu.\+amigo.\+cp.\+kafka.\+Consumer\+Loop.\+main (\begin{DoxyParamCaption}\item[{String \mbox{[}$\,$\mbox{]}}]{args }\end{DoxyParamCaption}) throws Scheduler\+Exception\hspace{0.3cm}{\ttfamily [static]}}
+
+Run the client program.
+
+
+\begin{DoxyParams}{Parameters}
+{\em args} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 129 of file Consumer\+Loop.\+java.
+
+\mbox{\Hypertarget{classedu_1_1sjsu_1_1amigo_1_1cp_1_1kafka_1_1_consumer_loop_adca27141d9a3f2ad526f060764321b15}\label{classedu_1_1sjsu_1_1amigo_1_1cp_1_1kafka_1_1_consumer_loop_adca27141d9a3f2ad526f060764321b15}} 
+\index{edu\+::sjsu\+::amigo\+::cp\+::kafka\+::\+Consumer\+Loop@{edu\+::sjsu\+::amigo\+::cp\+::kafka\+::\+Consumer\+Loop}!run@{run}}
+\index{run@{run}!edu\+::sjsu\+::amigo\+::cp\+::kafka\+::\+Consumer\+Loop@{edu\+::sjsu\+::amigo\+::cp\+::kafka\+::\+Consumer\+Loop}}
+\subsubsection{\texorpdfstring{run()}{run()}}
+{\footnotesize\ttfamily void edu.\+sjsu.\+amigo.\+cp.\+kafka.\+Consumer\+Loop.\+run (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+A typical slack message look like below\+:
+
+14\+:08\+:16.\+407 \mbox{[}pool-\/1-\/thread-\/1\mbox{]} D\+E\+B\+UG org.\+apache.\+kafka.\+clients.\+consumer.\+internals.\+Fetcher
+\begin{DoxyItemize}
+\item Sending fetch for partitions \mbox{[}user\+\_\+msg-\/0\mbox{]} to broker 192.\+168.\+86.\+89\+:9092 (id\+: 1001 rack\+: null) 0\+: \{ partition=0, offset=5, value=\{ \char`\"{}msg\+Received\+Time\char`\"{} \+: \char`\"{}1488146896328\char`\"{}, \char`\"{}user\+Email\char`\"{} \+: \char`\"{}watsh.\+rajneesh@sjsu.\+edu\char`\"{}, \char`\"{}user\+Name\char`\"{} \+: \char`\"{}watsh\char`\"{}, \char`\"{}content\char`\"{} \+: \char`\"{} aws iam list-\/users\char`\"{}, \char`\"{}intent\char`\"{} \+: \char`\"{} aws iam list-\/users\char`\"{}, \char`\"{}channel\+Id\char`\"{} \+: \char`\"{}\+C2\+A710\+W\+G\+G\char`\"{}, \char`\"{}slack\+Bot\+Token\char`\"{} \+: \char`\"{}$<$\+S\+L\+A\+C\+K\+\_\+\+B\+O\+T\+\_\+\+T\+O\+K\+E\+N$>$\char`\"{} \} \}
+\end{DoxyItemize}
+
+Definition at line 61 of file Consumer\+Loop.\+java.
+
+\mbox{\Hypertarget{classedu_1_1sjsu_1_1amigo_1_1cp_1_1kafka_1_1_consumer_loop_adfc4a8e0be1d0a4c6ea3ddeb9bee0b87}\label{classedu_1_1sjsu_1_1amigo_1_1cp_1_1kafka_1_1_consumer_loop_adfc4a8e0be1d0a4c6ea3ddeb9bee0b87}} 
+\index{edu\+::sjsu\+::amigo\+::cp\+::kafka\+::\+Consumer\+Loop@{edu\+::sjsu\+::amigo\+::cp\+::kafka\+::\+Consumer\+Loop}!shutdown@{shutdown}}
+\index{shutdown@{shutdown}!edu\+::sjsu\+::amigo\+::cp\+::kafka\+::\+Consumer\+Loop@{edu\+::sjsu\+::amigo\+::cp\+::kafka\+::\+Consumer\+Loop}}
+\subsubsection{\texorpdfstring{shutdown()}{shutdown()}}
+{\footnotesize\ttfamily void edu.\+sjsu.\+amigo.\+cp.\+kafka.\+Consumer\+Loop.\+shutdown (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 120 of file Consumer\+Loop.\+java.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+command-\/processor-\/service/src/main/java/edu/sjsu/amigo/cp/kafka/\hyperlink{_consumer_loop_8java}{Consumer\+Loop.\+java}\end{DoxyCompactItemize}
