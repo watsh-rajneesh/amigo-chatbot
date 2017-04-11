@@ -1,0 +1,22 @@
+engines:
+  pmd:
+    enabled: true
+    channel: "beta"
+  checkstyle:
+    enabled: true
+    channel: "beta"
+  markdownlint:
+    enabled: true
+  pep8:
+    enabled: true
+  radon:
+    enabled: true
+  shellcheck:
+    enabled: true
+
+ratings:
+  paths:
+  - "**.java"
+  - "**.md"
+  - "**.py"
+  - "**.sh"

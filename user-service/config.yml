@@ -1,5 +1,5 @@
 database:
-  server: mongodb.dev
+  server: localhost
   port: 27017
   dbName: user_db
 
