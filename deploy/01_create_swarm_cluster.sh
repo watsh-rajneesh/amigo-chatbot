@@ -24,3 +24,10 @@ for i in 2 3; do
     --advertise-addr $(docker-machine ip node-$i) \
     $(docker-machine ip node-1):2377
 done
+
+echo "Created swarm cluster"
+
+# Check if swarm nodes created successfully
+eval $(docker-machine env node-1)
+
+docker node ls
