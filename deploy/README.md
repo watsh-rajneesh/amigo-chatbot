@@ -6,7 +6,7 @@ Please note:
 
 If you see this error - https://github.com/docker/kitematic/issues/1193
 
-Remove all host only interfaces from my virtualbox 
+Solution is to remove all host only interfaces from virtualbox 
 (VirtualBox => Preferences => Network => Host-only networks), 
 then delete ~/.docker/ folder 
 and exit virtualbox. Launch virtualbox GUI and ensure there is no error. Delete VMs if you dont need or
