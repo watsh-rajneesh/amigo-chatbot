@@ -39,7 +39,7 @@ public class DBConfig {
     DBFactory dbFactory;
 
     @NotEmpty
-    private String server = "localhost";
+    private String server = "user-db";
 
     @Min(1)
     @Max(65535)

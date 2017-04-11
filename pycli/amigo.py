@@ -1,3 +1,18 @@
+"""
+Amigo CLI.
+
+Install Python 3 for your OS.
+Create virtual environment as: python3 -m venv venv
+Activate virtual environment: source venv/bin/activate
+Get the following packages:
+pip install requests
+
+Now execute the CLI script as:
+venv/bin/python ./amigo.py list-users
+
+Do a -h for complete list of commands.
+
+"""
 import sys
 import argparse
 import textwrap
