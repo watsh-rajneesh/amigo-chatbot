@@ -19,6 +19,7 @@ docker service create --name proxy \
     --network proxy-net \
     -e MODE=swarm \
     -e LISTENER_ADDRESS=swarm-listener \
+    --reserve-memory 10m \
     vfarcic/docker-flow-proxy
 
 # Check services

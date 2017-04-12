@@ -52,7 +52,7 @@ public abstract class DBTest<T extends BaseDAO, S> {
 
     @BeforeClass
     @Parameters({"server", "port", "dbName"})
-    public void setUp(@Optional("localhost") String server,
+    public void setUp(@Optional("user-db") String server,
                       @Optional("27017") String port,
                       @Optional("user_db") String dbName) throws Exception {
         client = dbFactory.create(server, Integer.parseInt(port), dbName);

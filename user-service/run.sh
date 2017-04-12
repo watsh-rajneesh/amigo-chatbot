@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # Assumes maven is installed locally
-mvn clean install -DskipTests
+#mvn clean install -DskipTests
 
 # build a new image
 docker build -t="user-service" .

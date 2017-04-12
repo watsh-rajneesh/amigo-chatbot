@@ -65,6 +65,8 @@ public class UserServiceApplication extends Application<UserServiceConfiguration
 
     @Override
     public void run(UserServiceConfiguration userServiceConfiguration, Environment environment) throws Exception {
+
+
         dbClient = userServiceConfiguration.getDbConfig().build(environment);
         log.info("Connected to db: " + dbClient.getConnectString());
         /*

@@ -68,7 +68,7 @@ public class UserResourceTest extends BaseResourceTest {
     public void testAdd() throws Exception {
 
 
-        User user = addUser(createTestUser("watsh.rajneesh@sjsu.edu1"));
+        User user = addUser(createTestUser("watsh.rajneesh@sjsu.edu"));
         Assert.assertNotNull(user);
     }
 

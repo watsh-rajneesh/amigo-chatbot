@@ -21,13 +21,3 @@ server:
     type: http
     port: 8080
 
-logging:
-  level: INFO
-
-  # Logger-specific levels.
-  loggers:
-     # Sets the level for 'com.example.app' to DEBUG.
-    edu.sjsu.amigo: DEBUG
-
-  appenders:
-    - type: console

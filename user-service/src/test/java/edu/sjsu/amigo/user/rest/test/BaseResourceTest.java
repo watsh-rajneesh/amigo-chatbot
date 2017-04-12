@@ -36,7 +36,7 @@ public abstract class BaseResourceTest {
     public void setUp() throws Exception {
         client = ClientBuilder.newClient();
         HttpAuthenticationFeature feature = HttpAuthenticationFeature
-                .basic("watsh.rajneesh@sjsu.edu1", "pass");
+                .basic("watsh.rajneesh@sjsu.edu", "pass");
         client.register(feature);
         webTarget = client.target(BASE_URI);
     }

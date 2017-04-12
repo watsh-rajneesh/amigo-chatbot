@@ -39,13 +39,16 @@ public class DBConfig {
     DBFactory dbFactory;
 
     @NotEmpty
+    @JsonProperty
     private String server = "user-db";
 
     @Min(1)
     @Max(65535)
+    @JsonProperty
     private int port = 27017;
 
     @NotEmpty
+    @JsonProperty
     private String dbName = "user_db";
     private DBClient dbClient;
 
@@ -82,6 +85,8 @@ public class DBConfig {
     }
 
     public DBClient build(Environment environment) {
+        dbClient = dbFactory.create(server, port, dbName);
+        log.info("Connected to db");
         environment.lifecycle().manage(new Managed() {
             @Override
             public void start() throws Exception {
@@ -97,9 +102,13 @@ public class DBConfig {
     }
 
     public DBConfig() {
+        try {
+            Thread.sleep(20000);
+        } catch(Exception e) {
+
+        }
         Module module = new DatabaseModule();
         Guice.createInjector(module).injectMembers(this);
-        dbClient = dbFactory.create(server, port, dbName);
-        log.info("Connected to db");
+
     }
 }
