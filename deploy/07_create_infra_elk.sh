@@ -44,6 +44,7 @@ docker service create --name logspout \
 
 docker service ps logspout
 
+sleep 60
 open http://$(docker-machine ip node-1):3000
 
 # Kibana
@@ -60,5 +61,6 @@ docker service create --name kibana \
 
 docker service ps kibana
 
+sleep 60
 open http://$(docker-machine ip node-1)/app/kibana
 

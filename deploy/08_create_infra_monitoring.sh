@@ -22,7 +22,7 @@ docker service create \
 
 docker service ps node-exporter
 
-sleep 60
+sleep 120
 
 UTIL_ID="$(docker ps -q --filter \
     label=com.docker.swarm.service.name=util)"
@@ -47,9 +47,9 @@ docker service create --name cadvisor \
 docker service update \
     --publish-rm 8080 cadvisor
 
+sleep 120
 open http://$(docker-machine ip node-1):8080
 
-sleep 60
 
 UTIL_ID="$(docker ps -q --filter \
     label=com.docker.swarm.service.name=util)"
@@ -67,12 +67,13 @@ docker service create \
     --network proxy-net \
     -p 9090:9090 \
     --mount "type=bind,source=$PWD/prometheus/prometheus.yml,target=/etc/prometheus/prometheus.yml" \
-    --mount "type=bind,source=$PWD/prometheus,target=/prometheus" \
+    --mount "type=bind,source=$PWD/docker/prometheus,target=/prometheus" \
     --reserve-memory 200m \
     prom/prometheus:v1.2.1
 
 docker service ps prometheus
 
+sleep 60
 open http://$(docker-machine ip node-1):9090
 
 # Grafana
@@ -84,5 +85,6 @@ docker service create \
 
 docker service ps grafana
 
+sleep 60
 open http://$(docker-machine ip node-1):3000
 

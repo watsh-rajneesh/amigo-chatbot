@@ -158,3 +158,4 @@ Contact GitHub API Training Shop Blog About
 /docker-images/kafka/run.sh
 /slackbot-service/run.sh
 /amigo-cli/
+/deploy/docker/prometheus/
