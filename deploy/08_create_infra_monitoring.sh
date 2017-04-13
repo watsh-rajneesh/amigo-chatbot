@@ -22,8 +22,10 @@ docker service create \
 
 docker service ps node-exporter
 
-UTIL_ID=$(docker ps -q --filter \
-    label=com.docker.swarm.service.name=util)
+sleep 60
+
+UTIL_ID="$(docker ps -q --filter \
+    label=com.docker.swarm.service.name=util)"
 
 docker exec -it $UTIL_ID \
     apk add --update curl drill
@@ -47,8 +49,10 @@ docker service update \
 
 open http://$(docker-machine ip node-1):8080
 
-UTIL_ID=$(docker ps -q --filter \
-    label=com.docker.swarm.service.name=util)
+sleep 60
+
+UTIL_ID="$(docker ps -q --filter \
+    label=com.docker.swarm.service.name=util)"
 
 docker exec -it $UTIL_ID \
     curl http://cadvisor:8080/metrics
@@ -62,8 +66,8 @@ docker service create \
     --name prometheus \
     --network proxy-net \
     -p 9090:9090 \
-    --mount "type=bind,source=$PWD/prometheus.yml,target=/etc/prometheus/prometheus.yml" \
-    --mount "type=bind,source=$PWD/docker/prometheus,target=/prometheus" \
+    --mount "type=bind,source=$PWD/prometheus/prometheus.yml,target=/etc/prometheus/prometheus.yml" \
+    --mount "type=bind,source=$PWD/prometheus,target=/prometheus" \
     --reserve-memory 200m \
     prom/prometheus:v1.2.1
 

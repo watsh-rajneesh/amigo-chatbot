@@ -18,12 +18,13 @@ docker service create --name logstash \
     --network proxy-net \
     -e LOGSPOUT=ignore \
     --reserve-memory 250m \
-    logstash:2.4 logstash -f ./logstash/logstash.conf
+    logstash:2.4 \
+    logstash -f /conf/logstash.conf
 
 docker service ps logstash
 
 # Check logs from logstash
-LOGSTASH_NODE=$(docker service ps logstash | tail -n +2 | awk '{print $4}')
+LOGSTASH_NODE=$(docker service ps logstash | tail -n +2 | awk '{print $1}')
 
 eval $(docker-machine env $LOGSTASH_NODE)
 
