@@ -14,21 +14,21 @@ docker service ps elasticsearch
 
 # Logstash
 docker service create --name logstash \
-    --mount "type=bind,source=$PWD/logstash,target=/conf" \
+    --mount "type=bind,source=$PWD/docker/logstash,target=/conf" \
     --network proxy-net \
     -e LOGSPOUT=ignore \
     --reserve-memory 250m \
-    logstash:2.4 \
-    logstash -f /conf/logstash.conf
+    logstash:2.4 logstash -f /conf/logstash.conf
 
 docker service ps logstash
 
 # Check logs from logstash
-LOGSTASH_NODE=$(docker service ps logstash | tail -n +2 | awk '{print $1}')
+LOGSTASH_NODE=$(docker service ps logstash | tail -n +2 | awk '{print $4}')
 
 eval $(docker-machine env $LOGSTASH_NODE)
 
 LOGSTASH_ID=$(docker ps -q --filter "ancestor=logstash:2.4")
+echo "LOGSTASH_ID: $LOGSTASH_ID"
 
 docker logs $LOGSTASH_ID
 

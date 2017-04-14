@@ -88,3 +88,12 @@ docker service ps grafana
 sleep 60
 open http://$(docker-machine ip node-1):3000
 
+#
+docker service create \
+  --name=viz \
+  --publish=7070:8080/tcp \
+  --constraint=node.role==manager \
+  --mount=type=bind,src=/var/run/docker.sock,dst=/var/run/docker.sock \
+  dockersamples/visualizer
+
+open http://$(docker-machine ip node-1):7070
