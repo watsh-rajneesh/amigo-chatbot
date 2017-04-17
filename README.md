@@ -5,7 +5,7 @@ A chatbot for cloud operations management.
 ![Amigo Image](amigo.png "A chatbot for cloud operations management.")
 Image clipart of Amigo is courtsey free image published on [this site](http://vectorcharacters.net/robot-vector-characters/cute-vector-robot-character).
 
-Read the workbook - [Amigo Workbook](https://1drv.ms/w/s!AnGP6YY6ad9FgYNR5g2UbP14Sp2GqA)
+Read the workbook - [Amigo Project Report (Draft)](https://sjsu0-my.sharepoint.com/personal/watsh_rajneesh_sjsu_edu/_layouts/15/guestaccess.aspx?docid=0a9a2d9d25a994c66bd1f153c354c1b1b&authkey=AVotnLN4G8fSA1cmlwb6RLU)
 
 # Features
 1. Chatbot service with adapters for: 
