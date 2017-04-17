@@ -9,6 +9,7 @@ docker network create --driver overlay user-net
 docker network create --driver overlay proxy-net
 
 # Create an overlay network for ELK stack for capturing service logging
-#docker network create --driver overlay elk
+docker network create --driver overlay logging
+docker network create --driver overlay monitoring
 
 echo "Created overlay networks"

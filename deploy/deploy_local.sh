@@ -14,16 +14,19 @@ source ./03_create_infra_proxy_service.sh
 
 # TODO Create and use local Docker registry
 #source ./create_infra_docker_registry.sh
-sleep 60
+#sleep 60
 
 # FIXME change to use local docker registry
-source ./06_cideploy.sh
+#source ./06_cideploy.sh
 
 # Logging services - ELK stack setup
-source ./07_create_infra_elk.sh
+#source ./07_create_infra_elk.sh
+#docker stack deploy --compose-file composefiles/docker-compose-logging.yml logging
 
 # Monitoring services setup
-source ./08_create_infra_monitoring.sh
+#source ./08_create_infra_monitoring.sh
+#docker stack deploy --compose-file composefiles/docker-compose-monitoring.yml monitoring
+
 
 
 
