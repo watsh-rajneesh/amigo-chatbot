@@ -1,4 +1,4 @@
-digraph "edu.sjsu.amigo.mp.kafka.Message.getIntent"
+digraph "edu.sjsu.amigo.mp.model.Message.getIntent"
 {
   edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
   node [fontname="Helvetica",fontsize="10",shape=record];

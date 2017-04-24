@@ -12,7 +12,7 @@
  * all copies or substantial portions of the Software.
  */
 
-package edu.sjsu.amigo.cp.jobs;
+package edu.sjsu.amigo.scheduler.jobs;
 
 import org.quartz.*;
 import org.quartz.impl.StdSchedulerFactory;

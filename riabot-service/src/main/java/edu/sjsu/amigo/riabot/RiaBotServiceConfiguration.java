@@ -12,16 +12,12 @@
  * all copies or substantial portions of the Software.
  */
 
-package edu.sjsu.amigo.mp.util;
+package edu.sjsu.amigo.riabot;
+
+import io.dropwizard.Configuration;
 
 /**
- * Represents the different bot types that the system knows about.
- *
- * TODO externalize it so we can make the adding of new types declarative.
- *
- * @author rwatsh on 3/26/17.
+ * @author rwatsh on 4/23/17.
  */
-public enum BotType {
-    SLACK,
-    RIA
+public class RiaBotServiceConfiguration extends Configuration {
 }

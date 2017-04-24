@@ -14,8 +14,8 @@
 
 package edu.sjsu.amigo.cp.kafka;
 
-import edu.sjsu.amigo.cp.jobs.JobManager;
 import edu.sjsu.amigo.cp.jobs.MessageProcessorJob;
+import edu.sjsu.amigo.scheduler.jobs.JobManager;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.apache.kafka.clients.consumer.ConsumerRecords;
 import org.apache.kafka.clients.consumer.KafkaConsumer;
@@ -25,12 +25,9 @@ import org.quartz.JobDataMap;
 import org.quartz.SchedulerException;
 
 import java.util.*;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.TimeUnit;
 
-import static edu.sjsu.amigo.mp.kafka.MessageQueueConstants.AMIGO_CHATBOT_GROUP;
-import static edu.sjsu.amigo.mp.kafka.MessageQueueConstants.USER_MSG_TOPIC;
+import static edu.sjsu.amigo.scheduler.jobs.JobConstants.JOB_GRP_CP;
+import static edu.sjsu.amigo.scheduler.jobs.JobConstants.JOB_PARAM_MESSAGE;
 
 /**
  * A Kafka message consumer. As soon as it receives a message it will spawn a job to process it.
@@ -104,10 +101,10 @@ public class ConsumerLoop implements Runnable {
         if (value != null && !value.trim().isEmpty()) {
             try {
                 // Some unique job name
-                String jobName = "MESG-JOB-" + UUID.randomUUID().toString();
-                String groupName = "CHATBOT-GRP";
+                String jobName = "CP-MESG-JOB-" + UUID.randomUUID().toString();
+                String groupName = JOB_GRP_CP;
                 JobDataMap params = new JobDataMap();
-                params.put("message", value);
+                params.put(JOB_PARAM_MESSAGE, value);
                 JobManager.getInstance().scheduleJob(MessageProcessorJob.class, jobName, groupName, params);
 
             } catch (Exception e) {
@@ -127,34 +124,8 @@ public class ConsumerLoop implements Runnable {
      * @param args
      */
     public static void main(String[] args) throws SchedulerException {
-        //Start the job scheduler
-        JobManager.getInstance().startScheduler();
 
-        int numConsumers = 3;
-        String groupId = AMIGO_CHATBOT_GROUP;
-        List<String> topics = Arrays.asList(USER_MSG_TOPIC);
-        ExecutorService executor = Executors.newFixedThreadPool(numConsumers);
 
-        final List<ConsumerLoop> consumers = new ArrayList<>();
-        for (int i = 0; i < numConsumers; i++) {
-            ConsumerLoop consumer = new ConsumerLoop(i, groupId, topics);
-            consumers.add(consumer);
-            executor.submit(consumer);
-        }
 
-        Runtime.getRuntime().addShutdownHook(new Thread() {
-            @Override
-            public void run() {
-                for (ConsumerLoop consumer : consumers) {
-                    consumer.shutdown();
-                }
-                executor.shutdown();
-                try {
-                    executor.awaitTermination(5000, TimeUnit.MILLISECONDS);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-            }
-        });
     }
 }

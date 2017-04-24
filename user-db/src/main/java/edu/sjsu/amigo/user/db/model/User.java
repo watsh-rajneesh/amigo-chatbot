@@ -54,6 +54,10 @@ public class User extends Validable implements IModel {
      */
     private String riaId;
     /*
+     * API Key - this is generated as a result
+     */
+    private String apiKey;
+    /*
      * AWS Credentials for the user.
      *
      * TODO make this externalized so other cloud provider specific
@@ -114,6 +118,14 @@ public class User extends Validable implements IModel {
 
     public void setAwsCredentials(AWSCredentials awsCredentials) {
         this.awsCredentials = awsCredentials;
+    }
+
+    public String getApiKey() {
+        return apiKey;
+    }
+
+    public void setApiKey(String apiKey) {
+        this.apiKey = apiKey;
     }
 
     @Override

@@ -17,6 +17,7 @@ package edu.sjsu.amigo.user.rest;
 import edu.sjsu.amigo.db.common.DBClient;
 import edu.sjsu.amigo.db.common.DBException;
 import edu.sjsu.amigo.db.common.Utilities;
+import edu.sjsu.amigo.json.util.InternalErrorException;
 import edu.sjsu.amigo.json.util.JsonUtils;
 import edu.sjsu.amigo.user.auth.PrincipalUser;
 import edu.sjsu.amigo.user.db.model.User;
@@ -32,6 +33,7 @@ import java.io.IOException;
 import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 import java.util.logging.Level;
 
 /**
@@ -42,8 +44,7 @@ import java.util.logging.Level;
 /*
 @Api(value = "/users", description = "Operations about users")
 */
-public class UserResource extends BaseResource<User>  {
-
+public class UserResource extends BaseResource<User> {
     public UserResource(DBClient dbClient) {
         super(dbClient);
     }
@@ -57,17 +58,34 @@ public class UserResource extends BaseResource<User>  {
      * REST is stateless so we don't do any session tracking for user and this method lets the web UI perform a login
      * operation. Alternatively web UI can also do a get on the user ID specified during login.
      *
-     * @param user
      * @param info
      * @return
      */
     @HEAD
+    @Produces(MediaType.APPLICATION_JSON)
     /*@ApiOperation(httpMethod = "HEAD",
             value = "Authenticates the user",
             response = Response.class,
             nickname="login")*/
-    public Response login(@Auth User user, @Context UriInfo info) throws DBException {
-        return Response.ok().build();
+    public User validateApiKey(@Context UriInfo info, @Context HttpHeaders headers) throws DBException {
+        //return Response.ok().build();
+        try {
+            String apiKey = null;
+            List<String> vals = headers.getRequestHeader("AMIGO-API-KEY");
+            if (vals != null && !vals.isEmpty()) {
+                apiKey = vals.get(0);
+            }
+            if (apiKey != null) {
+                List<User> users = userDAO.fetch("{apiKey: \"" + apiKey + "\"}", User.class);
+                if (users != null && !users.isEmpty()) {
+                    return users.get(0);
+                }
+            }
+
+        } catch (Exception e) {
+            log.log(Level.SEVERE, "Error in validating API Key", e);
+        }
+        return null;
     }
 
     /**
@@ -90,6 +108,8 @@ public class UserResource extends BaseResource<User>  {
             user.isValid();
             String encryptedPasswd = Utilities.generateMD5Hash(user.getPassword());
             user.setPassword(encryptedPasswd);
+            // generate API Key
+            user.setApiKey(UUID.randomUUID().toString());
             List<String> insertedIds = userDAO.add(new ArrayList<User>() {{
                 add(user);
             }});

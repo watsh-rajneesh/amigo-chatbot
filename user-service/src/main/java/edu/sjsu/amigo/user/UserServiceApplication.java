@@ -15,10 +15,10 @@
 package edu.sjsu.amigo.user;
 
 import edu.sjsu.amigo.db.common.DBClient;
+import edu.sjsu.amigo.json.util.EndpointUtils;
 import edu.sjsu.amigo.user.auth.PrincipalUser;
 import edu.sjsu.amigo.user.auth.SimpleAuthenticator;
 import edu.sjsu.amigo.user.health.DBHealthCheck;
-import edu.sjsu.amigo.user.rest.EndpointUtils;
 import edu.sjsu.amigo.user.rest.UserResource;
 import io.dropwizard.Application;
 import io.dropwizard.auth.AuthDynamicFeature;

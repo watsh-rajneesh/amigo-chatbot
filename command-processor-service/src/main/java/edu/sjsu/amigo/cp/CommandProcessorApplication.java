@@ -14,12 +14,89 @@
 
 package edu.sjsu.amigo.cp;
 
+import edu.sjsu.amigo.cp.health.DBHealthCheck;
+import edu.sjsu.amigo.cp.kafka.ConsumerLoop;
+import edu.sjsu.amigo.cp.rest.RequestResource;
+import edu.sjsu.amigo.db.common.DBClient;
+import edu.sjsu.amigo.json.util.EndpointUtils;
+import edu.sjsu.amigo.scheduler.jobs.JobManager;
+import io.dropwizard.Application;
+import io.dropwizard.setup.Environment;
+import lombok.extern.java.Log;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
+
+import static edu.sjsu.amigo.mp.kafka.MessageQueueConstants.AMIGO_CHATBOT_GROUP;
+import static edu.sjsu.amigo.mp.kafka.MessageQueueConstants.USER_MSG_TOPIC;
+
 /**
  * @author rwatsh on 2/26/17.
  */
-public class CommandProcessorApplication { /*extends Application<CommandProcessorConfiguration> {
+@Log
+public class CommandProcessorApplication  extends Application<CommandProcessorConfiguration> {
+    private DBClient dbClient;
+
+    public static void main(String[] args) throws Exception {
+        new CommandProcessorApplication().run(args);
+    }
+
     @Override
     public void run(CommandProcessorConfiguration commandProcessorConfiguration, Environment environment) throws Exception {
+        dbClient = commandProcessorConfiguration.getDbConfig().build(environment);
+        log.info("Connected to db: " + dbClient.getConnectString());
 
-    }*/
+        environment.healthChecks().register("database", new DBHealthCheck(dbClient));
+
+        /*
+         * Register resources with jersey.
+         */
+        final RequestResource userResource = new RequestResource(dbClient);
+
+        /*
+         * Setup jersey environment.
+         */
+        environment.jersey().setUrlPattern(EndpointUtils.ENDPOINT_ROOT + "/*");
+        environment.jersey().register(userResource);
+        log.info("Done with all initializations for user service");
+
+        // Start the job scheduler
+        JobManager.getInstance().startScheduler();
+
+        // Start Kafka message consumer loop
+        initKafkaMessageConsumerLoop();
+    }
+
+    private void initKafkaMessageConsumerLoop() {
+        int numConsumers = 3;
+        String groupId = AMIGO_CHATBOT_GROUP;
+        List<String> topics = Arrays.asList(USER_MSG_TOPIC);
+        ExecutorService executor = Executors.newFixedThreadPool(numConsumers);
+
+        final List<ConsumerLoop> consumers = new ArrayList<>();
+        for (int i = 0; i < numConsumers; i++) {
+            ConsumerLoop consumer = new ConsumerLoop(i, groupId, topics);
+            consumers.add(consumer);
+            executor.submit(consumer);
+        }
+
+        Runtime.getRuntime().addShutdownHook(new Thread() {
+            @Override
+            public void run() {
+                for (ConsumerLoop consumer : consumers) {
+                    consumer.shutdown();
+                }
+                executor.shutdown();
+                try {
+                    executor.awaitTermination(5000, TimeUnit.MILLISECONDS);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+    }
 }

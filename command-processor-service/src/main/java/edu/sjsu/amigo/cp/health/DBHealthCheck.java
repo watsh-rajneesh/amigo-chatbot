@@ -12,20 +12,28 @@
  * all copies or substantial portions of the Software.
  */
 
-package edu.sjsu.amigo.user.rest;
+package edu.sjsu.amigo.cp.health;
 
-import javax.ws.rs.WebApplicationException;
-import javax.ws.rs.core.Response;
+import com.codahale.metrics.health.HealthCheck;
+import edu.sjsu.amigo.db.common.DBClient;
 
 /**
  * @author rwatsh on 3/27/17.
  */
-public class InternalErrorException  extends WebApplicationException {
-    public InternalErrorException(){
-        super(Response.Status.INTERNAL_SERVER_ERROR);
+public class DBHealthCheck extends HealthCheck {
+    private DBClient client;
+
+    public DBHealthCheck(DBClient client) {
+        this.client = client;
     }
 
-    public InternalErrorException(Throwable throwable){
-        super(Response.Status.INTERNAL_SERVER_ERROR.toString(), throwable);
+    @Override
+    protected Result check() throws Exception {
+
+        if (client.checkHealth()) {
+            return Result.healthy();
+        } else {
+            return Result.unhealthy("Cannot connect to DB " + client.getConnectString());
+        }
     }
 }

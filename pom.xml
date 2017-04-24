@@ -35,6 +35,8 @@
         <module>db-common</module>
         <module>json-common</module>
         <module>command-db</module>
+        <module>scheduler-common</module>
+        <module>riabot-service</module>
     </modules>
 
     <properties>

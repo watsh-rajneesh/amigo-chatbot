@@ -12,7 +12,7 @@
  * all copies or substantial portions of the Software.
  */
 
-package edu.sjsu.amigo.mp.kafka;
+package edu.sjsu.amigo.mp.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;

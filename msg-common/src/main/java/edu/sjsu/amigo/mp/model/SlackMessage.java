@@ -12,54 +12,34 @@
  * all copies or substantial portions of the Software.
  */
 
-package edu.sjsu.amigo.mp.kafka;
+package edu.sjsu.amigo.mp.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-
-import java.util.List;
+import lombok.Data;
 
 /**
  * Message from slack messenger. It has properties specific to slack.
  *
  * @author rwatsh on 2/26/17.
  */
+@Data
 public class SlackMessage extends Message {
+    /*
+     * Channel ID of the channel where message was sent. This will be blank if the message was sent directly to bot.
+     */
     @JsonProperty
     private String channelId;
-    // TODO make it encrypted - should not be visible in clear text.
+    /*
+     * Bot token to be used to create a session with the bot and send any message to it or receive any message from it.
+     */
     @JsonProperty
     private String slackBotToken;
 
 
-    public SlackMessage(String time, String userEmail, String userName, String content, List<String> intent,
+    public SlackMessage(String time, String userEmail, String userName, String content,
                          String channelName, String slackBotToken) {
-        super(time, userEmail, userName, content, intent);
+        super(BotType.SLACK.name(), time, userEmail, userName, content);
         this.channelId = channelName;
         this.slackBotToken = slackBotToken;
-    }
-
-
-    public String getChannelId() {
-        return channelId;
-    }
-
-    public void setChannelId(String channelId) {
-        this.channelId = channelId;
-    }
-
-    public String getSlackBotToken() {
-        return slackBotToken;
-    }
-
-    public void setSlackBotToken(String slackBotToken) {
-        this.slackBotToken = slackBotToken;
-    }
-
-    @Override
-    public String toString() {
-        return "SlackMessage{" +
-                ", channelId='" + channelId + '\'' +
-                ", slackBotToken='" + slackBotToken + '\'' +
-                '}';
     }
 }

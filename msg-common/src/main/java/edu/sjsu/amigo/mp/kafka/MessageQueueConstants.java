@@ -24,7 +24,7 @@ public interface MessageQueueConstants {
     /**
      * user message topic on which incoming client message is received.
      */
-    String USER_MSG_TOPIC = "user_msg";
+    String USER_MSG_TOPIC = "user.msg";
 
     // Client groups
     /**

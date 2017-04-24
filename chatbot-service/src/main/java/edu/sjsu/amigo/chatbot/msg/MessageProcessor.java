@@ -16,15 +16,13 @@ package edu.sjsu.amigo.chatbot.msg;
 
 import edu.sjsu.amigo.chatbot.api.AIClient;
 import edu.sjsu.amigo.chatbot.nlp.WitDotAIClient;
-import edu.sjsu.amigo.mp.kafka.Message;
-import edu.sjsu.amigo.mp.kafka.MessageProducer;
-import edu.sjsu.amigo.mp.kafka.SlackMessage;
-import edu.sjsu.amigo.mp.util.BotType;
 import edu.sjsu.amigo.json.util.JsonUtils;
+import edu.sjsu.amigo.mp.kafka.MessageProducer;
+import edu.sjsu.amigo.mp.model.Message;
 
 import java.io.IOException;
-import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -34,8 +32,8 @@ import java.util.logging.Logger;
 public class MessageProcessor {
     private static Logger logger = Logger.getLogger(MessageProducer.class.getName());
 
-    public static void processMessage(BotType botType, String parsedMessage, String email, String name, String channelId, String botToken) {
-        // Get the intent from wit.ai
+    public static void processMessage(Message msg) {
+        // Get the intent from wit.ai and set it to the message.
             /*
                 Intent will be a sorted list of tokens.
                 intent: [aws, ec2, list]
@@ -43,21 +41,10 @@ public class MessageProcessor {
         List<String> intent = null;
         //intent = HttpClient.getIntentFromWitAI(parsedMessage);
         AIClient aiClient = new WitDotAIClient();
-        intent = aiClient.getIntent(parsedMessage);
+        intent = aiClient.getIntent(msg.getContent());
+        msg.setIntent(intent);
+        msg.setRequestId(UUID.randomUUID().toString());
 
-        // Construct the message in JSON
-        String currentTime = "" + (new Date()).getTime();
-        Message msg = null;
-
-        switch(botType) {
-            case SLACK:
-                msg = new SlackMessage(currentTime, email, name, parsedMessage, intent, channelId, botToken);
-                break;
-            case RIA:
-                break;
-            default:
-                break;
-        }
         if (msg != null) {
             String msgJson = null;
 

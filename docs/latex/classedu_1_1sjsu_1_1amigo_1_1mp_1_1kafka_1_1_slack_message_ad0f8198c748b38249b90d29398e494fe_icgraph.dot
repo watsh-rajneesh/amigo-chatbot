@@ -1,4 +1,4 @@
-digraph "edu.sjsu.amigo.mp.kafka.SlackMessage.getChannelId"
+digraph "edu.sjsu.amigo.mp.model.SlackMessage.getChannelId"
 {
   edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
   node [fontname="Helvetica",fontsize="10",shape=record];

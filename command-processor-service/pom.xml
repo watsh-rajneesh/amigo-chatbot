@@ -37,7 +37,32 @@
         </dependency>
         <dependency>
             <groupId>edu.sjsu.amigo</groupId>
+            <artifactId>user-db</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>edu.sjsu.amigo</groupId>
+            <artifactId>httpclient-common</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>edu.sjsu.amigo</groupId>
+            <artifactId>scheduler-common</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>edu.sjsu.amigo</groupId>
             <artifactId>json-common</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>edu.sjsu.amigo</groupId>
+            <artifactId>db-common</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>edu.sjsu.amigo</groupId>
+            <artifactId>command-db</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
@@ -77,6 +102,12 @@
                 </exclusion>
             </exclusions>
         </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombok.version}</version>
+            <scope>provided</scope>
+        </dependency>
     </dependencies>
     <properties>
         <quartz.version>2.2.1</quartz.version>
@@ -86,6 +117,7 @@
         <kafka-clients.version>0.10.2.0</kafka-clients.version>
         <maven-compiler-plugin.source>1.8</maven-compiler-plugin.source>
         <simple-slack-api.version>0.6.0</simple-slack-api.version>
+        <lombok.version>1.16.6</lombok.version>
     </properties>
 
     <build>

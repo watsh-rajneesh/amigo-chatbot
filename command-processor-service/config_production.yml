@@ -1,0 +1,33 @@
+database:
+  server: cmd-db
+  port: 27017
+  dbName: cmd_db
+
+# the only required property is resourcePackage, for more config options see below
+#swagger:
+#   resourcePackage: edu.sjsu.amigo.user.rest
+
+# use the simple server factory if you only want to run on a single port
+#server:
+#  type: simple
+#  connector:
+#    type: http
+#    port: 8080
+
+server:
+  type: simple
+  applicationContextPath: /
+  connector:
+    type: http
+    port: 8080
+
+logging:
+  level: INFO
+
+  # Logger-specific levels.
+  loggers:
+     # Sets the level for 'com.example.app' to DEBUG.
+    edu.sjsu.amigo: DEBUG
+
+  appenders:
+    - type: console

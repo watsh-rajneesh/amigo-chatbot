@@ -12,9 +12,10 @@
  * all copies or substantial portions of the Software.
  */
 
-package edu.sjsu.amigo.mp.kafka;
+package edu.sjsu.amigo.mp.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.Data;
 
 import java.util.List;
 
@@ -47,23 +48,38 @@ import java.util.List;
  *
  * @author rwatsh on 2/26/17.
  */
+@Data
 public class Message {
     @JsonProperty
+    private String botType;
+    // Message creation time
+    @JsonProperty
     private String msgReceivedTime;
+    // Email id of user who sent this message
     @JsonProperty
     private String userEmail;
+    // User name of user who sent this message
     @JsonProperty
     private String userName;
-    @JsonProperty
-    private String userId;
+    // Content of this message
     @JsonProperty
     private String content;
+    /*
+     * Intent is fetched from wit.ai service at chatbot service.
+     */
     @JsonProperty
     private List<String> intent;
+    /*
+     * Request ID is generated at command processor service.
+     */
+    @JsonProperty
+    private String requestId;
+
 
     public Message() {}
 
-    public Message(String time, String userEmail, String userName, String content, List<String> intent) {
+    public Message(String botType, String time, String userEmail, String userName, String content) {
+        this.botType = botType;
         this.msgReceivedTime = time;
         this.userEmail = userEmail;
         this.userName = userName;
@@ -71,63 +87,4 @@ public class Message {
         this.intent = intent;
     }
 
-    public String getMsgReceivedTime() {
-        return msgReceivedTime;
-    }
-
-    public void setMsgReceivedTime(String msgReceivedTime) {
-        this.msgReceivedTime = msgReceivedTime;
-    }
-
-    public String getUserEmail() {
-        return userEmail;
-    }
-
-    public void setUserEmail(String userEmail) {
-        this.userEmail = userEmail;
-    }
-
-    public String getUserName() {
-        return userName;
-    }
-
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
-
-    public String getContent() {
-        return content;
-    }
-
-    public void setContent(String content) {
-        this.content = content;
-    }
-
-    public List<String> getIntent() {
-        return intent;
-    }
-
-    public void setIntent(List<String> intent) {
-        this.intent = intent;
-    }
-
-    public String getUserId() {
-        return userId;
-    }
-
-    public void setUserId(String userId) {
-        this.userId = userId;
-    }
-
-    @Override
-    public String toString() {
-        return "Message{" +
-                "msgReceivedTime='" + msgReceivedTime + '\'' +
-                ", userEmail='" + userEmail + '\'' +
-                ", userName='" + userName + '\'' +
-                ", userId='" + userId + '\'' +
-                ", content='" + content + '\'' +
-                ", intent='" + intent + '\'' +
-                '}';
-    }
 }

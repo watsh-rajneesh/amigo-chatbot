@@ -16,6 +16,7 @@ package edu.sjsu.amigo.command.db.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import edu.sjsu.amigo.db.common.model.IModel;
 import org.mongodb.morphia.annotations.Entity;
 import org.mongodb.morphia.annotations.Id;
 
@@ -28,7 +29,7 @@ import java.util.Date;
  */
 @Entity(value = "requests" , noClassnameStored = true, concern = "SAFE")
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Request {
+public class Request implements IModel {
     @Id
     private String requestId;
     private Date startTime;

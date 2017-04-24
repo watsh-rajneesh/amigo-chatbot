@@ -16,6 +16,7 @@ package edu.sjsu.amigo.user.rest;
 
 import edu.sjsu.amigo.db.common.DBClient;
 import edu.sjsu.amigo.db.common.model.IModel;
+import edu.sjsu.amigo.json.util.InternalErrorException;
 import edu.sjsu.amigo.user.auth.PrincipalUser;
 import edu.sjsu.amigo.user.db.dao.UserDAO;
 import io.dropwizard.auth.Auth;

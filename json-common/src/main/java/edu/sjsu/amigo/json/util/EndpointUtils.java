@@ -12,7 +12,7 @@
  * all copies or substantial portions of the Software.
  */
 
-package edu.sjsu.amigo.user.rest;
+package edu.sjsu.amigo.json.util;
 
 import javax.ws.rs.core.UriInfo;
 import java.net.URI;

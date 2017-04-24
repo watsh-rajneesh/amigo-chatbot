@@ -17,7 +17,6 @@ package edu.sjsu.amigo.user.rest.test;
 import edu.sjsu.amigo.json.util.JsonUtils;
 import edu.sjsu.amigo.user.db.model.AWSCredentials;
 import edu.sjsu.amigo.user.db.model.User;
-import edu.sjsu.amigo.user.rest.EndpointUtils;
 import lombok.extern.java.Log;
 import org.testng.Assert;
 

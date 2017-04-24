@@ -1,27 +1,37 @@
 #!/usr/bin/env bash
 
-# Assumption is that mvn deploy will build source, test source, build docker image, tag it and push it to docker hub
+# TODO Use mvn deploy to build source, test source, build docker image, tag it and push it to docker hub
 # mvn deploy will iteratively do the above for all sub-modules.
-#docker run -it --name cideployer sjsucohort6/cideploy:1.0 \
-#/bin/bash -c "git clone https://github.com/sjsucohort6/amigo-chatbot.git; cd amigo-chatbot; mvn deploy"
+# For now doing it with shell script located in each sub-module.
 
 #eval $(docker-machine env node-1)
 
 #docker service create --name cideployer sjsucohort6/cideploy:1.0 \
 #    /bin/bash -c "git clone https://github.com/sjsucohort6/amigo-chatbot.git; cd amigo-chatbot; mvn deploy"
 
+# PS: This build, test, create docker image is happening locally and not in a swarm cluster. Ideally should happen
+# via Jenkins in a Swarm cluster (TODO)
+
 pushd .
 
 cd ../user-service
 
-# Only local tests are run .. so in this case mongodb and user service are running locally
-mvn clean install -DskipTests
-java -jar target/user-service-1.0-SNAPSHOT.jar server config.yml &
-# give some time for server to startup
-sleep 60
-mvn test
+source ./build.sh
 
-# If the above tests succeeded then make docker image and push to docker hub
-source ./run.sh
+cd ../chatbot-service
+
+source ./build.sh
+
+cd ../slackbot-service
+
+source ./build.sh
+
+cd ../riabot-service
+
+source ./build.sh
+
+cd ../command-processor-service
+
+source ./build.sh
 
 popd
