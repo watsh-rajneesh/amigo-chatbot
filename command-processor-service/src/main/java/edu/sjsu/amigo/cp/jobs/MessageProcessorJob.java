@@ -64,14 +64,6 @@ public class MessageProcessorJob implements Job {
                     session.connect();
                     String channelId = slackMessage.getChannelId();
                     List<String> intent = slackMessage.getIntent();
-                    //List<IntentElem> intentsList = null;
-
-/*                *//**
-                     * Only if the intent string is a JSON array means wit.ai returned some intents for the message.
-                     *//*
-                if (JsonUtils.parseJson(intent).isArray()) {
-                    intentsList = JsonUtils.convertJsonArrayToList(intent, IntentElem.class);
-                }*/
 
                     String userEmail = slackMessage.getUserEmail();
 
@@ -86,8 +78,6 @@ public class MessageProcessorJob implements Job {
                     List<String> envList = getCloudProviderCreds(userEmail);
 
                     // Execute Command
-
-
                     List<String> cmdList = new ArrayList<>();
                     for (int i = 1; i < cmdArray.length; i++) {
                         cmdList.add(cmdArray[i]);

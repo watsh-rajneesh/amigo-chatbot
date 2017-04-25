@@ -80,6 +80,12 @@
         </exclusion>
       </exclusions>
     </dependency>
+    <dependency>
+      <groupId>org.projectlombok</groupId>
+      <artifactId>lombok</artifactId>
+      <version>1.16.6</version>
+      <scope>provided</scope>
+    </dependency>
   </dependencies>
   <properties>
     <dropwizard.version>1.0.6</dropwizard.version>
@@ -88,6 +94,7 @@
     <maven-compiler-plugin.source>1.8</maven-compiler-plugin.source>
     <kafka-clients.version>0.10.2.0</kafka-clients.version>
     <docker-client.version>7.0.2</docker-client.version>
+    <lombok.version>1.16.6</lombok.version>
     <simple-slack-api.version>0.6.0</simple-slack-api.version>
   </properties>
 </project>
