@@ -3,7 +3,7 @@
 eval $(docker-machine env node-1)
 
 # Create user-net overlay network
-docker network create --driver overlay user-net
+docker network create --driver overlay app-net
 
 # Create a proxy overlay network
 docker network create --driver overlay proxy-net

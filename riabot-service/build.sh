@@ -13,6 +13,6 @@ kill $RIABOT_SERVICE_PID
 docker build -t="riabot-service" .
 
 # push the image to docker hub
-docker login
+docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
 docker tag riabot-service sjsucohort6/riabot-service:1.0
 docker push sjsucohort6/riabot-service:1.0

@@ -40,7 +40,7 @@ public class DBConfig {
 
     @NotEmpty
     @JsonProperty
-    private String server = "user-db";
+    private String server = "cmd-db";
 
     @Min(1)
     @Max(65535)
@@ -49,7 +49,7 @@ public class DBConfig {
 
     @NotEmpty
     @JsonProperty
-    private String dbName = "user_db";
+    private String dbName = "cmd_db";
     private DBClient dbClient;
 
     @JsonIgnore

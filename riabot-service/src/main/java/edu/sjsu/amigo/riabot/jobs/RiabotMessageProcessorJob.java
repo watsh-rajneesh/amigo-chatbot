@@ -41,7 +41,8 @@ import java.util.logging.Level;
 @Log
 public class RiabotMessageProcessorJob implements Job {
     private RiaMessage message;
-    protected static final String BASE_URI = "http://localhost:8080";
+    private static final String PROXY_HOST_NAME = System.getenv("PROXY_HOST_NAME");
+    protected static final String BASE_URI = "http://" + PROXY_HOST_NAME;
     public static final String RESOURCE_URI = "/api/v1.0/chat";
 
     @Override

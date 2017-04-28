@@ -31,3 +31,4 @@ echo "Created swarm cluster"
 eval $(docker-machine env node-1)
 
 docker node ls
+

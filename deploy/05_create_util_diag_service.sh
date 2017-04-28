@@ -4,7 +4,7 @@ eval $(docker-machine env node-1)
 
 # Create a debug util service on all nodes in swarm cluster (so global mode)
 docker service create --name util \
-    --network user-net \
+    --network app-net \
     --network proxy-net \
     --mode global \
     alpine sleep 1000000000

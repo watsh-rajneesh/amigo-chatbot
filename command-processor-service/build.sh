@@ -13,6 +13,6 @@ kill $CP_SERVICE_PID
 docker build -t="command-processor-service" .
 
 # push the image to docker hub
-docker login
+docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
 docker tag command-processor-service sjsucohort6/command-processor-service:1.0
 docker push sjsucohort6/command-processor-service:1.0

@@ -12,12 +12,15 @@ sleep 60
 # Create Docker Flow Proxy Service
 source ./03_create_infra_proxy_service.sh
 
+# Create Kafka Message queue services
+source ./09_create_infra_mqueue_services.sh
+
 # TODO Create and use local Docker registry
 #source ./create_infra_docker_registry.sh
 #sleep 60
 
 # FIXME change to use local docker registry
-#source ./06_cideploy.sh
+source ./06_cideploy.sh
 
 # Logging services - ELK stack setup
 #source ./07_create_infra_elk.sh
@@ -28,14 +31,9 @@ source ./03_create_infra_proxy_service.sh
 #docker stack deploy --compose-file composefiles/docker-compose-monitoring.yml monitoring
 
 
-
-
 # Add application micro services ...
-source ./04_create_app_user_service.sh
+source ./04_create_app_services.sh
 sleep 60
-
-
-
 
 
 # Add health checks and diagnostics ...

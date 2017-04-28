@@ -33,16 +33,17 @@ public class MessageProcessor {
     private static Logger logger = Logger.getLogger(MessageProducer.class.getName());
 
     public static void processMessage(Message msg) {
-        // Get the intent from wit.ai and set it to the message.
-            /*
-                Intent will be a sorted list of tokens.
-                intent: [aws, ec2, list]
-             */
+        // Get the intent from wit.ai and attach it to the message.
+        /*
+            Intent will be a sorted list of tokens.
+            intent: [aws, ec2, list]
+         */
         List<String> intent = null;
         //intent = HttpClient.getIntentFromWitAI(parsedMessage);
         AIClient aiClient = new WitDotAIClient();
         intent = aiClient.getIntent(msg.getContent());
         msg.setIntent(intent);
+        // Generate a request ID and attach it to message
         msg.setRequestId(UUID.randomUUID().toString());
 
         if (msg != null) {
@@ -57,7 +58,7 @@ public class MessageProcessor {
             if (msgJson != null) {
                 // Send message to topic on kafka MQ
                 logger.info("Sending message as JSON: " + msgJson);
-                try (MessageProducer producer = new MessageProducer()) {
+                try (MessageProducer producer = new MessageProducer(System.getenv("KAFKA_HOST_NAME"))) {
                     producer.sendUserMessage(msgJson);
                 } catch (Exception e) {
                     logger.log(Level.SEVERE, "Error in publishing message to queue", e);

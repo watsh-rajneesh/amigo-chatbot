@@ -32,12 +32,12 @@ public class MessageProducer implements AutoCloseable {
 
     private final Producer producer;
 
-    public MessageProducer() {
+    public MessageProducer(String kafkaHostName) {
         //Configure the Producer
         Properties configProperties = new Properties();
         // Assuming that localhost port 9092 is mapped to kafka container's port 9092
         // TODO externalize the port
-        configProperties.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG,"localhost:9092");
+        configProperties.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, kafkaHostName + ":9092");
         configProperties.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG,"org.apache.kafka.common.serialization.ByteArraySerializer");
         configProperties.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG,"org.apache.kafka.common.serialization.StringSerializer");
 

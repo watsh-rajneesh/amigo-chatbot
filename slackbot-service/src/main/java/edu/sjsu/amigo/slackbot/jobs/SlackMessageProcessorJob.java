@@ -51,8 +51,8 @@ public class SlackMessageProcessorJob implements Job {
     private SlackSession session;
     private SlackChannel channel;
     private String botToken;
-    // TODO change it
-    protected static final String BASE_URI = "http://localhost:8080";
+    private static final String PROXY_HOST_NAME = System.getenv("PROXY_HOST_NAME");
+    protected static final String BASE_URI = "http://" + PROXY_HOST_NAME;
     public static final String RESOURCE_URI = "/api/v1.0/chat";
 
 

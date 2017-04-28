@@ -13,6 +13,6 @@ kill $CHATBOT_SERVICE_PID
 docker build -t="chatbot-service" .
 
 # push the image to docker hub
-docker login
+docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
 docker tag chatbot-service sjsucohort6/chatbot-service:1.0
 docker push sjsucohort6/chatbot-service:1.0

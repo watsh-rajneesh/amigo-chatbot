@@ -24,10 +24,16 @@ ID="$(docker ps -q --filter label=com.docker.swarm.service.name=util)"
 echo "Util Container's ID: $ID"
 
 docker exec -it $ID apk add --update drill
+docker exec -it $ID apk add --update curl
 docker exec -it $ID ping -c 4 swarm-listener
 docker exec -it $ID ping -c 4 proxy
-docker exec -it $ID drill user-service
-docker exec -it $ID drill user-db
+docker exec -it $ID ping -c 4 slackbot-service
+docker exec -it $ID ping -c 4 riabot-service
+docker exec -it $ID ping -c 4 chatbot-service
+docker exec -it $ID ping -c 4 command-processor-service
+docker exec -it $ID ping -c 4 cmd-db
+docker exec -it $ID ping -c 4 user-service
+docker exec -it $ID ping -c 4 user-db
 
 NODE1_IP="$(docker-machine ip node-1)"
 echo $NODE1_IP
