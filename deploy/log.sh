@@ -7,6 +7,7 @@
 # ./log.sh <service name>
 #
 #################
+eval $(docker-machine env node-1)
 
 NODE=$(docker service ps $1 | tail -n +2 | awk '{print $4}')
 
@@ -17,4 +18,4 @@ ID="$(docker ps -q \
 
 echo "ID: $ID"
 
-docker logs --tail 100 $ID
+docker logs --tail all $ID

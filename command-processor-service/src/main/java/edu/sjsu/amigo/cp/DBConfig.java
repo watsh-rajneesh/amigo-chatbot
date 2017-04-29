@@ -85,6 +85,10 @@ public class DBConfig {
     }
 
     public DBClient build(Environment environment) {
+        String dbServer = System.getenv("DB");
+        if (dbServer != null) {
+            server = dbServer;
+        }
         dbClient = dbFactory.create(server, port, dbName);
         log.info("Connected to db");
         environment.lifecycle().manage(new Managed() {
