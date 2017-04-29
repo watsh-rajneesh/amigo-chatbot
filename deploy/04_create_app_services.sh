@@ -5,9 +5,6 @@ eval $(docker-machine env node-1)
 # Create user-db service
 docker service create --name user-db \
     --network app-net \
-    --log-driver=gelf \
-    --log-opt gelf-address=udp://127.0.0.1:12201 \
-    --log-opt tag="user-db" \
     mongo:3.2.10
 
 
@@ -20,9 +17,6 @@ docker service create --name user-service \
   --label com.df.distribute=true \
   --label com.df.servicePath=/api/v1.0/users \
   --label com.df.port=8080 \
-  --log-driver=gelf \
-  --log-opt gelf-address=udp://127.0.0.1:12201 \
-  --log-opt tag="user-service" \
   sjsucohort6/user-service:1.0
 
 docker service ps user-db
@@ -33,9 +27,6 @@ echo "Created user service and user db"
 # Create cmd-db service
 docker service create --name cmd-db \
     --network app-net \
-    --log-driver=gelf \
-    --log-opt gelf-address=udp://127.0.0.1:12201 \
-    --log-opt tag="cmd-db" \
     mongo:3.2.10
 
 
@@ -49,9 +40,6 @@ docker service create --name command-processor-service \
   --label com.df.distribute=true \
   --label com.df.servicePath=/api/v1.0/requests \
   --label com.df.port=8080 \
-  --log-driver=gelf \
-  --log-opt gelf-address=udp://127.0.0.1:12201 \
-  --log-opt tag="command-processor-service" \
   sjsucohort6/command-processor-service:1.0
 
 docker service ps cmd-db
@@ -68,9 +56,6 @@ docker service create --name slackbot-service \
   -e PROXY_HOST_NAME="proxy" \
   --network proxy-net \
   --network app-net \
-  --log-driver=gelf \
-  --log-opt gelf-address=udp://127.0.0.1:12201 \
-  --log-opt tag="slackbot-service" \
   sjsucohort6/slackbot-service:1.0
 
 docker service ps slackbot-service
@@ -86,9 +71,6 @@ docker service create --name chatbot-service \
   --label com.df.distribute=true \
   --label com.df.servicePath=/api/v1.0/chat \
   --label com.df.port=8080 \
-  --log-driver=gelf \
-  --log-opt gelf-address=udp://127.0.0.1:12201 \
-  --log-opt tag="chatbot-service" \
   sjsucohort6/chatbot-service:1.0
 
 docker service ps chatbot-service
@@ -104,9 +86,6 @@ docker service create --name riabot-service \
   --label com.df.distribute=true \
   --label com.df.servicePath=/api/v1.0/ria \
   --label com.df.port=8080 \
-  --log-driver=gelf \
-  --log-opt gelf-address=udp://127.0.0.1:12201 \
-  --log-opt tag="riabot-service" \
   sjsucohort6/riabot-service:1.0
 
 docker service ps riabot-service

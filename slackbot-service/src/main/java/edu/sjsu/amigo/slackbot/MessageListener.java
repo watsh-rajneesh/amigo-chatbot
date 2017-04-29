@@ -120,7 +120,9 @@ public class MessageListener {
         //Start the job scheduler
         JobManager.getInstance().startScheduler();
 
-        SlackSession session = SlackSessionFactory.createWebSocketSlackSession(System.getenv("SLACK_BOT_TOKEN"));
+        String slackBotToken = System.getenv("SLACK_BOT_TOKEN");
+        logger.info("Bot token: " + slackBotToken);
+        SlackSession session = SlackSessionFactory.createWebSocketSlackSession(slackBotToken);
         session.connect();
         MessageListener listener = new MessageListener();
         listener.registerListener(session);
