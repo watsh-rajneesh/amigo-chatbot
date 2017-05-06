@@ -41,7 +41,7 @@
               <transformers>
                 <transformer />
                 <transformer>
-                  <mainClass>edu.sjsu.amigo.cp.kafka.ConsumerLoop</mainClass>
+                  <mainClass>edu.sjsu.amigo.cp.CommandProcessorApplication</mainClass>
                 </transformer>
               </transformers>
             </configuration>

@@ -35,6 +35,7 @@ public class SlackMessage extends Message {
     @JsonProperty
     private String slackBotToken;
 
+    public SlackMessage() {}
 
     public SlackMessage(String time, String userEmail, String userName, String content,
                          String channelName, String slackBotToken) {

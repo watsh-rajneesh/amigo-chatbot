@@ -17,6 +17,8 @@ package edu.sjsu.amigo.chatbot.rest;
 import edu.sjsu.amigo.chatbot.jobs.ChatbotMessageProcessorJob;
 import edu.sjsu.amigo.json.util.JsonUtils;
 import edu.sjsu.amigo.mp.model.Message;
+import edu.sjsu.amigo.mp.model.RiaMessage;
+import edu.sjsu.amigo.mp.model.SlackMessage;
 import edu.sjsu.amigo.scheduler.jobs.JobConstants;
 import edu.sjsu.amigo.scheduler.jobs.JobManager;
 import lombok.extern.java.Log;
@@ -48,14 +50,30 @@ public class ChatResource {
     @Consumes(MediaType.APPLICATION_JSON)
     public Response sendMessage(String messageJson) {
         try {
-            Message chatMessage = JsonUtils.convertJsonToObject(messageJson, Message.class);
+            String botType = JsonUtils.parseJson(messageJson).get("botType").asText();
+            Message chatMessage = null;
+
+            switch (botType.toUpperCase()) {
+                case "SLACK":
+                    chatMessage = JsonUtils.convertJsonToObject(messageJson, SlackMessage.class);
+                    break;
+                case "RIA":
+                    chatMessage = JsonUtils.convertJsonToObject(messageJson, RiaMessage.class);
+                    break;
+                default:
+                    break;
+            }
+            if (chatMessage == null) {
+                return Response.status(Response.Status.BAD_REQUEST).entity(Entity.text("unknown bot type")).build();
+            }
+
             try {
                 // Some unique job name
                 String jobName = "CHATBOT-MESG-JOB-" + UUID.randomUUID().toString();
                 String groupName = JobConstants.JOB_GRP_CHATBOT;
                 JobDataMap params = new JobDataMap();
                 params.put(JOB_PARAM_MESSAGE, chatMessage);
-
+                log.info("Received message: " + chatMessage);
                 JobManager.getInstance().scheduleJob(ChatbotMessageProcessorJob.class, jobName, groupName, params);
 
             } catch (Exception e) {

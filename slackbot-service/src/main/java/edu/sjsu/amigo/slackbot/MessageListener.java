@@ -77,6 +77,7 @@ public class MessageListener {
         String parsedMessage = parseMessage(messageContent);
 
         if (parsedMessage != null) {
+            logger.info("=> Received message from amigo bot:" + parsedMessage);
             try {
                 // Some unique job name
                 String jobName = "SLACK-MESG-JOB-" + UUID.randomUUID().toString();
@@ -87,6 +88,7 @@ public class MessageListener {
                 params.put(JOB_PARAM_SLACK_SESSION, session);
                 params.put(JOB_PARAM_SLACK_CHANNEL, channel);
                 params.put(JOB_PARAM_BOT_TOK, System.getenv("SLACK_BOT_TOKEN"));
+                logger.info("Processing message async with params: " + params);
                 JobManager.getInstance().scheduleJob(SlackMessageProcessorJob.class, jobName, groupName, params);
 
             } catch (Exception e) {
@@ -124,6 +126,7 @@ public class MessageListener {
         logger.info("Bot token: " + slackBotToken);
         SlackSession session = SlackSessionFactory.createWebSocketSlackSession(slackBotToken);
         session.connect();
+        logger.info("=> Connected to slack <=");
         MessageListener listener = new MessageListener();
         listener.registerListener(session);
     }

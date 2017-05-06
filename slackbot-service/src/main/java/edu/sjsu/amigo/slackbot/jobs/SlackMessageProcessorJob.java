@@ -82,26 +82,35 @@ public class SlackMessageProcessorJob implements Job {
                     parsedMessage,
                     channel.getName(),
                     botToken);
+            log.info("=> Sending ACK to slack: " + msg);
             String jsonStr = null;
             try {
                 jsonStr = JsonUtils.convertObjectToJson(msg);
+                log.info("=> Incoming msg converted to json: " + jsonStr);
             } catch (IOException e) {
                 log.log(Level.SEVERE, "Error converting chat object to JSON string", e);
                 return;
             }
             if (jsonStr != null) {
+                log.info(MessageFormat.format("Sending message to chatbot [{0}] at [{1}]", jsonStr, BASE_URI + RESOURCE_URI));
                 Client client = ClientBuilder.newClient();
                 WebTarget webTarget = client.target(BASE_URI);
+                Response response = null;
                 try {
-                    Response response = webTarget.path(RESOURCE_URI)
+                    response = webTarget.path(RESOURCE_URI)
                             .request()
                             .accept(MediaType.APPLICATION_JSON_TYPE)
                             .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON)
                             .post(Entity.json(jsonStr));
+
+                    log.info("Received response from chatbot: " + response);
                     if (response.getStatus() != Response.Status.ACCEPTED.getStatusCode()) {
                         log.severe(MessageFormat.format("Failed to send the message [{0}] to chatbot service", parsedMessage));
                     }
                 } finally {
+                    if (response != null) {
+                        response.close();
+                    }
                     if (client != null) {
                         client.close();
                     }

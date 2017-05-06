@@ -17,6 +17,7 @@ package edu.sjsu.amigo.chatbot.rest.test;
 import edu.sjsu.amigo.json.util.EndpointUtils;
 import edu.sjsu.amigo.json.util.JsonUtils;
 import edu.sjsu.amigo.mp.model.Message;
+import edu.sjsu.amigo.mp.model.SlackMessage;
 import lombok.extern.java.Log;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
@@ -30,6 +31,7 @@ import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.io.IOException;
+import java.util.Date;
 
 /**
  * @author rwatsh on 4/22/17.
@@ -56,8 +58,13 @@ public class ChatResourceTest {
 
     @Test
     public void sendMessageTest() throws IOException {
-        Message msg = new Message();
-        msg.setContent("Test message");
+        Message msg = new SlackMessage(new Date().toString(),
+                "watsh.rajneesh@sjsu.edu",
+                "rwatsh",
+                "aws help",
+                "UA574",
+                "x703j");
+
         String jsonStr = JsonUtils.convertObjectToJson(msg);
         log.info(jsonStr);
         Response response = webTarget.path(RESOURCE_URI)

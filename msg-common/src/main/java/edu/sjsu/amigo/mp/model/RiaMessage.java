@@ -32,6 +32,8 @@ public class RiaMessage extends Message {
     @JsonProperty
     private String riaId;
 
+    public RiaMessage() {}
+
     public RiaMessage(String time, String userEmail, String userName, String content, String riaId) {
         super(BotType.RIA.name(), time, userEmail, userName, content);
         this.riaId = riaId;

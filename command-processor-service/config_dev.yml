@@ -1,7 +1,7 @@
 database:
-  server: user-db
+  server: localhost
   port: 27017
-  dbName: user_db
+  dbName: cmd_db
 
 # the only required property is resourcePackage, for more config options see below
 #swagger:
@@ -19,7 +19,7 @@ server:
   applicationContextPath: /
   connector:
     type: http
-    port: 8080
+    port: 6060
 
 logging:
   level: INFO

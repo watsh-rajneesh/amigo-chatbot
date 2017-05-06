@@ -12,6 +12,15 @@
 # then create with command:
 # docker-machine create default
 
+# Create env.sh in home directory with the following:
+# export SLACK_BOT_TOKEN=
+# export BOT_ID=
+# export WIT_AI_SERVER_ACCESS_TOKEN=
+# export DOCKER_USERNAME=
+# export DOCKER_PASSWORD=
+
+source ~/env.sh
+
 echo "Do you want to build docker images as part of this run? [y/N]:"
 read BUILD_IMAGES
 echo $BUILD_IMAGES
@@ -40,7 +49,6 @@ docker run -d --rm --name mongodb \
 sleep 120
 
 # Start user-service
-#./macterm.sh 'cd ../user-service; java -jar target/user-service-1.0-SNAPSHOT.jar server config.yml'
 if [ $BUILD_IMAGES = 'y' ] || [ $BUILD_IMAGES = 'Y' ]; then
     pushd .
     cd ../user-service
@@ -48,8 +56,8 @@ if [ $BUILD_IMAGES = 'y' ] || [ $BUILD_IMAGES = 'Y' ]; then
     popd
 fi
 
-docker run -d --rm -e PROXY_HOST_NAME="$(docker-machine ip default):8080" \
-    -p 6060:8080 \
+docker run -d --rm \
+    -p 8080:8080 \
     -e DB="$(docker-machine ip default)" \
     --name user-service sjsucohort6/user-service:1.0
 
@@ -63,7 +71,7 @@ if [ $BUILD_IMAGES = 'y' ] || [ $BUILD_IMAGES = 'Y' ]; then
 fi
 
 docker run -d --rm -e KAFKA_HOST_NAME="$(docker-machine ip default)"  \
-    -p 8080:8080 \
+    -p 9090:8080 \
     --name chatbot-service sjsucohort6/chatbot-service:1.0
 
 
@@ -77,8 +85,9 @@ fi
 
 docker run -d --rm -e SLACK_BOT_TOKEN="$SLACK_BOT_TOKEN" \
  -e BOT_ID="$BOT_ID" \
- -e PROXY_HOST_NAME="$(docker-machine ip default):8080" \
- -e WIT_AI_SERVER_ACCESS_TOKEN="$WIT_AI_SERVER_ACCESS_TOKEN" --name slackbot-service sjsucohort6/slackbot-service:1.0
+ -e PROXY_HOST_NAME="$(docker-machine ip default):9090" \
+ -e WIT_AI_SERVER_ACCESS_TOKEN="$WIT_AI_SERVER_ACCESS_TOKEN" \
+ --name slackbot-service sjsucohort6/slackbot-service:1.0
 
 
 
@@ -90,8 +99,8 @@ if [ $BUILD_IMAGES = 'y' ] || [ $BUILD_IMAGES = 'Y' ]; then
     popd
 fi
 
-docker run -d --rm -e PROXY_HOST_NAME="localhost:8080" \
-    -p 9090:8080 \
+docker run -d --rm -e PROXY_HOST_NAME="$(docker-machine ip default):9090" \
+    -p 7070:8080 \
     --name riabot-service sjsucohort6/riabot-service:1.0
 
 
@@ -104,8 +113,8 @@ if [ $BUILD_IMAGES = 'y' ] || [ $BUILD_IMAGES = 'Y' ]; then
     popd
 fi
 
-docker run -d --rm -e KAFKA_HOST_NAME="localhost" \
+docker run -d --rm -e KAFKA_HOST_NAME="$(docker-machine ip default)" \
     -e DB="$(docker-machine ip default)" \
-    -p 7070:8080 \
+    -p 6060:8080 \
     --name command-processor-service sjsucohort6/command-processor-service:1.0
 

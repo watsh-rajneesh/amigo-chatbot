@@ -4,6 +4,8 @@ eval $(docker-machine env default)
 docker stop kafka
 docker stop zookeeper
 
+docker stop mongodb
+
 docker stop user-service
 docker stop slackbot-service
 docker stop riabot-service
