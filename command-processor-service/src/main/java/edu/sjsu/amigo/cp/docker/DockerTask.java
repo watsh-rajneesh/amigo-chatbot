@@ -44,6 +44,7 @@ public class DockerTask {
         try( DockerClient dockerClient = new DefaultDockerClient("unix:///var/run/docker.sock")) {
             String response = null;
             pullImage(dockerClient, dockerImage);
+            //dockerClient.pull(dockerImage);
 
             final ContainerConfig containerConfig = ContainerConfig.builder()
                     .image(dockerImage)
@@ -78,9 +79,9 @@ public class DockerTask {
     private void pullImage(DockerClient docker, String imageRepoName) throws DockerException, InterruptedException {
         final RegistryAuth registryAuth = RegistryAuth.builder()
                 // TODO change reading from env var to value read from user profile in DB
-                .email(System.getenv("AUTH_EMAIL"))
-                .username(System.getenv("AUTH_USERNAME"))
-                .password(System.getenv("AUTH_PASSWORD"))
+                .email(System.getenv("DOCKER_EMAIL"))
+                .username(System.getenv("DOCKER_USERNAME"))
+                .password(System.getenv("DOCKER_PASSWORD"))
                 .build();
 
         final int statusCode = docker.auth(registryAuth);

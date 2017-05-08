@@ -19,6 +19,7 @@ import textwrap
 import datetime
 import json
 import pprint
+import os
 
 import requests
 from requests.auth import HTTPBasicAuth
@@ -177,6 +178,13 @@ def create_user(hostPort, payload):
         print("Please specify the json file with -f option")
         sys.exit(1)
     url = "%s://%s/api/v1.0/users" % (get_http_scheme(), hostPort)
+    if os.environ["AWS_DEFAULT_REGION"] is not None:
+        print("AWS_DEFAULT_REGION: " + os.environ["AWS_DEFAULT_REGION"])
+        replace_value_with_definition(payload['awsCredentials'], "region", os.environ["AWS_DEFAULT_REGION"])
+        print("AWS_ACCESS_KEY_ID: " + os.environ["AWS_ACCESS_KEY_ID"])
+        replace_value_with_definition(payload['awsCredentials'], "awsAccessKeyId", os.environ["AWS_ACCESS_KEY_ID"])
+        print("AWS_SECRET_ACCESS_KEY: " + os.environ["AWS_SECRET_ACCESS_KEY"])
+        replace_value_with_definition(payload['awsCredentials'], "awsSecretAccessKey", os.environ["AWS_SECRET_ACCESS_KEY"])
     return post_request(url, payload, auth=None)
 
 
@@ -193,6 +201,13 @@ def update_user(hostPort, id, payload):
         print("Please specify the json file with -f option")
         sys.exit(1)
     url = "%s://%s/api/v1.0/users/%s" % (get_http_scheme(), hostPort, id)
+    if os.environ["AWS_DEFAULT_REGION"] is not None:
+        print("AWS_DEFAULT_REGION: " + os.environ["AWS_DEFAULT_REGION"])
+        replace_value_with_definition(payload['awsCredentials'], "region", os.environ["AWS_DEFAULT_REGION"])
+        print("AWS_ACCESS_KEY_ID: " + os.environ["AWS_ACCESS_KEY_ID"])
+        replace_value_with_definition(payload['awsCredentials'], "awsAccessKeyId", os.environ["AWS_ACCESS_KEY_ID"])
+        print("AWS_SECRET_ACCESS_KEY: " + os.environ["AWS_SECRET_ACCESS_KEY"])
+        replace_value_with_definition(payload['awsCredentials'], "awsSecretAccessKey", os.environ["AWS_SECRET_ACCESS_KEY"])
     return put_request(payload, url)
 
 
@@ -259,7 +274,7 @@ def main():
 
     creds_group = parser.add_argument_group("Credentials Group")
     creds_group.add_argument('-u', '--user', help='user', default='watsh.rajneesh@sjsu.edu')
-    creds_group.add_argument('-p', '--password', help='password', default='password')
+    creds_group.add_argument('-p', '--password', help='password', default='pass')
 
     args = parser.parse_args()
 

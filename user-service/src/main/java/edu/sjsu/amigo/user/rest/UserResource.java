@@ -135,7 +135,7 @@ public class UserResource extends BaseResource<User>  {
             value = "get a user by id",
             response = User.class,
             nickname="retrieve")*/
-    public User retrieve(@Auth PrincipalUser user, @PathParam("id") String id) throws ResourceNotFoundException, InternalErrorException {
+    public User retrieve(@PathParam("id") String id) throws ResourceNotFoundException, InternalErrorException {
         try {
             List<User> users = userDAO.fetchById(new ArrayList<String>() {{
                 add(id);

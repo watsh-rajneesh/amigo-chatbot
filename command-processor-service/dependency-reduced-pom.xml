@@ -6,28 +6,9 @@
     <version>1.0-SNAPSHOT</version>
   </parent>
   <modelVersion>4.0.0</modelVersion>
-  <groupId>edu.sjsu.amigo</groupId>
   <artifactId>command-processor-service</artifactId>
-  <version>1.0-SNAPSHOT</version>
   <build>
     <plugins>
-      <plugin>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.3</version>
-        <configuration>
-          <source>${maven-compiler-plugin.source}</source>
-          <target>${maven-compiler-plugin.source}</target>
-        </configuration>
-      </plugin>
-      <plugin>
-        <artifactId>maven-surefire-plugin</artifactId>
-        <version>2.18.1</version>
-        <configuration>
-          <suiteXmlFiles>
-            <suiteXmlFile>testng.xml</suiteXmlFile>
-          </suiteXmlFiles>
-        </configuration>
-      </plugin>
       <plugin>
         <artifactId>maven-shade-plugin</artifactId>
         <version>2.3</version>
@@ -65,22 +46,6 @@
   </build>
   <dependencies>
     <dependency>
-      <groupId>org.testng</groupId>
-      <artifactId>testng</artifactId>
-      <version>6.8</version>
-      <scope>test</scope>
-      <exclusions>
-        <exclusion>
-          <artifactId>bsh</artifactId>
-          <groupId>org.beanshell</groupId>
-        </exclusion>
-        <exclusion>
-          <artifactId>jcommander</artifactId>
-          <groupId>com.beust</groupId>
-        </exclusion>
-      </exclusions>
-    </dependency>
-    <dependency>
       <groupId>org.projectlombok</groupId>
       <artifactId>lombok</artifactId>
       <version>1.16.6</version>
@@ -88,7 +53,7 @@
     </dependency>
   </dependencies>
   <properties>
-    <dropwizard.version>1.0.6</dropwizard.version>
+    <dropwizard.version>1.1.0</dropwizard.version>
     <quartz.version>2.2.1</quartz.version>
     <testng.version>6.8</testng.version>
     <maven-compiler-plugin.source>1.8</maven-compiler-plugin.source>

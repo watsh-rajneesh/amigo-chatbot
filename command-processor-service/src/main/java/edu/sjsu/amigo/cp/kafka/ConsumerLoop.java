@@ -16,6 +16,7 @@ package edu.sjsu.amigo.cp.kafka;
 
 import edu.sjsu.amigo.cp.jobs.MessageProcessorJob;
 import edu.sjsu.amigo.scheduler.jobs.JobManager;
+import lombok.extern.java.Log;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.apache.kafka.clients.consumer.ConsumerRecords;
 import org.apache.kafka.clients.consumer.KafkaConsumer;
@@ -36,6 +37,7 @@ import static edu.sjsu.amigo.scheduler.jobs.JobConstants.JOB_PARAM_MESSAGE;
  *
  * @author rwatsh on 2/25/17.
  */
+@Log
 public class ConsumerLoop implements Runnable {
     private final KafkaConsumer<String, String> consumer;
     private final List<String> topics;
@@ -47,7 +49,10 @@ public class ConsumerLoop implements Runnable {
         this.id = id;
         this.topics = topics;
         Properties props = new Properties();
-        props.put("bootstrap.servers", System.getenv("KAFKA_HOST_NAME") + ":9092");
+
+        String kafkaHostName = System.getenv("KAFKA_HOST_NAME");
+        log.info("Kafka host: " + kafkaHostName);
+        props.put("bootstrap.servers", kafkaHostName + ":9092");
         props.put("group.id", groupId);
         props.put("key.deserializer", StringDeserializer.class.getName());
         props.put("value.deserializer", StringDeserializer.class.getName());
@@ -57,6 +62,8 @@ public class ConsumerLoop implements Runnable {
     @Override
     public void run() {
         try {
+            log.info("In Consumer loop " + id);
+            log.info("Subscribing to topics: " + topics);
             consumer.subscribe(topics);
 
             while (true) {

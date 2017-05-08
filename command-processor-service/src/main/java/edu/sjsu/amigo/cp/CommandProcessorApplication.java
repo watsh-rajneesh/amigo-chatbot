@@ -21,6 +21,7 @@ import edu.sjsu.amigo.db.common.DBClient;
 import edu.sjsu.amigo.json.util.EndpointUtils;
 import edu.sjsu.amigo.scheduler.jobs.JobManager;
 import io.dropwizard.Application;
+import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
 import lombok.extern.java.Log;
 
@@ -46,29 +47,40 @@ public class CommandProcessorApplication  extends Application<CommandProcessorCo
     }
 
     @Override
+    public void initialize(final Bootstrap<CommandProcessorConfiguration> bootstrap) {
+        /*
+         * Register the static html contents to be served from /assets directory and accessible from browser from
+         * http://<host>:<port>/openstack
+         */
+        //bootstrap.addBundle(new AssetsBundle("/assets", "/openstack", "index.html"));
+
+    }
+
+    @Override
     public void run(CommandProcessorConfiguration commandProcessorConfiguration, Environment environment) throws Exception {
+        log.info("Initializing db client");
         dbClient = commandProcessorConfiguration.getDbConfig().build(environment);
+        log.info("db connect string: " + dbClient.getConnectString());
         log.info("Connected to db: " + dbClient.getConnectString());
+
+        initKafkaMessageConsumerLoop();
 
         environment.healthChecks().register("database", new DBHealthCheck(dbClient));
 
         /*
          * Register resources with jersey.
          */
-        final RequestResource userResource = new RequestResource(dbClient);
+        final RequestResource requestResource = new RequestResource(dbClient);
 
         /*
          * Setup jersey environment.
          */
         environment.jersey().setUrlPattern(EndpointUtils.ENDPOINT_ROOT + "/*");
-        environment.jersey().register(userResource);
+        environment.jersey().register(requestResource);
         log.info("Done with all initializations for user service");
 
         // Start the job scheduler
         JobManager.getInstance().startScheduler();
-
-        // Start Kafka message consumer loop
-        initKafkaMessageConsumerLoop();
     }
 
     private void initKafkaMessageConsumerLoop() {

@@ -1,8 +1,8 @@
 {
-	"email": "acme@sjsu.edu",
-	"name": "acme",
+	"email": "watsh.rajneesh@sjsu.edu",
+	"name": "rwatsh",
 	"password":"pass",
-	"slackUser":"acme",
+	"slackUser":"rwatsh",
 	"riaId": "1",
 	"awsCredentials": {
 		"region": "us-west-2",

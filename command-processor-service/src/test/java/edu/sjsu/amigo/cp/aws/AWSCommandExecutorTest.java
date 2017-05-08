@@ -15,8 +15,6 @@
 package edu.sjsu.amigo.cp.aws;
 
 import edu.sjsu.amigo.cp.api.*;
-import org.testng.Assert;
-import org.testng.annotations.Test;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,7 +24,7 @@ import java.util.List;
  */
 
 public class AWSCommandExecutorTest {
-    @Test
+    //@Test
     public void executeCommandTest() throws CommandExecutionException {
 
         List<String> envList = new ArrayList<>();
@@ -44,6 +42,6 @@ public class AWSCommandExecutorTest {
                 .build();
         CommandExecutor executor = CloudProviderFactory.getCloudProviderCmdExecutor(CloudProviderFactory.AWS);
         Response response = executor.executeCommand(cmd);
-        Assert.assertFalse(response == null, "Response from comamnd execution should not be null");
+        //Assert.assertFalse(response == null, "Response from comamnd execution should not be null");
     }
 }

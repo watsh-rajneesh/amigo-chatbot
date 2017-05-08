@@ -68,16 +68,13 @@
         </dependency>
     </dependencies>
     <properties>
-        <simple-slack-api.version>0.6.0</simple-slack-api.version>
-        <jackson-core.version>2.8.6</jackson-core.version>
-        <scribejava-apis.version>2.0</scribejava-apis.version>
         <dropwizard.version>1.1.0</dropwizard.version>
         <quartz.version>2.2.1</quartz.version>
         <lombok.version>1.16.6</lombok.version>
     </properties>
     <build>
         <plugins>
-            <!--<plugin>
+            <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>2.18.1</version>
@@ -86,7 +83,7 @@
                         <suiteXmlFile>testng.xml</suiteXmlFile>
                     </suiteXmlFiles>
                 </configuration>
-            </plugin>-->
+            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>

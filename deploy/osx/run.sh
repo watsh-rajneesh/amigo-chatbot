@@ -19,6 +19,6 @@ sleep 10
 
 open -a Terminal.app ./start_chatbot_service.sh
 
-sleep 10
+#sleep 10
 
 open -a Terminal.app ./start_command_processor_service.sh

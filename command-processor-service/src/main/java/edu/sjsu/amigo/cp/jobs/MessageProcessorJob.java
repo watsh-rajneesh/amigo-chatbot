@@ -20,8 +20,7 @@ import com.ullink.slack.simpleslackapi.SlackSession;
 import com.ullink.slack.simpleslackapi.SlackUser;
 import com.ullink.slack.simpleslackapi.impl.SlackSessionFactory;
 import edu.sjsu.amigo.cp.api.*;
-import edu.sjsu.amigo.cp.api.Response;
-import edu.sjsu.amigo.http.client.*;
+import edu.sjsu.amigo.http.client.HttpClient;
 import edu.sjsu.amigo.json.util.JsonUtils;
 import edu.sjsu.amigo.mp.model.BotType;
 import edu.sjsu.amigo.mp.model.RiaMessage;
@@ -71,7 +70,8 @@ public class MessageProcessorJob implements Job {
                     sendMessageToUser(userEmail, session, channelId, ackMessage);
 
                     // 1. Get command to execute from intent
-                    String[] cmdArray = getCmdArray(intent);
+                    //String[] cmdArray = getCmdArray(intent);
+                    String[] cmdArray = getCmdArray(slackMessage.getContent());
                     String providerName = cmdArray[0];
 
                     // 2. Make a REST call to user service to get the user's (by userEmail) AWS creds.
@@ -82,7 +82,7 @@ public class MessageProcessorJob implements Job {
                     for (int i = 1; i < cmdArray.length; i++) {
                         cmdList.add(cmdArray[i]);
                     }
-                    String dockerImage = "sjsucohort6/docker_awscli:latest";
+                    String dockerImage = "sjsucohort6/docker_awscli";
                     String entryPoint = "aws";
                     Command cmd = new Command.Builder(dockerImage, cmdList)
                             .env(envList)
@@ -91,6 +91,9 @@ public class MessageProcessorJob implements Job {
                     CommandExecutor executor = CloudProviderFactory.getCloudProviderCmdExecutor(providerName);
                     Response response = executor.executeCommand(cmd);
                     sendMessageToUser(userEmail, session, channelId, response.getMsg());
+
+                    // Persist the response in DB
+
                 }
             } else if (botType.equalsIgnoreCase(BotType.RIA.name())) {
                 RiaMessage riaMessage = JsonUtils.convertJsonToObject(message, RiaMessage.class);
@@ -103,6 +106,11 @@ public class MessageProcessorJob implements Job {
         } catch (IOException | CommandExecutionException e) {
             throw new JobExecutionException(e);
         }
+    }
+
+    private String[] getCmdArray(String content) {
+        // \s = any whitespace character or a combination of them, will be treated as delimiter
+        return content.trim().split("\\s+");
     }
 
     private List<String> getCloudProviderCreds(String userEmail) {

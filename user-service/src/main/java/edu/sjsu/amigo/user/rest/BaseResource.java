@@ -71,7 +71,7 @@ public abstract class BaseResource<T extends IModel> {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/{id}")
-    abstract public  T retrieve(@Auth PrincipalUser user, @PathParam("id") String id)
+    abstract public  T retrieve(@PathParam("id") String id)
             throws ResourceNotFoundException, InternalErrorException;
 
     @PUT
