@@ -1,8 +1,0 @@
-/Users/rwatsh/files/git/amigo-chatbot/command-db/src/main/java/edu/sjsu/amigo/command/db/dao/RequestDAO.java
-/Users/rwatsh/files/git/amigo-chatbot/command-db/src/main/java/edu/sjsu/amigo/command/db/model/Command.java
-/Users/rwatsh/files/git/amigo-chatbot/command-db/src/main/java/edu/sjsu/amigo/command/db/model/Request.java
-/Users/rwatsh/files/git/amigo-chatbot/command-db/src/main/java/edu/sjsu/amigo/command/db/DatabaseModule.java
-/Users/rwatsh/files/git/amigo-chatbot/command-db/src/main/java/edu/sjsu/amigo/command/db/dao/ProviderDAO.java
-/Users/rwatsh/files/git/amigo-chatbot/command-db/src/main/java/edu/sjsu/amigo/command/db/model/Provider.java
-/Users/rwatsh/files/git/amigo-chatbot/command-db/src/main/java/edu/sjsu/amigo/command/db/model/Status.java
-/Users/rwatsh/files/git/amigo-chatbot/command-db/src/main/java/edu/sjsu/amigo/command/db/mongodb/MongoDBClient.java

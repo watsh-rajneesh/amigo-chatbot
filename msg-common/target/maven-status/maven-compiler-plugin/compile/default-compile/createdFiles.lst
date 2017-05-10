@@ -1,8 +1,0 @@
-edu/sjsu/amigo/mp/kafka/InvalidMessageException.class
-edu/sjsu/amigo/mp/model/IntentElem.class
-edu/sjsu/amigo/mp/kafka/MessageProducer.class
-edu/sjsu/amigo/mp/model/Message.class
-edu/sjsu/amigo/mp/model/SlackMessage.class
-edu/sjsu/amigo/mp/kafka/MessageQueueConstants.class
-edu/sjsu/amigo/mp/model/BotType.class
-edu/sjsu/amigo/mp/model/RiaMessage.class

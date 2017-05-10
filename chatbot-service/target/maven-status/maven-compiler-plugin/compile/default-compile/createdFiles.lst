@@ -1,9 +1,0 @@
-edu/sjsu/amigo/chatbot/rest/ChatResource.class
-edu/sjsu/amigo/chatbot/nlp/WitDotAIClient$1.class
-edu/sjsu/amigo/chatbot/nlp/WitDotAIClient.class
-edu/sjsu/amigo/chatbot/ChatbotServiceApplication.class
-edu/sjsu/amigo/chatbot/api/AIClient.class
-edu/sjsu/amigo/chatbot/jobs/ChatbotMessageProcessorJob.class
-edu/sjsu/amigo/chatbot/ChatbotConfiguration.class
-edu/sjsu/amigo/chatbot/msg/MessageProcessor.class
-edu/sjsu/amigo/chatbot/nlp/WitDotAIClient$2.class

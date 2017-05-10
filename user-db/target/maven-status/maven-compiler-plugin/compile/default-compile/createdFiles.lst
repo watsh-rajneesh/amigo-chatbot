@@ -1,6 +1,0 @@
-edu/sjsu/amigo/user/db/model/AWSCredentials.class
-edu/sjsu/amigo/user/db/dao/UserDAO.class
-edu/sjsu/amigo/user/db/mongodb/MongoDBClient.class
-edu/sjsu/amigo/user/db/DatabaseModule.class
-edu/sjsu/amigo/user/db/dao/UserDAO$1.class
-edu/sjsu/amigo/user/db/model/User.class
