@@ -1,0 +1,41 @@
+version: '2'
+
+services:
+  user-service:
+    build: .
+    image: user-service
+    depends_on:
+      - user-db
+    links:
+      - user-db
+    networks:
+      - user-net
+
+  user-db:
+    image: mongo:3.2.10
+    networks:
+      - user-net
+
+  unit:
+    image: sjsucohort6/jdk8-maven:3.3
+    volumes:
+      - ..:/usr/src/amigo-chatbot
+    working_dir: /usr/src/amigo-chatbot
+    command: bash -c "mvn clean install -DskipTests"
+
+  production:
+    extends:
+      service: unit
+    environment:
+      - HOST_IP=${HOST_IP}
+    network_mode: host
+    command: bash -c "mvn clean install -DskipTests \
+              && cd user-db \
+              && mvn test \
+              && cd ../user-service \
+              && java -jar target/user-service-1.0-SNAPSHOT.jar server config.yml \
+              && mvn test"
+    depends_on:
+      - user-db
+      - user-service
+

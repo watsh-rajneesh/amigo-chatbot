@@ -1,0 +1,43 @@
+Feb11th - 25th: 2 week sprint
+
+Tasks:
+AWS Lamda service for slack - wit.ai integration - Swetha
+Kafka setup - Chetan - done
+Command processor - Watsh
+Docker image with AWS CLI - running it from command line - Ashutosh - done
+
+ 
+ 
+Report: - March 3rd Review.
+Chapter 1-2 - done
+Chapter 3-  Ashutosh
+Chapter 4 - Watsh
+Chapter 5 - Watsh
+Chapter 6 - Shwetha
+Chapter 7 - Chetan
+Chapter 8 - Ashutosh
+Chapter 9 - Shwetha
+
+
+Feb 26th-12th Mar: 2 week sprint
+
+Tasks:
+- integrate slackbot with wit.ai - Swetha
+- work on Web UI with React.js - chetan
+    Web UI will be limited to only chatting with the amigo chatbot for now
+
+    - user signup
+        * During signup we can get following info:
+            - email
+            - name
+            - password
+            - aws creds:
+                - AWS_DEFAULT_REGION
+                - AWS_ACCESS_KEY_ID
+                - AWS_SECRET_ACCESS_KEY
+    - user login
+
+- User service + Kafka duplicate msg fix - Watsh
+  * Include a primary key (UUID or something) in the message and deduplicate on the consumer.
+
+- work on mobile app with html5 + js based technologies - react native or ionic or cordova etc - ashutosh

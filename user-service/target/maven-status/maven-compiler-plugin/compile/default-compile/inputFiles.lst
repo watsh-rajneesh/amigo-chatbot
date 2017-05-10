@@ -1,0 +1,8 @@
+/Users/rwatsh/files/git/amigo-chatbot/user-service/src/main/java/edu/sjsu/amigo/user/rest/BaseResource.java
+/Users/rwatsh/files/git/amigo-chatbot/user-service/src/main/java/edu/sjsu/amigo/user/UserServiceConfiguration.java
+/Users/rwatsh/files/git/amigo-chatbot/user-service/src/main/java/edu/sjsu/amigo/user/UserServiceApplication.java
+/Users/rwatsh/files/git/amigo-chatbot/user-service/src/main/java/edu/sjsu/amigo/user/auth/PrincipalUser.java
+/Users/rwatsh/files/git/amigo-chatbot/user-service/src/main/java/edu/sjsu/amigo/user/health/DBHealthCheck.java
+/Users/rwatsh/files/git/amigo-chatbot/user-service/src/main/java/edu/sjsu/amigo/user/rest/UserResource.java
+/Users/rwatsh/files/git/amigo-chatbot/user-service/src/main/java/edu/sjsu/amigo/user/DBConfig.java
+/Users/rwatsh/files/git/amigo-chatbot/user-service/src/main/java/edu/sjsu/amigo/user/auth/SimpleAuthenticator.java

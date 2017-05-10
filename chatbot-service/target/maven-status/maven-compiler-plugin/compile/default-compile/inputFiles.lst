@@ -1,0 +1,7 @@
+/Users/rwatsh/files/git/amigo-chatbot/chatbot-service/src/main/java/edu/sjsu/amigo/chatbot/ChatbotConfiguration.java
+/Users/rwatsh/files/git/amigo-chatbot/chatbot-service/src/main/java/edu/sjsu/amigo/chatbot/jobs/ChatbotMessageProcessorJob.java
+/Users/rwatsh/files/git/amigo-chatbot/chatbot-service/src/main/java/edu/sjsu/amigo/chatbot/rest/ChatResource.java
+/Users/rwatsh/files/git/amigo-chatbot/chatbot-service/src/main/java/edu/sjsu/amigo/chatbot/api/AIClient.java
+/Users/rwatsh/files/git/amigo-chatbot/chatbot-service/src/main/java/edu/sjsu/amigo/chatbot/nlp/WitDotAIClient.java
+/Users/rwatsh/files/git/amigo-chatbot/chatbot-service/src/main/java/edu/sjsu/amigo/chatbot/msg/MessageProcessor.java
+/Users/rwatsh/files/git/amigo-chatbot/chatbot-service/src/main/java/edu/sjsu/amigo/chatbot/ChatbotServiceApplication.java

@@ -1,0 +1,12 @@
+{
+	"email": "watsh.rajneesh@sjsu.edu",
+	"name": "rwatsh",
+	"password":"pass",
+	"slackUser":"rwatsh",
+	"riaId": "1",
+	"awsCredentials": {
+		"region": "us-west-2",
+		"awsAccessKeyId": "secretKeyId",
+		"awsSecretAccessKey": "secretAccessKey"
+	}
+}

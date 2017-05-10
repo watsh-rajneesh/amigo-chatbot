@@ -1,0 +1,5 @@
+edu/sjsu/amigo/slackbot/MessageListener$1.class
+edu/sjsu/amigo/slackbot/oauth/SlackOAuth20ServiceImpl.class
+edu/sjsu/amigo/slackbot/jobs/SlackMessageProcessorJob.class
+edu/sjsu/amigo/slackbot/MessageListener.class
+edu/sjsu/amigo/slackbot/oauth/SlackApi.class

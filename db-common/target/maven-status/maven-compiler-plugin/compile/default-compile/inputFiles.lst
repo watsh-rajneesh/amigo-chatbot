@@ -1,0 +1,10 @@
+/Users/rwatsh/files/git/amigo-chatbot/db-common/src/main/java/edu/sjsu/amigo/db/common/DBFactory.java
+/Users/rwatsh/files/git/amigo-chatbot/db-common/src/main/java/edu/sjsu/amigo/db/common/BaseDAO.java
+/Users/rwatsh/files/git/amigo-chatbot/db-common/src/main/java/edu/sjsu/amigo/db/common/DBClient.java
+/Users/rwatsh/files/git/amigo-chatbot/db-common/src/main/java/edu/sjsu/amigo/db/common/model/ValidationException.java
+/Users/rwatsh/files/git/amigo-chatbot/db-common/src/main/java/edu/sjsu/amigo/db/common/model/Validable.java
+/Users/rwatsh/files/git/amigo-chatbot/db-common/src/main/java/edu/sjsu/amigo/db/common/model/IModel.java
+/Users/rwatsh/files/git/amigo-chatbot/db-common/src/main/java/edu/sjsu/amigo/db/common/mongodb/MongoDBClientBase.java
+/Users/rwatsh/files/git/amigo-chatbot/db-common/src/main/java/edu/sjsu/amigo/db/common/DBException.java
+/Users/rwatsh/files/git/amigo-chatbot/db-common/src/main/java/edu/sjsu/amigo/db/common/Utilities.java
+/Users/rwatsh/files/git/amigo-chatbot/db-common/src/main/java/edu/sjsu/amigo/db/common/mongodb/BaseDAOImpl.java

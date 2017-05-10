@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="amigocore" />
+        <module name="amigousersservice" />
+        <module name="cmdps" />
+        <module name="commandprocessor" />
+        <module name="messageproducer" />
+        <module name="mq-common" />
+        <module name="slackbot" />
+        <module name="userservice" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel target="1.8">
+      <module name="amigo-chatbot" target="1.8" />
+      <module name="amigousersservice" target="1.5" />
+      <module name="chatbot-service" target="1.8" />
+      <module name="cmdps" target="1.8" />
+      <module name="command-db" target="1.8" />
+      <module name="command-processor" target="1.8" />
+      <module name="command-processor-service" target="1.8" />
+      <module name="commandprocessor" target="1.8" />
+      <module name="db-common" target="1.8" />
+      <module name="httpclient-common" target="1.8" />
+      <module name="json-common" target="1.8" />
+      <module name="messageproducer" target="1.8" />
+      <module name="mq-common" target="1.8" />
+      <module name="msg-common" target="1.8" />
+      <module name="nlp-service" target="1.8" />
+      <module name="rest-common" target="1.8" />
+      <module name="riabot-service" target="1.8" />
+      <module name="scheduler-common" target="1.8" />
+      <module name="slackbot" target="1.8" />
+      <module name="slackbot-service" target="1.8" />
+      <module name="user-db" target="1.8" />
+      <module name="user-db-service" target="1.8" />
+      <module name="user-service" target="1.8" />
+      <module name="userservice" target="1.5" />
+      <module name="web-ui" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

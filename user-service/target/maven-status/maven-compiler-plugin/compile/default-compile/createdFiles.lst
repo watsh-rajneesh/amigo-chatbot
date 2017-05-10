@@ -1,0 +1,14 @@
+edu/sjsu/amigo/user/health/DBHealthCheck.class
+edu/sjsu/amigo/user/auth/PrincipalUser.class
+edu/sjsu/amigo/user/auth/SimpleAuthenticator.class
+edu/sjsu/amigo/user/rest/BaseResource.class
+edu/sjsu/amigo/user/auth/SimpleAuthenticator$1.class
+edu/sjsu/amigo/user/rest/UserResource$3.class
+edu/sjsu/amigo/user/UserServiceConfiguration.class
+edu/sjsu/amigo/user/UserServiceApplication.class
+edu/sjsu/amigo/user/DBConfig.class
+edu/sjsu/amigo/user/rest/UserResource$2.class
+edu/sjsu/amigo/user/DBConfig$1.class
+edu/sjsu/amigo/user/rest/UserResource$4.class
+edu/sjsu/amigo/user/rest/UserResource.class
+edu/sjsu/amigo/user/rest/UserResource$1.class

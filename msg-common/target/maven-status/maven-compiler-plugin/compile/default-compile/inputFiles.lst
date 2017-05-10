@@ -1,0 +1,8 @@
+/Users/rwatsh/files/git/amigo-chatbot/msg-common/src/main/java/edu/sjsu/amigo/mp/model/Message.java
+/Users/rwatsh/files/git/amigo-chatbot/msg-common/src/main/java/edu/sjsu/amigo/mp/kafka/MessageProducer.java
+/Users/rwatsh/files/git/amigo-chatbot/msg-common/src/main/java/edu/sjsu/amigo/mp/kafka/InvalidMessageException.java
+/Users/rwatsh/files/git/amigo-chatbot/msg-common/src/main/java/edu/sjsu/amigo/mp/model/IntentElem.java
+/Users/rwatsh/files/git/amigo-chatbot/msg-common/src/main/java/edu/sjsu/amigo/mp/model/RiaMessage.java
+/Users/rwatsh/files/git/amigo-chatbot/msg-common/src/main/java/edu/sjsu/amigo/mp/model/SlackMessage.java
+/Users/rwatsh/files/git/amigo-chatbot/msg-common/src/main/java/edu/sjsu/amigo/mp/kafka/MessageQueueConstants.java
+/Users/rwatsh/files/git/amigo-chatbot/msg-common/src/main/java/edu/sjsu/amigo/mp/model/BotType.java

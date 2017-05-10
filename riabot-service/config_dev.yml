@@ -1,0 +1,17 @@
+server:
+  type: simple
+  applicationContextPath: /
+  connector:
+    type: http
+    port: 7070
+
+logging:
+  level: INFO
+
+  # Logger-specific levels.
+  loggers:
+     # Sets the level for 'com.example.app' to DEBUG.
+    edu.sjsu.amigo: DEBUG
+
+  appenders:
+    - type: console
