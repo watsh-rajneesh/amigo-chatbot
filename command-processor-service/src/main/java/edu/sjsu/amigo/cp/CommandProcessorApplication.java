@@ -91,7 +91,7 @@ public class CommandProcessorApplication  extends Application<CommandProcessorCo
 
         final List<ConsumerLoop> consumers = new ArrayList<>();
         for (int i = 0; i < numConsumers; i++) {
-            ConsumerLoop consumer = new ConsumerLoop(i, groupId, topics);
+            ConsumerLoop consumer = new ConsumerLoop(i, groupId, topics, dbClient);
             consumers.add(consumer);
             executor.submit(consumer);
         }

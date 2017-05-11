@@ -15,6 +15,7 @@
 package edu.sjsu.amigo.cp.kafka;
 
 import edu.sjsu.amigo.cp.jobs.MessageProcessorJob;
+import edu.sjsu.amigo.db.common.DBClient;
 import edu.sjsu.amigo.scheduler.jobs.JobManager;
 import lombok.extern.java.Log;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
@@ -28,6 +29,7 @@ import org.quartz.SchedulerException;
 import java.util.*;
 
 import static edu.sjsu.amigo.scheduler.jobs.JobConstants.JOB_GRP_CP;
+import static edu.sjsu.amigo.scheduler.jobs.JobConstants.JOB_PARAM_DBCLIENT;
 import static edu.sjsu.amigo.scheduler.jobs.JobConstants.JOB_PARAM_MESSAGE;
 
 /**
@@ -42,10 +44,12 @@ public class ConsumerLoop implements Runnable {
     private final KafkaConsumer<String, String> consumer;
     private final List<String> topics;
     private final int id;
+    private DBClient dbClient;
 
     public ConsumerLoop(int id,
                         String groupId,
-                        List<String> topics) {
+                        List<String> topics,
+                        DBClient dbClient) {
         this.id = id;
         this.topics = topics;
         Properties props = new Properties();
@@ -57,6 +61,7 @@ public class ConsumerLoop implements Runnable {
         props.put("key.deserializer", StringDeserializer.class.getName());
         props.put("value.deserializer", StringDeserializer.class.getName());
         this.consumer = new KafkaConsumer<>(props);
+        this.dbClient = dbClient;
     }
 
     @Override
@@ -112,6 +117,7 @@ public class ConsumerLoop implements Runnable {
                 String groupName = JOB_GRP_CP;
                 JobDataMap params = new JobDataMap();
                 params.put(JOB_PARAM_MESSAGE, value);
+                params.put(JOB_PARAM_DBCLIENT, dbClient);
                 JobManager.getInstance().scheduleJob(MessageProcessorJob.class, jobName, groupName, params);
 
             } catch (Exception e) {

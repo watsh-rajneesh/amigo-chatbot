@@ -19,14 +19,22 @@ import com.ullink.slack.simpleslackapi.SlackChannel;
 import com.ullink.slack.simpleslackapi.SlackSession;
 import com.ullink.slack.simpleslackapi.SlackUser;
 import com.ullink.slack.simpleslackapi.impl.SlackSessionFactory;
+import edu.sjsu.amigo.command.db.dao.RequestDAO;
+import edu.sjsu.amigo.command.db.model.Request;
+import edu.sjsu.amigo.command.db.model.Status;
 import edu.sjsu.amigo.cp.api.*;
+import edu.sjsu.amigo.db.common.DBClient;
+import edu.sjsu.amigo.db.common.DBException;
 import edu.sjsu.amigo.http.client.HttpClient;
 import edu.sjsu.amigo.json.util.JsonUtils;
 import edu.sjsu.amigo.mp.model.BotType;
+import edu.sjsu.amigo.mp.model.Message;
 import edu.sjsu.amigo.mp.model.RiaMessage;
 import edu.sjsu.amigo.mp.model.SlackMessage;
 import edu.sjsu.amigo.scheduler.jobs.JobConstants;
 import edu.sjsu.amigo.user.db.model.User;
+import lombok.extern.java.Log;
+import org.bouncycastle.cert.ocsp.Req;
 import org.quartz.Job;
 import org.quartz.JobDataMap;
 import org.quartz.JobExecutionContext;
@@ -34,30 +42,48 @@ import org.quartz.JobExecutionException;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.logging.Level;
 
 /**
  * Job to process the incoming message asynchronously.
  *
  * @author rwatsh on 2/27/17.
  */
+@Log
 public class MessageProcessorJob implements Job {
     private String message;
     private static final String BASE_URI = "http://localhost:8080";
     private static final String RESOURCE_URI = "/api/v1.0/users";
+    private DBClient dbClient;
 
     @Override
     public void execute(JobExecutionContext jobExecutionContext) throws JobExecutionException {
+
         try {
             //message = jobdata params.
             JobDataMap jobDataMap = jobExecutionContext.getMergedJobDataMap();
             String message = jobDataMap.getString(JobConstants.JOB_PARAM_MESSAGE);
+            dbClient = (DBClient) jobDataMap.get(JobConstants.JOB_PARAM_DBCLIENT);
+            RequestDAO requestDAO = (RequestDAO) dbClient.getDAO(RequestDAO.class);
+
             JsonNode jsonNode = JsonUtils.parseJson(message);
             String botType = jsonNode.path("botType").asText();
+
             if (botType.equalsIgnoreCase(BotType.SLACK.name())) {
                 SlackMessage slackMessage = JsonUtils.convertJsonToObject(message, SlackMessage.class);
-                if (slackMessage != null) {
+                List<Request> requestEntity = requestDAO.fetchById(new ArrayList<String>() {{
+                    add(slackMessage.getRequestId());
+                }});
+                // Only process the message if the requestID in the message is unique and seen first time
+                // This is done to prevent from duplicate message processing.
+                if (slackMessage != null && (requestEntity == null || requestEntity.isEmpty())) {
                     String slackBotToken = slackMessage.getSlackBotToken();
+                    // set request in progress
+                    Request request = requestInProgress(slackMessage.getRequestId());
+                    Request finalRequest = request;
+                    requestDAO.add(new ArrayList<Request>(){{add(finalRequest);}});
 
                     SlackSession session = SlackSessionFactory.createWebSocketSlackSession(slackBotToken);
                     session.connect();
@@ -66,6 +92,7 @@ public class MessageProcessorJob implements Job {
 
                     String userEmail = slackMessage.getUserEmail();
 
+                    // send ack to slack user that message is being processed.
                     String ackMessage = "Message received in the backend";
                     sendMessageToUser(userEmail, session, channelId, ackMessage);
 
@@ -94,18 +121,73 @@ public class MessageProcessorJob implements Job {
 
                     // Persist the response in DB
 
+                    request = requestWithResponse(slackMessage.getRequestId(), cmd.toString(), response.getMsg(), Status.SUCCESS);
+                    Request finalRequest1 = request;
+                    requestDAO.update(new ArrayList<Request>(){{add(finalRequest1);}});
+
                 }
             } else if (botType.equalsIgnoreCase(BotType.RIA.name())) {
                 RiaMessage riaMessage = JsonUtils.convertJsonToObject(message, RiaMessage.class);
-                if (riaMessage != null) {
+                List<Request> requestEntity = requestDAO.fetchById(new ArrayList<String>() {{
+                    add(riaMessage.getRequestId());
+                }});
+                if (riaMessage != null && (requestEntity == null || requestEntity.isEmpty())) {
                     String riaId = riaMessage.getRiaId();
+
+                    // set request instance in DB with in progress status
+                    Request request = requestInProgress(riaMessage.getRequestId());
+                    Request finalRequest = request;
+                    requestDAO.add(new ArrayList<Request>(){{add(finalRequest);}});
+
+                    String[] cmdArray = getCmdArray(riaMessage.getIntent());
+                    String providerName = cmdArray[0];
+
+                    List<String> envList = getCloudProviderCreds(riaMessage.);
 
                 }
             }
 
-        } catch (IOException | CommandExecutionException e) {
+
+        } catch (IOException | CommandExecutionException | DBException e) {
+            if (dbClient != null && message != null) {
+                RequestDAO requestDAO = (RequestDAO) dbClient.getDAO(RequestDAO.class);
+                JsonNode jsonNode = null;
+                try {
+                    jsonNode = JsonUtils.parseJson(message);
+                } catch (IOException e1) {
+                    log.log(Level.SEVERE,"Failed to parse JSON message", e1);
+                }
+                if (jsonNode != null) {
+                    String requestId = jsonNode.path("requestId").asText();
+                    String content = jsonNode.path("content").asText();
+                    Request request = requestWithResponse(requestId, content, e.getMessage(), Status.FAILURE);
+                    try {
+                        requestDAO.update(new ArrayList<Request>(){{add(request);}});
+                    } catch (DBException e1) {
+                        log.log(Level.SEVERE, "Failed to update DB with failure status", e1);
+                    }
+                }
+            }
             throw new JobExecutionException(e);
         }
+    }
+
+
+    private Request requestInProgress(String requestId) {
+        Request request = new Request();
+        request.setRequestId(requestId);
+        request.setStartTime(new Date());
+        request.setStatus(Status.IN_PROGRESS);
+    }
+
+    private Request requestWithResponse(String requestId, String cmd, String responseMsg, Status status) {
+        Request request = new Request();
+        request.setCommandExecuted(cmd.toString());
+        request.setRequestId(requestId);
+        request.setResp(responseMsg);
+        request.setRespRecvdTime(new Date());
+        request.setStatus(status);
+        return request;
     }
 
     private String[] getCmdArray(String content) {

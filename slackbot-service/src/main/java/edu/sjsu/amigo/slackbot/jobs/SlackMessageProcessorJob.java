@@ -80,7 +80,7 @@ public class SlackMessageProcessorJob implements Job {
             SlackMessage msg = new SlackMessage(curTime,messageSender.getUserMail(),
                     messageSender.getUserName(),
                     parsedMessage,
-                    channel.getName(),
+                    channel.getId(),
                     botToken);
             log.info("=> Sending ACK to slack: " + msg);
             String jsonStr = null;

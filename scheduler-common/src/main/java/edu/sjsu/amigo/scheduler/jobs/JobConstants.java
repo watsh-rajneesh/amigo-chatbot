@@ -29,4 +29,5 @@ public interface JobConstants {
     String JOB_PARAM_SLACK_SESSION = "slack_session";
     String JOB_PARAM_SLACK_CHANNEL = "slack_channel";
     String JOB_PARAM_BOT_TOK = "slack_bot_token";
+    String JOB_PARAM_DBCLIENT = "dbclient";
 }
