@@ -129,6 +129,19 @@ public class User extends Validable implements IModel {
     }
 
     @Override
+    public String toString() {
+        return "User{" +
+                "email='" + email + '\'' +
+                ", name='" + name + '\'' +
+                ", password='" + password + '\'' +
+                ", slackUser='" + slackUser + '\'' +
+                ", riaId='" + riaId + '\'' +
+                ", apiKey='" + apiKey + '\'' +
+                ", awsCredentials=" + awsCredentials +
+                '}';
+    }
+
+    @Override
     @JsonIgnore
     public boolean isValid() throws ValidationException {
         return isReqd(email) &&
@@ -136,4 +149,5 @@ public class User extends Validable implements IModel {
                 isReqd(password) &&
                 isReqd(awsCredentials);
     }
+
 }

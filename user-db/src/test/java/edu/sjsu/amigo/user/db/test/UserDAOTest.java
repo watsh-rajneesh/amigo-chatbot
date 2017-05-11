@@ -19,6 +19,7 @@ import edu.sjsu.amigo.user.db.dao.UserDAO;
 import edu.sjsu.amigo.user.db.model.AWSCredentials;
 import edu.sjsu.amigo.user.db.model.User;
 import org.testng.Assert;
+import org.testng.annotations.Test;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -85,5 +86,16 @@ public class UserDAOTest extends DBTest<UserDAO, User> {
         Assert.assertNotNull(insertedIds);
         List<User> users = dao.fetchById(insertedIds);
         Assert.assertNotNull(users);
+    }
+
+    @Test
+    public void testFetchByRiaId() throws Exception {
+        List<String> insertedIds = testCreateUser();
+        Assert.assertNotNull(insertedIds);
+        List<User> users = dao.fetchById(insertedIds);
+
+        List<User> users1 = dao.fetch("{riaId: \"" + users.get(0).getRiaId() + "\"}", User.class);
+        Assert.assertNotNull(users1);
+        Assert.assertTrue(!users1.isEmpty());
     }
 }

@@ -148,6 +148,24 @@ public class UserResource extends BaseResource<User>  {
         }
     }
 
+    @GET
+    @Path("/ria/{riaId}")
+    @Produces(MediaType.APPLICATION_JSON)
+    /*@ApiOperation(httpMethod = "GET",
+            value = "get a user by id",
+            response = User.class,
+            nickname="retrieve")*/
+    public User retrieveByRiaId(@PathParam("riaId") String id) throws ResourceNotFoundException, InternalErrorException {
+        try {
+            List<User> users = userDAO.fetch("{riaId: \"" + id + "\"}", User.class);
+            return users != null && !users.isEmpty() ? users.get(0) : null;
+
+        } catch (Exception e) {
+            log.log(Level.SEVERE, "Error in getting user ID [" + id +  "]", e);
+            throw new BadRequestException(e);
+        }
+    }
+
     @Override
     @PUT
     @Path("/{id}")

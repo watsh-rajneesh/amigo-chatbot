@@ -66,4 +66,13 @@ public class AWSCredentials extends Validable implements IModel {
     public boolean isValid() throws ValidationException {
         return true;
     }
+
+    @Override
+    public String toString() {
+        return "AWSCredentials{" +
+                "region='" + region + '\'' +
+                ", awsAccessKeyId='" + awsAccessKeyId + '\'' +
+                ", awsSecretAccessKey='" + awsSecretAccessKey + '\'' +
+                '}';
+    }
 }

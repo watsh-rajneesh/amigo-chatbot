@@ -20,6 +20,7 @@ import edu.sjsu.amigo.user.db.model.AWSCredentials;
 import edu.sjsu.amigo.user.db.model.User;
 import lombok.extern.java.Log;
 import org.testng.Assert;
+import org.testng.annotations.Test;
 
 import javax.ws.rs.client.Entity;
 import javax.ws.rs.core.MediaType;
@@ -54,7 +55,7 @@ public class UserResourceTest extends BaseResourceTest {
         user.setEmail(email);
         user.setName("testUser");
         user.setPassword("pass");
-        user.setRiaId("101");
+        user.setRiaId("1");
         user.setSlackUser("watsh.rajneesh@sjsu.edu");
         AWSCredentials awsCredentials = new AWSCredentials();
         awsCredentials.setAwsAccessKeyId("abc");
@@ -66,8 +67,6 @@ public class UserResourceTest extends BaseResourceTest {
 
     @Override
     public void testAdd() throws Exception {
-
-
         User user = addUser(createTestUser("watsh.rajneesh@sjsu.edu"));
         Assert.assertNotNull(user);
     }
@@ -115,13 +114,33 @@ public class UserResourceTest extends BaseResourceTest {
             String id = userList.get(0).getEmail();
 
             Response response = webTarget.path(RESOURCE_URI)
-                    .queryParam("id", id)
+                    .path(id)
                     .request(MediaType.APPLICATION_JSON_TYPE)
                     .get();
             log.info(response.toString());
             String respStr = response.readEntity(String.class);
-            userList = JsonUtils.convertJsonArrayToList(respStr, User.class);
-            log.info(userList.toString());
+            /*userList = JsonUtils.convertJsonArrayToList(respStr, User.class);
+            log.info(userList.toString());*/
+            User user = JsonUtils.convertJsonToObject(respStr, User.class);
+            log.info(user.toString());
+            Assert.assertTrue(response.getStatus() == Response.Status.OK.getStatusCode());
+        }
+    }
+
+    @Test
+    public void testFetchByRiaId() throws Exception {
+        List<User> userList = getUsers();
+        if (userList != null && !userList.isEmpty()) {
+            String id = userList.get(0).getRiaId();
+
+            Response response = webTarget.path(RESOURCE_URI + "/ria")
+                    .path(id)
+                    .request(MediaType.APPLICATION_JSON_TYPE)
+                    .get();
+            log.info(response.toString());
+            String respStr = response.readEntity(String.class);
+            User user = JsonUtils.convertJsonToObject(respStr, User.class);
+            log.info(user.toString());
             Assert.assertTrue(response.getStatus() == Response.Status.OK.getStatusCode());
         }
     }

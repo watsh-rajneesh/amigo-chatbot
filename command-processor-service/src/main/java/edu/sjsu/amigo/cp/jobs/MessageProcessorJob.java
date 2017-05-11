@@ -68,6 +68,9 @@ public class MessageProcessorJob implements Job {
             dbClient = (DBClient) jobDataMap.get(JobConstants.JOB_PARAM_DBCLIENT);
             RequestDAO requestDAO = (RequestDAO) dbClient.getDAO(RequestDAO.class);
 
+            String dockerImage = "sjsucohort6/docker_awscli";
+            String entryPoint = "aws";
+
             JsonNode jsonNode = JsonUtils.parseJson(message);
             String botType = jsonNode.path("botType").asText();
 
@@ -102,15 +105,14 @@ public class MessageProcessorJob implements Job {
                     String providerName = cmdArray[0];
 
                     // 2. Make a REST call to user service to get the user's (by userEmail) AWS creds.
-                    List<String> envList = getCloudProviderCreds(userEmail);
+                    List<String> envList = getCloudProviderCredsByEmail(userEmail);
 
                     // Execute Command
                     List<String> cmdList = new ArrayList<>();
                     for (int i = 1; i < cmdArray.length; i++) {
                         cmdList.add(cmdArray[i]);
                     }
-                    String dockerImage = "sjsucohort6/docker_awscli";
-                    String entryPoint = "aws";
+
                     Command cmd = new Command.Builder(dockerImage, cmdList)
                             .env(envList)
                             .entryPoint(entryPoint)
@@ -142,7 +144,9 @@ public class MessageProcessorJob implements Job {
                     String[] cmdArray = getCmdArray(riaMessage.getIntent());
                     String providerName = cmdArray[0];
 
-                    List<String> envList = getCloudProviderCreds(riaMessage.);
+                    List<String> envList = getCloudProviderCredsByRiaId(riaMessage.getRiaId());
+
+
 
                 }
             }
@@ -195,9 +199,25 @@ public class MessageProcessorJob implements Job {
         return content.trim().split("\\s+");
     }
 
-    private List<String> getCloudProviderCreds(String userEmail) {
+    private List<String> getCloudProviderCredsByEmail(String userEmail) {
         try (HttpClient c = new HttpClient()) {
             edu.sjsu.amigo.http.client.Response<User> userResponse = c.get(BASE_URI + RESOURCE_URI + "/" + userEmail, User.class);
+            User user = userResponse.getParsedObject();
+            List<String> envList = new ArrayList<>();
+
+            envList.add("AWS_DEFAULT_REGION="+ user.getAwsCredentials().getRegion());
+            envList.add("AWS_ACCESS_KEY_ID="+ user.getAwsCredentials().getAwsAccessKeyId());
+            envList.add("AWS_SECRET_ACCESS_KEY="+ user.getAwsCredentials().getAwsSecretAccessKey());
+            return envList;
+        } catch (Exception e) {
+
+        }
+        return null;
+    }
+
+    private List<String> getCloudProviderCredsByRiaId(String riaId) {
+        try (HttpClient c = new HttpClient()) {
+            edu.sjsu.amigo.http.client.Response<User> userResponse = c.get(BASE_URI + RESOURCE_URI + "/ria/" + riaId, User.class);
             User user = userResponse.getParsedObject();
             List<String> envList = new ArrayList<>();
 

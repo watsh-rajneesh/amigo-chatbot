@@ -69,6 +69,15 @@ public class Provider extends Validable implements IModel {
     }
 
     @Override
+    public String toString() {
+        return "Provider{" +
+                "cloudProvider='" + cloudProvider + '\'' +
+                ", dockerImage='" + dockerImage + '\'' +
+                ", commands=" + commands +
+                '}';
+    }
+
+    @Override
     public boolean isValid() throws ValidationException {
         boolean isValid = isReqd(cloudProvider);
         if (isValid) {

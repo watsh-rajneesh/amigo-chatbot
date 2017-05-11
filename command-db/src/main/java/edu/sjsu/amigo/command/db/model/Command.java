@@ -53,4 +53,12 @@ public class Command extends Validable {
     public boolean isValid() throws ValidationException {
         return isReqd(intent) && isReqd(cmdList);
     }
+
+    @Override
+    public String toString() {
+        return "Command{" +
+                "intent='" + intent + '\'' +
+                ", cmdList=" + cmdList +
+                '}';
+    }
 }

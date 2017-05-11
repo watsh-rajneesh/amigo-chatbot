@@ -52,6 +52,18 @@ public class Request implements IModel {
         return startTime;
     }
 
+    @Override
+    public String toString() {
+        return "Request{" +
+                "requestId='" + requestId + '\'' +
+                ", startTime=" + startTime +
+                ", respRecvdTime=" + respRecvdTime +
+                ", commandExecuted='" + commandExecuted + '\'' +
+                ", resp='" + resp + '\'' +
+                ", status=" + status +
+                '}';
+    }
+
     public void setStartTime(Date startTime) {
         this.startTime = startTime;
     }
