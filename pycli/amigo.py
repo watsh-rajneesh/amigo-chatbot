@@ -224,6 +224,13 @@ def delete_user(hostPort, id):
 
 
 def send_msg(hostPort, message):
+    """
+    Sends a message to /api/v1.0/ria endpoint. This is to test without requiring RIA setup.
+    
+    :param hostPort: endpoint host and port.
+    :param message: intent of the message (or actual command to be executed on the backend) 
+    :return: 
+    """
     pass
 
 

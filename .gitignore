@@ -158,3 +158,51 @@ Contact GitHub API Training Shop Blog About
 /slackbot-service/run.sh
 /amigo-cli/
 /deploy/docker/prometheus/
+/deploy/docker/
+# Created by .ignore support plugin (hsz.mobi)
+
+
+
+# Spyder project settings
+
+# Rope project settings
+### VirtualEnv template
+# Virtualenv
+# http://iamzed.com/2009/05/07/a-primer-on-virtualenv/
+[Bb]in
+[Ii]nclude
+[Ll]ib
+[Ll]ib64
+[Ll]ocal
+[Ss]cripts
+pyvenv.cfg
+.venv
+pip-selfcheck.json
+
+# Added for project - rwatsh
+profile.yaml
+memory.db
+uploads/*
+recording.wav
+/ria/.idea/
+command-db/src/main/resources/
+db-common/src/main/resources/
+db-common/src/test/
+deploy/dockerdata/alertmanager/data/
+deploy/dockerdata/elastalert/logs/
+deploy/dockerdata/elasticsearch/
+deploy/dockerdata/grafana/
+deploy/dockerdata/prometheus/data/
+httpclient-common/src/main/resources/
+json-common/src/main/resources/
+json-common/src/test/
+msg-common/src/main/resources/
+msg-common/src/test/
+nlp-service/src/main/resources/
+nlp-service/src/test/
+riabot-service/src/test/
+scheduler-common/src/main/resources/
+scheduler-common/src/test/
+slackbot-service/src/main/resources/
+user-db/src/main/resources/
+web-ui/src/
