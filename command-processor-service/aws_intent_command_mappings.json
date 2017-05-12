@@ -32,7 +32,7 @@
       "intents":[
         "ec2 stop"
       ],
-      "command":"aws ec2 stop-instances --instance-ids"
+      "command":"aws ec2 stop-instances --instance-ids < aws ec2 describe-instances --query Reservations[0].Instances[0].InstanceId"
     },
     {
       "intents":[

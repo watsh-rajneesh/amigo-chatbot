@@ -23,3 +23,4 @@ To pull from docker hub:
 docker pull sjsucohort6/docker_awscli
 
 
+@see https://github.com/xueshanf/docker-awscli/blob/master/Dockerfile

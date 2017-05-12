@@ -29,7 +29,6 @@
         <module>web-ui</module>
         <module>httpclient-common</module>
         <module>command-processor-service</module>
-        <!--<module>nlp-service</module>-->
         <module>chatbot-service</module>
         <module>user-db</module>
         <module>db-common</module>
