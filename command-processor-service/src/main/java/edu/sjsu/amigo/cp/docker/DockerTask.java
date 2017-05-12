@@ -46,6 +46,12 @@ public class DockerTask {
             pullImage(dockerClient, dockerImage);
             //dockerClient.pull(dockerImage);
 
+            if (commandList != null && !commandList.isEmpty()) {
+                if (commandList.get(0).equalsIgnoreCase(entryPoint)) {
+                    commandList = commandList.subList(1, commandList.size());
+                }
+            }
+
             final ContainerConfig containerConfig = ContainerConfig.builder()
                     .image(dockerImage)
                     .env(envList)

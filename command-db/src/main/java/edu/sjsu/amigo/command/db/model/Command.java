@@ -28,37 +28,37 @@ import java.util.List;
  */
 @Embedded
 public class Command extends Validable {
-    private String intent;
-    private List<String> cmdList;
+    private List<String> intents;
+    private String command;
 
     @JsonProperty
-    public String getIntent() {
-        return intent;
+    public List<String> getIntents() {
+        return intents;
     }
 
-    public void setIntent(String intent) {
-        this.intent = intent;
+    public void setIntents(List<String> intents) {
+        this.intents = intents;
     }
 
     @JsonProperty
-    public List<String> getCmdList() {
-        return cmdList;
+    public String getCommand() {
+        return command;
     }
 
-    public void setCmdList(List<String> cmdList) {
-        this.cmdList = cmdList;
+    public void setCommand(String command) {
+        this.command = command;
     }
 
     @Override
     public boolean isValid() throws ValidationException {
-        return isReqd(intent) && isReqd(cmdList);
+        return isReqd(intents) && isReqd(command);
     }
 
     @Override
     public String toString() {
         return "Command{" +
-                "intent='" + intent + '\'' +
-                ", cmdList=" + cmdList +
+                "intents='" + intents + '\'' +
+                ", command=" + command +
                 '}';
     }
 }

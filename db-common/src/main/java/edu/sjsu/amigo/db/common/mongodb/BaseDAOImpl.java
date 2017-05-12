@@ -70,10 +70,10 @@ public abstract class BaseDAOImpl<T> extends BasicDAO<T, String> implements Base
         }});
         if (entities == null || entities.isEmpty()) {
             // new entity so add
-            add(entities);
+            add(new ArrayList<T>(){{add(entity);}});
         } else {
             // existing task, update
-            update(entities);
+            update(new ArrayList<T>(){{add(entity);}});
         }
     }
 

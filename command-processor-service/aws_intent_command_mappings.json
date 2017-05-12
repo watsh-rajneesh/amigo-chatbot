@@ -1,0 +1,44 @@
+{
+  "cloudProvider":"aws",
+  "dockerImage":"sjsucohort6/docker_awscli",
+  "commands":[
+    {
+      "intents":[
+        "ec2 instances list",
+        "ec2 instances describe"
+      ],
+      "command":"aws ec2 describe-instances"
+    },
+    {
+      "intents":[
+        "ec2 regions"
+      ],
+      "command":"aws ec2 describe-regions"
+    },
+    {
+      "intents":[
+        "ec2 availability",
+        "ec2 zones"
+      ],
+      "command":"aws ec2 describe-availability-zones"
+    },
+    {
+      "intents":[
+        "ec2 create"
+      ],
+      "command":"aws ec2 run-instances --image-id  ami-29ebb519  --key-name  watshkeydev  --instance-type t2.micro --security-groups MySecurityGroup"
+    },
+    {
+      "intents":[
+        "ec2 stop"
+      ],
+      "command":"aws ec2 stop-instances --instance-ids"
+    },
+    {
+      "intents":[
+        "ec2 start"
+      ],
+      "command":"aws ec2 start-instances --instance-ids < aws ec2 describe-instances --query Reservations[0].Instances[0].InstanceId"
+    }
+  ]
+}

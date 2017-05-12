@@ -60,10 +60,27 @@
       <version>1.16.6</version>
       <scope>provided</scope>
     </dependency>
+    <dependency>
+      <groupId>org.testng</groupId>
+      <artifactId>testng</artifactId>
+      <version>6.8.8</version>
+      <scope>test</scope>
+      <exclusions>
+        <exclusion>
+          <artifactId>bsh</artifactId>
+          <groupId>org.beanshell</groupId>
+        </exclusion>
+        <exclusion>
+          <artifactId>jcommander</artifactId>
+          <groupId>com.beust</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
   </dependencies>
   <properties>
     <quartz.version>2.2.1</quartz.version>
     <dropwizard.version>1.1.0</dropwizard.version>
+    <testng.version>6.8.8</testng.version>
     <lombok.version>1.16.6</lombok.version>
   </properties>
 </project>

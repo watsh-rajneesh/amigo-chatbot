@@ -63,22 +63,25 @@ public class RiabotMessageProcessorJob implements Job {
                 return;
             }
             if (jsonStr != null) {
-                /*try (HttpClient c = new HttpClient()) {
-                    edu.sjsu.amigo.http.client.Response<Object> response = c.post(BASE_URI + RESOURCE_URI, jsonStr);
-                } */
-
+                log.info(MessageFormat.format("Sending message to chatbot [{0}] at [{1}]", jsonStr, BASE_URI + RESOURCE_URI));
                 Client client = ClientBuilder.newClient();
                 WebTarget webTarget = client.target(BASE_URI);
+                Response response = null;
                 try {
-                    Response response = webTarget.path(RESOURCE_URI)
+                    response = webTarget.path(RESOURCE_URI)
                             .request()
                             .accept(MediaType.APPLICATION_JSON_TYPE)
                             .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON)
                             .post(Entity.json(jsonStr));
+
+                    log.info("Received response from chatbot: " + response);
                     if (response.getStatus() != Response.Status.ACCEPTED.getStatusCode()) {
-                        log.severe(MessageFormat.format("Failed to send the message [{0}] to riabot service", message.getContent()));
+                        log.severe(MessageFormat.format("Failed to send the message [{0}] to chatbot service", message.toString()));
                     }
                 } finally {
+                    if (response != null) {
+                        response.close();
+                    }
                     if (client != null) {
                         client.close();
                     }

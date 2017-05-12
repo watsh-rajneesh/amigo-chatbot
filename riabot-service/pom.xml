@@ -66,11 +66,18 @@
             <version>${lombok.version}</version>
             <scope>provided</scope>
         </dependency>
+        <dependency>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+            <version>${testng.version}</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
     <properties>
         <dropwizard.version>1.1.0</dropwizard.version>
         <quartz.version>2.2.1</quartz.version>
         <lombok.version>1.16.6</lombok.version>
+        <testng.version>6.8.8</testng.version>
     </properties>
     <build>
         <plugins>

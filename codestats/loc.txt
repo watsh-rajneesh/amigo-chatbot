@@ -1,25 +1,25 @@
-     100 files     200 files     300 files     400 files     500 files     600 files     700 files     800 files     900 files    1000 files    1100 files    1200 files    1300 files    1400 files    1500 files    1600 files    1700 files    1800 files    1900 files    2000 files    2100 files    2200 files    2300 files    2314 text files.
-classified 2314 filesDuplicate file check 2314 files (1196 known unique)Unique:      100 files                                          Unique:      200 files                                          Unique:      300 files                                          Unique:      400 files                                          Unique:      500 files                                          Unique:      600 files                                          Unique:      700 files                                          Unique:      800 files                                          Unique:      900 files                                          Unique:     1000 files                                          Unique:     1100 files                                              2010 unique files.                              
-Counting:  100Counting:  200Counting:  300Counting:  400Counting:  500Counting:  600Counting:  700Counting:  800Counting:  900Counting:  1000Counting:  1100Counting:  1200Counting:  1300Counting:  1400Counting:  1500Counting:  1600Counting:  1700Counting:  1800Counting:  1900Counting:  2000    1170 files ignored.
+     100 files     200 files     300 files     400 files     500 files     600 files     700 files     800 files     900 files    1000 files    1100 files    1200 files    1300 files    1400 files    1500 files    1600 files    1700 files    1800 files    1900 files    2000 files    2100 files    2200 files    2300 files    2372 text files.
+classified 2372 filesDuplicate file check 2372 files (1245 known unique)Unique:      100 files                                          Unique:      200 files                                          Unique:      300 files                                          Unique:      400 files                                          Unique:      500 files                                          Unique:      600 files                                          Unique:      700 files                                          Unique:      800 files                                          Unique:      900 files                                          Unique:     1000 files                                          Unique:     1100 files                                          Unique:     1200 files                                              2067 unique files.                              
+Counting:  100Counting:  200Counting:  300Counting:  400Counting:  500Counting:  600Counting:  700Counting:  800Counting:  900Counting:  1000Counting:  1100Counting:  1200Counting:  1300Counting:  1400Counting:  1500Counting:  1600Counting:  1700Counting:  1800Counting:  1900Counting:  2000    1176 files ignored.
 
-github.com/AlDanial/cloc v 1.72  T=7.21 s (158.9 files/s, 10491.5 lines/s)
+github.com/AlDanial/cloc v 1.72  T=9.59 s (124.9 files/s, 8165.0 lines/s)
 -------------------------------------------------------------------------------
 Language                     files          blank        comment           code
 -------------------------------------------------------------------------------
 HTML                           579           1930           3124          48916
 TeX                            313           1838             65           6876
-Java                            75            686           1883           2994
+Java                            91            817           2175           3680
 JavaScript                      96             96            126           1806
 CSS                              3            307             80           1481
-Maven                           13             59            224            841
-YAML                            15             49             43            454
-XML                              9             12             52            382
-Bourne Shell                    20            142             69            373
-Markdown                        11             69              0            184
-Python                           1             57             91            155
-Dockerfile                       9             54             41             93
+Maven                           15             62            314           1197
+Bourne Shell                    43            291            158            810
+XML                             12             16             65            596
+YAML                            20             72             73            529
+Markdown                        12             76              0            187
+Python                           1             57             91            170
+Dockerfile                      11             64             42            106
 make                             1              4              0             17
 JSON                             1              0              0             12
 -------------------------------------------------------------------------------
-SUM:                          1146           5303           5798          64584
+SUM:                          1198           5630           6313          66383
 -------------------------------------------------------------------------------

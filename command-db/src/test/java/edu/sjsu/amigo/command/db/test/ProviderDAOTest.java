@@ -54,11 +54,13 @@ public class ProviderDAOTest extends DBTest<ProviderDAO, Provider> {
         provider.setDockerImage("sjsucohort6/docker_awscli");
         List<Command> commands = new ArrayList<>();
         Command cmd = new Command();
-        cmd.setIntent("iam list users");
-        cmd.setCmdList(new ArrayList<String>(){{
-            add("iam");
-            add("list-users");
-        }});
+        cmd.setCommand("aws iam list-users");
+        String intent = "aws iam users";
+        cmd.setIntents(
+                new ArrayList<String>() {{
+                    add(intent);
+                }}
+        );
         commands.add(cmd);
         provider.setCommands(commands);
         return provider;

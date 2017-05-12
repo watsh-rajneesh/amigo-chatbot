@@ -30,7 +30,7 @@ import java.util.List;
 /**
  * @author rwatsh on 4/16/17.
  */
-public class ProviderDAO extends BaseDAOImpl<Provider>{
+public class ProviderDAO extends BaseDAOImpl<Provider> {
 
     public ProviderDAO(MongoClient mongoClient, Morphia morphia, String dbName) {
         super(mongoClient, morphia, dbName);
@@ -38,8 +38,10 @@ public class ProviderDAO extends BaseDAOImpl<Provider>{
 
     @Override
     public void update(List<Provider> entityList) throws DBException {
-        for (Provider provider: entityList) {
-            List<Provider> providers = fetchById(new ArrayList<String>() {{add(provider.getCloudProvider());}});
+        for (Provider provider : entityList) {
+            List<Provider> providers = fetchById(new ArrayList<String>() {{
+                add(provider.getCloudProvider());
+            }});
             Provider existingProvider = null;
             if (providers != null && !providers.isEmpty()) {
                 existingProvider = providers.get(0);
@@ -49,7 +51,9 @@ public class ProviderDAO extends BaseDAOImpl<Provider>{
                 if (provider.getCommands() != null) {
                     ops.set("commands", provider.getCommands());
                 }
-
+                if (provider.getDockerImage() != null) {
+                    ops.set("dockerImage", provider.getDockerImage());
+                }
 
                 Query<Provider> updateQuery = this.createQuery().field(Mapper.ID_KEY).equal(provider.getCloudProvider());
                 UpdateResults results = this.update(updateQuery, ops);

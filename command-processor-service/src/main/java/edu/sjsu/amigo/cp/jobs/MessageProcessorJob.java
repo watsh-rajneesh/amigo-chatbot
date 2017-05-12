@@ -19,29 +19,35 @@ import com.ullink.slack.simpleslackapi.SlackChannel;
 import com.ullink.slack.simpleslackapi.SlackSession;
 import com.ullink.slack.simpleslackapi.SlackUser;
 import com.ullink.slack.simpleslackapi.impl.SlackSessionFactory;
+import edu.sjsu.amigo.command.db.dao.ProviderDAO;
 import edu.sjsu.amigo.command.db.dao.RequestDAO;
+import edu.sjsu.amigo.command.db.model.Provider;
 import edu.sjsu.amigo.command.db.model.Request;
 import edu.sjsu.amigo.command.db.model.Status;
-import edu.sjsu.amigo.cp.api.*;
+import edu.sjsu.amigo.cp.api.CloudProviderFactory;
+import edu.sjsu.amigo.cp.api.Command;
+import edu.sjsu.amigo.cp.api.CommandExecutionException;
+import edu.sjsu.amigo.cp.api.CommandExecutor;
+import edu.sjsu.amigo.cp.api.Response;
 import edu.sjsu.amigo.db.common.DBClient;
 import edu.sjsu.amigo.db.common.DBException;
 import edu.sjsu.amigo.http.client.HttpClient;
 import edu.sjsu.amigo.json.util.JsonUtils;
 import edu.sjsu.amigo.mp.model.BotType;
-import edu.sjsu.amigo.mp.model.Message;
 import edu.sjsu.amigo.mp.model.RiaMessage;
 import edu.sjsu.amigo.mp.model.SlackMessage;
 import edu.sjsu.amigo.scheduler.jobs.JobConstants;
 import edu.sjsu.amigo.user.db.model.User;
 import lombok.extern.java.Log;
-import org.bouncycastle.cert.ocsp.Req;
 import org.quartz.Job;
 import org.quartz.JobDataMap;
 import org.quartz.JobExecutionContext;
 import org.quartz.JobExecutionException;
 
 import java.io.IOException;
+import java.text.MessageFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
@@ -67,12 +73,26 @@ public class MessageProcessorJob implements Job {
             String message = jobDataMap.getString(JobConstants.JOB_PARAM_MESSAGE);
             dbClient = (DBClient) jobDataMap.get(JobConstants.JOB_PARAM_DBCLIENT);
             RequestDAO requestDAO = (RequestDAO) dbClient.getDAO(RequestDAO.class);
+            ProviderDAO providerDAO = (ProviderDAO) dbClient.getDAO(ProviderDAO.class);
 
-            String dockerImage = "sjsucohort6/docker_awscli";
-            String entryPoint = "aws";
 
             JsonNode jsonNode = JsonUtils.parseJson(message);
             String botType = jsonNode.path("botType").asText();
+
+            // shared variables between either of the bot types.
+            String messageIntent = null;
+            String commandStr = null;
+            String dockerImage = "sjsucohort6/docker_awscli";
+            String providerName = "aws";
+            String content = null;
+            List<String> envList = null;
+            String requestId = null;
+
+            // only for slack
+            String userEmail = null;
+            String channelId = null;
+            SlackSession session = null;
+
 
             if (botType.equalsIgnoreCase(BotType.SLACK.name())) {
                 SlackMessage slackMessage = JsonUtils.convertJsonToObject(message, SlackMessage.class);
@@ -86,47 +106,24 @@ public class MessageProcessorJob implements Job {
                     // set request in progress
                     Request request = requestInProgress(slackMessage.getRequestId());
                     Request finalRequest = request;
-                    requestDAO.add(new ArrayList<Request>(){{add(finalRequest);}});
+                    requestDAO.add(new ArrayList<Request>() {{
+                        add(finalRequest);
+                    }});
 
-                    SlackSession session = SlackSessionFactory.createWebSocketSlackSession(slackBotToken);
+                    session = SlackSessionFactory.createWebSocketSlackSession(slackBotToken);
                     session.connect();
-                    String channelId = slackMessage.getChannelId();
-                    List<String> intent = slackMessage.getIntent();
-
-                    String userEmail = slackMessage.getUserEmail();
+                    channelId = slackMessage.getChannelId();
+                    userEmail = slackMessage.getUserEmail();
 
                     // send ack to slack user that message is being processed.
                     String ackMessage = "Message received in the backend";
                     sendMessageToUser(userEmail, session, channelId, ackMessage);
 
-                    // 1. Get command to execute from intent
-                    //String[] cmdArray = getCmdArray(intent);
-                    String[] cmdArray = getCmdArray(slackMessage.getContent());
-                    String providerName = cmdArray[0];
+                    // Make a REST call to user service to get the user's (by userEmail) AWS creds.
+                    envList = getCloudProviderCredsByEmail(userEmail);
 
-                    // 2. Make a REST call to user service to get the user's (by userEmail) AWS creds.
-                    List<String> envList = getCloudProviderCredsByEmail(userEmail);
-
-                    // Execute Command
-                    List<String> cmdList = new ArrayList<>();
-                    for (int i = 1; i < cmdArray.length; i++) {
-                        cmdList.add(cmdArray[i]);
-                    }
-
-                    Command cmd = new Command.Builder(dockerImage, cmdList)
-                            .env(envList)
-                            .entryPoint(entryPoint)
-                            .build();
-                    CommandExecutor executor = CloudProviderFactory.getCloudProviderCmdExecutor(providerName);
-                    Response response = executor.executeCommand(cmd);
-                    sendMessageToUser(userEmail, session, channelId, response.getMsg());
-
-                    // Persist the response in DB
-
-                    request = requestWithResponse(slackMessage.getRequestId(), cmd.toString(), response.getMsg(), Status.SUCCESS);
-                    Request finalRequest1 = request;
-                    requestDAO.update(new ArrayList<Request>(){{add(finalRequest1);}});
-
+                    content = slackMessage.getContent();
+                    requestId = slackMessage.getRequestId();
                 }
             } else if (botType.equalsIgnoreCase(BotType.RIA.name())) {
                 RiaMessage riaMessage = JsonUtils.convertJsonToObject(message, RiaMessage.class);
@@ -139,18 +136,51 @@ public class MessageProcessorJob implements Job {
                     // set request instance in DB with in progress status
                     Request request = requestInProgress(riaMessage.getRequestId());
                     Request finalRequest = request;
-                    requestDAO.add(new ArrayList<Request>(){{add(finalRequest);}});
+                    requestDAO.add(new ArrayList<Request>() {{
+                        add(finalRequest);
+                    }});
 
-                    String[] cmdArray = getCmdArray(riaMessage.getIntent());
-                    String providerName = cmdArray[0];
+                    envList = getCloudProviderCredsByRiaId(riaMessage.getRiaId());
 
-                    List<String> envList = getCloudProviderCredsByRiaId(riaMessage.getRiaId());
-
-
-
+                    content = riaMessage.getContent();
+                    requestId = riaMessage.getRequestId();
                 }
             }
+            // Common logic for all bot types to find intent for a given provider.
+            IntentFinder intentFinder = new IntentFinder(providerDAO, content, messageIntent, commandStr, dockerImage, providerName).invoke();
+            messageIntent = intentFinder.getMessageIntent();
+            commandStr = intentFinder.getCommandStr();
+            dockerImage = intentFinder.getDockerImage();
+            providerName = intentFinder.getProviderName();
+            List<String> cmdList = null;
 
+            if (messageIntent != null && commandStr != null) {
+                String ackMessage = MessageFormat.format("Found intent [{0}] and command [{1}]",
+                        messageIntent, commandStr);
+                sendMessageToUser(userEmail, session, channelId, ackMessage);
+                cmdList = convertMsgToWordsList(commandStr);
+            } else {
+                String ackMessage = "No intent found for message. Attempting to execute the message as is on aws provider.";
+                sendMessageToUser(userEmail, session, channelId, ackMessage);
+                cmdList = convertMsgToWordsList(content);
+            }
+
+            // Execute Command
+            Command cmd = new Command.Builder(dockerImage, cmdList)
+                    .env(envList)
+                    .entryPoint(providerName)
+                    .build();
+
+            CommandExecutor executor = CloudProviderFactory.getCloudProviderCmdExecutor(providerName);
+            Response response = executor.executeCommand(cmd);
+            sendMessageToUser(userEmail, session, channelId, response.getMsg());
+
+            // Persist the response in DB
+            Request request = requestWithResponse(requestId, cmd.toString(), response.getMsg(), Status.SUCCESS);
+            Request finalRequest1 = request;
+            requestDAO.update(new ArrayList<Request>() {{
+                add(finalRequest1);
+            }});
 
         } catch (IOException | CommandExecutionException | DBException e) {
             if (dbClient != null && message != null) {
@@ -159,14 +189,16 @@ public class MessageProcessorJob implements Job {
                 try {
                     jsonNode = JsonUtils.parseJson(message);
                 } catch (IOException e1) {
-                    log.log(Level.SEVERE,"Failed to parse JSON message", e1);
+                    log.log(Level.SEVERE, "Failed to parse JSON message", e1);
                 }
                 if (jsonNode != null) {
                     String requestId = jsonNode.path("requestId").asText();
                     String content = jsonNode.path("content").asText();
                     Request request = requestWithResponse(requestId, content, e.getMessage(), Status.FAILURE);
                     try {
-                        requestDAO.update(new ArrayList<Request>(){{add(request);}});
+                        requestDAO.update(new ArrayList<Request>() {{
+                            add(request);
+                        }});
                     } catch (DBException e1) {
                         log.log(Level.SEVERE, "Failed to update DB with failure status", e1);
                     }
@@ -176,12 +208,24 @@ public class MessageProcessorJob implements Job {
         }
     }
 
+    private List<String> convertMsgToWordsList(String content) {
+        String[] words = content.trim().split("\\s+");
+        return Arrays.asList(words);
+    }
+
+    private static boolean checkMessage(List<String> intent, List<String> userMessage) {
+        if (userMessage.containsAll(intent)) {
+            return true;
+        }
+        return false;
+    }
 
     private Request requestInProgress(String requestId) {
         Request request = new Request();
         request.setRequestId(requestId);
         request.setStartTime(new Date());
         request.setStatus(Status.IN_PROGRESS);
+        return request;
     }
 
     private Request requestWithResponse(String requestId, String cmd, String responseMsg, Status status) {
@@ -205,9 +249,9 @@ public class MessageProcessorJob implements Job {
             User user = userResponse.getParsedObject();
             List<String> envList = new ArrayList<>();
 
-            envList.add("AWS_DEFAULT_REGION="+ user.getAwsCredentials().getRegion());
-            envList.add("AWS_ACCESS_KEY_ID="+ user.getAwsCredentials().getAwsAccessKeyId());
-            envList.add("AWS_SECRET_ACCESS_KEY="+ user.getAwsCredentials().getAwsSecretAccessKey());
+            envList.add("AWS_DEFAULT_REGION=" + user.getAwsCredentials().getRegion());
+            envList.add("AWS_ACCESS_KEY_ID=" + user.getAwsCredentials().getAwsAccessKeyId());
+            envList.add("AWS_SECRET_ACCESS_KEY=" + user.getAwsCredentials().getAwsSecretAccessKey());
             return envList;
         } catch (Exception e) {
 
@@ -221,9 +265,9 @@ public class MessageProcessorJob implements Job {
             User user = userResponse.getParsedObject();
             List<String> envList = new ArrayList<>();
 
-            envList.add("AWS_DEFAULT_REGION="+ user.getAwsCredentials().getRegion());
-            envList.add("AWS_ACCESS_KEY_ID="+ user.getAwsCredentials().getAwsAccessKeyId());
-            envList.add("AWS_SECRET_ACCESS_KEY="+ user.getAwsCredentials().getAwsSecretAccessKey());
+            envList.add("AWS_DEFAULT_REGION=" + user.getAwsCredentials().getRegion());
+            envList.add("AWS_ACCESS_KEY_ID=" + user.getAwsCredentials().getAwsAccessKeyId());
+            envList.add("AWS_SECRET_ACCESS_KEY=" + user.getAwsCredentials().getAwsSecretAccessKey());
             return envList;
         } catch (Exception e) {
 
@@ -231,23 +275,6 @@ public class MessageProcessorJob implements Job {
         return null;
     }
 
-    private String[] getCmdArray(List<String> intent) {
-        //TODO Change to use DB to get the command array from intent
-        // 1. Lookup intentsList in the DB and get the following:
-        // - dockerImage, cmdList and entry point.
-
-        /*
-         * For simplicity sake, we will lookup with intentsList such that,
-         * - each intent element in the intentsList should be found in a single NoSQL document
-         * - then we get the cloud provider name, dockerImage, cmdList and entry point from the DB.
-         *
-         * If intent string is not an array, then we try getting the cloud provider from the message as first
-         * word in the intent.
-         */
-        String[] cmdArray = new String[intent.size()];
-        cmdArray = intent.toArray(cmdArray);
-        return cmdArray;
-    }
 
     private void sendMessageToUser(String userEmail, SlackSession session, String channelId, String message) {
         if (channelId != null && !channelId.trim().isEmpty()) {
@@ -268,5 +295,70 @@ public class MessageProcessorJob implements Job {
 
     public void setMessage(String message) {
         this.message = message;
+    }
+
+    /**
+     * This is a method object of common code for finding intent of the message for either type of bots - slack or RIA.
+     */
+    private class IntentFinder {
+        private ProviderDAO providerDAO;
+        private String content;
+        private String messageIntent;
+        private String commandStr;
+        private String dockerImage;
+        private String providerName;
+
+        public IntentFinder(ProviderDAO providerDAO, String content, String messageIntent, String commandStr, String dockerImage, String providerName) {
+            this.providerDAO = providerDAO;
+            this.content = content;
+            this.messageIntent = messageIntent;
+            this.commandStr = commandStr;
+            this.dockerImage = dockerImage;
+            this.providerName = providerName;
+        }
+
+        public String getMessageIntent() {
+            return messageIntent;
+        }
+
+        public String getCommandStr() {
+            return commandStr;
+        }
+
+        public String getDockerImage() {
+            return dockerImage;
+        }
+
+        public String getProviderName() {
+            return providerName;
+        }
+
+        public IntentFinder invoke() throws DBException {
+            List<String> contentWordsList = convertMsgToWordsList(content);
+            // Looking up by hardcoded provider aws.
+            // TODO remove hardcoding and fetch all providers (not by ID).
+            List<Provider> providers = providerDAO.fetchById(new ArrayList<String>() {{
+                add("aws");
+            }});
+
+            if (providers != null && !providers.isEmpty()) {
+                Provider provider = providers.get(0);
+                List<edu.sjsu.amigo.command.db.model.Command> commands = provider.getCommands();
+                for (edu.sjsu.amigo.command.db.model.Command command : commands) {
+                    List<String> intents = command.getIntents();
+                    for (String intent : intents) {
+                        List<String> intentWordsList = convertMsgToWordsList(intent);
+                        if (checkMessage(intentWordsList, contentWordsList)) {
+                            messageIntent = intent;
+                            commandStr = command.getCommand();
+                            providerName = provider.getCloudProvider();
+                            dockerImage = provider.getDockerImage();
+                            break;
+                        }
+                    }
+                }
+            }
+            return this;
+        }
     }
 }

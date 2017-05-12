@@ -40,16 +40,9 @@ public class MessageProcessor {
             intent: [aws, ec2, list]
          */
         log.info("Processing message: " + msg);
-        List<String> intent = null;
-        //intent = HttpClient.getIntentFromWitAI(parsedMessage);
-        AIClient aiClient = new WitDotAIClient();
-        intent = aiClient.getIntent(msg.getContent());
-        log.info(MessageFormat.format("Got intent [{0}] for message [{1}]", intent, msg));
-        msg.setIntent(intent);
-        // Generate a request ID and attach it to message
-        String requestId = UUID.randomUUID().toString();
-        log.info(MessageFormat.format("Generated request ID is [{0}]", requestId));
-        msg.setRequestId(requestId);
+        setIntent(msg);
+        setRequestId(msg);
+
 
         if (msg != null) {
             String msgJson = null;
@@ -76,5 +69,21 @@ public class MessageProcessor {
                 }
             }
         }
+    }
+
+    private static void setIntent(Message msg) {
+        List<String> intent = null;
+        //intent = HttpClient.getIntentFromWitAI(parsedMessage);
+        AIClient aiClient = new WitDotAIClient();
+        intent = aiClient.getIntent(msg.getContent());
+        log.info(MessageFormat.format("Got intent [{0}] for message [{1}]", intent, msg));
+        msg.setIntent(intent);
+    }
+
+    private static void setRequestId(Message msg) {
+        // Generate a request ID and attach it to message
+        String requestId = UUID.randomUUID().toString();
+        log.info(MessageFormat.format("Generated request ID is [{0}]", requestId));
+        msg.setRequestId(requestId);
     }
 }

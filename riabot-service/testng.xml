@@ -14,10 +14,10 @@
 
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
-<suite name="ChatbotServiceTests" verbose="10" >
+<suite name="RiabotServiceTests" verbose="10" >
     <test name="Regression"   >
         <packages>
-            <package name="edu.sjsu.amigo.chatbot.rest.test" />
+            <package name="edu.sjsu.amigo.riabot.rest.test" />
         </packages>
     </test>
 </suite>
