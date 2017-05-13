@@ -47,6 +47,12 @@
         "ec2 volumes"
       ],
       "command":"aws ec2 describe-volumes"
+    },
+    {
+      "intents":[
+        "ec2 keys"
+      ],
+      "command":"aws ec2 describe-key-pairs"
     }
   ]
 }
