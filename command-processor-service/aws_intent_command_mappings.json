@@ -5,7 +5,9 @@
     {
       "intents":[
         "ec2 instances list",
-        "ec2 instances describe"
+        "ec2 instances describe",
+        "ec2 instances show",
+        "ec2 instances what"
       ],
       "command":"aws ec2 describe-instances"
     },
@@ -32,13 +34,19 @@
       "intents":[
         "ec2 stop"
       ],
-      "command":"aws ec2 stop-instances --instance-ids < aws ec2 describe-instances --query Reservations[0].Instances[0].InstanceId"
+      "command":"export INSTANCE_ID=aws ec2 describe-instances | jq -r .Reservations[0].Instances[0].InstanceId && aws ec2 stop-instances --instance-ids ${INSTANCE_ID}"
     },
     {
       "intents":[
         "ec2 start"
       ],
-      "command":"aws ec2 start-instances --instance-ids < aws ec2 describe-instances --query Reservations[0].Instances[0].InstanceId"
+      "command":"aws ec2 start-instances --instance-ids $(aws ec2 describe-instances | jq -r .Reservations[0].Instances[0].InstanceId)"
+    },
+    {
+      "intents":[
+        "ec2 volumes"
+      ],
+      "command":"aws ec2 describe-volumes"
     }
   ]
 }
