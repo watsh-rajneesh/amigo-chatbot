@@ -198,8 +198,6 @@ json-common/src/main/resources/
 json-common/src/test/
 msg-common/src/main/resources/
 msg-common/src/test/
-nlp-service/src/main/resources/
-nlp-service/src/test/
 riabot-service/src/test/
 scheduler-common/src/main/resources/
 scheduler-common/src/test/
