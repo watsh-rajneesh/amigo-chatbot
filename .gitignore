@@ -206,3 +206,4 @@ scheduler-common/src/test/
 slackbot-service/src/main/resources/
 user-db/src/main/resources/
 web-ui/src/
+/nlp-service/
