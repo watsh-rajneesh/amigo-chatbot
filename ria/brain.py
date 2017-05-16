@@ -1,8 +1,10 @@
 from GreyMatter import general_conversations, tell_time, \
     weather, define_subject, news_reader, open_firefox, sleep, \
-    play_music, notes, twitter_interaction
+    play_music, notes, twitter_interaction, amigo_bot_interaction
 
-def brain(name, speech_text, music_path, city_name, city_zip, consumer_key, consumer_secret, access_token, access_token_secret):
+
+def brain(name, speech_text, music_path, city_name, city_zip,
+          consumer_key, consumer_secret, access_token, access_token_secret, amigo_host_port):
     """
     Virtual Assistant's logic module or BRAIN.
 
@@ -76,9 +78,8 @@ def brain(name, speech_text, music_path, city_name, city_zip, consumer_key, cons
                                        consumer_secret, access_token, access_token_secret)
     elif check_message([wake_up_word, 'sleep']):
         sleep.go_to_sleep()
-    elif check_message([wake_up_word, 'ec2', 'instances']):
-        intent = 'aws ec2 describe-instances'
-        amigo_bot_interaction.send_message(speech_text, intent, riaId)
+    elif check_message([wake_up_word, 'amigo']):
+        amigo_bot_interaction.send_message(amigo_host_port, speech_text, riaId)
     else:
         general_conversations.undefined()
 

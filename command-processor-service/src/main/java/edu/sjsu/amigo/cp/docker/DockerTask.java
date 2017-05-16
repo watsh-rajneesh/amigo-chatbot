@@ -84,7 +84,6 @@ public class DockerTask {
 
     private void pullImage(DockerClient docker, String imageRepoName) throws DockerException, InterruptedException {
         final RegistryAuth registryAuth = RegistryAuth.builder()
-                // TODO change reading from env var to value read from user profile in DB
                 .email(System.getenv("DOCKER_EMAIL"))
                 .username(System.getenv("DOCKER_USERNAME"))
                 .password(System.getenv("DOCKER_PASSWORD"))

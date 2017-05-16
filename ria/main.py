@@ -19,7 +19,9 @@ access_token = profile_data['twitter']['access_token']
 access_token_secret = profile_data['twitter']['access_token_secret']
 consumer_key = profile_data['twitter']['consumer_key']
 consumer_secret = profile_data['twitter']['consumer_secret']
+amigo_host_port = profile_data['amigo']['host_port']
 play_music.mp3gen(music_path)
+
 
 
 tts('Welcome ' + name + ', systems are now ready to run. How can I help you?')
@@ -51,6 +53,6 @@ def main():
 
         if speech_text is not None:
             brain(name, speech_text, music_path, city_name, city_zip,
-                consumer_key, consumer_secret, access_token, access_token_secret)
+                consumer_key, consumer_secret, access_token, access_token_secret, amigo_host_port)
 
 main()

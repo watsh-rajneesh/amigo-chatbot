@@ -173,7 +173,10 @@ public class MessageProcessorJob implements Job {
 
             CommandExecutor executor = CloudProviderFactory.getCloudProviderCmdExecutor(providerName);
             Response response = executor.executeCommand(cmd);
-            sendMessageToUser(userEmail, session, channelId, response.getMsg());
+            if (botType.equalsIgnoreCase(BotType.SLACK.name())) {
+                sendMessageToUser(userEmail, session, channelId, response.getMsg());
+            }
+            // For RIA status of request will be polled using /request/{requestId} endpoint.
 
             // Persist the response in DB
             Request request = requestWithResponse(requestId, cmd.toString(), response.getMsg(), Status.SUCCESS);
