@@ -136,3 +136,12 @@ def send_message(hostPort, speech_txt, riaId):
     :return: generic message of success or failure of submission of the message to amigo bot
     """
     url = "%s://%s/api/v1.0/ria" % (get_http_scheme(), hostPort)
+    data = {}
+    data['botType'] = 'RIA'
+    data['content'] = speech_txt
+    data['riaId'] = riaId
+    json_data = json.dumps(data)
+    r = post_request(url, payload=json_data, headers={"content-type":"application/json"})
+
+
+def poll_response(hostPort)

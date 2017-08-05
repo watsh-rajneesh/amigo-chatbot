@@ -2,7 +2,7 @@
 
 # Only local tests are run .. so in this case mongodb and user service are running locally
 mvn clean install -DskipTests
-java -jar target/riabot-service-1.0-SNAPSHOT.jar server config.yml &
+java -jar target/riabot-service-1.0-SNAPSHOT.jar server config_dev.yml &
 RIABOT_SERVICE_PID=$!
 # give some time for server to startup
 sleep 60

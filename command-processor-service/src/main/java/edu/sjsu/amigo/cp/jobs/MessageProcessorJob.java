@@ -60,7 +60,8 @@ import java.util.logging.Level;
 @Log
 public class MessageProcessorJob implements Job {
     private String message;
-    private static final String BASE_URI = "http://localhost:8080";
+    public static final String PROXY_HOST_NAME = System.getenv("PROXY_HOST_NAME");
+    private static final String BASE_URI = "http://" + PROXY_HOST_NAME;
     private static final String RESOURCE_URI = "/api/v1.0/users";
     private DBClient dbClient;
 
@@ -82,7 +83,7 @@ public class MessageProcessorJob implements Job {
             // shared variables between either of the bot types.
             String messageIntent = null;
             String commandStr = null;
-            String dockerImage = "sjsucohort6/docker_awscli";
+            String dockerImage = "sjsucohort6/docker_awscli:1.0";
             String providerName = "aws";
             String content = null;
             List<String> envList = null;
@@ -249,15 +250,17 @@ public class MessageProcessorJob implements Job {
     private List<String> getCloudProviderCredsByEmail(String userEmail) {
         try (HttpClient c = new HttpClient()) {
             edu.sjsu.amigo.http.client.Response<User> userResponse = c.get(BASE_URI + RESOURCE_URI + "/" + userEmail, User.class);
+            log.info("Response from user-service: " + userResponse.getRawBody());
             User user = userResponse.getParsedObject();
             List<String> envList = new ArrayList<>();
 
             envList.add("AWS_DEFAULT_REGION=" + user.getAwsCredentials().getRegion());
             envList.add("AWS_ACCESS_KEY_ID=" + user.getAwsCredentials().getAwsAccessKeyId());
             envList.add("AWS_SECRET_ACCESS_KEY=" + user.getAwsCredentials().getAwsSecretAccessKey());
+            log.info("Env list: " + envList.toString());
             return envList;
         } catch (Exception e) {
-
+            log.log(Level.SEVERE, "Error", e);
         }
         return null;
     }
@@ -273,7 +276,7 @@ public class MessageProcessorJob implements Job {
             envList.add("AWS_SECRET_ACCESS_KEY=" + user.getAwsCredentials().getAwsSecretAccessKey());
             return envList;
         } catch (Exception e) {
-
+            log.log(Level.SEVERE, "Error", e);
         }
         return null;
     }

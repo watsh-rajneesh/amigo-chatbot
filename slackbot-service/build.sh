@@ -2,7 +2,7 @@
 
 # Only local tests are run .. so in this case mongodb and user service are running locally
 mvn clean install -DskipTests
-java -jar target/slackbot-service-1.0-SNAPSHOT.jar server config.yml &
+java -jar target/slackbot-service-1.0-SNAPSHOT.jar &
 SLACKBOT_SERVICE_PID=$!
 # give some time for server to startup
 sleep 60

@@ -10,7 +10,7 @@ docker service create --name user-db \
 
 # Create user-service service
 docker service create --name user-service \
-  -e DB=user-db \
+  -e DB="user-db" \
   --network app-net \
   --network proxy-net \
   --label com.df.notify=true \
@@ -33,9 +33,11 @@ docker service create --name cmd-db \
 # Create command-processor-service
 docker service create --name command-processor-service \
   -e KAFKA_HOST_NAME="kafka" \
-  -e DB=cmd-db \
+  -e DB="cmd-db" \
+  -e PROXY_HOST_NAME="proxy" \
   --network app-net \
   --network proxy-net \
+  --mount type=bind,src=//var/run/docker.sock,dst=/var/run/docker.sock \
   --label com.df.notify=true \
   --label com.df.distribute=true \
   --label com.df.servicePath=/api/v1.0/requests \

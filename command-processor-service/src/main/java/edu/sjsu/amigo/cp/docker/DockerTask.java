@@ -43,8 +43,8 @@ public class DockerTask {
     public String execute(String dockerImage, List<String> envList, List<String> commandList, String entryPoint) throws CommandExecutionException {
         try( DockerClient dockerClient = new DefaultDockerClient("unix:///var/run/docker.sock")) {
             String response = null;
-            pullImage(dockerClient, dockerImage);
-            //dockerClient.pull(dockerImage);
+            //pullImage(dockerClient, dockerImage);
+            dockerClient.pull(dockerImage);
 
             if (commandList != null && !commandList.isEmpty()) {
                 if (commandList.get(0).equalsIgnoreCase(entryPoint)) {
