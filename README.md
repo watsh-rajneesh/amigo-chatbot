@@ -24,3 +24,5 @@ Amigo chatbot enables user to be able to type in any aws-cli command within Slac
 When user receives an event from Amazon Cloud Watch that a node has high CPU usage (beyond a certain thresold) then this event can be seen within Slack messenger via the AWS Cloud Watch bot. But in order to remedy the situation user can add another node or scale out the node. To do any of this user will need to either use AWS console or AWS CLI from a terminal and leave the Slack messenger for that. That is where Amigo chatbot comes in. It enables user to execute any command that is supported by aws-cli from within slack. For some commands like show me my ec2 zones, the intent of the message is inferred from the message and the corresponding awscli command is executed (aws ec2 describe-availability-zones). But user can always type in the actual command instead and Amigo chatbot will execute that and show the result.
 
 A [demo video for the bot is availabe on youtube](https://youtu.be/qTltmTgN1Ws)
+
+We also participated in [AWS Chatbot Hackathon](https://devpost.com/software/amigo-chatbot)
